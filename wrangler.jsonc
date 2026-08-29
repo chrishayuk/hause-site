@@ -9,7 +9,8 @@
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "hause",
-	"routes": [{ "pattern": "hause.design", "custom_domain": true }],
+	// Uncomment when the hause.design zone is added to this Cloudflare account:
+	// "routes": [{ "pattern": "hause.design", "custom_domain": true }],
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2026-08-25",
 	"compatibility_flags": [
