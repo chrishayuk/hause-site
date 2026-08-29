@@ -7,6 +7,7 @@ import { Evidence } from "@chrishayuk/hause/components/forms/Evidence";
 import { Question } from "@chrishayuk/hause/components/forms/Question";
 import { Timeline } from "@chrishayuk/hause/components/forms/Timeline";
 import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
+import { Excerpt } from "@chrishayuk/hause/components/forms/Excerpt";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 
@@ -71,6 +72,14 @@ export default function StatementsPage() {
 					{ date: "2026-08", text: "Extracted from chrishayuk into its own repository, once a second consumer made copy-pasting the design system the wrong move." },
 					{ date: "2026-08-29", text: "The vindex3.org build grows the library by fourteen forms in a day, and the three modes get their names." },
 				]}
+			/>
+
+			<Specimen name="Excerpt" mode="statement" note="Someone else's words, typeset — verbatim source material with markdown rendered, tables tamed, and trims marked at word boundaries. Promoted from Ask VINDEX3's citation cards." />
+			<Excerpt
+				source="the library README"
+				heading="Three modes"
+				text={"Every form under `forms/` is one of three kinds. The split was not designed up front — it emerged from real chapters, which is the only way HAUSE accepts structure.\n\n> **Statements** — prose forms in the three voices. The reader reads."}
+				trimmed
 			/>
 
 			<Specimen name="Refusal" mode="statement" note="Fail-closed as design language — the refusal is the most designed moment, not the error state." />

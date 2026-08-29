@@ -28,6 +28,7 @@ export type Block =
 			result: { label: string; detail: string };
 	  }
 	| { kind: "timeline"; entries: { date: string; text: string }[] }
+	| { kind: "excerpt"; source: string; heading?: string; text: string; trimmed?: boolean }
 	| {
 			kind: "comparison";
 			kicker: string;

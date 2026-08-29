@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
@@ -9,9 +9,49 @@ import { Evidence } from "@chrishayuk/hause/components/forms/Evidence";
 import { Decomposition } from "@chrishayuk/hause/components/forms/Decomposition";
 import { Comparison } from "@chrishayuk/hause/components/forms/Comparison";
 import { Timeline } from "@chrishayuk/hause/components/forms/Timeline";
+import { Excerpt } from "@chrishayuk/hause/components/forms/Excerpt";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { tick, refuse } from "@chrishayuk/hause/sound";
 import { askHause, formMeta, ASK_SUGGESTIONS, type AskAnswer, type Block } from "@/data/askHause";
+
+/* ── The synthesis tier's wallet gate (same architecture as Ask
+ * VINDEX3): deterministic first; a free doctrine-retrieval call
+ * second; Turnstile-verified synthesis only when both missed. ── */
+
+const TURNSTILE_SITEKEY = "0x4AAAAAAEhOgxy9GaK8U30A";
+
+type TurnstileApi = {
+	render: (el: HTMLElement, opts: { sitekey: string; action: string; callback: (t: string) => void; "error-callback"?: () => void }) => string;
+	reset: (id: string) => void;
+};
+
+declare global {
+	interface Window {
+		turnstile?: TurnstileApi;
+	}
+}
+
+function loadTurnstile(): Promise<TurnstileApi> {
+	return new Promise((resolve, reject) => {
+		if (window.turnstile) return resolve(window.turnstile);
+		const existing = document.querySelector<HTMLScriptElement>("script[data-turnstile]");
+		const script = existing ?? document.createElement("script");
+		if (!existing) {
+			script.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit";
+			script.async = true;
+			script.defer = true;
+			script.dataset.turnstile = "1";
+			document.head.appendChild(script);
+		}
+		const started = Date.now();
+		const poll = () => {
+			if (window.turnstile) return resolve(window.turnstile);
+			if (Date.now() - started > 15_000) return reject(new Error("turnstile did not load"));
+			setTimeout(poll, 150);
+		};
+		poll();
+	});
+}
 
 /**
  * ASK HAUSE — the renderer.
@@ -107,6 +147,14 @@ function AnswerBlocks({ answer }: { answer: AskAnswer }) {
 						);
 					case "timeline":
 						return <Timeline key={i} entries={b.entries} />;
+					case "excerpt":
+						return (
+							<section key={i} className="hause-grid py-6">
+								<div className="col-span-12 md:col-start-2 md:col-span-9">
+									<Excerpt source={b.source} heading={b.heading} text={b.text} trimmed={b.trimmed} />
+								</div>
+							</section>
+						);
 					case "connection":
 						return <Connection key={i} text={b.text} links={b.links} />;
 					case "recommend":
@@ -119,14 +167,41 @@ function AnswerBlocks({ answer }: { answer: AskAnswer }) {
 
 export function AskHause() {
 	const [q, setQ] = useState("");
-	const [answer, setAnswer] = useState<{ a: AskAnswer; q: string } | null>(null);
+	const [answer, setAnswer] = useState<{ a: AskAnswer; q: string; label?: string } | null>(null);
 	const [thinking, setThinking] = useState(false);
+	const [synthesising, setSynthesising] = useState(false);
+	const widgetId = useRef<string | null>(null);
+
+	async function turnstileToken(container: HTMLDivElement | null): Promise<string | null> {
+		try {
+			if (!container) return null;
+			const ts = await loadTurnstile();
+			return await new Promise<string | null>((resolve) => {
+				const timeout = setTimeout(() => resolve(null), 25_000);
+				const done = (t: string) => {
+					clearTimeout(timeout);
+					resolve(t || null);
+				};
+				if (widgetId.current) ts.reset(widgetId.current);
+				else
+					widgetId.current = ts.render(container, {
+						sitekey: TURNSTILE_SITEKEY,
+						action: "turnstile-spin-v2",
+						callback: done,
+						"error-callback": () => done(""),
+					});
+			});
+		} catch {
+			return null;
+		}
+	}
 
 	function ask(question: string) {
 		const query = question.trim();
 		if (!query) return;
 		setQ(query);
 		setThinking(true);
+		setSynthesising(false);
 		setAnswer(null);
 		setTimeout(() => {
 			setThinking(false);
@@ -134,6 +209,50 @@ export function AskHause() {
 			if (a.id === "no-form") refuse();
 			else tick();
 			setAnswer({ a, q: query });
+			// The deterministic layer refused — consult the doctrine, then
+			// (gated) the synthesis tier. The refusal stands unless
+			// something grounded arrives.
+			if (a.id === "no-form") {
+				setSynthesising(true);
+				(async () => {
+					try {
+						const first = await fetch("/api/explain", {
+							method: "POST",
+							headers: { "content-type": "application/json" },
+							body: JSON.stringify({ question: query }),
+							signal: AbortSignal.timeout(15000),
+						});
+						if (first.ok) {
+							const up = (await first.json()) as { blocks: Block[]; label: string };
+							if (up.blocks?.length) {
+								tick();
+								setAnswer({ a: { id: "served-" + Date.now(), blocks: up.blocks }, q: query, label: up.label });
+							}
+							return;
+						}
+						if (first.status !== 428) return;
+						const el = document.getElementById("hause-turnstile") as HTMLDivElement | null;
+						const token = await turnstileToken(el);
+						if (!token) return;
+						const res = await fetch("/api/explain", {
+							method: "POST",
+							headers: { "content-type": "application/json" },
+							body: JSON.stringify({ question: query, turnstile_token: token }),
+							signal: AbortSignal.timeout(30000),
+						});
+						if (!res.ok) return;
+						const up = (await res.json()) as { blocks: Block[]; label: string };
+						if (up.blocks?.length) {
+							tick();
+							setAnswer({ a: { id: "served-" + Date.now(), blocks: up.blocks }, q: query, label: up.label });
+						}
+					} catch {
+						/* the refusal stands */
+					} finally {
+						setSynthesising(false);
+					}
+				})();
+			}
 		}, 500);
 	}
 
@@ -185,9 +304,25 @@ export function AskHause() {
 					{thinking && (
 						<p className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-40 mt-8 graph-pulse">composing…</p>
 					)}
+					{synthesising && (
+						<p className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-40 mt-8 graph-pulse">
+							the doctrine is being consulted…
+						</p>
+					)}
+					<div id="hause-turnstile" className={synthesising ? "mt-4" : "hidden"} aria-label="Verification" />
 				</div>
 			</section>
 
+			{answer?.label && (
+				<section className="hause-grid pt-4">
+					<div className="col-span-12 md:col-start-2 md:col-span-9">
+						<p className="voice-evidence text-[11px] opacity-50">
+							<span style={{ color: "var(--color-accent)" }}>{answer.label.split(" — ")[0]}</span>
+							{answer.label.includes(" — ") ? <>&nbsp;&nbsp;{answer.label.split(" — ").slice(1).join(" — ")}</> : null}
+						</p>
+					</div>
+				</section>
+			)}
 			{answer && <AnswerBlocks answer={answer.a} />}
 
 			{!answer && !thinking && (

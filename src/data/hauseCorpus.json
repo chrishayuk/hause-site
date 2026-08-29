@@ -1,0 +1,227 @@
+{
+ "generated": "2026-08-29",
+ "passages": [
+  {
+   "id": "readme#1",
+   "source": "the library README",
+   "heading": "HAUSE",
+   "text": "A cinematic visual language for ideas, systems and explanations — not a component library, not brand guidelines. Extracted from [chrishayuk](https://github.com/chrishayuk/chrishayuk) once a second consumer (vindex3.org) made copy-pasting the design system across repos the wrong move.\n\nRead `tokens.css` and the files under `components/` before this README — they're the source of truth. This file just explains how a project wires HAUSE in."
+  },
+  {
+   "id": "readme#2",
+   "source": "the library README",
+   "heading": "What's in here",
+   "text": "```\ntokens.css     palette, three type voices (editorial/system/evidence), 12-col grid,\n               motion tokens, Light/Dark, status marks, reveal/pulse animations\ntypes.ts       Status (\"OPEN\" | \"ONGOING\" | \"SUPPORTED\" | \"REFUTED\" | \"SUPERSEDED\")\ncomponents/\n  Reveal.tsx          scroll-triggered reveal wrapper\n  StatusMark.tsx       word + dot status indicator\n  GridOverlay.tsx      \"SHOW STRUCTURE\" 12-column overlay\n  PaceDemo.tsx         Immediate / Considered / Cinematic motion demo\n  ModeToggle.tsx       LIGHT / DARK control\n  Inquiry.tsx          \"Ask the Codex\"-style query -> real-form primitive\n  forms/               the chapter primitives — all in one flat directory,\n                        because the import path is the public API and it does\n                        not move. The taxonomy below is documentation, not\n                        directory structure.\n```"
+  },
+  {
+   "id": "readme#3",
+   "source": "the library README",
+   "heading": "The three modes",
+   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, so the lists below are prose, and the manifest is\nthe evidence.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n`Hero · Statement · Observation · Claim · Evidence · Question · Timeline ·\nConnection · Refusal · Excerpt`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n`Anatomy · Decomposition · ExpertField · Comparison · Variants · Ladder ·\nAgreement · Derivation · ByteMap · FollowReveal · Terminal · Gating`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop where a scrolling reader\nmust never find it finished. Never a crossfade between two physical forms\nof one thing — staged swaps only.\n`Film · Transformation · Unfolding · Compilation · Pro"
+  },
+  {
+   "id": "readme#4",
+   "source": "the library README",
+   "heading": "Sound — the tactile voice",
+   "text": "`sound.ts` is a synthesized palette (sine waves and envelopes, no audio\nfiles): `tick` for a selection, `swap` for a staged swap committing,\n`settle` for a performance finishing, `refuse` for a fail-closed moment.\nOpt-in via `SoundToggle` (localStorage `hause-sound`), off by default —\nhause sound is chosen, never inflicted. Loops stay silent; only\ninteractions and completions speak. Peak gains sit far below speech\nlevel: a well-made drawer closing, not an app chirping.\n\n**HAUSE knows nothing about any specific site's content model.** No file here imports from outside this package. `Inquiry` takes a `resolve` function as a prop rather than importing one — the caller (the site) supplies what a query means; HAUSE only supplies how the result is experienced. That boundary is the whole point of this being a separate repo."
+  },
+  {
+   "id": "readme#5",
+   "source": "the library README",
+   "heading": "Using it in a project",
+   "text": "This isn't published to a registry — it's consumed as a local path dependency between sibling checkouts:\n\n```json\n// package.json\n\"dependencies\": {\n  \"@chrishayuk/hause\": \"file:../hause\"\n}\n```\n\nThen `npm install`. Because this package ships raw `.tsx`/`.ts` source (no build step), the consuming Next.js app has to compile it itself — add it to `next.config.ts`:\n\n```ts\nconst nextConfig: NextConfig = {\n  transpilePackages: [\"@chrishayuk/hause\"],\n};\n```\n\nPull the tokens into your global stylesheet:\n\n```css\n/* app/globals.css */\n@import \"tailwindcss\";\n@import \"@chrishayuk/hause/tokens.css\";\n```\n\nFonts are the one thing HAUSE doesn't own — each site loads Fraunces / Inter / Geist Mono itself via `next/font/google` in its own `layout.tsx` and applies the resulting CSS variables **on `<html>`**, not `<body>` (see chrishayuk's `DESIGN.md` for exactly why — a CSS custom-property inheritance gotcha, not a style preference).\n\nImport components by subpath:\n\n```tsx\nimport { Statement } from \"@chrishayuk/hause/components/forms/Statement\";\nimport { ModeToggle } from \"@chrishayuk/hause/components/ModeToggle\";\nimport type { Status } from \"@chrishayuk/hause/types\";\n```"
+  },
+  {
+   "id": "readme#6",
+   "source": "the library README",
+   "heading": "Light / Dark",
+   "text": "Two authored environments, not a `prefers-color-scheme` inversion — default light, explicit opt-in via `ModeToggle`, `data-mode=\"dark\"` on `<html>` flips the `--bg`/`--fg` tokens. To avoid a flash on load, each consuming site's `layout.tsx` needs a small blocking inline script in `<head>` that reads `localStorage` before paint, plus `suppressHydrationWarning` on `<html>` for the resulting (expected) attribute mismatch. Copy this verbatim rather than reinventing it — see any consuming site's `layout.tsx`:\n\n```html\n<script dangerouslySetInnerHTML={{ __html:\n  `try{var m=localStorage.getItem('hause-mode');if(m==='dark')document.documentElement.dataset.mode='dark';}catch(e){}`\n}} />\n```"
+  },
+  {
+   "id": "readme#7",
+   "source": "the library README",
+   "heading": "Design principles (the ones that matter for extension)",
+   "text": "- **No generic card kit.** Every `forms/*` component is a specific, semantic thing — a Statement is not a styled div, it's an editorial-voice claim with its own scale and rhythm. If you're about to add a `Card` component, stop.\n- **A Mode gets built for a real chapter, not manufactured as a demo.** `ExpertField` (Simulation) and `Comparison` (one object, two interpretations) both exist because a real exhibition needed them, in that order, discovered through making — not designed as an abstract taxonomy up front. When adding a new Mode, build it against real content first.\n- **Always-present text fallback.** Every interactive form (`Decomposition`, `ExpertField`, `Comparison`) renders a plain-language sentence describing its point even with the interaction removed — for `prefers-reduced-motion`, no-JS, and crawlers. Keep this pattern.\n- **`prefers-reduced-motion` gets a designed static state, not just `animation: none`.** Check `Reveal`, `.graph-pulse`, `.pace-demo-box` in `tokens.css` for the pattern."
+  },
+  {
+   "id": "manifest#Hero",
+   "source": "the manifest",
+   "heading": "Hero — statement",
+   "text": "Hero is a statement. The room's first wall: kicker, headline, dek."
+  },
+  {
+   "id": "manifest#Statement",
+   "source": "the manifest",
+   "heading": "Statement — statement",
+   "text": "Statement is a statement. One sentence, given the whole width."
+  },
+  {
+   "id": "manifest#Observation",
+   "source": "the manifest",
+   "heading": "Observation — statement",
+   "text": "Observation is a statement. A labelled paragraph that watches rather than argues."
+  },
+  {
+   "id": "manifest#Claim",
+   "source": "the manifest",
+   "heading": "Claim — statement",
+   "text": "Claim is a statement. An assertion that knows it must answer to evidence."
+  },
+  {
+   "id": "manifest#Evidence",
+   "source": "the manifest",
+   "heading": "Evidence — statement",
+   "text": "Evidence is a statement. Rows of labelled findings with status marks — receipts, not decoration."
+  },
+  {
+   "id": "manifest#Question",
+   "source": "the manifest",
+   "heading": "Question — statement",
+   "text": "Question is a statement. An open question given the same typographic dignity as an answer."
+  },
+  {
+   "id": "manifest#Timeline",
+   "source": "the manifest",
+   "heading": "Timeline — statement",
+   "text": "Timeline is a statement. Dated entries, in order — history as prose, not a widget."
+  },
+  {
+   "id": "manifest#Connection",
+   "source": "the manifest",
+   "heading": "Connection — statement",
+   "text": "Connection is a statement. A bridge out of the chapter: one sentence, then the doors."
+  },
+  {
+   "id": "manifest#Refusal",
+   "source": "the manifest",
+   "heading": "Refusal — statement",
+   "text": "Refusal is a statement. Fail-closed rendered as design language, not as an error state. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Excerpt",
+   "source": "the manifest",
+   "heading": "Excerpt — statement",
+   "text": "Excerpt is a statement. Someone else's words, typeset — verbatim source material with its markdown rendered and its trims marked. Originated in vindex3 · Ask (2026-08-29)."
+  },
+  {
+   "id": "manifest#Anatomy",
+   "source": "the manifest",
+   "heading": "Anatomy — instrument",
+   "text": "Anatomy is a instrument. An annotated cutaway — one artifact drawn as its layers, fully disclosed."
+  },
+  {
+   "id": "manifest#Decomposition",
+   "source": "the manifest",
+   "heading": "Decomposition — instrument",
+   "text": "Decomposition is a instrument. One object, its parts, the thing that assembles them — stepped by hand."
+  },
+  {
+   "id": "manifest#ExpertField",
+   "source": "the manifest",
+   "heading": "ExpertField — instrument",
+   "text": "ExpertField is a instrument. A field of units, mostly dormant; each scenario lights the subset that answers. Originated in the codex."
+  },
+  {
+   "id": "manifest#Comparison",
+   "source": "the manifest",
+   "heading": "Comparison — instrument",
+   "text": "Comparison is a instrument. One object, two interpretations, dragged between. Originated in the codex."
+  },
+  {
+   "id": "manifest#Variants",
+   "source": "the manifest",
+   "heading": "Variants — instrument",
+   "text": "Variants is a instrument. Physically present variants of one identity — and a designed refusal for the absent one. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Ladder",
+   "source": "the manifest",
+   "heading": "Ladder — instrument",
+   "text": "Ladder is a instrument. A gated progression — rungs climbed in order, each closed only by its own criterion. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Agreement",
+   "source": "the manifest",
+   "heading": "Agreement — instrument",
+   "text": "Agreement is a instrument. N independently-derived values that must be identical — with a FAIL row."
+  },
+  {
+   "id": "manifest#Derivation",
+   "source": "the manifest",
+   "heading": "Derivation — instrument",
+   "text": "Derivation is a instrument. A value folded down a graded scale by caps — derived, never asserted."
+  },
+  {
+   "id": "manifest#ByteMap",
+   "source": "the manifest",
+   "heading": "ByteMap — instrument",
+   "text": "ByteMap is a instrument. A physical layout drawn to scale — each field's width is its width in bytes."
+  },
+  {
+   "id": "manifest#FollowReveal",
+   "source": "the manifest",
+   "heading": "FollowReveal — instrument",
+   "text": "FollowReveal is a instrument. A path through connected ideas, replayed at the hause stagger."
+  },
+  {
+   "id": "manifest#Terminal",
+   "source": "the manifest",
+   "heading": "Terminal — instrument",
+   "text": "Terminal is a instrument. A query surface whose chrome is the form and whose meaning is one executor. Originated in vindex3 · the Explorer (2026-08-29)."
+  },
+  {
+   "id": "manifest#Gating",
+   "source": "the manifest",
+   "heading": "Gating — instrument",
+   "text": "Gating is a instrument. A stream widened into a working space, judged channel by channel, brought back home. Originated in vindex3 · the Anatomy (2026-08-29)."
+  },
+  {
+   "id": "manifest#Transformation",
+   "source": "the manifest",
+   "heading": "Transformation — performance",
+   "text": "Transformation is a performance. Comparison's cinematic sibling — identical props, performed. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Unfolding",
+   "source": "the manifest",
+   "heading": "Unfolding — performance",
+   "text": "Unfolding is a performance. Decomposition's cinematic sibling — the parts arrive on their own. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Compilation",
+   "source": "the manifest",
+   "heading": "Compilation — performance",
+   "text": "Compilation is a performance. A pile of inputs compiled down through named stages. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Procession",
+   "source": "the manifest",
+   "heading": "Procession — performance",
+   "text": "Procession is a performance. One thing passing through every stage, in order. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Magnitude",
+   "source": "the manifest",
+   "heading": "Magnitude — performance",
+   "text": "Magnitude is a performance. A powers-of-ten zoom-out — each arrival rescales the world. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Channel",
+   "source": "the manifest",
+   "heading": "Channel — performance",
+   "text": "Channel is a performance. Throughput through a fixed-capacity conduit. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Quantisation",
+   "source": "the manifest",
+   "heading": "Quantisation — performance",
+   "text": "Quantisation is a performance. What quantisation actually does, performed on a lattice. Originated in vindex3."
+  },
+  {
+   "id": "manifest#Film",
+   "source": "the manifest",
+   "heading": "Film — performance",
+   "text": "Film is a performance. A short film in the flow of a chapter — poster until it earns the play. Originated in vindex3. Held, not yet exhibited."
+  }
+ ]
+}
