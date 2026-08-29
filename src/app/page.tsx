@@ -67,16 +67,37 @@ export default function Home() {
 				text="Every form is one of three kinds, and the split was earned, not designed. Statements are prose in the three voices — the reader reads. Instruments are interactive — the reader operates them, and every one carries a plain-text fallback so the point survives with the interaction removed. Performances are cinematic — they play themselves, rest on a designed final state, and never crossfade between two physical forms of one thing."
 			/>
 
-			<Connection
-				text="The book, by mode — every specimen is the real form."
-				links={[
-					{ href: "/statements", label: "STATEMENTS — THE READER READS" },
-					{ href: "/instruments", label: "INSTRUMENTS — THE READER OPERATES" },
-					{ href: "/performances", label: "PERFORMANCES — THE FORMS PLAY THEMSELVES" },
-					{ href: "/forms", label: "THE HOLDINGS — EVERY FORM, ONE LINE" },
-					{ href: "/use", label: "USE HAUSE — THE ON-RAMP" },
-				]}
-			/>
+			<section className="hause-grid py-16 sm:py-24">
+				<div className="col-span-12 md:col-start-2 md:col-span-9">
+					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">THE PATH</p>
+					<p className="voice-editorial text-2xl sm:text-3xl mb-10 max-w-2xl">
+						One path through the whole of it — read, operate, watch. Then interrogate, then build.
+					</p>
+					<div className="flex flex-col">
+						{[
+							{ n: "01", href: "/statements", title: "STATEMENTS", hook: "The reader reads — prose in the three voices, and the rules that keep them honest." },
+							{ n: "02", href: "/instruments", title: "INSTRUMENTS", hook: "The reader operates — every point surviving with the interaction removed." },
+							{ n: "03", href: "/performances", title: "PERFORMANCES", hook: "The forms play themselves — and rest on a state that carries the whole idea." },
+							{ n: "04", href: "/forms", title: "THE HOLDINGS", hook: "Every form, one line, with its recorded origin — the count is evidence, not copy." },
+							{ n: "05", href: "/ask", title: "ASK HAUSE", hook: "Interrogate the system — it answers in its own forms, or refuses in one." },
+							{ n: "06", href: "/use", title: "USE HAUSE", hook: "Install, tokens, one minimal chapter — the plumbing, next door to the exhibition." },
+						].map((c, i) => (
+							<Link
+								key={c.href}
+								href={c.href}
+								className="graph-pulse group grid grid-cols-[2.5rem_minmax(0,11rem)_1fr] sm:grid-cols-[3rem_minmax(0,13rem)_1fr] gap-3 sm:gap-6 items-baseline py-4 border-t"
+								style={{ borderColor: "var(--color-mist)", animationDelay: `${i * 90}ms` }}
+							>
+								<span className="voice-evidence text-xs opacity-40">{c.n}</span>
+								<span className="voice-evidence text-xs sm:text-sm tracking-[0.08em]" style={{ color: "var(--color-accent)" }}>
+									{c.title} →
+								</span>
+								<span className="voice-system text-sm opacity-70 group-hover:opacity-95 transition-opacity">{c.hook}</span>
+							</Link>
+						))}
+					</div>
+				</div>
+			</section>
 
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">
