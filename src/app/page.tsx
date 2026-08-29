@@ -15,9 +15,9 @@ export default function Home() {
 	return (
 		<main>
 			<Hero
-				kicker="HAUSE · A CINEMATIC VISUAL LANGUAGE"
+				kicker="HAUSE · A DESIGN SYSTEM FOR AI"
 				title="STRUCTURE IS FIXED. ATMOSPHERE IS VARIABLE."
-				dek="A small set of semantic forms for ideas, systems and explanations — not a component library, not brand guidelines. This site is its specimen book: every form shown here is the real form, running."
+				dek="A visual language for intelligent systems to explain themselves. The primitives are forms of explanation — things a reader reads, operates, or watches — not interface chrome. This site is the specimen book: every form shown here is the real form, running."
 			/>
 
 			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, each of which exists because a real page needed it — never because a taxonomy had a gap.`} />
@@ -55,6 +55,11 @@ export default function Home() {
 				title="NO GENERIC CARD KIT"
 				lines={["requested    Card", `available    ${formCount()} semantic forms, each with a name and a job`]}
 				principle="If you're about to add a Card, stop."
+			/>
+
+			<Observation
+				label="THE GRAMMAR UNDERNEATH"
+				text="Some forms are siblings across the modes: Comparison and Transformation make the same argument — one the reader drags, one the system performs; Decomposition and Unfolding likewise, with identical props. Underneath the catalogue sits a smaller grammar of semantic operations, and the mode is how the reader meets them: the same idea, read, operated, or watched."
 			/>
 
 			<Observation
