@@ -19,7 +19,7 @@ export default function Home() {
 				dek="A small set of semantic forms for ideas, systems and explanations — not a component library, not brand guidelines. This site is its specimen book: every form shown here is the real form, running."
 			/>
 
-			<Observation text="HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And twenty-seven forms, each of which exists because a real page needed it — never because a taxonomy had a gap." />
+			<Observation text="HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And twenty-eight forms, each of which exists because a real page needed it — never because a taxonomy had a gap." />
 
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">
@@ -52,7 +52,7 @@ export default function Home() {
 			<Refusal
 				kicker="THE STANDING REFUSAL — RENDERED BY THE Refusal FORM ITSELF"
 				title="NO GENERIC CARD KIT"
-				lines={["requested    Card", "available    27 semantic forms, each with a name and a job"]}
+				lines={["requested    Card", "available    28 semantic forms, each with a name and a job"]}
 				principle="If you're about to add a Card, stop."
 			/>
 
@@ -67,6 +67,8 @@ export default function Home() {
 					{ href: "/statements", label: "STATEMENTS — THE READER READS" },
 					{ href: "/instruments", label: "INSTRUMENTS — THE READER OPERATES" },
 					{ href: "/performances", label: "PERFORMANCES — THE FORMS PLAY THEMSELVES" },
+					{ href: "/forms", label: "THE HOLDINGS — ALL 28, ONE LINE EACH" },
+					{ href: "/use", label: "USE HAUSE — THE ON-RAMP" },
 				]}
 			/>
 

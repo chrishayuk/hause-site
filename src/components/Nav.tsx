@@ -11,10 +11,10 @@ export function Nav() {
 				</Link>
 			</div>
 			<nav className="col-span-6 md:col-span-9 flex justify-end items-center gap-3 sm:gap-8 flex-nowrap">
-				<Link href="/statements" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity hidden sm:inline">
+				<Link href="/statements" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
 					Statements
 				</Link>
-				<Link href="/instruments" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity hidden sm:inline">
+				<Link href="/instruments" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
 					Instruments
 				</Link>
 				<Link href="/performances" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">

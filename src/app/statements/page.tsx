@@ -46,7 +46,7 @@ export default function StatementsPage() {
 					{
 						label: "Forms built because a real chapter needed them",
 						status: "SUPPORTED",
-						detail: "27 of 27. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all seven performances came from the vindex3 exhibition.",
+						detail: "28 of 28. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all seven performances came from the vindex3 exhibition; the Terminal was promoted from its Explorer, where it fronts a live query endpoint.",
 					},
 					{
 						label: "Forms added to fill a taxonomy gap",

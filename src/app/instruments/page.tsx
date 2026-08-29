@@ -104,10 +104,10 @@ export default function InstrumentsPage() {
 					{ id: "needed", question: "A real chapter cannot be built without it.", status: "PASSED" },
 					{ id: "built", question: "It exists, in that chapter, doing real work.", status: "PASSED" },
 					{ id: "generic", question: "Its props no longer know whose content they carry.", status: "PASSED" },
-					{ id: "fallback", question: "Its point survives with the interaction removed.", status: "BUILDING" },
-					{ id: "promoted", question: "It enters HAUSE, and the specimen book shows it.", status: "OPEN" },
+					{ id: "fallback", question: "Its point survives with the interaction removed.", status: "PASSED" },
+					{ id: "promoted", question: "It enters HAUSE, and the specimen book shows it.", status: "PASSED" },
 				]}
-				caption="No rung is skipped. A form that arrives without a chapter behind it is a Card wearing a costume."
+				caption="No rung is skipped. A form that arrives without a chapter behind it is a Card wearing a costume. The most recent climb is real and complete: the Terminal, promoted from vindex3's Explorer, 2026-08-29 — its specimen is below."
 			/>
 
 			<Specimen name="Agreement" mode="instrument" note="N independently-derived values that must be identical — with a FAIL row, because an invariant you never see fail is decoration." />
