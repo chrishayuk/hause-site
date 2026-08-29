@@ -1,6 +1,7 @@
 "use client";
 
 import { Terminal, type TerminalLine, type TerminalResult } from "@chrishayuk/hause/components/forms/Terminal";
+import { FORM_MANIFEST, importPath } from "@chrishayuk/hause/manifest";
 
 /**
  * The Terminal's specimen executor: a tiny shell over the library
@@ -8,19 +9,10 @@ import { Terminal, type TerminalLine, type TerminalResult } from "@chrishayuk/ha
  * — which is the specimen invariant again: the book browsing the book.
  */
 
-const FORMS: Record<string, { mode: string; line: string }> = {
-	Hero: { mode: "statement", line: "The room's first wall: kicker, headline, dek." },
-	Statement: { mode: "statement", line: "One sentence, given the whole width." },
-	Ladder: { mode: "instrument", line: "A gated progression — no rung skipped." },
-	Variants: { mode: "instrument", line: "Physically present variants, and a designed refusal for the absent one." },
-	ByteMap: { mode: "instrument", line: "A layout drawn to scale — width is bytes." },
-	Transformation: { mode: "performance", line: "Comparison's cinematic sibling; identical props." },
-	Terminal: { mode: "instrument", line: "This one. A query surface whose meaning lives in its executor." },
-};
 
 const BANNER: TerminalLine[] = [
-	{ text: "Connected — the HAUSE library · specimen shell", tone: "ok" },
-	{ text: "The executor is fifty lines in this page; the chrome is the form itself", tone: "dim" },
+	{ text: `Connected — the HAUSE library · ${FORM_MANIFEST.length} forms · read from the manifest`, tone: "ok" },
+	{ text: "The executor derives from manifest.ts — the same index the holdings page reads", tone: "dim" },
 	{ text: "Type HELP, or start with SHOW FORMS;", tone: "dim" },
 ];
 
@@ -50,22 +42,23 @@ function execute(raw: string): TerminalResult {
 		return {
 			lines: [
 				{ text: "FORM             MODE          ", tone: "dim" },
-				...Object.entries(FORMS).map(([name, f]) => ({
-					text: `${name.padEnd(17)}${f.mode.padEnd(14)}${f.line}`,
-					tone: name === "Terminal" ? ("accent" as const) : undefined,
+				...FORM_MANIFEST.map((f) => ({
+					text: `${f.name.padEnd(17)}${f.mode.padEnd(14)}${f.line}${f.exhibited ? "" : "  · HELD, NOT YET EXHIBITED"}`,
+					tone: f.name === "Terminal" ? ("accent" as const) : undefined,
 				})),
 			],
 		};
 	const m = s.match(/^DESCRIBE\s+(\w+)$/i);
 	if (m) {
-		const hit = Object.entries(FORMS).find(([name]) => name.toLowerCase() === m[1].toLowerCase());
+		const hit = FORM_MANIFEST.find((f) => f.name.toLowerCase() === m[1].toLowerCase());
 		if (!hit) return { refused: true, lines: [{ text: `${m[1]}: not in the library — SHOW FORMS lists the holdings`, tone: "err" }] };
 		return {
 			lines: [
-				{ text: `FORM     ${hit[0]}` },
-				{ text: `MODE     ${hit[1].mode}` },
-				{ text: `IMPORT   @chrishayuk/hause/components/forms/${hit[0]}`, tone: "dim" },
-				{ text: hit[1].line, tone: "accent" },
+				{ text: `FORM     ${hit.name}` },
+				{ text: `MODE     ${hit.mode}` },
+				{ text: `IMPORT   ${importPath(hit.name)}`, tone: "dim" },
+				...(hit.origin ? [{ text: `ORIGIN   ${hit.origin}${hit.date ? ` · ${hit.date}` : ""}`, tone: "dim" as const }] : []),
+				{ text: hit.line, tone: "accent" },
 			],
 		};
 	}

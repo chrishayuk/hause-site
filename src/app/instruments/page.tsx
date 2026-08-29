@@ -13,6 +13,7 @@ import { FollowReveal } from "@chrishayuk/hause/components/forms/FollowReveal";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 import { TerminalSpecimen } from "@/components/TerminalSpecimen";
+import { Gating } from "@chrishayuk/hause/components/forms/Gating";
 
 export const metadata: Metadata = {
 	title: "Instruments",
@@ -156,6 +157,20 @@ export default function InstrumentsPage() {
 
 			<Specimen name="Terminal" mode="instrument" note="A query surface as an instrument: the form is the chrome, the meaning is one executor function passed in. Promoted from vindex3.org's Explorer, where it fronts a live query endpoint." />
 			<TerminalSpecimen />
+
+			<Specimen name="Gating" mode="instrument" note="Expand, judge, compress — performed by widths. Promoted from vindex3.org's Anatomy, where the stages are a model's gate/up/down tensors; here, an editor's day." />
+			<Gating
+				channels={24}
+				keep={[0, 3, 4, 7, 11, 12, 15, 19, 20, 23]}
+				stages={[
+					{ chip: "THE NOTES", title: "The idea arrives small.", text: "A sentence of intent — everything the piece must say, in no particular shape.", width: "narrow", label: "one sentence of intent" },
+					{ chip: "DRAFT", title: "Make the space bigger.", text: "The writer expands it: every angle tried, every phrasing written out. The working space is deliberately larger than the piece will ever be.", width: "wide", label: "two thousand words of draft" },
+					{ chip: "EDIT", title: "Decide what gets through.", text: "The editor reads every channel of it and judges: this earns its place, this does not.", width: "wide", gated: true, label: "the same draft, judged line by line" },
+					{ chip: "×", title: "The judgement applies.", text: "What was scored low fades. Nothing is rewritten at this stage — only kept or released.", width: "wide", gated: true, label: "most of it, released" },
+					{ chip: "SHIP", title: "Bring it back home.", text: "What survives is compressed to the measure the piece must hold — and it reads inevitable, because everything else was tried.", width: "narrow", label: "the paragraph that ships" },
+				]}
+				fallback="Expand, judge, compress. The form's widths carry the argument; the content is the caller's — on vindex3.org these stages are a model's gate, up, and down projections and the payoff lines are container addresses."
+			/>
 
 			<Specimen name="FollowReveal" mode="instrument" note="A path through connected ideas, replayed at the hause stagger." />
 			<FollowReveal

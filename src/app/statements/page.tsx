@@ -24,6 +24,8 @@ export default function StatementsPage() {
 				dek="Prose forms in the three voices. Server-renderable, no interaction — the reader reads. Each specimen below is the real form, and its copy is true."
 			/>
 
+			<Specimen name="Hero" mode="statement" note="Self-exhibiting: the wall above is the specimen — every chapter's first form, and this page's own." />
+
 			<Specimen name="Statement" mode="statement" note="The editorial voice at full width — one claim, carrying the room." />
 			<Statement text="A specimen book cannot drift from its library when it is the library." />
 
@@ -37,7 +39,7 @@ export default function StatementsPage() {
 			<Claim
 				text="Every interactive form must carry an always-present text fallback."
 				status="SUPPORTED"
-				detail="All eleven instruments do. The point survives with the interaction removed — for reduced motion, for no-JS, for crawlers, and for anyone who just wants the sentence."
+				detail="Every instrument does. The point survives with the interaction removed — for reduced motion, for no-JS, for crawlers, and for anyone who just wants the sentence."
 			/>
 
 			<Specimen name="Evidence" mode="statement" note="Rows of labelled findings with status marks — receipts, not decoration." />
@@ -78,6 +80,7 @@ export default function StatementsPage() {
 				principle="An empty frame is the least luxurious object on a page."
 			/>
 
+			<Specimen name="Connection" mode="statement" note="Self-exhibiting: the bridge below is the specimen — one sentence, then the doors." />
 			<Connection
 				text="When the reader should operate instead of read, the book continues."
 				links={[
