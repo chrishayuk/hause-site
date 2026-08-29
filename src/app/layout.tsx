@@ -40,7 +40,7 @@ export default function RootLayout({
 				<script
 					// eslint-disable-next-line react/no-danger
 					dangerouslySetInnerHTML={{
-						__html: `try{var m=localStorage.getItem('hause-mode');if(m==='dark')document.documentElement.dataset.mode='dark';}catch(e){}`,
+						__html: `try{var m=localStorage.getItem('hause-mode');if(m==='light')document.documentElement.dataset.mode='light';}catch(e){}`,
 					}}
 				/>
 			</head>

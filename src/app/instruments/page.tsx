@@ -12,6 +12,7 @@ import { ByteMap } from "@chrishayuk/hause/components/forms/ByteMap";
 import { FollowReveal } from "@chrishayuk/hause/components/forms/FollowReveal";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
+import { TerminalSpecimen } from "@/components/TerminalSpecimen";
 
 export const metadata: Metadata = {
 	title: "Instruments",
@@ -152,6 +153,9 @@ export default function InstrumentsPage() {
 				]}
 				totalLabel="12 bytes · little-endian · a demonstration record, not a standard"
 			/>
+
+			<Specimen name="Terminal" mode="instrument" note="A query surface as an instrument: the form is the chrome, the meaning is one executor function passed in. Promoted from vindex3.org's Explorer, where it fronts a live query endpoint." />
+			<TerminalSpecimen />
 
 			<Specimen name="FollowReveal" mode="instrument" note="A path through connected ideas, replayed at the hause stagger." />
 			<FollowReveal
