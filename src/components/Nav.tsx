@@ -1,28 +1,27 @@
-import Link from "next/link";
+import { NavShell, type NavLink } from "@chrishayuk/hause/components/NavShell";
 import { ModeToggle } from "@chrishayuk/hause/components/ModeToggle";
 import { SoundToggle } from "@chrishayuk/hause/components/SoundToggle";
 
+const LINKS: NavLink[] = [
+	{ href: "/statements", label: "Statements", group: "THE BOOK" },
+	{ href: "/instruments", label: "Instruments", group: "THE BOOK" },
+	{ href: "/performances", label: "Performances", group: "THE BOOK" },
+	{ href: "/forms", label: "Holdings", group: "THE INDEX" },
+	{ href: "/ask", label: "Ask", accent: true, group: "ASK THE SYSTEM" },
+	{ href: "/use", label: "Use HAUSE", boxed: true, group: "THE ON-RAMP" },
+];
+
 export function Nav() {
 	return (
-		<header className="hause-grid items-center py-6">
-			<div className="col-span-6 md:col-span-3">
-				<Link href="/" className="voice-system text-sm tracking-[0.12em]">
-					HAUSE
-				</Link>
-			</div>
-			<nav className="col-span-6 md:col-span-9 flex justify-end items-center gap-3 sm:gap-8 flex-nowrap">
-				<Link href="/statements" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
-					Statements
-				</Link>
-				<Link href="/instruments" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
-					Instruments
-				</Link>
-				<Link href="/performances" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
-					Performances
-				</Link>
-				<SoundToggle />
-				<ModeToggle />
-			</nav>
-		</header>
+		<NavShell
+			brand={{ href: "/", label: "HAUSE" }}
+			links={LINKS}
+			controls={
+				<>
+					<SoundToggle />
+					<ModeToggle />
+				</>
+			}
+		/>
 	);
 }
