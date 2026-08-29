@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ModeToggle } from "@chrishayuk/hause/components/ModeToggle";
+import { SoundToggle } from "@chrishayuk/hause/components/SoundToggle";
 
 export function Nav() {
 	return (
@@ -19,6 +20,7 @@ export function Nav() {
 				<Link href="/performances" className="voice-evidence text-xs tracking-[0.1em] uppercase opacity-70 hover:opacity-100 transition-opacity">
 					Performances
 				</Link>
+				<SoundToggle />
 				<ModeToggle />
 			</nav>
 		</header>
