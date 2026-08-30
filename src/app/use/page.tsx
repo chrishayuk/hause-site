@@ -3,6 +3,7 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
+import { Snippet } from "@chrishayuk/hause/components/forms/Snippet";
 import { formCount } from "@chrishayuk/hause/manifest";
 
 export const metadata: Metadata = {
@@ -16,22 +17,6 @@ export const metadata: Metadata = {
  * the front page argues; this page installs. Evidence voice does the
  * work here, because an install line is a measurement, not a claim.
  */
-
-function Snippet({ label, code }: { label: string; code: string }) {
-	return (
-		<section className="hause-grid py-8">
-			<div className="col-span-12 md:col-start-2 md:col-span-9">
-				<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">{label}</p>
-				<pre
-					className="voice-evidence text-[12px] sm:text-[13px] leading-relaxed border p-4 sm:p-5 overflow-x-auto"
-					style={{ borderColor: "var(--color-mist)", background: "var(--color-ink)", color: "var(--color-white)" }}
-				>
-					{code}
-				</pre>
-			</div>
-		</section>
-	);
-}
 
 export default function UsePage() {
 	return (
@@ -59,6 +44,7 @@ export default function UsePage() {
 				code={`import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
+import { Snippet } from "@chrishayuk/hause/components/forms/Snippet";
 import { formCount } from "@chrishayuk/hause/manifest";
 
 export default function Chapter() {

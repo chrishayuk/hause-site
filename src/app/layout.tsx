@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
+import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
 
@@ -60,6 +61,35 @@ export default function RootLayout({
 			<body className="antialiased">
 				<Nav />
 				{children}
+				<SiteFooter
+					brand="HAUSE"
+					tagline="A design system for AI — typed visual forms an AI can compose answers from."
+					note="Nothing enters the library without a real page that needed it first."
+					groups={[
+						{
+							label: "THE BOOK",
+							links: [
+								{ href: "/statements", label: "Statements" },
+								{ href: "/instruments", label: "Instruments" },
+								{ href: "/performances", label: "Performances" },
+							],
+						},
+						{
+							label: "THE INDEX",
+							links: [
+								{ href: "/forms", label: "The Holdings" },
+								{ href: "/ask", label: "Ask HAUSE" },
+							],
+						},
+						{
+							label: "THE ON-RAMP",
+							links: [
+								{ href: "/use", label: "Use HAUSE" },
+								{ href: "https://github.com/chrishayuk/hause", label: "The library source", external: true },
+							],
+						},
+					]}
+				/>
 				<footer className="hause-grid py-16 mt-20 border-t" style={{ borderColor: "var(--color-mist)" }}>
 					<div className="col-span-12 flex flex-wrap items-baseline justify-between gap-4">
 						<p className="voice-evidence text-xs opacity-50">HAUSE · THE SPECIMEN BOOK / 2026</p>
