@@ -3,6 +3,7 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
+import { formCount } from "@chrishayuk/hause/manifest";
 
 export const metadata: Metadata = {
 	title: "Use HAUSE: Install & Compose the Design System",
@@ -58,6 +59,7 @@ export default function UsePage() {
 				code={`import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
+import { formCount } from "@chrishayuk/hause/manifest";
 
 export default function Chapter() {
   return (
@@ -70,6 +72,31 @@ export default function Chapter() {
 }`}
 			/>
 
+			<Snippet
+				label="THE LEGIBILITY LAYER — SEO & AEO FROM THE SAME RECORDS"
+				code={`import { Answer } from "@chrishayuk/hause/components/forms/Answer";
+import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
+import { techArticleLd, definedTermLd } from "@chrishayuk/hause/seo";
+
+// The question, asked the way people ask it — a real heading, a
+// lift-able answer, a citable anchor. The designed heading above it
+// stays exactly as designed.
+<Answer
+  id="what-is-the-claim"
+  question="What is the claim, plainly?"
+  answer="Forty to a hundred words a reader — or a machine — can lift whole."
+/>
+
+// Structured data projected from records the page already holds,
+// so the crawlable answer can never drift from the rendered one.
+<JsonLd data={techArticleLd({ headline, description, url, siteUrl, siteName })} />`}
+			/>
+
+			<Observation
+				label="MACHINE LEGIBILITY IS PART OF THE GRAMMAR"
+				text="Query-shaped titles with designed headings, answer-first blocks with stable anchors, JSON-LD from the same records the forms render, ARIA state on every instrument, and nothing that lives only in an animation. The test travels with the install: strip the page to text, and it should still answer the question it was designed to answer."
+			/>
+
 			<Observation
 				label="THE ENVIRONMENTS"
 				text="Dark is the default. A viewer opts into light through the ModeToggle, and the choice persists as hause-mode in localStorage — apply it before paint with a blocking script that sets data-mode on the root element when the stored value is light."
@@ -80,7 +107,7 @@ export default function Chapter() {
 			<Connection
 				text="What you just installed, exhibited."
 				links={[
-					{ href: "/forms", label: "THE HOLDINGS — ALL 28" },
+					{ href: "/forms", label: `THE HOLDINGS — ALL ${formCount()}` },
 					{ href: "/statements", label: "THE BOOK, BY MODE" },
 				]}
 			/>

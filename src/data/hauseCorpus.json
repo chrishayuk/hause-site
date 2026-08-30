@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-29",
+ "generated": "2026-08-30",
  "passages": [
   {
    "id": "readme#1",
@@ -42,6 +42,12 @@
    "source": "the library README",
    "heading": "Design principles (the ones that matter for extension)",
    "text": "- **No generic card kit.** Every `forms/*` component is a specific, semantic thing — a Statement is not a styled div, it's an editorial-voice claim with its own scale and rhythm. If you're about to add a `Card` component, stop.\n- **A Mode gets built for a real chapter, not manufactured as a demo.** `ExpertField` (Simulation) and `Comparison` (one object, two interpretations) both exist because a real exhibition needed them, in that order, discovered through making — not designed as an abstract taxonomy up front. When adding a new Mode, build it against real content first.\n- **Always-present text fallback.** Every interactive form (`Decomposition`, `ExpertField`, `Comparison`) renders a plain-language sentence describing its point even with the interaction removed — for `prefers-reduced-motion`, no-JS, and crawlers. Keep this pattern.\n- **`prefers-reduced-motion` gets a designed static state, not just `animation: none`.** Check `Reveal`, `.graph-pulse`, `.pace-demo-box` in `tokens.css` for the pattern."
+  },
+  {
+   "id": "readme#8",
+   "source": "the library README",
+   "heading": "Machine legibility — SEO and AEO as design-system concerns",
+   "text": "HAUSE is a design system for AI, and that cuts both ways: AIs compose\nanswers *from* the forms, and machines — crawlers, answer engines, agent\nbrowsers — must be able to *read* what the forms say. Legibility to\nmachines is not an afterthought bolted onto a site; it is part of the\ngrammar, carried by the library itself:\n\n- **The `Answer` form.** A natural-language question as a real heading and\n  a 40–100 word answer a reader or a machine can lift whole, with a stable\n  anchor so the exact question is citable — not just the page. It sits\n  beneath the editorial surface and says the plain thing plainly; the\n  beautiful heading keeps its job.\n- **`seo.ts` + `JsonLd`.** Builders that emit structured data from records\n  a site already holds — WebSite, TechArticle, BreadcrumbList, DefinedTerm\n  (a knowledge-graph entity, said in schema.org), SoftwareApplication,\n  QAPage. The crawlable answer can never drift from the rendered one,\n  because both project from the same record.\n- **Query-shaped `<title>`, designed headings.** The browser title says\n  what the page answers, in the words people search with; the visible\n  HAUSE heading stays exactly as designed. You get both, always.\n- **ARIA state on every instrument.** Agent browsers read `aria-pressed`,\n  `aria-expanded`, and labels to understand interactive interfaces — the\n  Terminal's DESIGNED|RAW|GRAPH tabs carry them, and every new"
   },
   {
    "id": "manifest#Hero",
@@ -102,6 +108,12 @@
    "source": "the manifest",
    "heading": "Excerpt — statement",
    "text": "Excerpt is a statement. Someone else's words, typeset — verbatim source material with its markdown rendered and its trims marked. Originated in vindex3 · Ask (2026-08-29)."
+  },
+  {
+   "id": "manifest#Answer",
+   "source": "the manifest",
+   "heading": "Answer — statement",
+   "text": "Answer is a statement. The question asked the way people ask it, answered first — one lift-able paragraph beneath the editorial surface, addressable by anchor. Originated in vindex3 · the legibility layer (2026-08-30)."
   },
   {
    "id": "manifest#Anatomy",

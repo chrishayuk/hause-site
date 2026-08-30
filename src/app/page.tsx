@@ -3,6 +3,7 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
+import { Answer } from "@chrishayuk/hause/components/forms/Answer";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { PaceDemo } from "@chrishayuk/hause/components/PaceDemo";
 import { formCount } from "@chrishayuk/hause/manifest";
@@ -66,6 +67,20 @@ export default function Home() {
 			<Observation
 				label="THE THREE MODES"
 				text="Every form is one of three kinds, and the split was earned, not designed. Statements are prose in the three voices — the reader reads. Instruments are interactive — the reader operates them, and every one carries a plain-text fallback so the point survives with the interaction removed. Performances are cinematic — they play themselves, rest on a designed final state, and never crossfade between two physical forms of one thing."
+			/>
+
+			<Statement text="A design system for AI reads in both directions: AIs compose answers from the forms — and machines must be able to read what the forms say." />
+
+			<Answer
+				id="machine-legibility"
+				question="What is machine legibility in a design system?"
+				answer="It is the rule that the same fact a form renders beautifully must survive stripped to text — for crawlers, answer engines, agent browsers, and anyone with the interaction removed. In HAUSE that is carried by the library itself: this very block is the Answer form, a question as a real heading with a lift-able answer and a citable anchor; the seo builders emit structured data from the records a site already holds; every instrument carries ARIA state; and nothing important lives only in an animation. The test: strip the page, and it still answers."
+				cite="the form demonstrating itself — Answer, statement mode, origin vindex3 · the legibility layer"
+			/>
+
+			<Observation
+				label="SEO AND AEO ARE PART OF THE GRAMMAR"
+				text="Not a plugin, not an afterthought: the browser title says what the page answers in the words people search with while the designed heading stays exactly as designed; JSON-LD projects from the same records the forms render, so the crawlable answer can never drift from the visible one; and answer-first blocks give every page a boringly clear semantic skeleton beneath the editorial surface. A page a search engine can quote is a page an answer engine can cite."
 			/>
 
 			<section className="hause-grid py-16 sm:py-24">
