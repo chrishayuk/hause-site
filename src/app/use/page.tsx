@@ -5,7 +5,8 @@ import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 
 export const metadata: Metadata = {
-	title: "Use HAUSE",
+	title: "Use HAUSE: Install & Compose the Design System",
+	alternates: { canonical: "/use" },
 	description: "The on-ramp: install, tokens, one form, one minimal chapter.",
 };
 

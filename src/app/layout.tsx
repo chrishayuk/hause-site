@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
+import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
+import { webSiteLd } from "@chrishayuk/hause/seo";
 
 const fraunces = Fraunces({
 	variable: "--font-fraunces",
@@ -20,11 +22,14 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+	metadataBase: new URL("https://hause.design"),
 	title: {
-		default: "HAUSE",
+		default: "HAUSE — A Design System for AI",
 		template: "%s — HAUSE",
 	},
-	description: "A cinematic visual language for ideas, systems and explanations — the specimen book.",
+	description:
+		"HAUSE is a design system for AI: typed visual forms an AI can compose answers from — statements, evidence, terminals, figures — a cinematic language for ideas, systems and explanations.",
+	alternates: { canonical: "/" },
 	icons: { icon: "/favicon.svg" },
 };
 
@@ -36,6 +41,14 @@ export default function RootLayout({
 	return (
 		<html lang="en" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
+				<JsonLd
+					data={webSiteLd({
+						name: "HAUSE",
+						url: "https://hause.design",
+						description:
+							"HAUSE is a design system for AI: typed visual forms an AI can compose answers from — a cinematic language for ideas, systems and explanations.",
+					})}
+				/>
 				{/* hause-mode must apply before paint — see HAUSE's DESIGN notes. */}
 				<script
 					// eslint-disable-next-line react/no-danger

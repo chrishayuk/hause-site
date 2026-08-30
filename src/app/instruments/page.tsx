@@ -16,7 +16,8 @@ import { TerminalSpecimen } from "@/components/TerminalSpecimen";
 import { Gating } from "@chrishayuk/hause/components/forms/Gating";
 
 export const metadata: Metadata = {
-	title: "Instruments",
+	title: "Interactive Design Forms: The HAUSE Instruments",
+	alternates: { canonical: "/instruments" },
 	description: "The interactive forms — understanding through manipulation, always with a text fallback.",
 };
 

@@ -3,7 +3,8 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { AskHause } from "@/components/AskHause";
 
 export const metadata: Metadata = {
-	title: "Ask HAUSE",
+	title: "Ask a Design System: Answers Composed From HAUSE Forms",
+	alternates: { canonical: "/ask" },
 	description: "Ask the system about itself — and it answers in its own forms. Which form does your idea need?",
 };
 

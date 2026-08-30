@@ -12,7 +12,8 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 
 export const metadata: Metadata = {
-	title: "Statements",
+	title: "HAUSE Statement Forms: Typography That Argues",
+	alternates: { canonical: "/statements" },
 	description: "The prose forms — the reader reads. Every specimen is the real form rendering real copy about HAUSE itself.",
 };
 

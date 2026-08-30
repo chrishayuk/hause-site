@@ -12,7 +12,8 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 
 export const metadata: Metadata = {
-	title: "Performances",
+	title: "HAUSE in Performance: Real Pages Built From the Forms",
+	alternates: { canonical: "/performances" },
 	description: "The cinematic forms — they play themselves, rest on a designed final state, and never crossfade.",
 };
 

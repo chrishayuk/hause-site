@@ -6,7 +6,8 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { formCount, formsByMode, MODES, type FormMode } from "@chrishayuk/hause/manifest";
 
 export const metadata: Metadata = {
-	title: "The Holdings",
+	title: "The HAUSE Forms: A Typed Catalogue of Visual Components",
+	alternates: { canonical: "/forms" },
 	description: "Every form in the library, one line each, with mode and recorded origin — derived from the manifest, not written here.",
 };
 
