@@ -3,6 +3,7 @@ import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Nav } from "@/components/Nav";
 import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
+import { Analytics } from "@chrishayuk/hause/components/Analytics";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
 
@@ -59,6 +60,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className="antialiased">
+				<Analytics id="G-35LSQK48G5" />
 				<Nav />
 				{children}
 				<SiteFooter
