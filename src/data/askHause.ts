@@ -20,7 +20,7 @@
 import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "./forms";
 import { PROBLEMS, problemsForForm, type Problem } from "./problems";
-import { GRAMMAR, actFor } from "./grammar";
+import { GRAMMAR, actFor, ACTS, type Act } from "./grammar";
 
 export type Block =
 	| { kind: "statement"; text: string }
@@ -669,6 +669,79 @@ function problemBlocks(p: Problem): Block[] {
 }
 
 /**
+ * SELECTION, RESOLVED AGAINST THE ACTS.
+ *
+ * This used to be a hand-written keyword list covering twelve of the
+ * thirty-five forms: a capability held as scaffolding. ROUTING-1 measured
+ * what that costs — the record-backed spaces answered 24 of 24 while the
+ * keyword-backed ones answered 16 of 36 — so selection now resolves
+ * against the same acts that drive /choosing, and every form in the
+ * library is reachable rather than the twelve somebody remembered to
+ * list.
+ *
+ * The matching surface is the record's own words: what the act is, the
+ * test that decides it, the form's name, and the line its group carries.
+ * Still lexical, because Ask makes no model call — but lexical over an
+ * authority rather than over a parallel list that has to be maintained
+ * beside it.
+ *
+ * The existing recommendation copy is kept where it exists, as
+ * presentation: the record chooses the form, the prose explains it.
+ */
+function selectAct(question: string): { act: Act; score: number } | null {
+	const ql = question.toLowerCase();
+	const toks = [...new Set(ql.split(/[^a-z0-9]+/).filter((t) => t.length > 3 && !STOP.has(t)))];
+	if (toks.length === 0) return null;
+
+	let best: { act: Act; score: number } | null = null;
+	for (const intent of GRAMMAR) {
+		for (const act of intent.acts) {
+			// The whole record, as the matching surface: the act, its deciding
+			// test, the group's line, the form's name and the library's own
+			// one-line description of it. All records; no parallel list.
+			// The record's own words — deliberately without the form's name in
+			// them, so naming a form counts once rather than twice. "How do I
+			// show a claim is proven" names Claim and wants Evidence; a name
+			// scoring against itself makes that mistake look confident.
+			const surface = `${act.doing} ${act.test} ${intent.line} ${rec(act.form).line}`.toLowerCase();
+			let score = 0;
+			let hits = 0;
+			// The form named outright is decisive; the act's own words carry
+			// the rest, and its neighbours deliberately do not — a question
+			// that matches "use Comparison instead when…" is not a vote for
+			// Comparison.
+			// Naming the form is decisive on its own, and half-naming it —
+			// "compare" for Comparison — is the same act of naming.
+			const name = act.form.toLowerCase();
+			// Naming a form is a strong signal and never a decisive one on its
+			// own: "how do I show a claim is proven" names Claim and asks for
+			// Evidence, so a name always needs something else beside it.
+			// Exact naming only. Stem-matching a form's name produces false
+			// friends — "proven" is a prefix of "Provenance" — and a resolver
+			// that answers a question about evidence with a publication record
+			// because of five shared letters is worse than one that refuses.
+			const named = new RegExp(`\\b${name}\\b`).test(ql) ? 5 : 0;
+			score += named;
+			if (named) hits += 1;
+			for (const t of toks) {
+				// Morphology, not vocabulary: "compare" reaching "Comparison"
+				// is the same word, and a stem is not a synonym list.
+				const stem = t.slice(0, 5);
+				if (surface.includes(t)) {
+					score += 2;
+					hits += 1;
+				} else if (t.length > 4 && new RegExp(`\\b${stem}`).test(surface)) {
+					score += 1;
+					hits += 1;
+				}
+			}
+			if (hits >= 2 && score >= 6 && (!best || score > best.score)) best = { act, score };
+		}
+	}
+	return best;
+}
+
+/**
  * THE ROUTER — what kind of answer is being asked for.
  *
  * CHOOSING-1 found the defect this exists to fix: twenty-six cases
@@ -762,7 +835,16 @@ export function askHause(question: string): AskAnswer {
 		const f = FORM_MANIFEST.find((x) => new RegExp(`\\b${x.name.toLowerCase()}\\b`).test(ql));
 		return f ? { id: `form-${formSlug(f.name)}`, blocks: formBlocks(f.name) } : null;
 	};
-	const recommend = () => {
+	/**
+	 * The old keyword list, kept as scaffolding and labelled as such. The
+	 * acts are the authority and reach all thirty-five forms; this list
+	 * reaches twelve, and covers phrasings the records do not yet carry
+	 * ("six irreversible stages" is a Ladder, and no record here says so).
+	 * Removing a working path to make an architectural point would be
+	 * dogma; it goes when the acts carry the recall, and ROUTING-2 is what
+	 * decides that rather than an opinion.
+	 */
+	const keywordFallback = () => {
 		const toks = ql.split(/[^a-z0-9/]+/).filter((t) => t.length > 1 && !STOP.has(t));
 		let best: { r: (typeof RECOMMENDATIONS)[number]; score: number } | null = null;
 		for (const r of RECOMMENDATIONS) {
@@ -772,27 +854,38 @@ export function askHause(question: string): AskAnswer {
 			}
 			if (score > 0 && (!best || score > best.score)) best = { r, score };
 		}
-		if (!best) return null;
-		const meta = rec(best.r.form);
+		return best?.r.form ?? null;
+	};
+
+	const recommend = () => {
+		const chosen = selectAct(question);
+		const fallbackForm = chosen ? null : keywordFallback();
+		if (!chosen && !fallbackForm) return null;
+		const form = chosen ? chosen.act.form : (fallbackForm as string);
+		const act = chosen?.act ?? actFor(form);
+		const meta = rec(form);
+		const copy = RECOMMENDATIONS.find((r) => r.form === form);
 		return {
-			id: `recommend-${best.r.form}`,
+			id: `recommend-${form}`,
 			blocks: [
 				{
 					kind: "recommend",
 					idea: question,
-					form: best.r.form,
-					because: [...(actFor(best.r.form) ? [actFor(best.r.form)!.test] : []), ...best.r.because],
-					not: best.r.not,
-					usedBy: best.r.usedBy,
-					snippet: best.r.snippet,
+					form,
+					// The deciding test first, always — it is the reason, and
+					// the rest is elaboration where somebody wrote some.
+					because: [...(act ? [act.test] : []), ...(copy ? copy.because : [meta.line])],
+					not: copy ? copy.not : (act?.insteadOf ?? []).map((nb) => ({ form: nb.form, reason: nb.when })),
+					usedBy: copy?.usedBy,
+					snippet: copy?.snippet ?? `<${form} … />`,
 				},
 				{
 					kind: "connection",
-					text: `${best.r.form} — ${meta.line}`,
+					text: `${form} — ${meta.line}`,
 					links: [
-						{ href: `/forms/${formSlug(best.r.form)}`, label: `${best.r.form.toUpperCase()} — THE FORM'S PAGE →` },
-						...problemsForForm(best.r.form).map((p) => ({ href: `/problems/${p.slug}`, label: `SOLVES — ${p.title} →` })),
-						{ href: `/${meta.mode}s`, label: `THE ${meta.mode.toUpperCase()} SPECIMENS →` },
+						{ href: `/forms/${formSlug(form)}`, label: `${form.toUpperCase()} — THE FORM'S PAGE →` },
+						...problemsForForm(form).map((p) => ({ href: `/problems/${p.slug}`, label: `SOLVES — ${p.title} →` })),
+						{ href: "/choosing", label: "THE SELECTION GRAMMAR →" },
 					],
 				},
 			],
