@@ -323,85 +323,85 @@
    "id": "manifest#Hero",
    "source": "the manifest",
    "heading": "Hero — statement",
-   "text": "Hero is a statement. The room's first wall: kicker, headline, dek."
+   "text": "Hero is a statement. The room's first wall: kicker, headline, dek. No origin is recorded for it."
   },
   {
    "id": "manifest#Statement",
    "source": "the manifest",
    "heading": "Statement — statement",
-   "text": "Statement is a statement. One sentence, given the whole width."
+   "text": "Statement is a statement. One sentence, given the whole width. No origin is recorded for it."
   },
   {
    "id": "manifest#Observation",
    "source": "the manifest",
    "heading": "Observation — statement",
-   "text": "Observation is a statement. A labelled paragraph that watches rather than argues."
+   "text": "Observation is a statement. A labelled paragraph that watches rather than argues. No origin is recorded for it."
   },
   {
    "id": "manifest#Claim",
    "source": "the manifest",
    "heading": "Claim — statement",
-   "text": "Claim is a statement. An assertion that knows it must answer to evidence."
+   "text": "Claim is a statement. An assertion that knows it must answer to evidence. No origin is recorded for it."
   },
   {
    "id": "manifest#Evidence",
    "source": "the manifest",
    "heading": "Evidence — statement",
-   "text": "Evidence is a statement. Rows of labelled findings with status marks — receipts, not decoration."
+   "text": "Evidence is a statement. Rows of labelled findings with status marks — receipts, not decoration. No origin is recorded for it."
   },
   {
    "id": "manifest#Question",
    "source": "the manifest",
    "heading": "Question — statement",
-   "text": "Question is a statement. An open question given the same typographic dignity as an answer."
+   "text": "Question is a statement. An open question given the same typographic dignity as an answer. No origin is recorded for it."
   },
   {
    "id": "manifest#Timeline",
    "source": "the manifest",
    "heading": "Timeline — statement",
-   "text": "Timeline is a statement. Dated entries, in order — history as prose, not a widget."
+   "text": "Timeline is a statement. Dated entries, in order — history as prose, not a widget. No origin is recorded for it."
   },
   {
    "id": "manifest#Connection",
    "source": "the manifest",
    "heading": "Connection — statement",
-   "text": "Connection is a statement. A bridge out of the chapter: one sentence, then the doors."
+   "text": "Connection is a statement. A bridge out of the chapter: one sentence, then the doors. No origin is recorded for it."
   },
   {
    "id": "manifest#Refusal",
    "source": "the manifest",
    "heading": "Refusal — statement",
-   "text": "Refusal is a statement. Fail-closed rendered as design language, not as an error state. Originated in vindex3."
+   "text": "Refusal is a statement. Fail-closed rendered as design language, not as an error state. Originated in vindex3. It exists because: vindex3 needed fail-closed to arrive as design language rather than as an error state — a system whose personality is that it refuses rather than guesses."
   },
   {
    "id": "manifest#Excerpt",
    "source": "the manifest",
    "heading": "Excerpt — statement",
-   "text": "Excerpt is a statement. Someone else's words, typeset — verbatim source material with its markdown rendered and its trims marked. Originated in vindex3 · Ask (2026-08-29)."
+   "text": "Excerpt is a statement. Someone else's words, typeset — verbatim source material with its markdown rendered and its trims marked. Originated in vindex3 · Ask (2026-08-29). It exists because: Ask VINDEX3 had to show the specification's own passages verbatim, with their markdown rendered and their trims marked honestly."
   },
   {
    "id": "manifest#Answer",
    "source": "the manifest",
    "heading": "Answer — statement",
-   "text": "Answer is a statement. The question asked the way people ask it, answered first — one lift-able paragraph beneath the editorial surface, addressable by anchor. Originated in vindex3 · the legibility layer (2026-08-30)."
+   "text": "Answer is a statement. The question asked the way people ask it, answered first — one lift-able paragraph beneath the editorial surface, addressable by anchor. Originated in vindex3 · the legibility layer (2026-08-30). It exists because: The legibility layer needed a question a machine could lift whole, sitting beneath the editorial surface without touching it."
   },
   {
    "id": "manifest#Snippet",
    "source": "the manifest",
    "heading": "Snippet — statement",
-   "text": "Snippet is a statement. A labeled block of code or terminal output, verbatim on the ink — the on-ramp form, promoted when two sites needed the same shape. Originated in hause.design · Use (2026-08-30)."
+   "text": "Snippet is a statement. A labeled block of code or terminal output, verbatim on the ink — the on-ramp form, promoted when two sites needed the same shape. Originated in hause.design · Use (2026-08-30). It exists because: hause.design's Use page invented the shape and vindex3's Get Started needed the same one — two sites doing one thing differently is what a design system exists to stop."
   },
   {
    "id": "manifest#Anatomy",
    "source": "the manifest",
    "heading": "Anatomy — instrument",
-   "text": "Anatomy is a instrument. An annotated cutaway — one artifact drawn as its layers, fully disclosed."
+   "text": "Anatomy is a instrument. An annotated cutaway — one artifact drawn as its layers, fully disclosed. No origin is recorded for it."
   },
   {
    "id": "manifest#Decomposition",
    "source": "the manifest",
    "heading": "Decomposition — instrument",
-   "text": "Decomposition is a instrument. One object, its parts, the thing that assembles them — stepped by hand."
+   "text": "Decomposition is a instrument. One object, its parts, the thing that assembles them — stepped by hand. No origin is recorded for it."
   },
   {
    "id": "manifest#ExpertField",
@@ -419,67 +419,67 @@
    "id": "manifest#Variants",
    "source": "the manifest",
    "heading": "Variants — instrument",
-   "text": "Variants is a instrument. Physically present variants of one identity — and a designed refusal for the absent one. Originated in vindex3."
+   "text": "Variants is a instrument. Physically present variants of one identity — and a designed refusal for the absent one. Originated in vindex3. It exists because: vindex3 had to show physically present variants of one identity, and a designed refusal for the absent one."
   },
   {
    "id": "manifest#Ladder",
    "source": "the manifest",
    "heading": "Ladder — instrument",
-   "text": "Ladder is a instrument. A gated progression — rungs climbed in order, each closed only by its own criterion. Originated in vindex3."
+   "text": "Ladder is a instrument. A gated progression — rungs climbed in order, each closed only by its own criterion. Originated in vindex3. It exists because: The Record needed a gated progression whose rungs close only by their own criterion, never by narrative."
   },
   {
    "id": "manifest#Agreement",
    "source": "the manifest",
    "heading": "Agreement — instrument",
-   "text": "Agreement is a instrument. N independently-derived values that must be identical — with a FAIL row."
+   "text": "Agreement is a instrument. N independently-derived values that must be identical — with a FAIL row. No origin is recorded for it."
   },
   {
    "id": "manifest#Derivation",
    "source": "the manifest",
    "heading": "Derivation — instrument",
-   "text": "Derivation is a instrument. A value folded down a graded scale by caps — derived, never asserted."
+   "text": "Derivation is a instrument. A value folded down a graded scale by caps — derived, never asserted. No origin is recorded for it."
   },
   {
    "id": "manifest#ByteMap",
    "source": "the manifest",
    "heading": "ByteMap — instrument",
-   "text": "ByteMap is a instrument. A physical layout drawn to scale — each field's width is its width in bytes."
+   "text": "ByteMap is a instrument. A physical layout drawn to scale — each field's width is its width in bytes. No origin is recorded for it."
   },
   {
    "id": "manifest#FollowReveal",
    "source": "the manifest",
    "heading": "FollowReveal — instrument",
-   "text": "FollowReveal is a instrument. A path through connected ideas, replayed at the hause stagger."
+   "text": "FollowReveal is a instrument. A path through connected ideas, replayed at the hause stagger. No origin is recorded for it."
   },
   {
    "id": "manifest#Terminal",
    "source": "the manifest",
    "heading": "Terminal — instrument",
-   "text": "Terminal is a instrument. A query surface whose chrome is the form and whose meaning is one executor. Originated in vindex3 · the Explorer (2026-08-29)."
+   "text": "Terminal is a instrument. A query surface whose chrome is the form and whose meaning is one executor. Originated in vindex3 · the Explorer (2026-08-29). It exists because: vindex3's Explorer needed a query surface — psql, for a model — fronting a live endpoint rather than a recording of one."
   },
   {
    "id": "manifest#Gating",
    "source": "the manifest",
    "heading": "Gating — instrument",
-   "text": "Gating is a instrument. A stream widened into a working space, judged channel by channel, brought back home. Originated in vindex3 · the Anatomy (2026-08-29)."
+   "text": "Gating is a instrument. A stream widened into a working space, judged channel by channel, brought back home. Originated in vindex3 · the Anatomy (2026-08-29). It exists because: The Anatomy chapter had to show a feed-forward network widen, judge channel by channel, and come back home."
   },
   {
    "id": "manifest#Provenance",
    "source": "the manifest",
    "heading": "Provenance — instrument",
-   "text": "Provenance is a instrument. The publication record beneath the page — dates, version, identifiers, history — disclosed on demand, absent where nothing is registered. Originated in vindex3 · citing the specification (2026-08-31)."
+   "text": "Provenance is a instrument. The publication record beneath the page — dates, version, identifiers, history — disclosed on demand, absent where nothing is registered. Originated in vindex3 · citing the specification (2026-08-31). It exists because: The specification's chapters needed the publication record beneath them — dates, version, identifiers, history."
   },
   {
    "id": "manifest#Lens",
    "source": "the manifest",
    "heading": "Lens — instrument",
-   "text": "Lens is a instrument. One concept at several depths — the explanation, the object, the clause — on one URL, with the reader's depth remembered. Originated in vindex3 · representation (2026-08-31)."
+   "text": "Lens is a instrument. One concept at several depths — the explanation, the object, the clause — on one URL, with the reader's depth remembered. Originated in vindex3 · representation (2026-08-31). It exists because: The representation chapter had to hold the explanation, the live object and the ABI clause at one address."
   },
   {
    "id": "manifest#Citation",
    "source": "the manifest",
    "heading": "Citation — instrument",
-   "text": "Citation is a instrument. The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON, all from one record. Originated in vindex3 · citing the specification (2026-08-31)."
+   "text": "Citation is a instrument. The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON, all from one record. Originated in vindex3 · citing the specification (2026-08-31). It exists because: The specification had to be citable: the reference itself, in the formats people paste."
   },
   {
    "id": "manifest#Transformation",

@@ -86,6 +86,7 @@ export default function RootLayout({
 							label: "THE INDEX",
 							links: [
 								{ href: "/forms", label: "The Holdings" },
+								{ href: "/how-hause-grew", label: "How HAUSE grew" },
 								{ href: "/ask", label: "Ask HAUSE" },
 							],
 						},

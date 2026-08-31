@@ -524,6 +524,88 @@ function problemMatch(question: string): Problem | null {
 	return best?.p ?? null;
 }
 
+/**
+ * The genealogy layer: questions about where the library came from,
+ * answered from the manifest rather than from a written history. The
+ * interesting one is the last — "which forms have no recorded origin?"
+ * — where the honest answer is an absence in the authority, and a model
+ * improvising would produce a plausible list instead.
+ */
+function genealogyBlocks(question: string): Block[] | null {
+	const ql = question.toLowerCase();
+	const dated = FORM_MANIFEST.filter((f) => f.date).sort((a, b) => (b.date as string).localeCompare(a.date as string));
+
+	// "why does HAUSE have a Lens?" · "why does Refusal exist?"
+	// A form name alone is not a genealogy question: "why can't answer
+	// engines read my page" names Answer and is asking something else.
+	// The question has to be about where a form came from.
+	const asksOrigin = /(why does .* exist|why does hause have|why is there a|where did .* come from|origin of|history of|who made|what caused)/.test(ql);
+	const named = FORM_MANIFEST.find((f) => new RegExp(`\\b${f.name.toLowerCase()}\\b`).test(ql));
+	if (named && asksOrigin) {
+		if (!named.origin) {
+			return [
+				{ kind: "statement", text: `${named.name} predates the library's record of its own origins.` },
+				{ kind: "observation", label: "NOT RECORDED", text: `The manifest holds ${named.name} as ${named.mode === "instrument" ? "an" : "a"} ${named.mode} — ${named.line} — but nobody wrote down which page needed it first. An unrecorded origin is left absent rather than reconstructed, so this is the whole answer.` },
+				{ kind: "connection", text: "What is recorded, and what is not.", links: [
+					{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" },
+					{ href: `/forms/${formSlug(named.name)}`, label: `${named.name.toUpperCase()} →` },
+				] },
+			];
+		}
+		return [
+			{ kind: "statement", text: named.because ?? `${named.name} came from ${named.origin}.` },
+			{ kind: "observation", label: "THE RECORD", text: `${named.name} is ${named.mode === "instrument" ? "an" : "a"} ${named.mode}: ${named.line} Origin — ${named.origin}${named.date ? `, first recorded ${named.date}` : ", with no date recorded"}.` },
+			{ kind: "connection", text: "The form, and the history it belongs to.", links: [
+				{ href: `/forms/${formSlug(named.name)}`, label: `${named.name.toUpperCase()} — THE FORM'S PAGE →` },
+				...problemsForForm(named.name).map((p) => ({ href: `/problems/${p.slug}`, label: `SOLVES — ${p.title} →` })),
+				{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" },
+			] },
+		];
+	}
+
+	// "which forms came from vindex3?"
+	const lane = ["vindex3", "the codex", "codex", "hause.design"].find((l) => ql.includes(l));
+	if (lane && /(which|what|forms|came|from)/.test(ql)) {
+		const key = lane.replace("the ", "");
+		const forms = FORM_MANIFEST.filter((f) => f.origin?.toLowerCase().includes(key));
+		if (forms.length > 0) {
+			return [
+				{ kind: "statement", text: `${forms.length} of ${formCount()} forms name ${lane} as their origin.` },
+				{ kind: "observation", label: "THE LANE", text: forms.map((f) => `${f.name} (${f.origin}${f.date ? `, ${f.date}` : ""})`).join(" · ") },
+				{ kind: "connection", text: "The chart, and the forms themselves.", links: [
+					{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" },
+					{ href: "/forms", label: "THE HOLDINGS →" },
+				] },
+			];
+		}
+	}
+
+	// "which forms have no recorded provenance?"
+	if (/(no|without|missing|lack|don't have|do not have)/.test(ql) && /(origin|provenance|history|recorded)/.test(ql)) {
+		const missing = FORM_MANIFEST.filter((f) => !f.origin);
+		return [
+			{ kind: "statement", text: `${missing.length} of ${formCount()} forms have no recorded origin, and are shown as having none.` },
+			{ kind: "evidence", items: [
+				{ label: "Forms naming the chapter they came from", status: "SUPPORTED", detail: `${formCount() - missing.length} of ${formCount()}, recorded in the manifest.` },
+				{ label: "Origins reconstructed to complete the record", status: "REFUTED", detail: `Zero. The ${missing.length} without one are ${missing.map((f) => f.name).join(", ")} — they entered before recording an origin became doctrine, and the blank is left blank.` },
+			] },
+			{ kind: "connection", text: "The record, including its gaps.", links: [{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" }] },
+		];
+	}
+
+	// "what was the most recent form?"
+	if (/(most recent|latest|newest|last form|added last)/.test(ql) && dated.length > 0) {
+		const newest = dated.filter((f) => f.date === dated[0].date);
+		return [
+			{ kind: "statement", text: `The most recent forms in the record entered on ${dated[0].date}: ${newest.map((f) => f.name).join(", ")}.` },
+			{ kind: "timeline", entries: dated.slice(0, 6).map((f) => ({ date: f.date as string, text: `${f.name} — ${f.origin}${f.because ? ` ${f.because}` : ""}` })) },
+			{ kind: "connection", text: "The whole chronology.", links: [{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" }] },
+		];
+	}
+
+	return null;
+}
+
 function problemBlocks(p: Problem): Block[] {
 	return [
 		{ kind: "statement", text: p.statement },
@@ -545,6 +627,9 @@ export function askHause(question: string): AskAnswer {
 	for (const entry of INTERROGATIONS) {
 		if (entry.patterns.some((p) => ql.includes(p))) return { id: entry.id, blocks: entry.blocks };
 	}
+	const genealogy = genealogyBlocks(question);
+	if (genealogy) return { id: "genealogy", blocks: genealogy };
+
 	const problem = problemMatch(question);
 	if (problem) return { id: `problem-${problem.slug}`, blocks: problemBlocks(problem) };
 

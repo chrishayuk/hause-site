@@ -10,6 +10,7 @@ const LINKS: NavLink[] = [
 	{ href: "/instruments", label: "Instruments", group: "THE BOOK" },
 	{ href: "/performances", label: "Performances", group: "THE BOOK" },
 	{ href: "/forms", label: "Holdings", group: "THE INDEX" },
+	{ href: "/how-hause-grew", label: "How HAUSE grew", panelOnly: true, group: "THE INDEX" },
 	{ href: "/ask", label: "Ask", accent: true, group: "ASK THE SYSTEM" },
 	{ href: "/use", label: "Use HAUSE", boxed: true, group: "THE ON-RAMP" },
 ];

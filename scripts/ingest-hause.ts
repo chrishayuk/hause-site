@@ -72,7 +72,7 @@ for (const f of FORM_MANIFEST) {
 		id: `manifest#${f.name}`,
 		source: "the manifest",
 		heading: `${f.name} — ${f.mode}`,
-		text: `${f.name} is a ${f.mode}. ${f.line}${f.origin ? ` Originated in ${f.origin}${f.date ? ` (${f.date})` : ""}.` : ""}${f.exhibited ? "" : " Held, not yet exhibited."}`,
+		text: `${f.name} is a ${f.mode}. ${f.line}${f.origin ? ` Originated in ${f.origin}${f.date ? ` (${f.date})` : ""}.` : " No origin is recorded for it."}${f.because ? ` It exists because: ${f.because}` : ""}${f.exhibited ? "" : " Held, not yet exhibited."}`,
 	});
 }
 

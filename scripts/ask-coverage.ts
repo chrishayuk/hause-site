@@ -30,6 +30,13 @@ const cases: Case[] = [
 	{ q: "everything my model says sounds equally confident", expect: "problem-everything-sounds-equally-certain" },
 	{ q: "when should I animate something", expect: "problem-motion-that-means-nothing" },
 
+	// The genealogy layer answers from the manifest, including its gaps.
+	{ q: "why does HAUSE have a Lens?", expect: "genealogy" },
+	{ q: "why does Hero exist?", expect: "genealogy" },
+	{ q: "which forms came from vindex3?", expect: "genealogy" },
+	{ q: "which forms have no recorded provenance?", expect: "genealogy" },
+	{ q: "what was the most recent form?", expect: "genealogy" },
+
 	// The interrogation layer still wins where it should.
 	{ q: "why doesn't HAUSE have cards", expect: "no-cards" },
 	{ q: "what are you, HAUSE?", expect: "what-is-hause" },
