@@ -75,6 +75,10 @@ export default function RootLayout({
 							links: PROBLEMS_IN_ORDER.map((p) => ({ href: `/problems/${p.slug}`, label: `${p.number} — ${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}` })),
 						},
 						{
+							label: "THE CATEGORY",
+							links: [{ href: "/ai-native-design-systems", label: "AI-native design systems" }],
+						},
+						{
 							label: "THE BOOK",
 							links: [
 								{ href: "/statements", label: "Statements" },

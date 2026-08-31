@@ -6,6 +6,7 @@ const LINKS: NavLink[] = [
 	// The problems come first in the row and in the panel: a form is
 	// easier to believe once you have met the failure behind it.
 	{ href: "/problems", label: "Problems", group: "WHY ANY OF THIS EXISTS" },
+	{ href: "/ai-native-design-systems", label: "The category", panelOnly: true, group: "WHY ANY OF THIS EXISTS" },
 	{ href: "/statements", label: "Statements", group: "THE BOOK" },
 	{ href: "/instruments", label: "Instruments", group: "THE BOOK" },
 	{ href: "/performances", label: "Performances", group: "THE BOOK" },

@@ -37,6 +37,11 @@ export default function Home() {
 
 			<StartHere />
 
+			<Observation
+				label="WHAT THIS IS, IN CATEGORY TERMS"
+				text="HAUSE is an AI-native semantic design system: a visual language in which intelligent systems choose the communicative act before they choose its form. Where most systems in that category make an existing component library readable by an agent, this one supplies the vocabulary a model selects from when it is deciding what to say."
+			/>
+
 			<Statement text="Structure is fixed. Atmosphere is variable." />
 
 
