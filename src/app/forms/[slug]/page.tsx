@@ -16,6 +16,7 @@ import { breadcrumbLd, citationLd } from "@chrishayuk/hause/seo";
 import { FORMS, MODE_DISCIPLINE, MODE_LABEL, MODE_ROOM, formAnswer, formBySlug, formBody, formHasOwnHeadline, formHeadline, formOriginKicker, formRecord, formCiteMeta, formSlug } from "@/data/forms";
 import { specimenFor } from "@/specimens";
 import { problemsForForm } from "@/data/problems";
+import { actFor, intentFor } from "@/data/grammar";
 import Link from "next/link";
 
 export function generateStaticParams() {
@@ -54,6 +55,8 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
 	const room = MODE_ROOM[form.mode];
 	const related = form.mentions.filter((m) => m !== form.name);
 	const solves = problemsForForm(form.name);
+	const act = actFor(form.name);
+	const intent = intentFor(form.name);
 
 	return (
 		<main>
@@ -80,6 +83,32 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
 				answer={formAnswer(form)}
 				cite={form.origin ? `origin — ${form.origin}${form.date ? ` · ${form.date}` : ""}` : undefined}
 			/>
+
+			{act && (
+				<section className="hause-grid py-8" aria-label="The act this form selects">
+					<div className="col-span-12 md:col-start-2 md:col-span-9">
+						<p className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 mb-3">
+							THE ACT — {intent?.label ?? "WHAT YOU ARE DOING"}
+						</p>
+						<p className="voice-system text-lg leading-relaxed m-0">{act.doing}.</p>
+						<p className="voice-evidence text-[13px] opacity-70 leading-relaxed mt-3 m-0">{act.test}</p>
+						{act.insteadOf?.map((n) => (
+							<p key={n.form} className="voice-evidence text-[11px] opacity-45 leading-relaxed m-0 mt-1.5">
+								<Link href={`/forms/${formSlug(n.form)}`} className="border-b pb-0.5" style={{ borderColor: "var(--color-mist)" }}>
+									{n.form.toUpperCase()}
+								</Link>{" "}
+								INSTEAD — {n.when}
+							</p>
+						))}
+						<Link
+							href="/choosing"
+							className="voice-evidence text-[11px] tracking-[0.12em] uppercase opacity-50 hover:opacity-100 inline-block mt-4"
+						>
+							THE WHOLE GRAMMAR →
+						</Link>
+					</div>
+				</section>
+			)}
 
 			{solves.length > 0 && (
 				<section className="hause-grid py-8" aria-label="What this form answers">

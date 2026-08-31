@@ -17,6 +17,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { PROBLEMS } from "../src/data/problems";
+import { GRAMMAR } from "../src/data/grammar";
 
 const HAUSE = process.argv[2] ?? process.env.HAUSE_DIR ?? "../hause";
 
@@ -43,6 +44,18 @@ for (const line of readme.split("\n")) {
 	} else body.push(line);
 }
 flush();
+
+// ── The selection grammar: the act, the form, and the test that decides ──
+for (const intent of GRAMMAR) {
+	for (const act of intent.acts) {
+		passages.push({
+			id: `act#${act.form}`,
+			source: "the selection grammar",
+			heading: `Which form for: ${act.doing.toLowerCase()}?`,
+			text: `${act.doing} → ${act.form}. The test that decides it: ${act.test}${act.insteadOf?.length ? ` Use ${act.insteadOf.map((n) => `${n.form} instead ${n.when}`).join("; ")}.` : ""} This is the ${intent.label.toLowerCase()} group: ${intent.line} Read the whole grammar at hause.design/choosing.`,
+		});
+	}
+}
 
 // ── The problems: the failure, and the forms that answer it ──
 for (const p of PROBLEMS) {

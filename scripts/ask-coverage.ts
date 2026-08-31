@@ -14,6 +14,7 @@ import { askHause } from "../src/data/askHause";
 import { PROBLEMS, PROBLEMS_IN_ORDER } from "../src/data/problems";
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { FORMS } from "../src/data/forms";
+import { grammarCoverage } from "../src/data/grammar";
 
 type Case = { q: string; expect: string };
 
@@ -38,6 +39,7 @@ const cases: Case[] = [
 	{ q: "what was the most recent form?", expect: "genealogy" },
 
 	{ q: "how does a form enter the library?", expect: "promotion" },
+	{ q: "which form should I use?", expect: "choosing" },
 
 	// The interrogation layer still wins where it should.
 	{ q: "why doesn't HAUSE have cards", expect: "no-cards" },
@@ -77,6 +79,18 @@ for (let i = 0; i < numbers.length; i += 1) {
 		failed += 1;
 		console.error(`FAIL  problem ${i + 1} is numbered ${numbers[i]}, expected ${expected} — numbers must be unique and gapless`);
 	}
+}
+
+// A form nobody can arrive at by describing what they are doing is a
+// form nobody will use: the grammar must name every one, exactly once.
+const grammar = grammarCoverage();
+if (grammar.missing.length > 0) {
+	failed += 1;
+	console.error(`FAIL  the selection grammar does not name: ${grammar.missing.join(", ")}`);
+}
+if (grammar.duplicated.length > 0) {
+	failed += 1;
+	console.error(`FAIL  the selection grammar names twice: ${grammar.duplicated.join(", ")}`);
 }
 
 // Every form a problem names must exist in the library.

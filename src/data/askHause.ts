@@ -20,6 +20,7 @@
 import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "./forms";
 import { PROBLEMS, problemsForForm, type Problem } from "./problems";
+import { GRAMMAR, actFor } from "./grammar";
 
 export type Block =
 	| { kind: "statement"; text: string }
@@ -268,6 +269,27 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 			},
 			{ kind: "connection", text: "Each one at length, with the forms that answer it demonstrated on the page.", links: [
 				{ href: "/problems", label: "THE PROBLEMS →" },
+				{ href: "/forms", label: "THE HOLDINGS →" },
+			] },
+		],
+	},
+	{
+		id: "choosing",
+		// "which form should" — never bare "which form", which also opens
+		// "which forms came from vindex3?", a question about history.
+		patterns: ["which form should", "which form do i", "how do i choose", "how do i know which form", "what form should", "pick a form", "selection grammar", "choosing a form", "difference between statement and claim"],
+		blocks: [
+			{ kind: "statement", text: "Start from the act, not the shape. The form follows from what you are doing." },
+			{
+				kind: "decomposition",
+				kicker: "SIX ACTS — AND THE FORM EACH ONE SELECTS",
+				source: { label: "something to say", detail: "Before it is a component, it is a move: asserting, supporting, declining, taking apart, performing, moving on." },
+				parts: GRAMMAR.map((i) => ({ label: i.label, detail: `${i.line} → ${i.acts.map((a) => a.form).join(", ")}.` })),
+				result: { label: "the shape follows", detail: "Every form in the library is reachable from an act, or the coverage suite fails the build." },
+			},
+			{ kind: "observation", label: "THE HARD PART", text: "Not finding the right form — telling two nearly-right forms apart. A Claim owes evidence where a Statement carries the room; Comparison and Transformation take identical props and differ only in who sets the pace. Each act carries the test that decides it." },
+			{ kind: "connection", text: "The grammar, in full.", links: [
+				{ href: "/choosing", label: "CHOOSING A FORM →" },
 				{ href: "/forms", label: "THE HOLDINGS →" },
 			] },
 		],
@@ -675,7 +697,7 @@ export function askHause(question: string): AskAnswer {
 					kind: "recommend",
 					idea: question,
 					form: best.r.form,
-					because: best.r.because,
+					because: [...(actFor(best.r.form) ? [actFor(best.r.form)!.test] : []), ...best.r.because],
 					not: best.r.not,
 					usedBy: best.r.usedBy,
 					snippet: best.r.snippet,

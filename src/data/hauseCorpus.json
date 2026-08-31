@@ -68,6 +68,216 @@
    "text": "Four stages, and the third is the one that does the work.\n\n**DISCOVERED** — a real page exposes an explanatory need. Not a gap in a\ntaxonomy, not a component someone would like to have: a chapter that\ncannot be built with what exists.\n\n**BUILT** — one implementation solves that need, in the exhibition that\nraised it. It lives in that site, doing real work, knowing everything\nabout the content it carries. Most things stop here, and should.\n\n**REUSED** — a second, genuinely different context needs the same\nsemantic act, and gets it *without the abstraction being bent to fit the\nfirst consumer*. Reuse is evidence, not duplication: a second instance\non the same page is duplication; a second exhibition with a different\nsubject is evidence. The manifest records this as `reusedBy`, measured\nfrom the consuming sites' real pages — exhibiting a form in a specimen\nbook is not using one.\n\n**PROMOTED** — the abstraction has survived reuse, its semantics are\nstable, its text and machine fallback are defined, and its props no\nlonger know which exhibition caused it. Only then does HAUSE own it.\n\nThe point of the third rung is that promotion stops being a matter of\ntaste. The question \"why is this a first-class form?\" gets answered with\n\"because reality asked for it more than once\", and the record shows\nwhere. A form that has served one exhibition has been generalised\nagainst one kind of conten"
   },
   {
+   "id": "act#Statement",
+   "source": "the selection grammar",
+   "heading": "Which form for: making the point the room is about?",
+   "text": "Making the point the room is about → Statement. The test that decides it: Would a reader quote this line if they quoted one line? Use Claim instead the assertion owes evidence, and should carry a status mark; Observation instead you are describing what is there rather than what it means. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Claim",
+   "source": "the selection grammar",
+   "heading": "Which form for: asserting something you believe and must defend?",
+   "text": "Asserting something you believe and must defend → Claim. The test that decides it: Could this be shown false? Does it need a status — open, supported, refuted? Use Statement instead the line is a turn in the argument rather than a testable belief. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Observation",
+   "source": "the selection grammar",
+   "heading": "Which form for: reporting what is actually there, before what it means?",
+   "text": "Reporting what is actually there, before what it means → Observation. The test that decides it: Can you name the thing being observed in three words? That label is the form. Use Claim instead you have moved from noticing to arguing. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Answer",
+   "source": "the selection grammar",
+   "heading": "Which form for: answering the question a reader would type?",
+   "text": "Answering the question a reader would type → Answer. The test that decides it: Is there a forty-to-a-hundred-word paragraph a stranger could lift whole and still be right? Use Statement instead you want the claim at display size rather than the plain answer beneath it. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Hero",
+   "source": "the selection grammar",
+   "heading": "Which form for: opening the room and saying which room it is?",
+   "text": "Opening the room and saying which room it is → Hero. The test that decides it: Is this the first thing on the page? A second Hero is a second chapter, and probably a second URL. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Excerpt",
+   "source": "the selection grammar",
+   "heading": "Which form for: quoting someone else, verbatim?",
+   "text": "Quoting someone else, verbatim → Excerpt. The test that decides it: Are these words yours? If they are not, they keep their own markdown, their source and their trims. Use Snippet instead the quoted thing is code or terminal output rather than prose. This is the you are saying something group: The move is an assertion. What separates these four is not tone — it is what the sentence owes. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Evidence",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing the findings behind a claim?",
+   "text": "Showing the findings behind a claim → Evidence. The test that decides it: Does at least one row refute something? A list with no failures is advertising. Use Claim instead you are stating the belief rather than the receipts. This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Agreement",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing that independent authorities agree?",
+   "text": "Showing that independent authorities agree → Agreement. The test that decides it: Are there N values derived separately that must be identical — and would a mismatch be a named failure? Use Evidence instead the findings are different facts rather than the same fact checked twice. This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Derivation",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing how a value was arrived at?",
+   "text": "Showing how a value was arrived at → Derivation. The test that decides it: Does the value fold down a graded scale by caps, so nobody had to assert the result? Use Evidence instead the number was measured rather than derived. This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Snippet",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing the code or output itself?",
+   "text": "Showing the code or output itself → Snippet. The test that decides it: Is this verbatim, and would paraphrasing it be a lie? This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Provenance",
+   "source": "the selection grammar",
+   "heading": "Which form for: saying when this was published, and what it was built from?",
+   "text": "Saying when this was published, and what it was built from → Provenance. The test that decides it: Does this page make a claim someone might need to date? This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Citation",
+   "source": "the selection grammar",
+   "heading": "Which form for: letting someone cite you?",
+   "text": "Letting someone cite you → Citation. The test that decides it: Is this a published object — something a reader could reference in their own work? Use Provenance instead you are showing the record behind the work rather than the reference to it. This is the you are showing what holds it up group: Evidence is not decoration and not a table of wins. These forms all exist to make a claim checkable by someone who does not trust you. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Refusal",
+   "source": "the selection grammar",
+   "heading": "Which form for: declining to assert something?",
+   "text": "Declining to assert something → Refusal. The test that decides it: Is this the system working correctly by not answering? Then it is not an error state. Use Question instead nobody is refusing anything — the matter is simply unresolved. This is the you are declining, or leaving it open group: The moves most systems have no vocabulary for — which is why systems without them guess. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Question",
+   "source": "the selection grammar",
+   "heading": "Which form for: leaving something unresolved, at full size?",
+   "text": "Leaving something unresolved, at full size → Question. The test that decides it: Would burying this in a roadmap be more comfortable than printing it? Print it. This is the you are declining, or leaving it open group: The moves most systems have no vocabulary for — which is why systems without them guess. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Variants",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing which alternatives exist, and refusing the absent one?",
+   "text": "Showing which alternatives exist, and refusing the absent one → Variants. The test that decides it: Are these physically present forms of one identity — and does asking for a missing one deserve a designed refusal? Use Comparison instead the two things are interpretations rather than alternatives of one identity. This is the you are declining, or leaving it open group: The moves most systems have no vocabulary for — which is why systems without them guess. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Ladder",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing what has to be true before the next step?",
+   "text": "Showing what has to be true before the next step → Ladder. The test that decides it: Is each rung closed by its own criterion, in order, with no rung skippable? Use Timeline instead you are recording what happened rather than governing what may happen next. This is the you are declining, or leaving it open group: The moves most systems have no vocabulary for — which is why systems without them guess. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Anatomy",
+   "source": "the selection grammar",
+   "heading": "Which form for: cutting one object open and labelling its layers?",
+   "text": "Cutting one object open and labelling its layers → Anatomy. The test that decides it: Is everything disclosed at once, with nothing behind a click? Use Decomposition instead the reader should take it apart step by step rather than see it opened. This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Decomposition",
+   "source": "the selection grammar",
+   "heading": "Which form for: taking one thing apart, step by step?",
+   "text": "Taking one thing apart, step by step → Decomposition. The test that decides it: Does the reader control the pace? If the explanation should carry them, it is Unfolding. Use Unfolding instead the parts should arrive on their own — identical props, performed. This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#ByteMap",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing a physical layout to scale?",
+   "text": "Showing a physical layout to scale → ByteMap. The test that decides it: Does the width of each field on screen mean its width in the artifact? This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Lens",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing one subject at several depths, on one url?",
+   "text": "Showing one subject at several depths, on one URL → Lens. The test that decides it: Are the explanation, the object and the clause the same subject rather than three subjects? Use Anatomy instead the depths are parts of one object rather than registers of one explanation. This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#ExpertField",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing a field where only a subset ever activates?",
+   "text": "Showing a field where only a subset ever activates → ExpertField. The test that decides it: Is the point that most of it stays dormant, and which part lights depends on the input? This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Gating",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing a stream widened, judged, and brought back?",
+   "text": "Showing a stream widened, judged, and brought back → Gating. The test that decides it: Does the argument live in the widths — expand, judge channel by channel, compress? This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Terminal",
+   "source": "the selection grammar",
+   "heading": "Which form for: letting the reader query something real?",
+   "text": "Letting the reader query something real → Terminal. The test that decides it: Is there an executor behind this, answering for real? A recording of a terminal is a Film. This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#FollowReveal",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing the path between connected ideas?",
+   "text": "Showing the path between connected ideas → FollowReveal. The test that decides it: Does each step carry the relation that brought it there? Use Connection instead you only need the doors out of the chapter, not the shape of the path. This is the you are showing what something is made of group: The reader operates these. Each one takes an object apart in a different direction. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Comparison",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing one object read two ways?",
+   "text": "Showing one object read two ways → Comparison. The test that decides it: Should the reader drag between the interpretations themselves? Use Transformation instead the change should perform itself — identical props, its cinematic sibling. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Transformation",
+   "source": "the selection grammar",
+   "heading": "Which form for: performing a change between two states of one thing?",
+   "text": "Performing a change between two states of one thing → Transformation. The test that decides it: Is it a staged swap rather than a crossfade? Two physical forms of one object never dissolve into each other. Use Comparison instead the pace belongs to the reader. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Unfolding",
+   "source": "the selection grammar",
+   "heading": "Which form for: letting the parts of a thing arrive on their own?",
+   "text": "Letting the parts of a thing arrive on their own → Unfolding. The test that decides it: Same props as Decomposition — is the reader watching rather than operating? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Compilation",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing many inputs compiled down to one output?",
+   "text": "Showing many inputs compiled down to one output → Compilation. The test that decides it: Do the inputs lose their separateness by the end? Use Procession instead one thing passes through stages and stays itself. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Procession",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing one thing pass through every stage in order?",
+   "text": "Showing one thing pass through every stage in order → Procession. The test that decides it: Is it the same object at the end, having been somewhere? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Magnitude",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing a scale nobody can hold in their head?",
+   "text": "Showing a scale nobody can hold in their head → Magnitude. The test that decides it: Does each arrival rescale the world — powers of ten rather than a bar chart? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Channel",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing throughput against a fixed capacity?",
+   "text": "Showing throughput against a fixed capacity → Channel. The test that decides it: Is the constraint the conduit rather than the quantity? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Quantisation",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing values snapped onto a lattice?",
+   "text": "Showing values snapped onto a lattice → Quantisation. The test that decides it: Is the loss the subject — what rounding actually does, rather than a claim about it? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Film",
+   "source": "the selection grammar",
+   "heading": "Which form for: playing an actual film?",
+   "text": "Playing an actual film → Film. The test that decides it: Does a real film exist? If not, the library holds the form and shows nothing. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Connection",
+   "source": "the selection grammar",
+   "heading": "Which form for: ending the chapter and opening the next?",
+   "text": "Ending the chapter and opening the next → Connection. The test that decides it: Does the sentence raise the next chapter's question rather than summarise this one? This is the you are moving the reader on group: Where a chapter ends, and how a history is told. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#Timeline",
+   "source": "the selection grammar",
+   "heading": "Which form for: telling what happened, in order?",
+   "text": "Telling what happened, in order → Timeline. The test that decides it: Does every line carry a date? If they do not, this is prose, not a history. Use Provenance instead the history belongs to one published object rather than to the subject. This is the you are moving the reader on group: Where a chapter ends, and how a history is told. Read the whole grammar at hause.design/choosing."
+  },
+  {
    "id": "problem#everything-becomes-a-card",
    "source": "the problems",
    "heading": "Why do AI-generated interfaces all look the same?",
