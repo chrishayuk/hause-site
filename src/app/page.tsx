@@ -57,6 +57,11 @@ export default function Home() {
 				</div>
 			</section>
 
+			<Observation
+				label="THE BOUNDARY — WHAT THIS IS, AND WHAT IT LEAVES ALONE"
+				text="HAUSE is the semantic layer for what an intelligent interface needs to communicate. It does not replace transactional primitives such as buttons, inputs, tables, navigation or commerce mechanics, and does not try to. And an explanation is not only a dashboard or an instrument: it can be an answer, an argument, a comparison, a refusal, a piece of evidence, or a performance."
+			/>
+
 			<Statement text="A mode gets built for a real chapter, never manufactured as a demo." />
 
 			<PaceDemo />
