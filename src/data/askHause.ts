@@ -14,6 +14,7 @@
  */
 
 import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
+import { formSlug } from "./forms";
 
 export type Block =
 	| { kind: "statement"; text: string }
@@ -484,9 +485,9 @@ export function askHause(question: string): AskAnswer {
 					kind: "connection",
 					text: `${best.r.form} — ${meta.line}`,
 					links: [
+						{ href: `/forms/${formSlug(best.r.form)}`, label: `${best.r.form.toUpperCase()} — THE FORM'S PAGE →` },
 						{ href: `/${meta.mode}s`, label: `THE ${meta.mode.toUpperCase()} SPECIMENS →` },
 						{ href: "/forms", label: "THE HOLDINGS →" },
-						{ href: "/use", label: "USE HAUSE →" },
 					],
 				},
 			],

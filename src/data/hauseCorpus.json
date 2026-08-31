@@ -62,6 +62,216 @@
    "text": "Technical writing keeps splitting one subject into a tutorial and a\nreference, then asking the reader to guess which one holds their answer.\nThe `Lens` instrument refuses the split: one concept, one URL, several\ndepths — **LEARN** what it means, **INSPECT** the real object, **SPEC**\nthe words that govern it — with the reader's chosen depth remembered\nacross pages and written into the fragment, so a reader who thinks in\nclauses stays in clauses and can link someone straight to the depth they\nmeant.\n\nEvery panel stays in the DOM. Depth is disclosure, not content gating —\nwhich is also why the normative text is legible to a crawler whether or\nnot anyone clicked the tab, and why a reader with no JavaScript still\nlands on a complete first depth rather than an empty frame."
   },
   {
+   "id": "form#hero",
+   "source": "the Hero form",
+   "heading": "Hero — the form's own account",
+   "text": "HERO — the room's first wall. Kicker, headline, dek: where the chapter says what room you have walked into before it says anything else. The kicker names the room in evidence voice the way a museum labels one; the headline is editorial at the largest size the system has, because the claim carries the room; the dek walks beside the reader in system voice. It takes all twelve columns and appears once per page. A second Hero is a second chapter, and should be a second URL. A statement: the reader reads. Read it in full at hause.design/forms/hero."
+  },
+  {
+   "id": "form#statement",
+   "source": "the Statement form",
+   "heading": "Statement — the form's own account",
+   "text": "STATEMENT — one sentence, given the whole width. The turn of a chapter, in editorial voice at display size: the line a reader would quote if they quoted one line. Everything around it explains; this asserts, and the space above and below it is part of the form — a statement crowded by paragraphs is just a large sentence. Numbers never appear here. A measurement in editorial voice is a claim wearing a costume; it belongs in evidence voice, dated and attributed, beneath. A statement: the reader reads. Read it in full at hause.design/forms/statement."
+  },
+  {
+   "id": "form#observation",
+   "source": "the Observation form",
+   "heading": "Observation — the form's own account",
+   "text": "OBSERVATION — a labelled paragraph that watches rather than argues. System voice, indented off the full measure, with an optional evidence-voice label naming what is being observed. Where a Statement asserts and an Evidence row measures, an Observation notices: what is actually there, before what it means. The label is the form's whole discipline. Having to name the thing in three words is what stops an observation from drifting into a second argument. A statement: the reader reads. Read it in full at hause.design/forms/observation."
+  },
+  {
+   "id": "form#claim",
+   "source": "the Claim form",
+   "heading": "Claim — the form's own account",
+   "text": "CLAIM — an assertion that knows it must answer to evidence. A belief, said plainly, carrying a status mark: OPEN, ONGOING, SUPPORTED, REFUTED, SUPERSEDED. The mark is not decoration — it is the difference between a design system that states what it believes and one that states what it has shown, and it means a page can hold a load-bearing belief without pretending the belief is settled. Use it for the beliefs a project would defend. Use Evidence for the receipts that hold one up, and Question for what is still open. A statement: the reader reads. Read it in full at hause.design/forms/claim."
+  },
+  {
+   "id": "form#evidence",
+   "source": "the Evidence form",
+   "heading": "Evidence — the form's own account",
+   "text": "EVIDENCE — rows of labelled findings with status marks. Receipts, not decoration. Each row is a finding, its status, and the detail that earns it — dates, machines, measurements, in evidence voice, where numbers are believed. SUPPORTED and REFUTED sit in the same list on purpose. A page that only shows its wins is advertising; the refuted row beside the supported one is what makes either of them worth reading. A statement: the reader reads. Read it in full at hause.design/forms/evidence."
+  },
+  {
+   "id": "form#question",
+   "source": "the Question form",
+   "heading": "Question — the form's own account",
+   "text": "QUESTION — an open question, given the same typographic dignity as an answer. Editorial voice at display size, led by its status mark, with room for the working answer beneath. Most systems bury what they have not settled in a roadmap; this form puts it at the size of a claim, because an honest open question is more informative than a confident paragraph about the same subject. A statement: the reader reads. Read it in full at hause.design/forms/question."
+  },
+  {
+   "id": "form#timeline",
+   "source": "the Timeline form",
+   "heading": "Timeline — the form's own account",
+   "text": "TIMELINE — dated entries, in order. History as prose, not a widget. Dates in accent evidence voice, entries in system voice, and nothing between them: no rails, no dots, no scroll animation. What makes a history legible is that every line carries a date and says what happened, which is a writing problem the design cannot solve for you. Where a Ladder governs what may happen next, a Timeline records what did. Provenance holds the same facts for one published object. A statement: the reader reads. Read it in full at hause.design/forms/timeline."
+  },
+  {
+   "id": "form#connection",
+   "source": "the Connection form",
+   "heading": "Connection — the form's own account",
+   "text": "CONNECTION — a bridge out of the chapter: one sentence, then the doors. The last form in a chapter. The sentence says what the next idea is and why it follows; the doors are links that name where they go rather than saying \"next\". A chapter that ends without one leaves the reader at a wall. The sentence should raise the next chapter's question, not summarise this one — a summary is a door that opens onto the room you are already standing in. A statement: the reader reads. Read it in full at hause.design/forms/connection."
+  },
+  {
+   "id": "form#refusal",
+   "source": "the Refusal form",
+   "heading": "Refusal — the form's own account",
+   "text": "Fail-closed rendered as design language, not as an error state. Built for systems whose personality is that they refuse rather than guess: the refusal is an instrument readout — structured fields under a refuted-red rule, closed by the governing principle in editorial voice. The lines stagger in at the hause cadence on mount; re-key to replay (the PaceDemo idiom). RefusalReadout is the bare readout for embedding inside another form (Variants renders one when an absent variant is selected); Refusal is the standalone chapter form. Read it in full at hause.design/forms/refusal."
+  },
+  {
+   "id": "form#excerpt",
+   "source": "the Excerpt form",
+   "heading": "Excerpt — the form's own account",
+   "text": "EXCERPT — someone else's words, typeset. Verbatim source material — a specification section, a doctrine passage, a cited document — presented as an object: source and section in evidence voice above an accent rule, the text in system voice with its light markdown (emphasis, inline code, blockquotes, lists, fenced code and simple tables) rendered rather than leaking as asterisks, hyphens, backticks and pipes. A trimmed excerpt ends at a word boundary with a visible mark — never mid-word, never silently. A statement: the reader reads. Promoted from Ask VINDEX3, where the synthesis tier cites the specification's own passages and the free tier answers with them verbatim. Read it in full at hause.design/forms/excerpt."
+  },
+  {
+   "id": "form#answer",
+   "source": "the Answer form",
+   "heading": "Answer — the form's own account",
+   "text": "ANSWER — the question, asked the way people ask it, answered first. The legibility form: a natural-language question as a real heading and a 40–100 word answer a reader — or a machine — can lift whole. It gives a page a boringly clear semantic skeleton without touching the editorial surface around it: the beautiful heading stays; this sits beneath it and says the plain thing plainly. The `id` makes the pair addressable — /page#anchor — so Ask, search engines and answer engines can cite the exact question, not the whole page. Read it in full at hause.design/forms/answer."
+  },
+  {
+   "id": "form#snippet",
+   "source": "the Snippet form",
+   "heading": "Snippet — the form's own account",
+   "text": "SNIPPET — a labeled block of code or terminal output, in the ink. The on-ramp form: hause.design's Use page invented it, vindex3's Get Started needed the same shape, and two sites doing one thing differently is exactly what a design system exists to stop. A kicker names what the block is; the block itself is verbatim monospace on the ink panel, scrolling sideways rather than wrapping. An optional aside carries the one sentence of context that belongs beside the code rather than in a paragraph above it. Read it in full at hause.design/forms/snippet."
+  },
+  {
+   "id": "form#anatomy",
+   "source": "the Anatomy form",
+   "heading": "Anatomy — the form's own account",
+   "text": "An annotated cutaway: one artifact drawn as its layers, each layer carrying its explanation in full. Deliberately static and fully disclosed — the reader walks down the object the way they would walk down an engineering drawing, and nothing is behind a click. The emphasis layer (a root, a header) is ruled in accent; muted layers are dashed. Server-renderable; the only motion is the shared Reveal. Read it in full at hause.design/forms/anatomy."
+  },
+  {
+   "id": "form#decomposition",
+   "source": "the Decomposition form",
+   "heading": "Decomposition — the form's own account",
+   "text": "DECOMPOSITION — one object, its parts, the thing that assembles them, stepped by hand. Three states: the whole, the parts laid out, and the result the parts make. The reader advances it, so the pace of the argument belongs to them — which is the difference between this and Unfolding, its cinematic sibling, which takes identical props and performs itself. Identical props are deliberate: the same content can be an instrument on a page a reader is studying and a performance on a page they are being carried through, and the decision is the chapter's, not the content's. An instrument: the reader operates it, and the text fallback carries the point when the interaction is gone. Read it in full at hause.design/forms/decomposition."
+  },
+  {
+   "id": "form#expert-field",
+   "source": "the ExpertField form",
+   "heading": "ExpertField — the form's own account",
+   "text": "HAUSE's first Simulation-mode primitive: understanding through manipulation, not just reading. A field of units, mostly dormant; selecting a scenario lights up the subset that activates for it. First concrete case: mixture-of-experts routing. Kept specific rather than generalized into an abstract \"Simulation\" framework — one real example earns its keep faster than a taxonomy with nothing in it yet. Read it in full at hause.design/forms/expert-field."
+  },
+  {
+   "id": "form#comparison",
+   "source": "the Comparison form",
+   "heading": "Comparison — the form's own account",
+   "text": "HAUSE's first Comparison-mode primitive: one object, two interpretations, the same underlying pieces reorganising as the visitor drags between them. Deliberately tests different ground than ExpertField (Simulation) — object continuity across states, a user-driven continuous control rather than discrete buttons, and an argument rather than a mechanism. No transition is applied to block position: it's a direct 1:1 mapping to the range input's value, so there's nothing for prefers-reduced-motion to suppress — dragging is exactly as responsive either way. Read it in full at hause.design/forms/comparison."
+  },
+  {
+   "id": "form#variants",
+   "source": "the Variants form",
+   "heading": "Variants — the form's own account",
+   "text": "One logical object; its physically present variants; a selector; a refusal. The object's identity line is rendered once and never re-keyed — the thing stays the same while its physical form is chosen. Switching between present variants is a staged swap (key remount + .swap-in): the old form is removed instantly, a held beat, then the new form enters at --motion-cinematic. Never a crossfade — a blend between two representations would depict a conversion, and these are forms for systems where conversion is forbidden. Selecting an absent variant renders a Refusal readout instead of an object: the structured fields (requested, present) before any byte is read. The refusal is the most designed moment in the form. prefers-reduced-motion gets a designed static state: every variant drawn side by side, the baseline ruled in accent, absent variants as dashed empty frames with the refusal beneath. Read it in full at hause.design/forms/variants."
+  },
+  {
+   "id": "form#ladder",
+   "source": "the Ladder form",
+   "heading": "Ladder — the form's own account",
+   "text": "A gated progression — rungs climbed in order, each with a question and the exact criterion that closes it. Statuses are optional: with them the ladder is a live status instrument; without them it is a reference (a maturity scale, ordered levels). Passed rungs are solid, open rungs hollow, the rung being built is accent. A rung with a gate or detail expands on selection to show the criterion verbatim. Everything is in the DOM at all times — the expansion is disclosure, not content gating. Read it in full at hause.design/forms/ladder."
+  },
+  {
+   "id": "form#agreement",
+   "source": "the Agreement form",
+   "heading": "Agreement — the form's own account",
+   "text": "N independently-derived values that must be identical — an equivalence chain (A ≡ B ≡ C ≡ D) checked row by row, with a verdict. The check replays on demand: values materialise left to right at the hause stagger, the way the comparison actually runs. A FAIL row is first-class — an invariant you never see fail is decoration. Read it in full at hause.design/forms/agreement."
+  },
+  {
+   "id": "form#derivation",
+   "source": "the Derivation form",
+   "heading": "Derivation — the form's own account",
+   "text": "A value derived by folding caps down a graded scale — never asserted, only pushed downward. The lattice is drawn as a vertical scale with the strongest level at the top; DERIVE replays the fold, each cap moving the marker down at --motion-considered with its reason revealed as it applies. The resting state is the finished derivation, so the content is complete before any interaction, and prefers-reduced-motion simply keeps it there. Read it in full at hause.design/forms/derivation."
+  },
+  {
+   "id": "form#byte-map",
+   "source": "the ByteMap form",
+   "heading": "ByteMap — the form's own account",
+   "text": "A physical layout drawn to scale: a proportional bar (each field's width is its width in bytes) above the field table, hover on either illuminating the other. Strictly static apart from that illumination, at --motion-immediate — bytes are the one place a page should feel like an engineering drawing, not a film. Read it in full at hause.design/forms/byte-map."
+  },
+  {
+   "id": "form#follow-reveal",
+   "source": "the FollowReveal form",
+   "heading": "FollowReveal — the form's own account",
+   "text": "FOLLOWREVEAL — a path through connected ideas, replayed at the hause stagger. A sentence, a control, and the path: each node carrying the relation that brought it there — reads, operates, supports, contradicts — so the shape of the argument is visible as a shape and not only as prose. TRACE THE GRAPH replays the stagger for a reader who wants to see the order again. The nodes are links and remain links with the animation removed; the replay is emphasis, never the only way to read the path. An instrument: the reader operates it. Read it in full at hause.design/forms/follow-reveal."
+  },
+  {
+   "id": "form#terminal",
+   "source": "the Terminal form",
+   "heading": "Terminal — the form's own account",
+   "text": "TERMINAL — a query surface as an instrument. The form is the chrome: banner, scrollback, prompt, input, seed chips, a CLEAR control, toned lines, the hause sounds. What the terminal *means* lives entirely in the caller's `execute` — a function from one typed line to lines out, sync or async. The form never interprets a statement itself, so whatever discipline governs the language (an allowlisted AST, a server-side capability profile) stays in exactly one place: the executor. Promoted from vindex3.org's Explorer (\"psql, for a model\"), where the executor is a live public query endpoint with an offline snapshot fallback. `sessionKey` supports that shape: when it changes, the scrollback resets to the current `banner`, so a transport change reads as a new connection rather than a spliced history. The text fallback discipline holds: pass `fallback` — the plain sentences that survive with the interaction removed. Read it in full at hause.design/forms/terminal."
+  },
+  {
+   "id": "form#gating",
+   "source": "the Gating form",
+   "heading": "Gating — the form's own account",
+   "text": "GATING — expand, judge, compress, performed by widths. A fixed-width stream widens into a larger working space, every channel is judged for whether it matters right now, the judged result is brought back to the original width. The bar does the arguing: its width is the dimensionality, and judged channels visibly fade. The reader steps the stages by hand — an instrument, not a performance — and each stage carries its reading in the panel below, with an optional evidence-voice payoff line. Promoted from vindex3.org's Anatomy chapter, where the stages are up_proj / gate_proj / the multiply / down_proj and the payoff lines are the container addresses those tensors answer to. The form knows none of that: stages, widths, and the kept-channel pattern are all the caller's. Read it in full at hause.design/forms/gating."
+  },
+  {
+   "id": "form#provenance",
+   "source": "the Provenance form",
+   "heading": "Provenance — the form's own account",
+   "text": "PROVENANCE — the publication record beneath the page. An instrument whose resting state is a single quiet line — published, revised, version, author, DOI where one exists — and whose expansion is the full record: the identifiers that pin the work to actual objects (a commit, an artifact hash, an archive record) and the dated history of how it came to be said. Provenance belongs in the interface, not in a footer: a claim that cannot be dated is a claim that cannot be defended. What the form will not do is invent the defence — an identifier that has not been registered is absent, never a placeholder, and `published` is the first publication date, never the last edit. Read it in full at hause.design/forms/provenance."
+  },
+  {
+   "id": "form#lens",
+   "source": "the Lens form",
+   "heading": "Lens — the form's own account",
+   "text": "LENS — one concept, several depths, one URL. The instrument that refuses the oldest split in technical writing: the tutorial over here, the reference over there, and a reader who must guess which one holds the answer. A Lens keeps the explanation, the object itself and the normative clause as three depths of the same thing — LEARN what it means, INSPECT the real object, SPEC the words that govern it — so moving between them costs a click rather than a navigation, and never loses the reader's place in the concept. The chosen depth is remembered (localStorage) and written into the URL fragment, so a reader who thinks in clauses stays in clauses, and can link someone straight to the depth they mean. Every panel is in the DOM at all times — the depths are disclosure, not content gating, which is also why a crawler reads the specification text whether or not the tab was clicked. A panel is page-level, not a grid column: pass forms, which carry their own grid, and wrap bare prose in a `hause-grid` section of your own. The chrome is what lives in the twelve columns here. Read it in full at hause.design/forms/lens."
+  },
+  {
+   "id": "form#citation",
+   "source": "the Citation form",
+   "heading": "Citation — the form's own account",
+   "text": "CITATION — cite this, in the formats people actually paste. An instrument with the plainest possible resting state: the reference itself, rendered as text, selected by default and therefore present in the served HTML. The tabs switch it to BibTeX, APA or CSL-JSON — three formats rather than six, because CSL-JSON is what every reference manager turns into the other three hundred. Every string here is produced by cite.ts from one record, so the reference on the page, the tags in the head and the JSON-LD in the graph cannot disagree about who wrote what, or when. Read it in full at hause.design/forms/citation."
+  },
+  {
+   "id": "form#transformation",
+   "source": "the Transformation form",
+   "heading": "Transformation — the form's own account",
+   "text": "Comparison's cinematic sibling: one object, two interpretations — but performed, not dragged. Once in view the first interpretation holds for a beat, then the blocks travel to the second at --motion-cinematic with the hause stagger, connector lines arriving after the blocks settle. Plays once; REPLAY runs it again. The same pieces move continuously between arrangements — reorganisation, not conversion, which is why this one transition may travel rather than swap. prefers-reduced-motion (and no-JS) lands on the finished second interpretation, fully labelled — a designed resting state, not a paused animation. Read it in full at hause.design/forms/transformation."
+  },
+  {
+   "id": "form#unfolding",
+   "source": "the Unfolding form",
+   "heading": "Unfolding — the form's own account",
+   "text": "Decomposition's cinematic sibling, the way Transformation is Comparison's: the same argument — one object, its parts, the thing that assembles them — performed instead of stepped. The source holds as a closed deck of volumes, unfolds into its parts at --motion-cinematic with the hause stagger, then the result arrives beneath and seals the set in accent. Plays once in view; REPLAY runs it again. Takes DecompositionProps verbatim, so the two forms are interchangeable per chapter. Resting state (and reduced motion) is the finished composition: parts and result, fully labelled. Read it in full at hause.design/forms/unfolding."
+  },
+  {
+   "id": "form#compilation",
+   "source": "the Compilation form",
+   "heading": "Compilation — the form's own account",
+   "text": "A pile of inputs compiled down through named stages into an artifact — and then the inputs ghost out, because the artifact no longer needs them. Plays once in view: stages light in order, the result assembles row by row during the final constructive stage, the proof mark lands, the source fades. COMPILE replays. Resting state (and prefers-reduced-motion) is the finished compilation. Read it in full at hause.design/forms/compilation."
+  },
+  {
+   "id": "form#procession",
+   "source": "the Procession form",
+   "heading": "Procession — the form's own account",
+   "text": "One thing passing through every stage, in order: a token descending a stack, a request through a pipeline. The stage being passed flares accent; each passed stage stays faintly lit — its contribution now aboard. Loops gently while in view (a reader scrolling down should never find it finished), pauses off-screen, and rests on the completed passage under prefers-reduced-motion. Read it in full at hause.design/forms/procession."
+  },
+  {
+   "id": "form#magnitude",
+   "source": "the Magnitude form",
+   "heading": "Magnitude — the form's own account",
+   "text": "A powers-of-ten zoom-out: each arrival rescales the world, so the thing that filled the frame becomes a speck beside the next. Areas are true to magnitude; anything smaller than a few pixels is clamped to a visible tick — say so in the note, honestly. Loops gently while in view (a reader scrolling down should never find it finished), pauses off-screen, and rests on the final scale under prefers-reduced-motion. Read it in full at hause.design/forms/magnitude."
+  },
+  {
+   "id": "form#channel",
+   "source": "the Channel form",
+   "heading": "Channel — the form's own account",
+   "text": "Throughput through a fixed-capacity conduit: payload streams from one endpoint to the other, and when the payload gets narrower the same channel visibly delivers more often. Stage changes are staged swaps, never morphs. Plays once in view, rests on the final stage, REPLAY runs it again; prefers-reduced-motion rests statically. The stream classes live in tokens.css (channel-flow-wide / -narrow), with finite iteration counts — hause motion never runs forever. Read it in full at hause.design/forms/channel."
+  },
+  {
+   "id": "form#quantisation",
+   "source": "the Quantisation form",
+   "heading": "Quantisation — the form's own account",
+   "text": "What quantisation actually does, performed: values live on a continuum; storing them coarser means fewer representable levels, and every value snaps to its nearest one. On a fine grid the move is invisible; on a coarse one every value visibly steps, and mist ghosts mark where the numbers used to be. Loops while in view, pauses off-screen, rests on the final phase under prefers-reduced-motion. Read it in full at hause.design/forms/quantisation."
+  },
+  {
+   "id": "form#film",
+   "source": "the Film form",
+   "heading": "Film — the form's own account",
+   "text": "A short film in the flow of a chapter. Poster until roughly half in view, then plays once, muted; REPLAY afterwards. Under prefers-reduced-motion nothing auto-plays — the designed state is the poster with an explicit PLAY control, because autoplay is motion. No src renders the placeholder frame unchanged, so a film slot can be laid out long before its film is produced. Read it in full at hause.design/forms/film."
+  },
+  {
    "id": "manifest#Hero",
    "source": "the manifest",
    "heading": "Hero — statement",

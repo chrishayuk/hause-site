@@ -4,11 +4,12 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { formCount, formsByMode, MODES, type FormMode } from "@chrishayuk/hause/manifest";
+import { formSlug } from "@/data/forms";
 
 export const metadata: Metadata = {
 	title: "The HAUSE Forms: A Typed Catalogue of Visual Components",
 	alternates: { canonical: "/forms" },
-	description: "Every form in the library, one line each, with mode and recorded origin — derived from the manifest, not written here.",
+	description: "Every form in the library, one line each, with mode and recorded origin — derived from the manifest, not written here. Each row opens the form's own page.",
 };
 
 /**
@@ -32,7 +33,7 @@ export default function FormsPage() {
 			<Hero
 				kicker={`THE BOOK · THE HOLDINGS · ${formCount()} FORMS — READ FROM THE MANIFEST`}
 				title="EVERY FORM, ONE LINE"
-				dek={`${counts[0]} statements, ${counts[1]} instruments, ${counts[2]} performances — counted by the library's own manifest, not by this page. Origins are named only where the history records them; an unrecorded origin reads as a dash, never a guess.`}
+				dek={`${counts[0]} statements, ${counts[1]} instruments, ${counts[2]} performances — counted by the library's own manifest, not by this page. Origins are named only where the history records them; an unrecorded origin reads as a dash, never a guess. Every row is a door: each form has its own page, its own specimen, and its own reference.`}
 			/>
 
 			{MODES.map((mode) => (
@@ -46,9 +47,10 @@ export default function FormsPage() {
 						</Link>
 						<div className="mt-6 flex flex-col">
 							{formsByMode(mode).map((f) => (
-								<div
+								<Link
 									key={f.name}
-									className="grid grid-cols-12 gap-3 py-3 border-t items-baseline"
+									href={`/forms/${formSlug(f.name)}`}
+									className="grid grid-cols-12 gap-3 py-3 border-t items-baseline group"
 									style={{ borderColor: "var(--color-mist)" }}
 								>
 									<p className="col-span-4 sm:col-span-3 voice-evidence text-sm" style={{ color: "var(--color-accent)" }}>
@@ -60,10 +62,10 @@ export default function FormsPage() {
 										)}
 									</p>
 									<p className="col-span-8 sm:col-span-6 voice-system text-sm opacity-85">{f.line}</p>
-									<p className="col-span-12 sm:col-span-3 voice-evidence text-[11px] opacity-40 sm:text-right">
+									<p className="col-span-12 sm:col-span-3 voice-evidence text-[11px] opacity-40 sm:text-right group-hover:opacity-70 transition-opacity">
 										{f.origin ? `originated in ${f.origin}${f.date ? ` · ${f.date}` : ""}` : "—"}
 									</p>
-								</div>
+								</Link>
 							))}
 						</div>
 					</div>

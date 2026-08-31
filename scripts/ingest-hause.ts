@@ -1,9 +1,12 @@
 /**
  * INGEST THE DOCTRINE — the corpus behind Ask HAUSE's synthesis tier.
  *
- * Two sources, both canonical: the library README (chunked by
- * heading) and the manifest itself (one passage per form — name,
- * mode, line, recorded origin). Run when either changes:
+ * Three sources, all canonical: the library README (chunked by
+ * heading), the manifest itself (one passage per form — name, mode,
+ * line, recorded origin), and each form's own doc comment, which
+ * carries the why the manifest line has no room for. Run when any of
+ * them changes (after scripts/ingest-forms.ts, which produces the
+ * third):
  *
  *   npx tsx scripts/ingest-hause.ts [path-to-hause]
  *
@@ -39,6 +42,18 @@ for (const line of readme.split("\n")) {
 	} else body.push(line);
 }
 flush();
+
+// ── Each form's own account of itself, and where to read it ──
+type FormDoc = { name: string; slug: string; doc: string[] };
+const formDocs = (JSON.parse(readFileSync(join(process.cwd(), "src/data/formDocs.json"), "utf8")) as { forms: FormDoc[] }).forms;
+for (const f of formDocs) {
+	passages.push({
+		id: `form#${f.slug}`,
+		source: `the ${f.name} form`,
+		heading: `${f.name} — the form's own account`,
+		text: `${f.doc.join(" ")} Read it in full at hause.design/forms/${f.slug}.`.slice(0, 1400),
+	});
+}
 
 // ── The manifest, one passage per form ──
 for (const f of FORM_MANIFEST) {
