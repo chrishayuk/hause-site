@@ -88,6 +88,7 @@ export default function RootLayout({
 								{ href: "/choosing", label: "Choosing a form" },
 								{ href: "/evals/choosing-1", label: "CHOOSING-1 — the eval" },
 								{ href: "/evals/routing-1", label: "ROUTING-1 — the gate" },
+								{ href: "/evals/routing-2", label: "ROUTING-2 — records vs list" },
 								{ href: "/forms", label: "The Holdings" },
 								{ href: "/how-hause-grew", label: "How HAUSE grew" },
 								{ href: "/ask", label: "Ask HAUSE" },
