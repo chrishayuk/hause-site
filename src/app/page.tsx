@@ -11,7 +11,7 @@ import { Citation } from "@chrishayuk/hause/components/forms/Citation";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { citationLd } from "@chrishayuk/hause/seo";
 import { citationMeta } from "@chrishayuk/hause/cite";
-import { formCount } from "@chrishayuk/hause/manifest";
+import { FORM_MANIFEST, formCount } from "@chrishayuk/hause/manifest";
 import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
 
 /** The head surface of the book's own record — Zotero, Scholar and every "add to library" button read these. */
@@ -144,8 +144,9 @@ export default function Home() {
 						</a>
 					</div>
 					<p className="voice-system text-sm opacity-60 max-w-xl mt-8">
-						Two consumers so far. Each grew HAUSE — the vindex3 build alone contributed fourteen forms — and
-						nothing enters the library without a real page that needed it first.
+						Two consumers so far. Each grew HAUSE — {FORM_MANIFEST.filter((f) => f.origin?.startsWith("vindex3")).length} of
+						the forms held here name a vindex3 chapter as their origin — and nothing enters the library without a real
+						page that needed it first.
 					</p>
 				</div>
 			</section>

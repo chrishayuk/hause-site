@@ -10,6 +10,7 @@ import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
 import { Excerpt } from "@chrishayuk/hause/components/forms/Excerpt";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
+import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 
 export const metadata: Metadata = {
 	title: "HAUSE Statement Forms: Typography That Argues",
@@ -50,7 +51,7 @@ export default function StatementsPage() {
 					{
 						label: "Forms built because a real chapter needed them",
 						status: "SUPPORTED",
-						detail: "28 of 28. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all seven performances came from the vindex3 exhibition; the Terminal was promoted from its Explorer, where it fronts a live query endpoint.",
+						detail: `${formCount()} of ${formCount()} — and ${FORM_MANIFEST.filter((f) => f.origin).length} of them name the chapter in the manifest, because an origin nobody wrote down is absent rather than guessed. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all ${formsByMode("performance").length} performances from the vindex3 exhibition; Terminal from its Explorer; Lens, Citation and Provenance from publishing a specification.`,
 					},
 					{
 						label: "Forms added to fill a taxonomy gap",
