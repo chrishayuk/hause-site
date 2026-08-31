@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { FORMS } from "@/data/forms";
+import { PROBLEMS } from "@/data/problems";
 
 const BASE = "https://hause.design";
 
@@ -9,7 +10,7 @@ const BASE = "https://hause.design";
  * the same commit, because neither list is written by hand.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-	const pages = ["", "/forms", "/statements", "/instruments", "/performances", "/ask", "/use"].map((p) => ({
+	const pages = ["", "/problems", "/forms", "/statements", "/instruments", "/performances", "/ask", "/use"].map((p) => ({
 		url: `${BASE}${p}`,
 		changeFrequency: "weekly" as const,
 		priority: p === "" ? 1 : 0.8,
@@ -19,5 +20,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		changeFrequency: "monthly" as const,
 		priority: 0.7,
 	}));
-	return [...pages, ...forms];
+	const problems = PROBLEMS.map((p) => ({
+		url: `${BASE}/problems/${p.slug}`,
+		changeFrequency: "monthly" as const,
+		priority: 0.9,
+	}));
+	return [...pages, ...problems, ...forms];
 }

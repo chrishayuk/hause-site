@@ -7,6 +7,7 @@ import { Analytics } from "@chrishayuk/hause/components/Analytics";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
 import { buildNote } from "@/data/build";
+import { PROBLEMS } from "@/data/problems";
 
 const fraunces = Fraunces({
 	variable: "--font-fraunces",
@@ -69,6 +70,10 @@ export default function RootLayout({
 					tagline="A design system for AI — typed visual forms an AI can compose answers from."
 					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
 					groups={[
+						{
+							label: "WHY ANY OF THIS EXISTS",
+							links: PROBLEMS.map((p) => ({ href: `/problems/${p.slug}`, label: `${p.number} — ${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}` })),
+						},
 						{
 							label: "THE BOOK",
 							links: [

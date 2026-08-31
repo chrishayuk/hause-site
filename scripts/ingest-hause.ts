@@ -1,7 +1,7 @@
 /**
  * INGEST THE DOCTRINE — the corpus behind Ask HAUSE's synthesis tier.
  *
- * Three sources, all canonical: the library README (chunked by
+ * Four sources, all canonical: the library README (chunked by
  * heading), the manifest itself (one passage per form — name, mode,
  * line, recorded origin), and each form's own doc comment, which
  * carries the why the manifest line has no room for. Run when any of
@@ -16,6 +16,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
+import { PROBLEMS } from "../src/data/problems";
 
 const HAUSE = process.argv[2] ?? process.env.HAUSE_DIR ?? "../hause";
 
@@ -42,6 +43,16 @@ for (const line of readme.split("\n")) {
 	} else body.push(line);
 }
 flush();
+
+// ── The problems: the failure, and the forms that answer it ──
+for (const p of PROBLEMS) {
+	passages.push({
+		id: `problem#${p.slug}`,
+		source: "the problems",
+		heading: p.question,
+		text: `${p.answer} How you meet it: ${p.symptom} Why it happens: ${p.cause} The forms that answer it: ${p.answers.join(", ")}. Read it at hause.design/problems/${p.slug}.`.slice(0, 1400),
+	});
+}
 
 // ── Each form's own account of itself, and where to read it ──
 type FormDoc = { name: string; slug: string; doc: string[] };

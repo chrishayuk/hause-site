@@ -172,7 +172,10 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 				principle: "If you're about to add a Card, stop.",
 			},
 			{ kind: "statement", text: "A card is a container pretending to be a meaning. Say what the content is — a claim, an observation, evidence, a refusal — and the form already exists." },
-			{ kind: "connection", text: "Every form, one line each.", links: [{ href: "/forms", label: "THE HOLDINGS →" }] },
+			{ kind: "connection", text: "The failure this refusal answers, at length.", links: [
+				{ href: "/problems/everything-becomes-a-card", label: "EVERYTHING BECOMES A CARD →" },
+				{ href: "/forms", label: "THE HOLDINGS →" },
+			] },
 		],
 	},
 	{
@@ -237,6 +240,31 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		blocks: [
 			{ kind: "statement", text: "Dark is the default environment — an editorial choice, not the OS preference. A viewer opts into light, and the choice persists." },
 			{ kind: "observation", label: "TWO ENVIRONMENTS, ONE IDENTITY", text: "Same voices, grid, motion and hierarchy; different atmosphere. There is deliberately no prefers-color-scheme switch: the default is authored, and the toggle is the reader's." },
+		],
+	},
+	{
+		id: "problems",
+		patterns: ["what problem", "problems does hause", "why does hause exist", "why hause exists", "what is wrong with", "what's wrong with", "why not just use"],
+		blocks: [
+			{ kind: "statement", text: "HAUSE is not a taxonomy that happened to need filling. Every form in it is a consequence of something that was failing." },
+			{
+				kind: "decomposition",
+				kicker: "THE FAILURES, AND WHAT ANSWERED THEM",
+				source: { label: "interfaces built for people who already know what they mean", detail: "A vocabulary of containers, an error state for every refusal, and a page whose meaning lives in the interaction." },
+				parts: [
+					{ label: "EVERYTHING BECOMES A CARD", detail: "Container names carry no claim about content, so a model matching names produces containers. → Statement, Claim, Evidence, Refusal, Comparison, Answer." },
+					{ label: "INTERFACES THAT CANNOT REFUSE", detail: "Refusal dressed as an error is refusal designed out — and a system that cannot say no will guess. → Refusal, Variants." },
+					{ label: "PAGES MACHINES CANNOT READ", detail: "Meaning inside a canvas or a click is invisible to the machines now doing the reading. → Answer, and every instrument's text fallback." },
+					{ label: "NOTHING TO CITE", detail: "A mutable page with one timestamp cannot carry a priority claim. → Citation, Provenance." },
+					{ label: "THE BOOK DRIFTS FROM THE CODE", detail: "Counts written as prose go stale silently — this site's own did. → the manifest, Agreement." },
+					{ label: "TUTORIAL OR REFERENCE, NEVER BOTH", detail: "One subject split across two pages that quietly disagree. → Lens." },
+				],
+				result: { label: "the library, read backwards", detail: "Failure first, form second — which is the order they were actually built in." },
+			},
+			{ kind: "connection", text: "Each one at length, with the forms that answer it demonstrated on the page.", links: [
+				{ href: "/problems", label: "THE PROBLEMS →" },
+				{ href: "/forms", label: "THE HOLDINGS →" },
+			] },
 		],
 	},
 	{
