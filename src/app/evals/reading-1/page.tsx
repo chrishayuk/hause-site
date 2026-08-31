@@ -70,6 +70,11 @@ export default function Reading1Page() {
 
 			<Statement text="Three readers, three inventions of the same missing sentence." />
 
+			<Observation
+				label="THE FINDING, PLAINLY — AND WHAT HAPPENED NEXT"
+				text="The corpus was clearer than the reviewer. The concern that prompted this eval originated in a model's prior rather than in the site's wording: nothing here teaches dashboards, plugin communities or cognitive load, and three readers given the same site produced none of it. The one real gap — that the site never said what HAUSE is not for — was closed the same day with two sentences on the home page. The numbers below are the numbers from before that change and are not adjusted; READING-2 measures whether the change travelled."
+			/>
+
 			<Evidence
 				items={[
 					{
@@ -165,7 +170,14 @@ export default function Reading1Page() {
 				]}
 			/>
 
-			<Provenance record={RECORD} history={[{ date: "2026-08-31", text: "Preregistered with predictions against build 10b87d0; three fresh contexts read the live site; the site was not changed before the run." }]} citeHref="#cite" />
+			<Provenance
+				record={RECORD}
+				history={[
+					{ date: "2026-08-31", text: "SUPERSEDED IN PART — the missing boundary this eval found was stated on the home page the same day, and READING-2 measures whether it travelled. No number on this page changed." },
+					{ date: "2026-08-31", text: "Preregistered with predictions against build 10b87d0; three fresh contexts read the live site; the site was not changed before the run." },
+				]}
+				citeHref="#cite"
+			/>
 			<Citation record={RECORD} note="An eval of the corpus rather than the code — and the one where the prediction sheet was more wrong than the site was." />
 		</main>
 	);

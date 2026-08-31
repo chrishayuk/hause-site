@@ -14,6 +14,7 @@ const LINKS: NavLink[] = [
 	{ href: "/evals/routing-1", label: "ROUTING-1", panelOnly: true, group: "THE INDEX" },
 	{ href: "/evals/routing-2", label: "ROUTING-2", panelOnly: true, group: "THE INDEX" },
 	{ href: "/evals/reading-1", label: "READING-1", panelOnly: true, group: "THE INDEX" },
+	{ href: "/evals/reading-2", label: "READING-2", panelOnly: true, group: "THE INDEX" },
 	{ href: "/forms", label: "Holdings", group: "THE INDEX" },
 	{ href: "/how-hause-grew", label: "How HAUSE grew", panelOnly: true, group: "THE INDEX" },
 	{ href: "/ask", label: "Ask", accent: true, group: "ASK THE SYSTEM" },
