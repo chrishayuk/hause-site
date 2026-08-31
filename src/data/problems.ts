@@ -36,6 +36,13 @@ export type Problem = {
 	cause: string;
 	/** The forms that answer it, by manifest name. */
 	answers: string[];
+	/**
+	 * The words people actually use for this failure. Not SEO keywords —
+	 * the phrases Ask HAUSE should recognise, shipped with the record so a
+	 * new problem arrives already answerable rather than waiting for
+	 * someone to remember to teach the resolver about it.
+	 */
+	keywords: string[];
 	published: string;
 	revised?: string;
 };
@@ -55,6 +62,7 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"Component libraries were built for people who already know what they mean and need somewhere to put it. The name Card carries no claim about its contents, which is exactly why it composes so freely, and why an author with intent uses it well. A model brings no intent to the choice; it brings name-matching. Give it containers and it will produce containers — consistently, fluently, forever.",
 		answers: ["Statement", "Claim", "Evidence", "Refusal", "Comparison", "Answer"],
+		keywords: ["card", "cards", "look the same", "all look alike", "generic component", "chat bubble", "generated ui", "converge"],
 		published: "2026-08-31",
 	},
 	{
@@ -71,6 +79,7 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"Error states were designed for failures: the network dropped, the field was invalid, the server fell over. A refusal is not a failure. It is the system working exactly as intended, declining to produce something it cannot stand behind. Nothing in the ordinary vocabulary carries that distinction, and a distinction with no form to hold it does not survive the handoff to implementation.",
 		answers: ["Refusal", "Variants", "Question", "Claim"],
+		keywords: ["refuse", "refusal", "say no", "cannot answer", "can't answer", "hallucinat", "guess", "error state", "empty state"],
 		published: "2026-08-31",
 	},
 	{
@@ -87,6 +96,7 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"Design systems stop at the visual layer, so legibility is delegated to something bolted on afterwards that can only describe the page from outside — a meta description guessing at what the page argues. Meanwhile the best version of the page is the one a person operates, which is precisely the version a machine cannot follow. Nothing forces the two to be the same page, so they drift apart in the direction of whichever audience the team can see.",
 		answers: ["Answer", "Excerpt", "Snippet", "Lens"],
+		keywords: ["crawler", "answer engine", "seo", "aeo", "indexed", "machine readable", "machine-readable", "scraped", "extract answers"],
 		published: "2026-08-31",
 	},
 	{
@@ -103,6 +113,7 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"The web's default publishing object is a mutable page with a single timestamp, and every content system encourages editing in place. Nothing in the ordinary stack distinguishes first publication from last touch, or a correction from a new version — so the one fact a priority claim rests on is the fact the system is least careful with.",
 		answers: ["Citation", "Provenance", "Timeline", "Answer"],
+		keywords: ["cite", "citable", "citation", "doi", "referenceable", "provenance", "priority", "publication date", "attribution", "nobody can cite"],
 		published: "2026-08-31",
 	},
 	{
@@ -119,6 +130,41 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"Prose is faster to write than a projection, and a number inside a sentence has no owner. Nothing fails when it goes stale: the page still builds, still renders, still reads well. Drift is the only kind of bug that gets more convincing with age, because the sentence around it keeps sounding authoritative long after the number stopped being true.",
 		answers: ["Agreement", "Evidence", "Claim", "Derivation"],
+		keywords: ["drift", "stale", "out of date", "outdated", "docs rot", "keeps changing", "hand-written count", "single source of truth"],
+		published: "2026-08-31",
+	},
+	{
+		slug: "everything-sounds-equally-certain",
+		number: "07",
+		title: "EVERYTHING SOUNDS EQUALLY CERTAIN",
+		dek: "A generated paragraph, a measured result and an open question arrive in the same voice, at the same size, with the same confidence. The interface has no way to say which is which, so the reader supplies the difference — usually wrongly.",
+		question: "How should an interface show what it actually knows?",
+		answer:
+			"By giving certainty a form rather than an adjective. HAUSE separates the states structurally: a Claim is a belief and carries a status mark; Evidence is a finding with its receipt, its date and its machine; a Question is what remains open, at the same size as an answer; a Refusal is what the system will not assert at all. Strip the styling away and a reader — or a machine — can still tell known from believed from unresolved.",
+		statement: "Confidence is a property of the sentence, not of the system that produced it.",
+		symptom:
+			"The summary reads exactly like the measurement. The inference reads exactly like the retrieved fact. Nothing in the layout separates a number someone measured on a named machine on a named date from a number that merely sounded right — and by the time a reader learns which was which, they have already quoted one of them.",
+		cause:
+			"Interfaces inherited their vocabulary from documents, where confidence was carried by prose and by knowing who was writing. Generated content breaks both halves: there is no author to know, and the prose is uniformly fluent. Ordinary design systems have states for loading, error and empty, and none for believed, measured or open — so the distinction has nowhere to live, and quietly disappears somewhere between the design review and the implementation.",
+		answers: ["Claim", "Evidence", "Question", "Refusal", "Agreement"],
+		keywords: ["certain", "certainty", "confidence", "confident", "hedge", "uncertain", "epistemic", "status", "believed", "unresolved"],
+		published: "2026-08-31",
+	},
+	{
+		slug: "motion-that-means-nothing",
+		number: "08",
+		title: "MOTION THAT MEANS NOTHING",
+		dek: "Things fade, slide and bounce because a library made it easy. None of it says anything, all of it costs time, and the reader who turned motion off gets a page that no longer explains itself.",
+		question: "When should an interface animate something?",
+		answer:
+			"When the movement is the explanation rather than the polish. HAUSE has one easing curve, three speeds and three motion idioms: a one-shot reveal, a staged swap where two states of one object exchange places, and an in-view loop a scrolling reader must never find already finished. Every performance rests on a designed final state, and that resting state is exactly what reduced motion and no-JS receive — so the point survives the motion being taken away.",
+		statement: "If the idea lives only in the animation, it does not survive the reader's settings.",
+		symptom:
+			"Every card fades up on scroll, and the fade says nothing about the card. Meanwhile the one thing on the page that genuinely happens over time — a process, a transformation, a quantity collapsing — is a static diagram with an arrow through it, because animating that properly would have been work.",
+		cause:
+			"Motion is the easiest thing in a design system to add and the hardest to justify, so it accumulates as polish. And because it is usually decorative, prefers-reduced-motion gets implemented as animation: none — which is harmless for decoration and catastrophic for the one animation that was carrying the meaning.",
+		answers: ["Transformation", "Procession", "Unfolding", "Quantisation", "Magnitude"],
+		keywords: ["motion", "animate", "animation", "transition", "fade", "reduced motion", "scroll animation", "prefers-reduced-motion"],
 		published: "2026-08-31",
 	},
 	{
@@ -135,9 +181,20 @@ export const PROBLEMS: Problem[] = [
 		cause:
 			"The two audiences are real, so splitting them feels obvious — and it is a split of pages where the actual difference is depth. Once they are two pages they have two authors, two review cycles and two rates of decay, and the precise one wins the arguments while the readable one gets the traffic.",
 		answers: ["Lens", "Excerpt", "Snippet", "Anatomy"],
+		keywords: ["tutorial", "reference doc", "reference page", "or a reference", "beginner", "advanced", "two audiences", "getting started", "api docs"],
 		published: "2026-08-31",
 	},
 ];
+
+/**
+ * The relation, read the other way: which failures a form was built to
+ * close. Stated once, in `answers`, and projected in both directions —
+ * a form page can name its problems and a problem page its forms
+ * without either list being maintained twice.
+ */
+export function problemsForForm(name: string): Problem[] {
+	return PROBLEMS.filter((p) => p.answers.includes(name));
+}
 
 export function problemBySlug(slug: string): Problem | null {
 	return PROBLEMS.find((p) => p.slug === slug) ?? null;

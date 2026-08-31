@@ -7,7 +7,10 @@ import { Agreement } from "@chrishayuk/hause/components/forms/Agreement";
 import { Snippet } from "@chrishayuk/hause/components/forms/Snippet";
 import { Lens } from "@chrishayuk/hause/components/forms/Lens";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
-import { formCount, formsByMode } from "@chrishayuk/hause/manifest";
+import { Claim } from "@chrishayuk/hause/components/forms/Claim";
+import { Question } from "@chrishayuk/hause/components/forms/Question";
+import { Transformation } from "@chrishayuk/hause/components/forms/Transformation";
+import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 import { FORMS } from "@/data/forms";
 import { PROBLEMS } from "@/data/problems";
 
@@ -250,6 +253,76 @@ export function TutorialOrReferenceNeverBothDemo() {
 	);
 }
 
+export function EverythingSoundsEquallyCertainDemo() {
+	const recorded = FORM_MANIFEST.filter((f) => f.origin).length;
+	return (
+		<>
+			<Observation
+				label="ONE SUBJECT, THREE STATES — TOLD APART BY FORM, NOT BY ADJECTIVE"
+				text="Below is a single subject — how a form earns its place in this library — said three ways. A belief carrying its status. The findings that hold it up, including the one that failed. And what is still open. Nothing but the form tells you which is which, which is the whole point: take the styling away and the distinction is still there."
+			/>
+			<Claim
+				text="A form enters HAUSE only when a real page cannot be built without it."
+				status="SUPPORTED"
+				detail="Load-bearing, and therefore stated as a claim rather than assumed: everything else in the library — the refusal of a generic card kit, the manifest's rule about origins, the promotion ladder — depends on this being true in practice and not only in principle."
+			/>
+			<Evidence
+				items={[
+					{
+						label: "Forms that name the chapter they came from",
+						status: "SUPPORTED",
+						detail: `${recorded} of ${formCount()}, recorded in the manifest with the site and often the date. The rest predate the record — and an origin nobody wrote down is left absent rather than reconstructed, which is why this row is a count and not a claim of completeness.`,
+					},
+					{
+						label: "Forms added to fill a gap in the taxonomy",
+						status: "REFUTED",
+						detail: "Zero. The three modes were named after the forms existed, not before — the split was noticed in the vindex3 build rather than designed up front.",
+					},
+				]}
+			/>
+			<Question
+				status="OPEN"
+				text="When does a form deserve promotion from a site into HAUSE?"
+				detail="The working answer: when its props no longer know whose content they carry. A form enters the library the day its example copy could be swapped without touching the component. It is a working answer, not a settled one — which is why it is shaped like a question."
+			/>
+		</>
+	);
+}
+
+export function MotionThatMeansNothingDemo() {
+	return (
+		<>
+			<Transformation
+				kicker="THE SAME SECOND AND A HALF — SPENT TWO WAYS"
+				objectLabel="motion, as polish and as argument"
+				blockLabels={["WHAT MOVES", "WHAT REMOVING IT COSTS", "UNDER REDUCED MOTION", "WHERE THE IDEA LIVES"]}
+				from={{
+					label: "DECORATION",
+					properties: [
+						"Everything, on scroll, identically",
+						"Nothing — the text already said it",
+						"animation: none, and the page is unharmed",
+						"In the prose, all along",
+					],
+				}}
+				to={{
+					label: "EXPLANATION",
+					properties: [
+						"Only what actually changes over time",
+						"The point — there is no prose carrying it",
+						"A designed resting state, authored on purpose",
+						"In the movement, and then in the state it rests on",
+					],
+				}}
+			/>
+			<Observation
+				label="THE FORM YOU JUST WATCHED"
+				text="That was a Transformation: a staged swap, never a crossfade between two physical forms of one thing. It performs itself in view, then rests — and the state it rests on carries the whole comparison, because that resting state is exactly what a reader with reduced motion, or no JavaScript, or a crawler, receives instead of the performance."
+			/>
+		</>
+	);
+}
+
 export const DEMOS: Record<string, () => React.ReactNode> = {
 	"everything-becomes-a-card": EverythingBecomesACardDemo,
 	"interfaces-that-cannot-refuse": InterfacesThatCannotRefuseDemo,
@@ -257,6 +330,8 @@ export const DEMOS: Record<string, () => React.ReactNode> = {
 	"nothing-to-cite": NothingToCiteDemo,
 	"the-book-drifts-from-the-code": TheBookDriftsFromTheCodeDemo,
 	"tutorial-or-reference-never-both": TutorialOrReferenceNeverBothDemo,
+	"everything-sounds-equally-certain": EverythingSoundsEquallyCertainDemo,
+	"motion-that-means-nothing": MotionThatMeansNothingDemo,
 };
 
 /** Every problem must have its demonstration — a page that only argues is half a page. */

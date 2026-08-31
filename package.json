@@ -9,7 +9,9 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy",
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
-    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts"
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
+    "test": "tsx scripts/ask-coverage.ts",
+    "ingest": "tsx scripts/ingest-forms.ts ../hause && tsx scripts/ingest-hause.ts ../hause"
   },
   "dependencies": {
     "@chrishayuk/hause": "github:chrishayuk/hause",

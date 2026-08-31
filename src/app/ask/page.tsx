@@ -20,7 +20,7 @@ export default function AskPage() {
 			<Hero
 				kicker="ASK HAUSE · DETERMINISTIC · NO MODEL CALL"
 				title="WHAT ARE YOU TRYING TO SAY?"
-				dek="Ask the system about itself, or bring an idea and be told which form it needs. HAUSE answers in its own forms — a refusal arrives as a Refusal — and when nothing is established, it says so rather than inventing a PricingCard."
+				dek="Ask the system about itself, describe a failure you are hitting, or bring an idea and be told which form it needs. HAUSE answers in its own forms — a refusal arrives as a Refusal — resolving against the manifest and the problem records this site publishes, so a new chapter teaches Ask the question it answers on the day it ships."
 			/>
 			<AskHause />
 		</main>

@@ -20,6 +20,9 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      # The ask coverage suite gates the deploy: a question that silently
+      # stops resolving never ships.
+      - run: npm test
       - run: npx next build
       - uses: superfly/flyctl-actions/setup-flyctl@master
       # The image carries the commit it was built from, so every page can

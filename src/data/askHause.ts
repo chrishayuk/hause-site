@@ -8,13 +8,18 @@
  * is established, the answer is a Refusal — the form the system
  * already uses for exactly that.
  *
- * V0 answers two kinds of question: interrogation (ask the system
- * about itself) and recommendation (which form does this idea need).
- * No model call. A form the system does not have is never invented.
+ * Three layers, in order: an interrogation (the system asked about
+ * itself), a problem (the failure a reader is describing, answered by
+ * the record that owns it), and a recommendation (which form an idea
+ * needs). The middle layer is not hand-maintained — it resolves against
+ * the problem records the site publishes, so a new problem page teaches
+ * Ask the question it answers on the day it ships. No model call. A form
+ * the system does not have is never invented.
  */
 
 import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "./forms";
+import { PROBLEMS, problemsForForm, type Problem } from "./problems";
 
 export type Block =
 	| { kind: "statement"; text: string }
@@ -269,7 +274,9 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 	},
 	{
 		id: "citation",
-		patterns: ["cite", "citation", "citable", "provenance", "doi", "bibtex", "reference manager", "zotero", "publish"],
+		// Mechanism questions land here; the failure-shaped ones ("how do I
+		// make a page citable?") belong to the problem record that owns them.
+		patterns: ["bibtex", "csl", "reference manager", "zotero", "cite this", "citation tags", "four surfaces", "citationrecord"],
 		blocks: [
 			{ kind: "statement", text: "Publishing is a design-system concern here: one record, projected onto four surfaces that cannot disagree." },
 			{
@@ -286,6 +293,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 			},
 			{ kind: "observation", label: "THE RULES ARE ONE RULE", text: "Published means first published: a revision sets revised, and never quietly moves the date, because the date is what a priority claim rests on. A substantive change is a new version, not a silent edit. And an identifier that has not been registered is absent — no placeholder DOI, no registration pending — exactly the discipline the manifest applies to an unrecorded origin." },
 			{ kind: "connection", text: "Both forms, operable — and the record they are printing is this site's own.", links: [
+				{ href: "/problems/nothing-to-cite", label: "NOTHING TO CITE — THE FAILURE →" },
 				{ href: "/instruments", label: "THE SPECIMENS →" },
 				{ href: "/use", label: "THE FOUR SURFACES, IN CODE →" },
 			] },
@@ -481,11 +489,65 @@ const RECOMMENDATIONS: {
 
 const STOP = new Set(["the", "a", "an", "i", "to", "of", "and", "or", "for", "in", "on", "my", "me", "is", "it", "that", "this", "with", "how", "do", "need", "want", "should", "use", "show", "have"]);
 
+/**
+ * The problem layer: retrieval over the published records, not over a
+ * hand-written FAQ. A question scores against the failure's own title,
+ * question, symptom and cause; the threshold is deliberately high so a
+ * request for a form ("I need to compare three strategies") still
+ * reaches the recommendation layer rather than being answered with an
+ * essay about why interfaces converge.
+ */
+function problemMatch(question: string): Problem | null {
+	const ql = question.toLowerCase();
+	const toks = ql.split(/[^a-z0-9]+/).filter((t) => t.length > 3 && !STOP.has(t));
+	if (toks.length === 0) return null;
+	let best: { p: Problem; score: number } | null = null;
+	for (const p of PROBLEMS) {
+		const strong = `${p.title} ${p.question}`.toLowerCase();
+		const weak = `${p.dek} ${p.symptom} ${p.cause} ${p.statement}`.toLowerCase();
+		// The record's own words for the failure, scored rather than
+		// returned: two problems can both recognise a word, and the one
+		// that recognises more of the question should win it.
+		let score = p.keywords.filter((k) => ql.includes(k)).length * 8;
+		let hits = score > 0 ? 2 : 0;
+		for (const t of toks) {
+			if (strong.includes(t)) {
+				score += 4;
+				hits += 1;
+			} else if (weak.includes(t)) {
+				score += 1;
+				hits += 1;
+			}
+		}
+		if (hits >= 2 && score >= 8 && (!best || score > best.score)) best = { p, score };
+	}
+	return best?.p ?? null;
+}
+
+function problemBlocks(p: Problem): Block[] {
+	return [
+		{ kind: "statement", text: p.statement },
+		{ kind: "observation", label: "HOW YOU MEET IT", text: p.symptom },
+		{ kind: "observation", label: "WHY IT HAPPENS", text: p.cause },
+		{
+			kind: "connection",
+			text: `${p.answers.join(" · ")} — the forms that answer it, and the failure at length.`,
+			links: [
+				{ href: `/problems/${p.slug}`, label: `${p.title} →` },
+				...p.answers.slice(0, 3).map((name) => ({ href: `/forms/${formSlug(name)}`, label: `${name.toUpperCase()} →` })),
+			],
+		},
+	];
+}
+
 export function askHause(question: string): AskAnswer {
 	const ql = question.toLowerCase();
 	for (const entry of INTERROGATIONS) {
 		if (entry.patterns.some((p) => ql.includes(p))) return { id: entry.id, blocks: entry.blocks };
 	}
+	const problem = problemMatch(question);
+	if (problem) return { id: `problem-${problem.slug}`, blocks: problemBlocks(problem) };
+
 	const toks = ql.split(/[^a-z0-9/]+/).filter((t) => t.length > 1 && !STOP.has(t));
 	let best: { r: (typeof RECOMMENDATIONS)[number]; score: number } | null = null;
 	for (const r of RECOMMENDATIONS) {
@@ -514,8 +576,8 @@ export function askHause(question: string): AskAnswer {
 					text: `${best.r.form} — ${meta.line}`,
 					links: [
 						{ href: `/forms/${formSlug(best.r.form)}`, label: `${best.r.form.toUpperCase()} — THE FORM'S PAGE →` },
+						...problemsForForm(best.r.form).map((p) => ({ href: `/problems/${p.slug}`, label: `SOLVES — ${p.title} →` })),
 						{ href: `/${meta.mode}s`, label: `THE ${meta.mode.toUpperCase()} SPECIMENS →` },
-						{ href: "/forms", label: "THE HOLDINGS →" },
 					],
 				},
 			],

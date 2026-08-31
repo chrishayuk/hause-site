@@ -15,6 +15,8 @@ import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { breadcrumbLd, citationLd } from "@chrishayuk/hause/seo";
 import { FORMS, MODE_DISCIPLINE, MODE_LABEL, MODE_ROOM, formAnswer, formBySlug, formBody, formHasOwnHeadline, formHeadline, formOriginKicker, formRecord, formCiteMeta, formSlug } from "@/data/forms";
 import { specimenFor } from "@/specimens";
+import { problemsForForm } from "@/data/problems";
+import Link from "next/link";
 
 export function generateStaticParams() {
 	return FORMS.map((f) => ({ slug: f.slug }));
@@ -51,6 +53,7 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
 	const body = formBody(form);
 	const room = MODE_ROOM[form.mode];
 	const related = form.mentions.filter((m) => m !== form.name);
+	const solves = problemsForForm(form.name);
 
 	return (
 		<main>
@@ -77,6 +80,37 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
 				answer={formAnswer(form)}
 				cite={form.origin ? `origin — ${form.origin}${form.date ? ` · ${form.date}` : ""}` : undefined}
 			/>
+
+			{solves.length > 0 && (
+				<section className="hause-grid py-8" aria-label="What this form answers">
+					<div className="col-span-12 md:col-start-2 md:col-span-9">
+						<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-4 opacity-50">
+							SOLVES — THE FAILURES THIS FORM WAS BUILT TO CLOSE
+						</p>
+						<div className="flex flex-col">
+							{solves.map((p) => (
+								<Link
+									key={p.slug}
+									href={`/problems/${p.slug}`}
+									className="group grid grid-cols-[2.5rem_1fr] gap-4 py-3 border-t items-baseline"
+									style={{ borderColor: "var(--color-mist)" }}
+								>
+									<span className="voice-evidence text-xs opacity-40">{p.number}</span>
+									<span>
+										<span className="voice-evidence text-sm" style={{ color: "var(--color-accent)" }}>
+											{p.title} →
+										</span>
+										<span className="voice-system text-sm opacity-60 block mt-1 group-hover:opacity-90 transition-opacity">
+											{p.dek}
+										</span>
+									</span>
+								</Link>
+							))}
+							<div className="border-t" style={{ borderColor: "var(--color-mist)" }} />
+						</div>
+					</div>
+				</section>
+			)}
 
 			<Lens
 				kicker={`${form.name.toUpperCase()} — THREE DEPTHS`}
