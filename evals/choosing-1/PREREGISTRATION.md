@@ -94,3 +94,38 @@ The cases are written by the same author as the grammar. Sympathetic
 phrasing is a real risk, and this is the reason CHOOSING-2's material
 should come from someone else, or from content that already existed for
 another purpose.
+
+---
+
+## Addendum — conditions A and B, written before they were run
+
+**Written:** 2026-08-31, after condition C was published and before a
+single A or B case was scored.
+
+**Selector:** Claude, one model, fresh context per batch, no access to
+this repository, hause.design, Ask HAUSE or the eval pages. Each context
+receives exactly one file: the condition material and its case batch.
+The instruction forbids any tool use, and any run showing evidence of
+repository or web access is void.
+
+Stated weakness, plainly: this is the same model family as the
+assistant that co-authored the grammar. It is not an independent
+reasoner. What it is, is a context that has never seen HAUSE — the
+library is two days old and the grammar hours old, so neither is in any
+training data. That makes this a test of whether the written material
+carries the distinction, not of whether an arbitrary system does.
+
+**Batching:** 124 cases in three batches of 42 / 42 / 40, identical for
+both conditions, in file order. A context sees one batch.
+
+**One model, one run.** Not five models averaged. Additional models, if
+ever run, are marked exploratory replication and reported separately —
+turning the first clean experiment into a benchmark exercise would lose
+the comparison this eval exists for, which is A against B.
+
+**Recorded per case:** the selected form (or NONE), and the deciding
+reason in one sentence. The reason is scored separately as
+**decision-test fidelity** — whether it names the distinction the
+authority names. `Claim, because it is a testable belief whose status
+can change` and `Claim, because the sentence makes a strong claim` are
+the same label and different results.
