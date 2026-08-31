@@ -13,6 +13,8 @@ import { citationLd } from "@chrishayuk/hause/seo";
 import { citationMeta } from "@chrishayuk/hause/cite";
 import { FORM_MANIFEST, formCount } from "@chrishayuk/hause/manifest";
 import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
+import { ContainerVersusAct } from "@/components/ContainerVersusAct";
+import { StartHere } from "@/components/StartHere";
 
 /** The head surface of the book's own record — Zotero, Scholar and every "add to library" button read these. */
 export const metadata = { other: citationMeta(HAUSE_RECORD) };
@@ -27,11 +29,16 @@ export default function Home() {
 		<main>
 			<Hero
 				kicker="HAUSE · A DESIGN SYSTEM FOR AI"
-				title="STRUCTURE IS FIXED. ATMOSPHERE IS VARIABLE."
-				dek="A visual language for intelligent systems to explain themselves. The primitives are forms of explanation — things a reader reads, operates, or watches — not interface chrome. This site is the specimen book: every form shown here is the real form, running."
+				title="AI KEEPS CHOOSING CONTAINERS."
+				dek="Choose the communicative act, and the form follows from it. HAUSE's primitives are the things a system is trying to say — a claim, the evidence under it, an answer, a refusal — rather than the rectangles they arrive in."
 			/>
 
-			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
+			<ContainerVersusAct />
+
+			<StartHere />
+
+			<Statement text="Structure is fixed. Atmosphere is variable." />
+
 
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">
@@ -56,6 +63,8 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
+
+			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
 
 			<Observation
 				label="THE BOUNDARY — WHAT THIS IS, AND WHAT IT LEAVES ALONE"
