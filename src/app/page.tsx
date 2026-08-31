@@ -31,7 +31,7 @@ export default function Home() {
 				dek="A visual language for intelligent systems to explain themselves. The primitives are forms of explanation — things a reader reads, operates, or watches — not interface chrome. This site is the specimen book: every form shown here is the real form, running."
 			/>
 
-			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, each of which exists because a real page needed it — never because a taxonomy had a gap.`} />
+			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
 
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">

@@ -130,7 +130,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 					{ label: "INSTRUMENTS", detail: "Interactive, always with a text fallback. The reader operates." },
 					{ label: "PERFORMANCES", detail: "Cinematic, resting on a designed final state. The forms play themselves." },
 				],
-				result: { label: `${formCount()} forms`, detail: "Each exists because a real page needed it — never because a taxonomy had a gap." },
+				result: { label: `${formCount()} forms`, detail: `The rule is that a real page must need one first — ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest, and the rest predate the record rather than contradicting it.` },
 			},
 			{ kind: "connection", text: "The book, by mode — every specimen is the real form.", links: [
 				{ href: "/statements", label: "STATEMENTS →" },
@@ -157,7 +157,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 				result: { label: "the mode is derived", detail: "Named after the forms existed, not before — structure follows real chapters." },
 			},
 			{ kind: "evidence", items: [
-				{ label: "Forms added to fill a taxonomy gap", status: "REFUTED", detail: "Zero. The three modes were named after the forms existed." },
+				{ label: "Forms with recorded evidence added to fill a taxonomy gap", status: "REFUTED", detail: `Zero of the ${FORM_MANIFEST.filter((f) => f.origin).length} with a recorded origin. The three modes were named after the forms existed. How the other ${FORM_MANIFEST.filter((f) => !f.origin).length} were admitted is unresolved, and stays that way.` },
 			] },
 			{ kind: "connection", text: "See each mode exhibited.", links: [
 				{ href: "/statements", label: "MODE ONE →" },

@@ -73,12 +73,17 @@ export default function HowHauseGrewPage() {
 			<Answer
 				id="was-hause-designed-or-discovered"
 				question="Was HAUSE designed as a taxonomy, or discovered by building?"
-				answer={`Discovered, and the record says so rather than the copy. Of ${COUNTS.total} forms, ${COUNTS.recorded} name the chapter they came from — ${LANES.length} origins across ${DATES.length} recorded days — and ${COUNTS.caused} carry the sentence describing what could not be built without them. The remaining ${COUNTS.unrecorded} entered before recording an origin became doctrine, and are left blank rather than reconstructed from memory. Absence is part of the evidence.`}
+				answer={`Discovered — as far as the record goes, which is the honest length of the claim. Of ${COUNTS.total} forms, ${COUNTS.recorded} name the chapter they came from, and every one of those came from a real exhibition; ${COUNTS.caused} also carry the sentence describing what could not be built without them. The remaining ${COUNTS.unrecorded} predate origin recording: how they were admitted is unresolved, not proven innocent. Absence of evidence is not evidence of absence, and this page does not treat it as one.`}
 			/>
 
-			<Statement text="Nothing enters the library without a real page that needed it first." />
+			<Statement text="The rule is one sentence. The evidence for it is one-and-twenty forms." />
 
 			<Genealogy lanes={LANES} dates={DATES} grid={grid} unrecorded={UNRECORDED} />
+
+			<Observation
+				label="THE ADMISSION RULE — DOCTRINE, IN THE PRESENT TENSE"
+				text="Nothing enters the library without a real page that needed it first. That is the rule the library is run by today, and the manifest enforces the part it can: a form enters in the same change that adds its file, and its origin is recorded where the history is known. What a rule cannot do is reach backwards — so the evidence below is scoped to the forms whose admission was actually written down."
+			/>
 
 			<Evidence
 				items={[
@@ -88,14 +93,19 @@ export default function HowHauseGrewPage() {
 						detail: `${COUNTS.recorded} of ${COUNTS.total}, in the manifest, with a date on ${COUNTS.dated} of them and a stated cause on ${COUNTS.caused}. Every lane on the chart above is a real exhibition — a consumer that needed something the library did not have.`,
 					},
 					{
-						label: "Origins reconstructed to complete the record",
+						label: "Forms with recorded evidence added to fill a taxonomy gap",
 						status: "REFUTED",
-						detail: `Zero. ${COUNTS.unrecorded} forms have no recorded origin and are shown as having none. The rule is the manifest's own: an unrecorded origin is absent, never guessed — which is why this page can be read as evidence rather than as a story about itself.`,
+						detail: `Zero of ${COUNTS.recorded}. Each recorded origin names a chapter that could not be built without the form — and the three modes were themselves named after the forms existed, not before.`,
 					},
 					{
-						label: "Forms added to fill a gap in the taxonomy",
+						label: `How the ${COUNTS.unrecorded} unrecorded forms were admitted`,
+						status: "OPEN",
+						detail: "Unresolved, and left that way. They predate origin recording, so the manifest cannot show they came from real pages — and it cannot show they did not. Absence of evidence of taxonomy-filling is not evidence that none occurred, and this page will not spend the one to buy the other.",
+					},
+					{
+						label: "Origins reconstructed to complete the record",
 						status: "REFUTED",
-						detail: "Zero. The three modes were named after the forms existed, and the one form the library holds without exhibiting — Film — is shown as held rather than illustrated with a fake.",
+						detail: `Zero. The ${COUNTS.unrecorded} without one are shown as having none — the manifest's own rule, which is what lets the row above stay honestly open rather than quietly closing.`,
 					},
 				]}
 			/>

@@ -49,14 +49,19 @@ export function EvidenceSpecimen() {
 		<Evidence
 			items={[
 				{
-					label: "Forms built because a real chapter needed them",
+					label: "Forms with a recorded chapter behind them",
 					status: "SUPPORTED",
-					detail: `${formCount()} of ${formCount()} — and ${FORM_MANIFEST.filter((f) => f.origin).length} of them name the chapter in the manifest, because an origin nobody wrote down is absent rather than guessed. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all ${formsByMode("performance").length} performances from the vindex3 exhibition; Terminal from its Explorer; Lens, Citation and Provenance from publishing a specification.`,
+					detail: `${FORM_MANIFEST.filter((f) => f.origin).length} of ${formCount()} name the chapter they came from, and every one of those was a page that could not be built without the form. ExpertField and Comparison came from the codex; Variants, Refusal, the ladders and all ${formsByMode("performance").length} performances from the vindex3 exhibition; Terminal from its Explorer; Lens, Citation and Provenance from publishing a specification.`,
 				},
 				{
-					label: "Forms added to fill a taxonomy gap",
+					label: "Forms with recorded evidence added to fill a taxonomy gap",
 					status: "REFUTED",
-					detail: "Zero. The three modes were named after the forms existed, not before.",
+					detail: "Zero of those recorded. The three modes were named after the forms existed, not before — the split was noticed in the vindex3 build rather than designed up front.",
+				},
+				{
+					label: `How the ${FORM_MANIFEST.filter((f) => !f.origin).length} forms without a recorded origin were admitted`,
+					status: "OPEN",
+					detail: "Unresolved. They predate origin recording, so the manifest can neither show they came from real pages nor show they did not — and an unrecorded origin is left absent rather than reconstructed. The evidence stops where the record stops.",
 				},
 			]}
 		/>

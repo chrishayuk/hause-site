@@ -307,9 +307,9 @@ export function EverythingSoundsEquallyCertainDemo() {
 						detail: `${recorded} of ${formCount()}, recorded in the manifest with the site and often the date. The rest predate the record — and an origin nobody wrote down is left absent rather than reconstructed, which is why this row is a count and not a claim of completeness.`,
 					},
 					{
-						label: "Forms added to fill a gap in the taxonomy",
+						label: "Forms with recorded evidence added to fill a taxonomy gap",
 						status: "REFUTED",
-						detail: "Zero. The three modes were named after the forms existed, not before — the split was noticed in the vindex3 build rather than designed up front.",
+						detail: `Zero of the ${recorded} that name their origin. The three modes were named after the forms existed, not before. How the forms with no recorded origin were admitted is unresolved, and counted in neither direction.`,
 					},
 				]}
 			/>
