@@ -192,6 +192,14 @@ export const PROBLEMS: Problem[] = [
  * a form page can name its problems and a problem page its forms
  * without either list being maintained twice.
  */
+/** In number order, always — the array literal is not the sequence. */
+export const PROBLEMS_IN_ORDER: Problem[] = [...PROBLEMS].sort((a, b) => a.number.localeCompare(b.number));
+
+/** "eight" — so a page can say the count in prose without anyone typing it. */
+export function spell(n: number): string {
+	return ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"][n] ?? String(n);
+}
+
 export function problemsForForm(name: string): Problem[] {
 	return PROBLEMS.filter((p) => p.answers.includes(name));
 }

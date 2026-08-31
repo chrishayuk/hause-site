@@ -7,7 +7,7 @@ import { Analytics } from "@chrishayuk/hause/components/Analytics";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
 import { buildNote } from "@/data/build";
-import { PROBLEMS } from "@/data/problems";
+import { PROBLEMS_IN_ORDER } from "@/data/problems";
 
 const fraunces = Fraunces({
 	variable: "--font-fraunces",
@@ -72,7 +72,7 @@ export default function RootLayout({
 					groups={[
 						{
 							label: "WHY ANY OF THIS EXISTS",
-							links: PROBLEMS.map((p) => ({ href: `/problems/${p.slug}`, label: `${p.number} — ${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}` })),
+							links: PROBLEMS_IN_ORDER.map((p) => ({ href: `/problems/${p.slug}`, label: `${p.number} — ${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}` })),
 						},
 						{
 							label: "THE BOOK",

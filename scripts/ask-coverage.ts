@@ -11,7 +11,7 @@
  */
 
 import { askHause } from "../src/data/askHause";
-import { PROBLEMS } from "../src/data/problems";
+import { PROBLEMS, PROBLEMS_IN_ORDER } from "../src/data/problems";
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { FORMS } from "../src/data/forms";
 
@@ -55,6 +55,19 @@ for (const c of cases) {
 if (FORMS.length !== FORM_MANIFEST.length) {
 	failed += 1;
 	console.error(`FAIL  ${FORM_MANIFEST.length} forms in the manifest, ${FORMS.length} documented — re-run scripts/ingest-forms.ts`);
+}
+
+// The numbering is a sequence, not a decoration: unique, gapless, and
+// matching the order the site actually renders. The six-versus-eight bug
+// this file exists to prevent was a hand-written count beside a
+// hand-ordered array.
+const numbers = PROBLEMS_IN_ORDER.map((p) => p.number);
+for (let i = 0; i < numbers.length; i += 1) {
+	const expected = String(i + 1).padStart(2, "0");
+	if (numbers[i] !== expected) {
+		failed += 1;
+		console.error(`FAIL  problem ${i + 1} is numbered ${numbers[i]}, expected ${expected} — numbers must be unique and gapless`);
+	}
 }
 
 // Every form a problem names must exist in the library.

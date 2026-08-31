@@ -8,7 +8,9 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { breadcrumbLd } from "@chrishayuk/hause/seo";
 import { formCount } from "@chrishayuk/hause/manifest";
-import { PROBLEMS } from "@/data/problems";
+import { PROBLEMS, PROBLEMS_IN_ORDER, spell } from "@/data/problems";
+import { FORMS } from "@/data/forms";
+import { ProblemMap } from "@/components/ProblemMap";
 
 export const metadata: Metadata = {
 	title: "What AI Interfaces Get Wrong: The Problems HAUSE Answers",
@@ -41,13 +43,13 @@ export default function ProblemsPage() {
 			<Answer
 				id="what-problems-does-hause-solve"
 				question="What problems does HAUSE actually solve?"
-				answer={`Six, so far. AI-generated interfaces converge on containers instead of meaning; systems that cannot refuse will guess; beautifully designed pages become illegible to the machines that now do the reading; published ideas end up with nothing citable to point at; documentation drifts from the code it describes; and one subject gets split into a tutorial and a reference that quietly disagree. The ${formCount()} forms in the library are what answering those looked like.`}
+				answer={`${spell(PROBLEMS.length).charAt(0).toUpperCase()}${spell(PROBLEMS.length).slice(1)}, so far: ${PROBLEMS_IN_ORDER.map((p) => p.title.toLowerCase()).join("; ")}. Each one is a failure with a form behind it — the ${formCount()} forms in the library are what answering them looked like.`}
 			/>
 
 			<section className="hause-grid py-10 sm:py-16">
 				<div className="col-span-12 md:col-start-2 md:col-span-10">
 					<div className="flex flex-col">
-						{PROBLEMS.map((p) => (
+						{PROBLEMS_IN_ORDER.map((p) => (
 							<Link
 								key={p.slug}
 								href={`/problems/${p.slug}`}
@@ -69,6 +71,11 @@ export default function ProblemsPage() {
 			</section>
 
 			<Statement text="A form that arrives without a failure behind it is a Card wearing a costume." />
+
+			<ProblemMap
+				problems={PROBLEMS_IN_ORDER.map((p) => ({ slug: p.slug, number: p.number, title: p.title, answers: p.answers }))}
+				forms={FORMS.map((f) => ({ name: f.name, slug: f.slug, mode: f.mode }))}
+			/>
 
 			<Observation
 				label="THE ORDER MATTERS"

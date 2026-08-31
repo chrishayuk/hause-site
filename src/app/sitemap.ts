@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { FORMS } from "@/data/forms";
-import { PROBLEMS } from "@/data/problems";
+import { PROBLEMS_IN_ORDER } from "@/data/problems";
 
 const BASE = "https://hause.design";
 
@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 		changeFrequency: "monthly" as const,
 		priority: 0.7,
 	}));
-	const problems = PROBLEMS.map((p) => ({
+	const problems = PROBLEMS_IN_ORDER.map((p) => ({
 		url: `${BASE}/problems/${p.slug}`,
 		changeFrequency: "monthly" as const,
 		priority: 0.9,

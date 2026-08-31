@@ -92,6 +92,39 @@ export function InterfacesThatCannotRefuseDemo() {
 export function PagesMachinesCannotReadDemo() {
 	return (
 		<>
+			<Anatomy
+				kicker="ONE PAGE — THREE READERS"
+				objectLabel="The same record, reaching three audiences that cannot read each other's surface."
+				layers={[
+					{
+						label: "the record",
+						note: "what the page actually holds",
+						emphasis: true,
+						detail:
+							"The question, the answer, the evidence and the provenance — held as data before anything is rendered. Everything below is a projection of it, which is the only arrangement in which the three surfaces cannot disagree.",
+					},
+					{
+						label: "the designed surface",
+						note: "a person",
+						detail:
+							"The forms: a Hero, a Statement, an instrument to operate. Beautiful, interactive, and — on its own — almost entirely opaque to anything that does not run JavaScript and look at pixels.",
+					},
+					{
+						label: "the text fallback",
+						note: "a crawler, a reader in a hurry",
+						detail:
+							"The plain sentence every instrument carries, and the answer-first block with its stable anchor. Not a courtesy for old browsers: this is the page's actual content, and the version most machines will ever see.",
+					},
+					{
+						label: "the structured graph",
+						note: "an answer engine, an agent",
+						muted: true,
+						detail:
+							"JSON-LD and citation tags emitted from the same record — the machine-readable half of the same sentence, which is why it can never drift from the rendered one.",
+					},
+				]}
+				caption="Strip the page to text and it should still answer the question it was designed to answer."
+			/>
 			<Answer
 				id="what-is-the-travelling-test"
 				question="What is the travelling test for machine legibility?"
