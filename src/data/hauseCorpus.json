@@ -62,6 +62,12 @@
    "text": "Technical writing keeps splitting one subject into a tutorial and a\nreference, then asking the reader to guess which one holds their answer.\nThe `Lens` instrument refuses the split: one concept, one URL, several\ndepths — **LEARN** what it means, **INSPECT** the real object, **SPEC**\nthe words that govern it — with the reader's chosen depth remembered\nacross pages and written into the fragment, so a reader who thinks in\nclauses stays in clauses and can link someone straight to the depth they\nmeant.\n\nEvery panel stays in the DOM. Depth is disclosure, not content gating —\nwhich is also why the normative text is legible to a crawler whether or\nnot anyone clicked the tab, and why a reader with no JavaScript still\nlands on a complete first depth rather than an empty frame."
   },
   {
+   "id": "readme#11",
+   "source": "the library README",
+   "heading": "How a form enters the library",
+   "text": "Four stages, and the third is the one that does the work.\n\n**DISCOVERED** — a real page exposes an explanatory need. Not a gap in a\ntaxonomy, not a component someone would like to have: a chapter that\ncannot be built with what exists.\n\n**BUILT** — one implementation solves that need, in the exhibition that\nraised it. It lives in that site, doing real work, knowing everything\nabout the content it carries. Most things stop here, and should.\n\n**REUSED** — a second, genuinely different context needs the same\nsemantic act, and gets it *without the abstraction being bent to fit the\nfirst consumer*. Reuse is evidence, not duplication: a second instance\non the same page is duplication; a second exhibition with a different\nsubject is evidence. The manifest records this as `reusedBy`, measured\nfrom the consuming sites' real pages — exhibiting a form in a specimen\nbook is not using one.\n\n**PROMOTED** — the abstraction has survived reuse, its semantics are\nstable, its text and machine fallback are defined, and its props no\nlonger know which exhibition caused it. Only then does HAUSE own it.\n\nThe point of the third rung is that promotion stops being a matter of\ntaste. The question \"why is this a first-class form?\" gets answered with\n\"because reality asked for it more than once\", and the record shows\nwhere. A form that has served one exhibition has been generalised\nagainst one kind of conten"
+  },
+  {
    "id": "problem#everything-becomes-a-card",
    "source": "the problems",
    "heading": "Why do AI-generated interfaces all look the same?",

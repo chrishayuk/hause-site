@@ -206,7 +206,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		blocks: [
 			{ kind: "timeline", entries: [
 				{ date: "vindex3.org", text: "The Explorer needed a query surface — psql, for a model. The terminal was built there, doing real work against a live public endpoint." },
-				{ date: "the ladder", text: "Needed → built → generic (its props stopped knowing whose content they carry) → fallback → promoted. No rung skipped." },
+				{ date: "the ladder", text: "Discovered → built → reused → promoted. The third rung is the one that does the work: a second, genuinely different context needing the same semantic act, without the abstraction bending to fit the first." },
 				{ date: "2026-08-29", text: "The Terminal entered HAUSE as the eleventh instrument, and the specimen book showed it the same day." },
 			] },
 			{ kind: "evidence", items: [
@@ -269,6 +269,30 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 			{ kind: "connection", text: "Each one at length, with the forms that answer it demonstrated on the page.", links: [
 				{ href: "/problems", label: "THE PROBLEMS →" },
 				{ href: "/forms", label: "THE HOLDINGS →" },
+			] },
+		],
+	},
+	{
+		id: "promotion",
+		patterns: ["how does a form", "enter the library", "get promoted", "promotion", "become a form", "earn a form", "reused", "the ladder"],
+		blocks: [
+			{ kind: "statement", text: "Promotion stops being a matter of taste at the third rung." },
+			{
+				kind: "decomposition",
+				kicker: "FOUR RUNGS — AND THE THIRD DOES THE WORK",
+				source: { label: "an explanatory need", detail: "Something a real page is trying to say and cannot, with what exists." },
+				parts: [
+					{ label: "DISCOVERED", detail: "A real page exposes the need — a chapter that cannot be built, not a gap in a taxonomy. Recorded as the form's origin where the history knows it." },
+					{ label: "BUILT", detail: "One implementation solves it in the exhibition that raised it, knowing everything about the content it carries. Most things stop here, and should." },
+					{ label: "REUSED", detail: "A second, genuinely different context needs the same semantic act — and gets it without the abstraction bending to fit the first. Evidence, not duplication: a second instance on the same page does not count." },
+					{ label: "PROMOTED", detail: "Semantics stable, text and machine fallback defined, props no longer knowing which exhibition caused it. Only then does HAUSE own it." },
+				],
+				result: { label: "why is this a first-class form?", detail: "Because reality asked for it more than once, and the record shows where." },
+			},
+			{ kind: "observation", label: "THE WEAKNESS, STATED", text: `${FORM_MANIFEST.filter((f) => f.reusedBy?.length).length} of ${formCount()} forms record a reuse — but both exhibitions are by one author, which is the weakest admissible evidence of generality. The test that matters is a consumer whose content has nothing to do with the one the form was born in.` },
+			{ kind: "connection", text: "The record, and the rung each form has actually climbed.", links: [
+				{ href: "/how-hause-grew", label: "HOW HAUSE GREW →" },
+				{ href: "/forms/ladder", label: "THE LADDER FORM →" },
 			] },
 		],
 	},

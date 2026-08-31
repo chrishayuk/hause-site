@@ -11,6 +11,7 @@ import { Decomposition } from "@chrishayuk/hause/components/forms/Decomposition"
 import { ExpertField } from "@chrishayuk/hause/components/forms/ExpertField";
 import { Comparison } from "@chrishayuk/hause/components/forms/Comparison";
 import { Variants } from "@chrishayuk/hause/components/forms/Variants";
+import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { Ladder } from "@chrishayuk/hause/components/forms/Ladder";
 import { Agreement } from "@chrishayuk/hause/components/forms/Agreement";
 import { Derivation } from "@chrishayuk/hause/components/forms/Derivation";
@@ -114,17 +115,41 @@ export function VariantsSpecimen() {
 }
 
 export function LadderSpecimen() {
+	const reused = FORM_MANIFEST.filter((f) => f.reusedBy?.length).length;
 	return (
 		<Ladder
-			kicker="A FORM'S WAY INTO THE LIBRARY"
+			kicker="A FORM'S WAY INTO THE LIBRARY — FOUR RUNGS, THE THIRD DOING THE WORK"
 			rungs={[
-				{ id: "needed", question: "A real chapter cannot be built without it.", status: "PASSED" },
-				{ id: "built", question: "It exists, in that chapter, doing real work.", status: "PASSED" },
-				{ id: "generic", question: "Its props no longer know whose content they carry.", status: "PASSED" },
-				{ id: "fallback", question: "Its point survives with the interaction removed.", status: "PASSED" },
-				{ id: "promoted", question: "It enters HAUSE, and the specimen book shows it.", status: "PASSED" },
+				{
+					id: "discovered",
+					question: "A real page exposes an explanatory need.",
+					gate: "a chapter that cannot be built with what exists — not a gap in a taxonomy",
+					status: "PASSED",
+					detail: "Recorded as the form's origin where the history knows it. Twenty-one of the thirty-five name the page that raised them; the rest predate the record and are left unresolved rather than reconstructed.",
+				},
+				{
+					id: "built",
+					question: "One implementation solves it, in the exhibition that raised it.",
+					gate: "it exists, in that chapter, doing real work",
+					status: "PASSED",
+					detail: "Most things stop here, and should. A built object knows everything about the content it carries — the problem map on this site and the genealogy chart both sit at this rung, deliberately.",
+				},
+				{
+					id: "reused",
+					question: "A second, genuinely different context needs the same semantic act.",
+					gate: "and gets it without the abstraction bending to fit the first consumer",
+					status: "BUILDING",
+					detail: `Reuse is evidence, not duplication: a second instance on the same page is duplication; a second exhibition with a different subject is evidence. ${reused} of ${FORM_MANIFEST.length} forms record a reuse — but both exhibitions are by one author, which is the weakest admissible evidence. The test that matters is a consumer whose content has nothing to do with the one the form was born in.`,
+				},
+				{
+					id: "promoted",
+					question: "The abstraction survived reuse, and HAUSE owns it.",
+					gate: "semantics stable · text and machine fallback defined · props no longer know which exhibition caused it",
+					status: "PASSED",
+					detail: "Only after the third rung. Promotion stops being a matter of taste: why is this a first-class form? Because reality asked for it more than once, and the record shows where.",
+				},
 			]}
-			caption="No rung is skipped. A form that arrives without a chapter behind it is a Card wearing a costume. The most recent climb is real and complete: the Terminal, promoted from vindex3's Explorer, 2026-08-29 — its specimen is below."
+			caption="No rung is skipped. A form that arrives without a page behind it is a Card wearing a costume — and one that arrives without a second exhibition behind it is a claim about the author's imagination rather than about the form."
 		/>
 	);
 }

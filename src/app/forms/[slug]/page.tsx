@@ -163,6 +163,21 @@ export default async function FormPage({ params }: { params: Promise<{ slug: str
 				]}
 			/>
 
+			{form.reusedBy?.length ? (
+				<section className="hause-grid py-6" aria-label="Reuse">
+					<div className="col-span-12 md:col-start-2 md:col-span-9">
+						<p className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 mb-3">
+							REUSED — THE EVIDENCE FOR THE THIRD RUNG
+						</p>
+						<p className="voice-system text-base opacity-85 leading-relaxed max-w-2xl m-0">
+							{form.name} does real work in {form.reusedBy.join(" and ")}
+							{form.origin ? `, beyond the ${form.origin} chapter that raised it` : ""}. Reuse is evidence, not
+							duplication — and both exhibitions are by one author, which is the weakest admissible kind.
+						</p>
+					</div>
+				</section>
+			) : null}
+
 			{form.origin && form.date && (
 				<Timeline entries={[{ date: form.date, text: `Entered the library from ${form.origin} — built for a real page, then generalised until its props no longer knew whose content they carried.` }]} />
 			)}

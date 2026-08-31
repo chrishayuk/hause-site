@@ -12,6 +12,7 @@ import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { breadcrumbLd, citationLd } from "@chrishayuk/hause/seo";
 import { citationMeta, type CitationRecord } from "@chrishayuk/hause/cite";
 import { Genealogy } from "@/components/Genealogy";
+import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { COUNTS, DATES, LANES, UNRECORDED, historyEntries, laneOf, marksAt } from "@/data/genealogy";
 import { buildIdentifiers } from "@/data/build";
 
@@ -101,6 +102,11 @@ export default function HowHauseGrewPage() {
 						label: `How the ${COUNTS.unrecorded} unrecorded forms were admitted`,
 						status: "OPEN",
 						detail: "Unresolved, and left that way. They predate origin recording, so the manifest cannot show they came from real pages — and it cannot show they did not. Absence of evidence of taxonomy-filling is not evidence that none occurred, and this page will not spend the one to buy the other.",
+					},
+					{
+						label: "Forms with a second exhibition behind them",
+						status: "ONGOING",
+						detail: `${FORM_MANIFEST.filter((f) => f.reusedBy?.length).length} of ${COUNTS.total} record a reuse — a second exhibition using the form for real work rather than exhibiting a specimen of it. Both exhibitions are by one author, which is the weakest admissible evidence of generality, and the library says so rather than counting it as proof. The test that matters is a consumer whose content has nothing to do with the one the form was born in.`,
 					},
 					{
 						label: "Origins reconstructed to complete the record",

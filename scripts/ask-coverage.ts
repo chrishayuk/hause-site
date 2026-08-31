@@ -37,6 +37,8 @@ const cases: Case[] = [
 	{ q: "which forms have no recorded provenance?", expect: "genealogy" },
 	{ q: "what was the most recent form?", expect: "genealogy" },
 
+	{ q: "how does a form enter the library?", expect: "promotion" },
+
 	// The interrogation layer still wins where it should.
 	{ q: "why doesn't HAUSE have cards", expect: "no-cards" },
 	{ q: "what are you, HAUSE?", expect: "what-is-hause" },
