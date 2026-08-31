@@ -10,7 +10,7 @@ const BASE = "https://hause.design";
  * the same commit, because neither list is written by hand.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-	const pages = ["", "/problems", "/how-hause-grew", "/choosing", "/evals/choosing-1", "/evals/routing-1", "/evals/routing-2", "/forms", "/statements", "/instruments", "/performances", "/ask", "/use"].map((p) => ({
+	const pages = ["", "/problems", "/how-hause-grew", "/choosing", "/evals/choosing-1", "/evals/routing-1", "/evals/routing-2", "/evals/reading-1", "/forms", "/statements", "/instruments", "/performances", "/ask", "/use"].map((p) => ({
 		url: `${BASE}${p}`,
 		changeFrequency: "weekly" as const,
 		priority: p === "" ? 1 : 0.8,
