@@ -813,6 +813,28 @@ function formBlocks(name: string): Block[] {
 	];
 }
 
+/**
+ * The two selection paths, resolved separately — for evaluation, not for
+ * answering. The live resolver prefers the acts and falls back to the
+ * scaffold; this reports what each would have said on its own, which is
+ * what ROUTING-2 needs to decide whether the scaffold is still earning
+ * its place.
+ */
+export function selectionPaths(question: string): { act: string | null; scaffold: string | null } {
+	const ql = question.toLowerCase();
+	const chosen = selectAct(question);
+	const toks = ql.split(/[^a-z0-9/]+/).filter((t) => t.length > 1 && !STOP.has(t));
+	let best: { form: string; score: number } | null = null;
+	for (const r of RECOMMENDATIONS) {
+		let score = 0;
+		for (const kw of r.keywords) {
+			if (kw.includes(" ") ? ql.includes(kw) : toks.includes(kw)) score += kw.includes(" ") ? 3 : 2;
+		}
+		if (score > 0 && (!best || score > best.score)) best = { form: r.form, score };
+	}
+	return { act: chosen?.act.form ?? null, scaffold: best?.form ?? null };
+}
+
 export function askHause(question: string): AskAnswer {
 	const ql = question.toLowerCase();
 	const kind = classify(question);
