@@ -21,11 +21,18 @@ const raw = readFileSync(join(process.cwd(), `evals/choosing-1/answers-${conditi
 
 type Answer = { id: string; pick: string; why: string };
 const answers = new Map<string, Answer>();
+let malformed = 0;
 for (const line of raw.split("\n")) {
 	const t = line.trim();
 	if (!t.startsWith("{")) continue;
-	const a = JSON.parse(t) as Answer;
-	answers.set(a.id, a);
+	try {
+		const a = JSON.parse(t) as Answer;
+		answers.set(a.id, a);
+	} catch {
+		// A malformed line is a malformed answer, recorded as one rather
+		// than quietly dropped: the case scores as MISSING.
+		malformed += 1;
+	}
 }
 
 const modeOf = (form: string) => FORM_MANIFEST.find((f) => f.name === form)?.mode ?? null;
@@ -64,6 +71,7 @@ const summary = {
 	run: new Date().toISOString().slice(0, 10),
 	cases: outcomes.length,
 	answered: count((o) => o.selected !== "MISSING"),
+	malformedLines: malformed,
 	invalidNames: count((o) => !o.valid && o.selected !== "MISSING"),
 	exact: count((o) => o.exact),
 	correctAct: count((o) => o.sameAct),

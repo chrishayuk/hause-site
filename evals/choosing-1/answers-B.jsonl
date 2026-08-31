@@ -1,0 +1,124 @@
+{"id":"c001","pick":"Hero","why":"It is the opening of the page — eyebrow label, one big line, and a supporting sentence — rather than a standalone assertion mid-page, which would be Statement."}
+{"id":"c002","pick":"Hero","why":"Same opening-the-room structure at the top of the write-up, naming which room it is; a Statement would be a line inside the argument rather than the page's first thing."}
+{"id":"c003","pick":"Statement","why":"A single quotable line the essay turns on, not something needing a status mark or evidence, which would make it a Claim."}
+{"id":"c004","pick":"Statement","why":"A full-width turn in the argument that a reader would quote, rather than a testable belief owing evidence (Claim)."}
+{"id":"c005","pick":"Claim","why":"It is a defensible, falsifiable belief explicitly carrying an open/testing status, not merely a rhetorical turn (Statement)."}
+{"id":"c006","pick":"Claim","why":"A stated position that could be shown false and is marked unproven — the status mark is what makes it a Claim rather than a Statement."}
+{"id":"c007","pick":"Observation","why":"It reports what is actually there — a spike at a named time — before arguing what causes it, which would make it a Claim."}
+{"id":"c008","pick":"Observation","why":"A short labelled report of what was found in the field ('rules rewritten on paper'), noticing rather than arguing (Claim)."}
+{"id":"c009","pick":"Answer","why":"It is the question a reader would type plus a liftable short paragraph, not the claim at display size (Statement)."}
+{"id":"c010","pick":"Answer","why":"The literal customer question with a self-contained paragraph a stranger could lift whole — the defining test for Answer."}
+{"id":"c011","pick":"Excerpt","why":"Someone else's prose quoted verbatim with its trims noted; it is prose from a letter, not code or output (Snippet)."}
+{"id":"c012","pick":"Excerpt","why":"Words that are not ours, keeping their own markdown, emphasis and named source — prose rather than code (Snippet)."}
+{"id":"c013","pick":"Snippet","why":"The code and its literal output where paraphrasing would be a lie; there is no live executor behind it, so not Terminal."}
+{"id":"c014","pick":"Snippet","why":"The verbatim payload shown exactly as it arrives so integrators can match fields — showing the output itself rather than quoting a person (Excerpt)."}
+{"id":"c015","pick":"Evidence","why":"Findings behind a claim where one prediction failed — different facts each with date and sample size, not the same fact checked twice (Agreement)."}
+{"id":"c016","pick":"Evidence","why":"Measured findings with confirmations and contradictions side by side, making the claim checkable rather than stating it (Claim)."}
+{"id":"c017","pick":"Agreement","why":"Three independently derived values of the same fact that must be identical, with a mismatch as a named failure — not separate facts (Evidence)."}
+{"id":"c018","pick":"Agreement","why":"Three independent authorities counting the same quantity and required to match exactly, which is the same-fact-twice test rather than assorted findings."}
+{"id":"c019","pick":"Derivation","why":"The final level folds down a graded scale by caps so nobody asserts it, rather than being measured (Evidence)."}
+{"id":"c020","pick":"Derivation","why":"A certification arrived at by starting high and dropping a level per flagged element — capped folding down a scale, not a measured number."}
+{"id":"c021","pick":"Provenance","why":"First published, last changed, and the build behind what you are reading — the record behind the work rather than a pasteable reference (Citation)."}
+{"id":"c022","pick":"Provenance","why":"Commit, dataset version and sign-off date date the report's claims; it is the build record, not something a reader cites (Citation)."}
+{"id":"c023","pick":"Citation","why":"A pasteable reference so someone can cite this published object in their own paper, rather than the build record behind it (Provenance)."}
+{"id":"c024","pick":"Citation","why":"A copyable reference in bibliography formats — letting someone cite you, not showing what the work was built from (Provenance)."}
+{"id":"c025","pick":"Refusal","why":"The system is declining to act correctly and should read as a deliberate decision, not an unresolved matter (Question) or an error."}
+{"id":"c026","pick":"Refusal","why":"A designed decline showing what was asked, what was available, and the rule that stopped it — a refusal, not an open question."}
+{"id":"c027","pick":"Question","why":"Nobody is declining anything; the matter is genuinely unresolved and printed at full size rather than buried, which is the Question test."}
+{"id":"c028","pick":"Question","why":"An unresolved matter printed at full size at the chapter's end; it does not open the next chapter's door, so not Connection."}
+{"id":"c029","pick":"Variants","why":"Physically present alternatives of one identity, with a designed refusal for the absent RAW — one identity's forms, not two interpretations (Comparison)."}
+{"id":"c030","pick":"Variants","why":"Three stocked cuts of one garment plus a designed refusal for the discontinued fourth, rather than an empty slot or a comparison of interpretations."}
+{"id":"c031","pick":"Ladder","why":"Each rung is closed by its own criterion, in order, with none skippable — governing what may happen next rather than recording what happened (Timeline)."}
+{"id":"c032","pick":"Ladder","why":"Phases gated by named endpoints that must close before the next may open — prerequisite governance, not a dated history."}
+{"id":"c033","pick":"Anatomy","why":"One object cut open with every layer labelled and nothing behind a click, rather than taken apart step by step by the reader (Decomposition)."}
+{"id":"c034","pick":"Anatomy","why":"A labelled section with all layers visible at once; disclosure is simultaneous, not reader-paced (Decomposition)."}
+{"id":"c035","pick":"Decomposition","why":"The reader controls the pace of taking the dish apart; if the parts arrived on their own it would be Unfolding."}
+{"id":"c036","pick":"Decomposition","why":"A whole broken into its parts and the assembling rule, explicitly advanced by the reader rather than performing itself (Unfolding)."}
+{"id":"c037","pick":"ByteMap","why":"On-screen width means actual field width in the artifact, which is the physical-layout-to-scale test rather than a labelled cutaway (Anatomy)."}
+{"id":"c038","pick":"ByteMap","why":"A physical layout drawn to scale, each region as wide as it really is, rather than a labelled anatomy of parts."}
+{"id":"c039","pick":"Lens","why":"One subject at three depths on one URL — explanation, working object, and statute clause — which is registers of one explanation, not parts of one object (Anatomy)."}
+{"id":"c040","pick":"Lens","why":"Same dish at several depths on one URL with a remembered preference; the choices are registers of one subject rather than alternative stocked forms (Variants)."}
+{"id":"c041","pick":"ExpertField","why":"A large field where each input lights only a small subset and the rest stay dormant, which is the defining ExpertField behaviour rather than a routing path (FollowReveal)."}
+{"id":"c042","pick":"ExpertField","why":"Hundreds of specialists with only a handful waking per question — most stays dormant and which part activates depends on the input."}
+{"id":"c043","pick":"Gating","why":"A stream is widened into many phrasings, judged, and compressed back to one — the argument lives in the widths, unlike Compilation where distinct inputs merge into a new whole."}
+{"id":"c044","pick":"Gating","why":"Same expand-judge-compress shape applied to applicants; the pool is deliberately widened and narrowed rather than many separate inputs fusing into one output."}
+{"id":"c045","pick":"Terminal","why":"There is a real executor answering queries live, not a recording, which would make it a Film."}
+{"id":"c046","pick":"Terminal","why":"A prompt with scrollback returning results from the actual index is a live query surface rather than a played recording."}
+{"id":"c047","pick":"FollowReveal","why":"Each link names the relation that brought it there, which is the path's shape — not just the doors out of a chapter, which would be Connection."}
+{"id":"c048","pick":"FollowReveal","why":"A replayed trail where every hop is labelled with why it follows is the path between connected ideas, not an exit link."}
+{"id":"c049","pick":"Comparison","why":"The reader drags between two interpretations of one object, so the pace belongs to them rather than to a performed swap."}
+{"id":"c050","pick":"Comparison","why":"Two readings of one product with the reader moving between them is reader-paced interpretation, not a self-performing Transformation."}
+{"id":"c051","pick":"Transformation","why":"It performs itself as the reader arrives and explicitly never dissolves one state into the other — a staged swap, not a reader-dragged Comparison."}
+{"id":"c052","pick":"Transformation","why":"Two states of one balance sheet changing on their own when scrolled into view is performed rather than reader-operated."}
+{"id":"c053","pick":"Unfolding","why":"The parts arrive on their own as the reader watches, rather than the reader controlling the pace, which would be Decomposition."}
+{"id":"c054","pick":"Unfolding","why":"Components appear in sequence without being clicked, so it is performed rather than operated."}
+{"id":"c055","pick":"Compilation","why":"Twelve inputs lose their separateness in a single dossier, unlike Procession where one thing passes through stages and stays itself."}
+{"id":"c056","pick":"Compilation","why":"Many raw responses merge into one published figure and stop being separable, which is compilation rather than a single object's journey."}
+{"id":"c057","pick":"Procession","why":"It is the same parcel at the end, having been somewhere, rather than many inputs fusing into one."}
+{"id":"c058","pick":"Procession","why":"One manuscript passes through every stage in order and remains itself at the end."}
+{"id":"c059","pick":"Magnitude","why":"Each step is ten times bigger and rescales the world — powers of ten rather than a bar chart or a staged journey."}
+{"id":"c060","pick":"Magnitude","why":"Zooming out an order of magnitude at a time is a scale nobody can hold in their head, not a throughput constraint."}
+{"id":"c061","pick":"Channel","why":"The fixed-diameter pipe is the constraint and the whole story, so the conduit rather than the quantity is the subject."}
+{"id":"c062","pick":"Channel","why":"A fixed number of lines caps throughput as demand rises — capacity as conduit, not a matter of scale."}
+{"id":"c063","pick":"Quantisation","why":"Values snapped onto a sixteen-colour lattice with the loss itself as the subject rather than a claim about it."}
+{"id":"c064","pick":"Quantisation","why":"Continuous salary data snapped into five bands, with what falls between them being the loss on display."}
+{"id":"c065","pick":"Film","why":"A real two-minute film exists and is being played in the flow of the chapter."}
+{"id":"c066","pick":"Film","why":"An actual recorded walkthrough is played inside the article, and a recording of something is a Film rather than a live Terminal."}
+{"id":"c067","pick":"Connection","why":"One sentence raising the next chapter plus links out is the chapter's exit, not the labelled shape of a path."}
+{"id":"c068","pick":"Connection","why":"It points at the next pages with a line explaining why, which is the doors out of the chapter rather than a traced route."}
+{"id":"c069","pick":"Timeline","why":"Every line carries a date and records what happened, rather than governing what may happen next as a Ladder would."}
+{"id":"c070","pick":"Timeline","why":"Entry-by-entry history with a year on each line, belonging to the subject rather than to one published object's record."}
+{"id":"t001","pick":"Statement","why":"It owes no evidence and is where the argument turns — the quotable line — rather than a testable belief needing a status mark."}
+{"id":"t002","pick":"Claim","why":"It could be shown false and the reader should see it is not yet settled, so it needs a status — unlike a Statement, which owes nothing."}
+{"id":"t003","pick":"Observation","why":"It reports what the recordings show and explicitly defers what it means to the next section, stopping short of arguing."}
+{"id":"t004","pick":"Agreement","why":"Two independently derived values must be identical and a mismatch is a named failure, rather than different facts as Evidence would be."}
+{"id":"t005","pick":"Evidence","why":"Four separate findings including ones that refuted expectations are the receipts behind a claim, not the same fact checked twice."}
+{"id":"t006","pick":"Comparison","why":"One report read two ways with the reader moving at their own speed is reader-paced interpretation, not registers of one explanation on one URL."}
+{"id":"t007","pick":"Transformation","why":"Two states of one landscape performing the change on their own and resting on a designed final state, rather than a reader-dragged Comparison."}
+{"id":"t008","pick":"Decomposition","why":"The reader clicks through each stage at their own pace, controlling the take-apart, rather than watching parts arrive."}
+{"id":"t009","pick":"Unfolding","why":"Identical props to Decomposition, but the components arrive by themselves as the section scrolls — the reader watches rather than operates."}
+{"id":"t010","pick":"Answer","why":"It is the question as a customer would type it with a liftable short paragraph beneath, rather than a claim at display size."}
+{"id":"t011","pick":"Excerpt","why":"The words are someone else's contract prose reproduced verbatim, and prose rather than code keeps it out of Snippet."}
+{"id":"t012","pick":"Snippet","why":"It is code reproduced exactly as run, where paraphrasing would be a lie."}
+{"id":"t013","pick":"Refusal","why":"The page is declining to assert deliberately and correctly, rather than leaving an unresolved matter open as a Question does."}
+{"id":"t014","pick":"Question","why":"Nobody is declining anything — the matter is genuinely unresolved and printed at full size instead of footnoted."}
+{"id":"t015","pick":"Provenance","why":"It dates and versions this one published document rather than narrating the policy area's history, which would be Timeline."}
+{"id":"t016","pick":"Timeline","why":"Every entry is a dated event in the subject's history, not the record behind a single published object."}
+{"id":"t017","pick":"Ladder","why":"Each stage is a gate closed by its own criterion in order with none skippable, which governs what may happen next rather than recording what happened."}
+{"id":"t018","pick":"Procession","why":"One object stays itself through every stage in order, unlike Compilation where inputs lose their separateness."}
+{"id":"t019","pick":"Anatomy","why":"One object is cut open with all its regions labelled and everything disclosed at once, rather than taken apart step by step."}
+{"id":"t020","pick":"ByteMap","why":"Drawn width on screen equals actual field width in the artifact, which is the scale-fidelity test rather than a labelled cutaway."}
+{"id":"t021","pick":"Citation","why":"It is the reference to a published object someone can quote in their own work, not the build record behind it."}
+{"id":"t022","pick":"Comparison","why":"Two interpretations of one object with a control the reader drags, rather than a self-performing staged swap."}
+{"id":"t023","pick":"Variants","why":"These are physically present alternatives of one identity and the absent fourth deserves a designed refusal."}
+{"id":"t024","pick":"Channel","why":"The constraint is the conduit itself — the road's fixed capacity — rather than a scale or a snapped lattice."}
+{"id":"t025","pick":"Magnitude","why":"Each arrival rescales the world by powers of a thousand, which is the unholdable-scale test rather than throughput against capacity."}
+{"id":"t026","pick":"Compilation","why":"Many inputs lose their separateness in the final sauce, unlike Procession where one thing stays itself."}
+{"id":"t027","pick":"Lens","why":"The guide, the tool and the legal text are registers of one subject on a single URL, not parts of one object."}
+{"id":"t028","pick":"Hero","why":"It opens the room, names which room it is, and is the first thing on the page."}
+{"id":"t029","pick":"Gating","why":"The argument lives in the widths — generate wide, judge candidate by candidate, compress survivors — rather than in inputs merging."}
+{"id":"t030","pick":"Derivation","why":"The final figure folds down a graded scale by caps so nobody asserts it, rather than being measured."}
+{"id":"a001","pick":"Evidence","why":"It is the checkable findings behind a claim with per-row provenance, not the belief itself."}
+{"id":"a002","pick":"Claim","why":"The sentence could be shown false and needs a status mark, which outweighs its role as a turn in the argument."}
+{"id":"a003","pick":"Unfolding","why":"The parts arrive on their own as the reader scrolls — watching, not operating at their own chosen pace."}
+{"id":"a004","pick":"Excerpt","why":"The words are the regulator's verbatim and keep their own source and trims, rather than being a paragraph written for the asker."}
+{"id":"a005","pick":"Refusal","why":"It is the system declining to assert, correctly and by design, rather than an unresolved open matter."}
+{"id":"a006","pick":"Timeline","why":"It records dated approvals that already happened, whereas Ladder would govern what may happen next."}
+{"id":"a007","pick":"NONE","why":"An answer plus its supporting passage plus a confidence value is a composite output, and no single vocabulary form covers all three registers at once."}
+{"id":"a008","pick":"Agreement","why":"The same total derived by independent authorities must be identical and the mismatch is the named failure."}
+{"id":"a009","pick":"Lens","why":"Summary, mechanism and raw data are depths of one explanation on one subject, not parts of an object."}
+{"id":"a010","pick":"Procession","why":"A claim passes through the insurer's stages in order as the same claim, rather than each stage gating the next by a closed criterion."}
+{"id":"a011","pick":"Statement","why":"It is the quotable line the room is about, printed at display size, without owing evidence or a status mark."}
+{"id":"a012","pick":"NONE","why":"A flat catalogue of eight peer promises is neither one object cut open nor a set of alternatives of one identity, so no form fits."}
+{"id":"n001","pick":"NONE","why":"A shopping cart is ordinary transactional UI, not any assertion, evidence, or explanatory form in this vocabulary."}
+{"id":"n002","pick":"NONE","why":"A login screen is application chrome with nothing being asserted, shown, or explained."}
+{"id":"n003","pick":"NONE","why":"Grouped toggles are a settings interface, not an anatomy or any other form here."}
+{"id":"n004","pick":"NONE","why":"A sortable paginated data grid is a UI control surface, not evidence marshalled behind a claim."}
+{"id":"n005","pick":"NONE","why":"A constrained date picker is an input widget, with no assertion or demonstration involved."}
+{"id":"n006","pick":"NONE","why":"A transient success toast is interface feedback, not a statement or an animated demonstration."}
+{"id":"n007","pick":"NONE","why":"Pricing tiers are commercial UI; Variants concerns physically present forms of one identity, not purchase options."}
+{"id":"n008","pick":"NONE","why":"A progress bar reports position in a flow rather than governing gated steps as a Ladder does."}
+{"id":"n009","pick":"NONE","why":"A clustering pin map is a navigational UI, not a to-scale layout or any explanatory form here."}
+{"id":"n010","pick":"NONE","why":"A live threaded chat is a messaging interface, not an excerpt, terminal, or any vocabulary form."}
+{"id":"n011","pick":"NONE","why":"A draggable month calendar is a scheduling tool, not a dated history told in order."}
+{"id":"n012","pick":"NONE","why":"A file uploader with progress is an input control, not a demonstration of something happening as an argument."}
