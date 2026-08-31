@@ -17,7 +17,7 @@
    "id": "readme#3",
    "source": "the library README",
    "heading": "The three modes",
-   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, so the lists below are prose, and the manifest is\nthe evidence.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n`Hero · Statement · Observation · Claim · Evidence · Question · Timeline ·\nConnection · Refusal · Excerpt`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n`Anatomy · Decomposition · ExpertField · Comparison · Variants · Ladder ·\nAgreement · Derivation · ByteMap · FollowReveal · Terminal · Gating ·\nProvenance · Citation`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop where a scrolling reader\nmust never find it finished. Never a crossfade between two physical forms\nof one thing — staged swaps only.\n`Film · Transformation · Unfol"
+   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, so the lists below are prose, and the manifest is\nthe evidence.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n`Hero · Statement · Observation · Claim · Evidence · Question · Timeline ·\nConnection · Refusal · Excerpt`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n`Anatomy · Decomposition · ExpertField · Comparison · Variants · Ladder ·\nAgreement · Derivation · ByteMap · FollowReveal · Terminal · Gating ·\nProvenance · Citation · Lens`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop where a scrolling reader\nmust never find it finished. Never a crossfade between two physical forms\nof one thing — staged swaps only.\n`Film · Transformation "
   },
   {
    "id": "readme#4",
@@ -54,6 +54,12 @@
    "source": "the library README",
    "heading": "Provenance and citation — publishing as a design-system concern",
    "text": "A design system for AI has to model the objects an AI actually reasons\nover. Buttons and cards are not those objects; claims, evidence,\nsources and provenance are. Citation is where that stops being a thesis\nand becomes machinery, so HAUSE carries it: `cite.ts`, and two forms.\n\n**One record, four surfaces.** A `CitationRecord` — title, authors,\nfirst-publication date, version, canonical URL, and whatever\nidentifiers actually exist — projects onto all four places a\npublication has to exist at once, and can never drift between them:\n\n- **the page** — `Provenance`, one quiet line (published · revised ·\n  version · DOI where there is one) that expands to the full record:\n  the commit, the artifact hash, the archive record, the dated history\n  of how the work came to be said.\n- **the export** — `Citation`, the reference in the formats people\n  paste. Three, not six: BibTeX for LaTeX, APA for prose, CSL-JSON\n  because every reference manager turns it into the other three hundred.\n- **the head** — `citationMeta()` emits `citation_*` tags, which is how\n  Zotero, Scholar and every \"add to library\" button read a page without\n  being told anything about your site. Spread it into Next's\n  `metadata.other`.\n- **the graph** — `citationLd()` in `seo.ts`, the same record said in\n  schema.org, with identifiers as PropertyValues.\n\n**Two levels, one system.** Everything substantive is *citable by"
+  },
+  {
+   "id": "readme#10",
+   "source": "the library README",
+   "heading": "Depth is a design problem, not a navigation problem",
+   "text": "Technical writing keeps splitting one subject into a tutorial and a\nreference, then asking the reader to guess which one holds their answer.\nThe `Lens` instrument refuses the split: one concept, one URL, several\ndepths — **LEARN** what it means, **INSPECT** the real object, **SPEC**\nthe words that govern it — with the reader's chosen depth remembered\nacross pages and written into the fragment, so a reader who thinks in\nclauses stays in clauses and can link someone straight to the depth they\nmeant.\n\nEvery panel stays in the DOM. Depth is disclosure, not content gating —\nwhich is also why the normative text is legible to a crawler whether or\nnot anyone clicked the tab, and why a reader with no JavaScript still\nlands on a complete first depth rather than an empty frame."
   },
   {
    "id": "manifest#Hero",
@@ -204,6 +210,12 @@
    "source": "the manifest",
    "heading": "Provenance — instrument",
    "text": "Provenance is a instrument. The publication record beneath the page — dates, version, identifiers, history — disclosed on demand, absent where nothing is registered. Originated in vindex3 · citing the specification (2026-08-31)."
+  },
+  {
+   "id": "manifest#Lens",
+   "source": "the manifest",
+   "heading": "Lens — instrument",
+   "text": "Lens is a instrument. One concept at several depths — the explanation, the object, the clause — on one URL, with the reader's depth remembered. Originated in vindex3 · representation (2026-08-31)."
   },
   {
    "id": "manifest#Citation",

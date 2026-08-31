@@ -14,6 +14,11 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 import { TerminalSpecimen } from "@/components/TerminalSpecimen";
 import { Gating } from "@chrishayuk/hause/components/forms/Gating";
+import { Lens } from "@chrishayuk/hause/components/forms/Lens";
+import { Excerpt } from "@chrishayuk/hause/components/forms/Excerpt";
+import { Observation } from "@chrishayuk/hause/components/forms/Observation";
+import { Answer } from "@chrishayuk/hause/components/forms/Answer";
+import { doctrine } from "@/data/doctrine";
 import { Provenance } from "@chrishayuk/hause/components/forms/Provenance";
 import { Citation } from "@chrishayuk/hause/components/forms/Citation";
 import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
@@ -23,6 +28,9 @@ export const metadata: Metadata = {
 	alternates: { canonical: "/instruments" },
 	description: "The interactive forms — understanding through manipulation, always with a text fallback.",
 };
+
+/** The doctrine the SPEC depth quotes — verbatim from the library README, never retyped. */
+const LEGIBILITY = doctrine("Machine legibility");
 
 export default function InstrumentsPage() {
 	return (
@@ -174,6 +182,55 @@ export default function InstrumentsPage() {
 					{ chip: "SHIP", title: "Bring it back home.", text: "What survives is compressed to the measure the piece must hold — and it reads inevitable, because everything else was tried.", width: "narrow", label: "the paragraph that ships" },
 				]}
 				fallback="Expand, judge, compress. The form's widths carry the argument; the content is the caller's — on vindex3.org these stages are a model's gate, up, and down projections and the payoff lines are container addresses."
+			/>
+
+			<Specimen name="Lens" mode="instrument" note="One concept, one URL, three depths — the explanation, the object, and the words that govern it. The chosen depth is remembered across pages and written into the fragment; every panel stays in the DOM, so the normative text is legible whether or not the tab was clicked. Built for vindex3.org's representation chapter, where LEARN, INSPECT and SPEC are prose, a live instrument, and the ABI clause itself." />
+			<Lens
+				kicker="MACHINE LEGIBILITY — THREE DEPTHS"
+				concept="Machine legibility"
+				caption="The same subject at the depth you want it: what it means, the form that does it, and the doctrine in the library's own words."
+				depths={[
+					{
+						id: "learn",
+						label: "LEARN",
+						hint: "what it means",
+						content: (
+							<Observation
+								label="LEGIBILITY IS PART OF THE GRAMMAR"
+								text="A design system for AI cuts both ways: models compose answers from the forms, and machines — crawlers, answer engines, agent browsers — have to be able to read what the forms say. So the library carries it rather than each site bolting it on: an answer-first form with a stable anchor, structured data projected from the records a page already holds, ARIA state on every instrument, and nothing that lives only inside an animation."
+							/>
+						),
+					},
+					{
+						id: "inspect",
+						label: "INSPECT",
+						hint: "the form that does it",
+						content: (
+							<Answer
+								id="what-is-machine-legibility"
+								question="What is machine legibility, in a design system?"
+								answer="It is the discipline of making a designed page readable by machines without changing what a person sees: the question asked the way people ask it, answered in one lift-able paragraph with a stable anchor; JSON-LD projected from the same records the forms render; query-shaped titles above designed headings; ARIA state on every instrument. The test travels with the install — strip the page to text, and it should still answer the question it was designed to answer."
+							/>
+						),
+					},
+					{
+						id: "spec",
+						label: "SPEC",
+						hint: "the doctrine, verbatim",
+						content: (
+							<section className="hause-grid">
+								<div className="col-span-12 md:col-start-2 md:col-span-9">
+									<Excerpt
+										source={LEGIBILITY.source}
+										heading={LEGIBILITY.heading}
+										text={LEGIBILITY.text}
+										href="https://github.com/chrishayuk/hause#machine-legibility--seo-and-aeo-as-design-system-concerns"
+									/>
+								</div>
+							</section>
+						),
+					},
+				]}
 			/>
 
 			<Specimen name="Provenance" mode="instrument" note="The publication record beneath a page: one quiet evidence line at rest — published, revised, version, and a DOI only where one has been registered — expanding to the identifiers and the dated history. The specimen is this site's own record, and there is no DOI in it because none exists." />

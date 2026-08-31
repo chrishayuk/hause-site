@@ -1,6 +1,7 @@
 import type { CitationRecord } from "@chrishayuk/hause/cite";
 import type { ProvenanceEvent } from "@chrishayuk/hause/components/forms/Provenance";
 import { formCount } from "@chrishayuk/hause/manifest";
+import { buildIdentifiers } from "./build";
 
 /**
  * THE BOOK'S OWN RECORD.
@@ -28,6 +29,8 @@ export const HAUSE_RECORD: CitationRecord = {
 	independence: "Published independently by Chris Hay.",
 	identifiers: [
 		{ label: "repository", value: "github.com/chrishayuk/hause", href: "https://github.com/chrishayuk/hause" },
+		// What produced the page you are reading — present only in a deploy.
+		...buildIdentifiers(),
 		{ label: "forms held", value: String(formCount()) },
 	],
 };

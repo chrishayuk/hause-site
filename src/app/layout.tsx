@@ -6,6 +6,7 @@ import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { Analytics } from "@chrishayuk/hause/components/Analytics";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
+import { buildNote } from "@/data/build";
 
 const fraunces = Fraunces({
 	variable: "--font-fraunces",
@@ -66,7 +67,7 @@ export default function RootLayout({
 				<SiteFooter
 					brand="HAUSE"
 					tagline="A design system for AI — typed visual forms an AI can compose answers from."
-					note="Nothing enters the library without a real page that needed it first."
+					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
 					groups={[
 						{
 							label: "THE BOOK",

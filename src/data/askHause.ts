@@ -409,6 +409,17 @@ const RECOMMENDATIONS: {
 		snippet: "<ExpertField totalUnits={36} scenarios={[…]} />",
 	},
 	{
+		keywords: ["depth", "tutorial", "reference", "beginner", "advanced", "progressive disclosure", "learn and spec", "two audiences"],
+		form: "Lens",
+		because: ["One concept, one URL, several depths — the explanation, the object, and the clause that governs it", "The reader's chosen depth is remembered across pages and written into the fragment, so it can be linked", "Every panel stays in the DOM: depth is disclosure, never content gating"],
+		not: [
+			{ form: "Comparison", reason: "two interpretations argue; depths are the same subject held at different resolutions" },
+			{ form: "Anatomy", reason: "a cutaway discloses parts of one object, not registers of one explanation" },
+		],
+		usedBy: "vindex3.org · representation",
+		snippet: "<Lens concept=\"…\" depths={[{ id: \"learn\" }, { id: \"inspect\" }, { id: \"spec\" }]} />",
+	},
+	{
 		keywords: ["cite", "citation", "bibtex", "bibliography", "reference", "apa", "csl"],
 		form: "Citation",
 		because: ["The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON", "Plain is selected by default, so the citation is in the served HTML before any JavaScript runs", "Every string is produced from one record, so the page cannot disagree with the head or the graph"],
