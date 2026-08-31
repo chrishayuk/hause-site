@@ -65,3 +65,32 @@ material neither was tuned against, not evidence of generality.
 ROUTING-1 and CHOOSING-1 are not rerun, and nothing is adjusted after
 these cases are scored. Findings change the records; the changed records
 are measured on ROUTING-3.
+
+---
+
+## Addendum — the rule fired, and was not executed
+
+**Written:** 2026-08-31, after scoring, before any code changed.
+
+The retirement rule is satisfied on ROUTING-2's material: act-only
+correct (3) is at least act-plus-scaffold (2), and "act wrong · scaffold
+correct" is zero. The scaffolding has not been removed.
+
+The reason is a defect in the rule rather than a change of mind about
+the architecture. The rule measures one set. The frozen ask-coverage
+gate holds two selection questions the records still cannot answer — "I
+have six irreversible stages" (Ladder) and "how do I show a claim is
+proven" (Evidence) — and the keyword list is what answers them today. On
+ROUTING-2's twelve cases the list happened to contribute nothing, which
+is not the same as it doing nothing.
+
+Retiring it on that basis would have obeyed the letter of a rule I wrote
+and shipped a regression. So: the rule is recorded as fired, the outcome
+is recorded as overridden, and the reason is published rather than
+quietly resolved. The list goes when enriched records answer those two
+cases without it, and ROUTING-3 is what measures that.
+
+**The rule is amended for future use, before the next eval rather than
+after it:** scaffolding is removable when the records carry its recall
+on fresh material *and* every case it currently rescues elsewhere is
+answered without it.

@@ -117,6 +117,11 @@ export default function Routing2Page() {
 				text={`Kind identification fell to ${summary.kindCorrect} of ${n} from ROUTING-1's 58, and every miss is the same shape: "Draw our 48-byte record…", "Show one passport…", "We keep three encodings…". The router recognises an authoring request by its first-person framing, so an imperative or a declarative slides into the system space. That is a record problem too — what a selection request is has been written as a pattern rather than stated.`}
 			/>
 
+			<Observation
+				label="THE RULE FIRED, AND THE GUN WAS NOT FIRED"
+				text="The retirement rule was fixed before these cases existed and it is satisfied: on this material the scaffolding rescued nothing and contradicted a correct record once. It has not been removed. The frozen coverage gate contains two selections the records still cannot make — six irreversible stages is a Ladder, and showing a claim is proven wants Evidence — and the list is what answers them today. A rule measured on one set can retire something still doing work on another, and obeying the letter of it would have shipped a regression on the strength of a set where the scaffolding happened to contribute nothing. So the rule is recorded as fired, the scaffolding stays for now, and it goes when the enriched records answer those two without it — which is ROUTING-3's job, not this page's."
+			/>
+
 			<Question
 				status="OPEN"
 				text="What is present in these phrasings that the records fail to state?"
