@@ -668,27 +668,111 @@ function problemBlocks(p: Problem): Block[] {
 	];
 }
 
+/**
+ * THE ROUTER — what kind of answer is being asked for.
+ *
+ * CHOOSING-1 found the defect this exists to fix: twenty-six cases
+ * asking which form to use were answered with a problem chapter,
+ * because the problem records carry the words people use for a failure
+ * — cite, documentation, certain, reference — and those are the same
+ * words people use describing content that needs a form. Resolving by
+ * strongest lexical overlap across every record at once cannot tell
+ * those apart, because the difference is not in the words.
+ *
+ * So the kind of answer is decided first, and each kind resolves inside
+ * its own space:
+ *
+ *   select     which form should carry this?      → the grammar, the recommendations
+ *   form       what is this form, what does it do? → the manifest record
+ *   problem    why does this keep going wrong?     → the problem records
+ *   history    where did this come from?           → the manifest's origins
+ *   system     what is HAUSE, how does it work?    → the interrogations
+ *
+ * Fallbacks are ordered rather than absent: a kind that finds nothing
+ * hands on rather than dead-ending, and only the end of the chain
+ * refuses.
+ */
+export type AnswerKind = "select" | "form" | "problem" | "history" | "system";
+
+const ASKS_ORIGIN = /(why does .* exist|why does hause have|why is there a|where did .* come from|origin of|history of|who made|what caused|came from|most recent|newest|latest|no recorded|without a recorded)/;
+const ASKS_TO_SELECT = /(which form|what form|form should|form do i|(i|we) (need|want|have|would like|am trying|are trying)|how (do|should) (i|we) (show|present|render|display|lay ?out|mark|communicate|say|handle|express)|what should (i|we) use|how do i choose|pick a form)/;
+const ASKS_ABOUT_A_FORM = /(what is|what's|whats|what does|explain|tell me about|when (do|should) (i|we) use|how does)/;
+const ASKS_ABOUT_A_PROBLEM = /(why (do|does|is|are|can't|cannot)|what(?:'s| is) wrong|keeps? (going|getting)|problem with|breaks?|fails?)/;
+
+export function classify(question: string): AnswerKind {
+	const ql = question.toLowerCase();
+	const named = FORM_MANIFEST.find((f) => new RegExp(`\\b${f.name.toLowerCase()}\\b`).test(ql));
+
+	// Origin questions are about a form's history, whether or not they name one.
+	if (ASKS_ORIGIN.test(ql)) return "history";
+	// A named form plus "what is it" is a request to explain that form —
+	// but "which form should I use for X" that happens to contain a form
+	// name is still a selection.
+	if (named && ASKS_ABOUT_A_FORM.test(ql) && !ASKS_TO_SELECT.test(ql)) return "form";
+	// Authoring intent: somebody has content and needs it carried.
+	if (ASKS_TO_SELECT.test(ql)) return "select";
+	// A failure being described or diagnosed.
+	if (ASKS_ABOUT_A_PROBLEM.test(ql)) return "problem";
+	return "system";
+}
+
+/** What a form is, answered from the manifest record rather than from prose. */
+function formBlocks(name: string): Block[] {
+	const f = FORM_MANIFEST.find((x) => x.name === name);
+	if (!f) return [];
+	const act = actFor(name);
+	return [
+		{ kind: "statement", text: f.line },
+		{
+			kind: "observation",
+			label: `A ${f.mode.toUpperCase()}`,
+			text: `${act ? `${act.doing}. The test that decides it: ${act.test} ` : ""}${f.because ?? ""}`.trim() || f.line,
+		},
+		{
+			kind: "connection",
+			text: "The form's own page, the failures it closes, and where it came from.",
+			links: [
+				{ href: `/forms/${formSlug(name)}`, label: `${name.toUpperCase()} — THE FORM'S PAGE →` },
+				...problemsForForm(name).map((p) => ({ href: `/problems/${p.slug}`, label: `SOLVES — ${p.title} →` })),
+				{ href: "/choosing", label: "THE SELECTION GRAMMAR →" },
+			],
+		},
+	];
+}
+
 export function askHause(question: string): AskAnswer {
 	const ql = question.toLowerCase();
-	for (const entry of INTERROGATIONS) {
-		if (entry.patterns.some((p) => ql.includes(p))) return { id: entry.id, blocks: entry.blocks };
-	}
-	const genealogy = genealogyBlocks(question);
-	if (genealogy) return { id: "genealogy", blocks: genealogy };
+	const kind = classify(question);
 
-	const problem = problemMatch(question);
-	if (problem) return { id: `problem-${problem.slug}`, blocks: problemBlocks(problem) };
-
-	const toks = ql.split(/[^a-z0-9/]+/).filter((t) => t.length > 1 && !STOP.has(t));
-	let best: { r: (typeof RECOMMENDATIONS)[number]; score: number } | null = null;
-	for (const r of RECOMMENDATIONS) {
-		let score = 0;
-		for (const kw of r.keywords) {
-			if (kw.includes(" ") ? ql.includes(kw) : toks.includes(kw)) score += kw.includes(" ") ? 3 : 2;
+	const interrogation = () => {
+		for (const entry of INTERROGATIONS) {
+			if (entry.patterns.some((p) => ql.includes(p))) return { id: entry.id, blocks: entry.blocks };
 		}
-		if (score > 0 && (!best || score > best.score)) best = { r, score };
-	}
-	if (best) {
+		return null;
+	};
+	const history = () => {
+		const g = genealogyBlocks(question);
+		return g ? { id: "genealogy", blocks: g } : null;
+	};
+	const problem = () => {
+		const p = problemMatch(question);
+		return p ? { id: `problem-${p.slug}`, blocks: problemBlocks(p) } : null;
+	};
+	const namedForm = () => {
+		const f = FORM_MANIFEST.find((x) => new RegExp(`\\b${x.name.toLowerCase()}\\b`).test(ql));
+		return f ? { id: `form-${formSlug(f.name)}`, blocks: formBlocks(f.name) } : null;
+	};
+	const recommend = () => {
+		const toks = ql.split(/[^a-z0-9/]+/).filter((t) => t.length > 1 && !STOP.has(t));
+		let best: { r: (typeof RECOMMENDATIONS)[number]; score: number } | null = null;
+		for (const r of RECOMMENDATIONS) {
+			let score = 0;
+			for (const kw of r.keywords) {
+				if (kw.includes(" ") ? ql.includes(kw) : toks.includes(kw)) score += kw.includes(" ") ? 3 : 2;
+			}
+			if (score > 0 && (!best || score > best.score)) best = { r, score };
+		}
+		if (!best) return null;
 		const meta = rec(best.r.form);
 		return {
 			id: `recommend-${best.r.form}`,
@@ -712,9 +796,9 @@ export function askHause(question: string): AskAnswer {
 					],
 				},
 			],
-		};
-	}
-	return {
+		} as AskAnswer;
+	};
+	const refusal = (): AskAnswer => ({
 		id: "no-form",
 		blocks: [
 			{
@@ -726,8 +810,23 @@ export function askHause(question: string): AskAnswer {
 			{ kind: "statement", text: "If the idea is real, it may yet earn a form: build the chapter that cannot exist without it, and the ladder is waiting." },
 			{ kind: "connection", text: "What exists, one line each.", links: [{ href: "/forms", label: "THE HOLDINGS →" }] },
 		],
+	});
+
+	// Each kind resolves inside its own space first, then hands on.
+	const order: Record<AnswerKind, (() => AskAnswer | null)[]> = {
+		select: [interrogation, recommend, problem],
+		form: [namedForm, interrogation, recommend],
+		problem: [interrogation, problem, recommend],
+		history: [history, interrogation, namedForm],
+		system: [interrogation, history, problem, recommend],
 	};
+	for (const attempt of order[kind]) {
+		const answer = attempt();
+		if (answer) return answer;
+	}
+	return refusal();
 }
+
 
 export const ASK_SUGGESTIONS = [
 	"I need to compare three strategies",
