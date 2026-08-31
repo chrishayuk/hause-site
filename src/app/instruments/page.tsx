@@ -14,6 +14,9 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 import { TerminalSpecimen } from "@/components/TerminalSpecimen";
 import { Gating } from "@chrishayuk/hause/components/forms/Gating";
+import { Provenance } from "@chrishayuk/hause/components/forms/Provenance";
+import { Citation } from "@chrishayuk/hause/components/forms/Citation";
+import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
 
 export const metadata: Metadata = {
 	title: "Interactive Design Forms: The HAUSE Instruments",
@@ -172,6 +175,12 @@ export default function InstrumentsPage() {
 				]}
 				fallback="Expand, judge, compress. The form's widths carry the argument; the content is the caller's — on vindex3.org these stages are a model's gate, up, and down projections and the payoff lines are container addresses."
 			/>
+
+			<Specimen name="Provenance" mode="instrument" note="The publication record beneath a page: one quiet evidence line at rest — published, revised, version, and a DOI only where one has been registered — expanding to the identifiers and the dated history. The specimen is this site's own record, and there is no DOI in it because none exists." />
+			<Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite" />
+
+			<Specimen name="Citation" mode="instrument" note="The reference itself. Plain is selected by default, so the citation is in the served HTML before a line of JavaScript runs; BibTeX, APA and CSL-JSON sit behind tabs. Three formats, because CSL-JSON becomes the other three hundred." />
+			<Citation record={HAUSE_RECORD} kicker="CITE THIS SPECIMEN — AND THIS SITE" />
 
 			<Specimen name="FollowReveal" mode="instrument" note="A path through connected ideas, replayed at the hause stagger." />
 			<FollowReveal

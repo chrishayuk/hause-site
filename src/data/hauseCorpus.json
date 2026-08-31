@@ -1,5 +1,5 @@
 {
- "generated": "2026-08-30",
+ "generated": "2026-08-31",
  "passages": [
   {
    "id": "readme#1",
@@ -17,7 +17,7 @@
    "id": "readme#3",
    "source": "the library README",
    "heading": "The three modes",
-   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, so the lists below are prose, and the manifest is\nthe evidence.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n`Hero · Statement · Observation · Claim · Evidence · Question · Timeline ·\nConnection · Refusal · Excerpt`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n`Anatomy · Decomposition · ExpertField · Comparison · Variants · Ladder ·\nAgreement · Derivation · ByteMap · FollowReveal · Terminal · Gating`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop where a scrolling reader\nmust never find it finished. Never a crossfade between two physical forms\nof one thing — staged swaps only.\n`Film · Transformation · Unfolding · Compilation · Pro"
+   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, so the lists below are prose, and the manifest is\nthe evidence.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n`Hero · Statement · Observation · Claim · Evidence · Question · Timeline ·\nConnection · Refusal · Excerpt`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n`Anatomy · Decomposition · ExpertField · Comparison · Variants · Ladder ·\nAgreement · Derivation · ByteMap · FollowReveal · Terminal · Gating ·\nProvenance · Citation`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop where a scrolling reader\nmust never find it finished. Never a crossfade between two physical forms\nof one thing — staged swaps only.\n`Film · Transformation · Unfol"
   },
   {
    "id": "readme#4",
@@ -48,6 +48,12 @@
    "source": "the library README",
    "heading": "Machine legibility — SEO and AEO as design-system concerns",
    "text": "HAUSE is a design system for AI, and that cuts both ways: AIs compose\nanswers *from* the forms, and machines — crawlers, answer engines, agent\nbrowsers — must be able to *read* what the forms say. Legibility to\nmachines is not an afterthought bolted onto a site; it is part of the\ngrammar, carried by the library itself:\n\n- **The `Answer` form.** A natural-language question as a real heading and\n  a 40–100 word answer a reader or a machine can lift whole, with a stable\n  anchor so the exact question is citable — not just the page. It sits\n  beneath the editorial surface and says the plain thing plainly; the\n  beautiful heading keeps its job.\n- **`seo.ts` + `JsonLd`.** Builders that emit structured data from records\n  a site already holds — WebSite, TechArticle, BreadcrumbList, DefinedTerm\n  (a knowledge-graph entity, said in schema.org), SoftwareApplication,\n  QAPage. The crawlable answer can never drift from the rendered one,\n  because both project from the same record.\n- **Query-shaped `<title>`, designed headings.** The browser title says\n  what the page answers, in the words people search with; the visible\n  HAUSE heading stays exactly as designed. You get both, always.\n- **ARIA state on every instrument.** Agent browsers read `aria-pressed`,\n  `aria-expanded`, and labels to understand interactive interfaces — the\n  Terminal's DESIGNED|RAW|GRAPH tabs carry them, and every new"
+  },
+  {
+   "id": "readme#9",
+   "source": "the library README",
+   "heading": "Provenance and citation — publishing as a design-system concern",
+   "text": "A design system for AI has to model the objects an AI actually reasons\nover. Buttons and cards are not those objects; claims, evidence,\nsources and provenance are. Citation is where that stops being a thesis\nand becomes machinery, so HAUSE carries it: `cite.ts`, and two forms.\n\n**One record, four surfaces.** A `CitationRecord` — title, authors,\nfirst-publication date, version, canonical URL, and whatever\nidentifiers actually exist — projects onto all four places a\npublication has to exist at once, and can never drift between them:\n\n- **the page** — `Provenance`, one quiet line (published · revised ·\n  version · DOI where there is one) that expands to the full record:\n  the commit, the artifact hash, the archive record, the dated history\n  of how the work came to be said.\n- **the export** — `Citation`, the reference in the formats people\n  paste. Three, not six: BibTeX for LaTeX, APA for prose, CSL-JSON\n  because every reference manager turns it into the other three hundred.\n- **the head** — `citationMeta()` emits `citation_*` tags, which is how\n  Zotero, Scholar and every \"add to library\" button read a page without\n  being told anything about your site. Spread it into Next's\n  `metadata.other`.\n- **the graph** — `citationLd()` in `seo.ts`, the same record said in\n  schema.org, with identifiers as PropertyValues.\n\n**Two levels, one system.** Everything substantive is *citable by"
   },
   {
    "id": "manifest#Hero",
@@ -114,6 +120,12 @@
    "source": "the manifest",
    "heading": "Answer — statement",
    "text": "Answer is a statement. The question asked the way people ask it, answered first — one lift-able paragraph beneath the editorial surface, addressable by anchor. Originated in vindex3 · the legibility layer (2026-08-30)."
+  },
+  {
+   "id": "manifest#Snippet",
+   "source": "the manifest",
+   "heading": "Snippet — statement",
+   "text": "Snippet is a statement. A labeled block of code or terminal output, verbatim on the ink — the on-ramp form, promoted when two sites needed the same shape. Originated in hause.design · Use (2026-08-30)."
   },
   {
    "id": "manifest#Anatomy",
@@ -186,6 +198,18 @@
    "source": "the manifest",
    "heading": "Gating — instrument",
    "text": "Gating is a instrument. A stream widened into a working space, judged channel by channel, brought back home. Originated in vindex3 · the Anatomy (2026-08-29)."
+  },
+  {
+   "id": "manifest#Provenance",
+   "source": "the manifest",
+   "heading": "Provenance — instrument",
+   "text": "Provenance is a instrument. The publication record beneath the page — dates, version, identifiers, history — disclosed on demand, absent where nothing is registered. Originated in vindex3 · citing the specification (2026-08-31)."
+  },
+  {
+   "id": "manifest#Citation",
+   "source": "the manifest",
+   "heading": "Citation — instrument",
+   "text": "Citation is a instrument. The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON, all from one record. Originated in vindex3 · citing the specification (2026-08-31)."
   },
   {
    "id": "manifest#Transformation",

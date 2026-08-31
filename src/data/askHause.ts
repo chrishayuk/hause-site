@@ -13,7 +13,7 @@
  * No model call. A form the system does not have is never invented.
  */
 
-import { FORM_MANIFEST, formCount } from "@chrishayuk/hause/manifest";
+import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
 
 export type Block =
 	| { kind: "statement"; text: string }
@@ -180,7 +180,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		blocks: [
 			{ kind: "statement", text: "A performance plays itself: in-view start, a designed resting state, and never a crossfade between two physical forms of one thing — staged swaps only." },
 			{ kind: "observation", label: "THE DISCIPLINE", text: "Reduced motion and no-JS get the resting state, which must carry the whole point. REPLAY where the piece runs once; a gentle in-view loop where a scrolling reader must never find it finished. Loops are silent." },
-			{ kind: "connection", text: "Eight of them, performing.", links: [{ href: "/performances", label: "PERFORMANCES →" }] },
+			{ kind: "connection", text: `${formsByMode("performance").length} of them, performing.`, links: [{ href: "/performances", label: "PERFORMANCES →" }] },
 		],
 	},
 	{
@@ -188,7 +188,7 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		patterns: ["what is an instrument", "what's an instrument", "instruments do"],
 		blocks: [
 			{ kind: "statement", text: "An instrument is operated: understanding through manipulation, and every one carries an always-present text fallback so the point survives with the interaction removed." },
-			{ kind: "connection", text: "Twelve of them, operable.", links: [{ href: "/instruments", label: "INSTRUMENTS →" }] },
+			{ kind: "connection", text: `${formsByMode("instrument").length} of them, operable.`, links: [{ href: "/instruments", label: "INSTRUMENTS →" }] },
 		],
 	},
 	{
@@ -236,6 +236,30 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		blocks: [
 			{ kind: "statement", text: "Dark is the default environment — an editorial choice, not the OS preference. A viewer opts into light, and the choice persists." },
 			{ kind: "observation", label: "TWO ENVIRONMENTS, ONE IDENTITY", text: "Same voices, grid, motion and hierarchy; different atmosphere. There is deliberately no prefers-color-scheme switch: the default is authored, and the toggle is the reader's." },
+		],
+	},
+	{
+		id: "citation",
+		patterns: ["cite", "citation", "citable", "provenance", "doi", "bibtex", "reference manager", "zotero", "publish"],
+		blocks: [
+			{ kind: "statement", text: "Publishing is a design-system concern here: one record, projected onto four surfaces that cannot disagree." },
+			{
+				kind: "decomposition",
+				kicker: "ONE RECORD — FOUR SURFACES",
+				source: { label: "a CitationRecord", detail: "Title, authors, first publication date, version, canonical URL — and only the identifiers that actually exist." },
+				parts: [
+					{ label: "THE PAGE", detail: "Provenance: one quiet evidence line, expanding to the commit, the artifact hash, the archive record and the dated history." },
+					{ label: "THE EXPORT", detail: "Citation: the reference in the formats people paste. Plain, BibTeX, APA, CSL-JSON — three, because CSL-JSON becomes the rest." },
+					{ label: "THE HEAD", detail: "citationMeta(): the citation_* tags Zotero, Scholar and every add-to-library button read." },
+					{ label: "THE GRAPH", detail: "citationLd(): the same record said in schema.org, identifiers as PropertyValues." },
+				],
+				result: { label: "citable by default", detail: "No registration, no cost. A work worth defending can additionally become a registered publication — an immutable version plus a registered identifier." },
+			},
+			{ kind: "observation", label: "THE RULES ARE ONE RULE", text: "Published means first published: a revision sets revised, and never quietly moves the date, because the date is what a priority claim rests on. A substantive change is a new version, not a silent edit. And an identifier that has not been registered is absent — no placeholder DOI, no registration pending — exactly the discipline the manifest applies to an unrecorded origin." },
+			{ kind: "connection", text: "Both forms, operable — and the record they are printing is this site's own.", links: [
+				{ href: "/instruments", label: "THE SPECIMENS →" },
+				{ href: "/use", label: "THE FOUR SURFACES, IN CODE →" },
+			] },
 		],
 	},
 	{
@@ -385,6 +409,28 @@ const RECOMMENDATIONS: {
 		snippet: "<ExpertField totalUnits={36} scenarios={[…]} />",
 	},
 	{
+		keywords: ["cite", "citation", "bibtex", "bibliography", "reference", "apa", "csl"],
+		form: "Citation",
+		because: ["The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON", "Plain is selected by default, so the citation is in the served HTML before any JavaScript runs", "Every string is produced from one record, so the page cannot disagree with the head or the graph"],
+		not: [
+			{ form: "Provenance", reason: "for the record behind the work — dates, identifiers, history — rather than the reference to it" },
+			{ form: "Snippet", reason: "a citation is not a code block; it is a published object with a shape" },
+		],
+		usedBy: "hause.design · vindex3.org",
+		snippet: "<Citation record={RECORD} note=\"…\" />",
+	},
+	{
+		keywords: ["provenance", "authorship", "priority", "attribution", "published", "versioned", "timestamp", "audit"],
+		form: "Provenance",
+		because: ["One quiet line at rest — published, revised, version, DOI where one exists — expanding to the full record", "Identifiers pin the work to actual objects: a commit, an artifact hash, an archive record", "A claim that cannot be dated is a claim that cannot be defended"],
+		not: [
+			{ form: "Timeline", reason: "history as prose belongs in the chapter; provenance is the record beneath it" },
+			{ form: "Evidence", reason: "evidence measures the claim; provenance dates and identifies the work" },
+		],
+		usedBy: "vindex3.org · the specification's chapters",
+		snippet: "<Provenance record={RECORD} history={[…]} citeHref=\"#cite\" />",
+	},
+	{
 		keywords: ["video", "film", "movie", "recording"],
 		form: "Film",
 		because: ["A short film in the flow of a chapter — poster until it earns the play"],
@@ -456,5 +502,6 @@ export const ASK_SUGGESTIONS = [
 	"How do I show a claim is proven?",
 	"I have six irreversible stages",
 	"Where did Terminal come from?",
+	"How do I make a page citable?",
 	"What are you, HAUSE?",
 ];

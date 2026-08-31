@@ -6,7 +6,16 @@ import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { PaceDemo } from "@chrishayuk/hause/components/PaceDemo";
+import { Provenance } from "@chrishayuk/hause/components/forms/Provenance";
+import { Citation } from "@chrishayuk/hause/components/forms/Citation";
+import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
+import { citationLd } from "@chrishayuk/hause/seo";
+import { citationMeta } from "@chrishayuk/hause/cite";
 import { formCount } from "@chrishayuk/hause/manifest";
+import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
+
+/** The head surface of the book's own record — Zotero, Scholar and every "add to library" button read these. */
+export const metadata = { other: citationMeta(HAUSE_RECORD) };
 
 /**
  * The specimen book's front door: HAUSE exhibited in HAUSE. Every
@@ -140,6 +149,14 @@ export default function Home() {
 					</p>
 				</div>
 			</section>
+
+			<JsonLd data={citationLd(HAUSE_RECORD)} />
+			<Statement text="A page that states a claim should be referenceable as a published object, not as a URL someone hopes still resolves." />
+			<Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite" />
+			<Citation
+				record={HAUSE_RECORD}
+				note="The book cites itself with the two forms any consuming site gets. One record makes all four surfaces — this reference, the quiet line above it, the citation_* tags in the head, and the JSON-LD in the graph — so they cannot disagree about who wrote what, or when."
+			/>
 		</main>
 	);
 }
