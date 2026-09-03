@@ -1,6 +1,6 @@
 import type { CitationRecord } from "@chrishayuk/hause/cite";
 import type { ProvenanceEvent } from "@chrishayuk/hause/components/forms/Provenance";
-import { formCount } from "@chrishayuk/hause/manifest";
+import { formCount, HAUSE_LINE } from "@chrishayuk/hause/manifest";
 import { buildIdentifiers } from "./build";
 
 /**
@@ -25,7 +25,7 @@ export const HAUSE_RECORD: CitationRecord = {
 	url: "https://hause.design",
 	publisher: "hause.design",
 	kind: "software",
-	abstract: `A cinematic visual language for ideas, systems and explanations: ${formCount()} typed forms in three modes — statements a reader reads, instruments a reader operates, performances that play themselves — with machine legibility and provenance carried by the library rather than bolted onto each site.`,
+	abstract: `${HAUSE_LINE} ${formCount()} typed forms in three modes — statements a reader reads, instruments a reader operates, performances that play themselves — with machine legibility and provenance carried by the library rather than bolted onto each site.`,
 	independence: "Published independently by Chris Hay.",
 	identifiers: [
 		{ label: "repository", value: "github.com/chrishayuk/hause", href: "https://github.com/chrishayuk/hause" },

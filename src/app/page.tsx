@@ -4,7 +4,6 @@ import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
-import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { PaceDemo } from "@chrishayuk/hause/components/PaceDemo";
 import { Provenance } from "@chrishayuk/hause/components/forms/Provenance";
 import { Citation } from "@chrishayuk/hause/components/forms/Citation";
@@ -14,6 +13,8 @@ import { citationMeta } from "@chrishayuk/hause/cite";
 import { FORM_MANIFEST, formCount } from "@chrishayuk/hause/manifest";
 import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
 import { ContainerVersusAct } from "@/components/ContainerVersusAct";
+import { TheLoop } from "@/components/TheLoop";
+import { WhatYouGet } from "@/components/WhatYouGet";
 import { StartHere } from "@/components/StartHere";
 
 /** The head surface of the book's own record — Zotero, Scholar and every "add to library" button read these. */
@@ -23,6 +24,14 @@ export const metadata = { other: citationMeta(HAUSE_RECORD) };
  * The specimen book's front door: HAUSE exhibited in HAUSE. Every
  * specimen on this site is the real form rendering real copy — the
  * book cannot drift from the library, because it is the library.
+ *
+ * The order is the argument. The problem (containers), the idea (acts)
+ * on the same three sentences, the loop that puts a model upstream of
+ * the act, what you actually install and where it stops, and six forms
+ * to start with. Only then the modes, the voices, machine legibility,
+ * the secondary demonstrations, the deeper rules, and the route through
+ * the rest — because a first-time reader should not meet the grammar's
+ * sibling relationships before they have a reason to care.
  */
 export default function Home() {
 	return (
@@ -30,10 +39,14 @@ export default function Home() {
 			<Hero
 				kicker="HAUSE · A DESIGN SYSTEM FOR AI"
 				title="AI KEEPS CHOOSING CONTAINERS."
-				dek="Choose the communicative act, and the form follows from it. HAUSE's primitives are the things a system is trying to say — a claim, the evidence under it, an answer, a refusal — rather than the rectangles they arrive in."
+				dek="A model chooses the act. HAUSE gives it a form. Its primitives are the things a system is trying to say — a claim, the evidence under it, an answer, a refusal — rather than the rectangles they arrive in."
 			/>
 
 			<ContainerVersusAct />
+
+			<TheLoop />
+
+			<WhatYouGet />
 
 			<StartHere />
 
@@ -42,8 +55,12 @@ export default function Home() {
 				text="HAUSE is an AI-native semantic design system: a visual language in which intelligent systems choose the communicative act before they choose its form. Where most systems in that category make an existing component library readable by an agent, this one supplies the vocabulary a model selects from when it is deciding what to say."
 			/>
 
-			<Statement text="Structure is fixed. Atmosphere is variable." />
+			<Observation
+				label="THE THREE MODES"
+				text="Every form is one of three kinds, and the split was earned, not designed. Statements are prose in the three voices — the reader reads. Instruments are interactive — the reader operates them, and every one carries a plain-text fallback so the point survives with the interaction removed. Performances are cinematic — they play themselves, rest on a designed final state, and never crossfade between two physical forms of one thing."
+			/>
 
+			<Statement text="A mode gets built for a real chapter, never manufactured as a demo." />
 
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">
@@ -69,34 +86,6 @@ export default function Home() {
 				</div>
 			</section>
 
-			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
-
-			<Observation
-				label="THE BOUNDARY — WHAT THIS IS, AND WHAT IT LEAVES ALONE"
-				text="HAUSE is the semantic layer for what an intelligent interface needs to communicate. It does not replace transactional primitives such as buttons, inputs, tables, navigation or commerce mechanics, and does not try to. And an explanation is not only a dashboard or an instrument: it can be an answer, an argument, a comparison, a refusal, a piece of evidence, or a performance."
-			/>
-
-			<Statement text="A mode gets built for a real chapter, never manufactured as a demo." />
-
-			<PaceDemo />
-
-			<Refusal
-				kicker="THE STANDING REFUSAL — RENDERED BY THE Refusal FORM ITSELF"
-				title="NO GENERIC CARD KIT"
-				lines={["requested    Card", `available    ${formCount()} semantic forms, each with a name and a job`]}
-				principle="If you're about to add a Card, stop."
-			/>
-
-			<Observation
-				label="THE GRAMMAR UNDERNEATH"
-				text="Some forms are siblings across the modes: Comparison and Transformation make the same argument — one the reader drags, one the system performs; Decomposition and Unfolding likewise, with identical props. Underneath the catalogue sits a smaller grammar of semantic operations, and the mode is how the reader meets them: the same idea, read, operated, or watched."
-			/>
-
-			<Observation
-				label="THE THREE MODES"
-				text="Every form is one of three kinds, and the split was earned, not designed. Statements are prose in the three voices — the reader reads. Instruments are interactive — the reader operates them, and every one carries a plain-text fallback so the point survives with the interaction removed. Performances are cinematic — they play themselves, rest on a designed final state, and never crossfade between two physical forms of one thing."
-			/>
-
 			<Statement text="A design system for AI reads in both directions: AIs compose answers from the forms — and machines must be able to read what the forms say." />
 
 			<Answer
@@ -111,20 +100,34 @@ export default function Home() {
 				text="Not a plugin, not an afterthought: the browser title says what the page answers in the words people search with while the designed heading stays exactly as designed; JSON-LD projects from the same records the forms render, so the crawlable answer can never drift from the visible one; and answer-first blocks give every page a boringly clear semantic skeleton beneath the editorial surface. A page a search engine can quote is a page an answer engine can cite."
 			/>
 
+			<PaceDemo />
+
+			<Refusal
+				kicker="THE STANDING REFUSAL — RENDERED BY THE Refusal FORM ITSELF"
+				title="NO GENERIC CARD KIT"
+				lines={["requested    Card", `available    ${formCount()} semantic forms, each with a name and a job`]}
+				principle="If you're about to add a Card, stop."
+			/>
+
+			<Statement text="Structure is fixed. Atmosphere is variable." />
+
+			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
+
 			<section className="hause-grid py-16 sm:py-24">
 				<div className="col-span-12 md:col-start-2 md:col-span-9">
 					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">THE PATH</p>
 					<p className="voice-editorial text-2xl sm:text-3xl mb-10 max-w-2xl">
-						One path through the whole of it — read, operate, watch. Then interrogate, then build.
+						One path through the whole of it — choose, then read, operate, watch. Then interrogate, then build.
 					</p>
 					<div className="flex flex-col">
 						{[
-							{ n: "01", href: "/statements", title: "STATEMENTS", hook: "The reader reads — prose in the three voices, and the rules that keep them honest." },
-							{ n: "02", href: "/instruments", title: "INSTRUMENTS", hook: "The reader operates — every point surviving with the interaction removed." },
-							{ n: "03", href: "/performances", title: "PERFORMANCES", hook: "The forms play themselves — and rest on a state that carries the whole idea." },
-							{ n: "04", href: "/forms", title: "THE HOLDINGS", hook: "Every form, one line, with its recorded origin — the count is evidence, not copy." },
-							{ n: "05", href: "/ask", title: "ASK HAUSE", hook: "Interrogate the system — it answers in its own forms, or refuses in one." },
-							{ n: "06", href: "/use", title: "USE HAUSE", hook: "Install, tokens, one minimal chapter — the plumbing, next door to the exhibition." },
+							{ n: "01", href: "/choosing", title: "CHOOSING", hook: "Name the act — the grammar a writer or a model selects from, with the test that decides each form." },
+							{ n: "02", href: "/statements", title: "STATEMENTS", hook: "The reader reads — prose in the three voices, and the rules that keep them honest." },
+							{ n: "03", href: "/instruments", title: "INSTRUMENTS", hook: "The reader operates — every point surviving with the interaction removed." },
+							{ n: "04", href: "/performances", title: "PERFORMANCES", hook: "The forms play themselves — and rest on a state that carries the whole idea." },
+							{ n: "05", href: "/forms", title: "THE HOLDINGS", hook: "Every form, one line, with its recorded origin — the count is evidence, not copy." },
+							{ n: "06", href: "/ask", title: "ASK HAUSE", hook: "Interrogate the system — it answers in its own forms, or refuses in one." },
+							{ n: "07", href: "/use", title: "USE HAUSE", hook: "Install, tokens, one minimal chapter — the plumbing, next door to the exhibition." },
 						].map((c, i) => (
 							<Link
 								key={c.href}
@@ -163,9 +166,9 @@ export default function Home() {
 						</a>
 					</div>
 					<p className="voice-system text-sm opacity-60 max-w-xl mt-8">
-						Two consumers so far. Each grew HAUSE — {FORM_MANIFEST.filter((f) => f.origin?.startsWith("vindex3")).length} of
-						the forms held here name a vindex3 chapter as their origin — and nothing enters the library without a real
-						page that needed it first.
+						Two external consumers so far, and this book makes three sites on the package. Each grew HAUSE —{" "}
+						{FORM_MANIFEST.filter((f) => f.origin?.startsWith("vindex3")).length} of the forms held here name a vindex3
+						chapter as their origin — and nothing enters the library without a real page that needed it first.
 					</p>
 				</div>
 			</section>

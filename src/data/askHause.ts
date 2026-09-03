@@ -17,7 +17,7 @@
  * the system does not have is never invented.
  */
 
-import { FORM_MANIFEST, formCount, formsByMode } from "@chrishayuk/hause/manifest";
+import { FORM_MANIFEST, formCount, formsByMode, HAUSE_LINE, HAUSE_BOUNDARY } from "@chrishayuk/hause/manifest";
 import { formSlug } from "./forms";
 import { PROBLEMS, problemsForForm, type Problem } from "./problems";
 import { GRAMMAR, actFor, ACTS, type Act } from "./grammar";
@@ -121,7 +121,9 @@ const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 		id: "what-is-hause",
 		patterns: ["what is hause", "what are you", "what's hause", "whats hause", "explain hause"],
 		blocks: [
-			{ kind: "statement", text: "HAUSE is a small set of semantic forms for ideas, systems and explanations — a specimen book that cannot drift from its library, because it is the library." },
+			// The same sentence every other surface carries — README, package.json, the head, the footer, the citation.
+			{ kind: "statement", text: HAUSE_LINE },
+			{ kind: "observation", label: "THE BOUNDARY", text: `${HAUSE_BOUNDARY} This book is the library exhibited in itself — it cannot drift from the library, because it is the library.` },
 			{
 				kind: "decomposition",
 				kicker: "ONE LANGUAGE — THREE MODES",

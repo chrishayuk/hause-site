@@ -52,7 +52,7 @@ const RECORD: CitationRecord = {
 	url: "https://hause.design/evals/choosing-1",
 	publisher: "hause.design",
 	kind: "research-note",
-	abstract: `A preregistered evaluation of whether HAUSE's forms can be selected from unfamiliar content. 124 cases across seven domains. Condition C — the deployed deterministic resolver, no model call — selects the intended form in ${exact} of ${n}.`,
+	abstract: `A preregistered evaluation of whether HAUSE's forms can be selected from unfamiliar content. ${n} cases across seven domains, three conditions. A model given the form names and their one-line descriptions selects the intended form in ${exactA} of ${n}; given the full selection grammar, ${exactB}; the deployed deterministic resolver, no model call, ${exact}.`,
 	independence: "Published independently by Chris Hay.",
 	about: ["design system", "evaluation", "semantic selection"],
 	identifiers: [{ label: "frozen library", value: "hause@b68d451" }, ...buildIdentifiers()],
@@ -196,6 +196,10 @@ export default function Choosing1Page() {
 			<Provenance
 				record={RECORD}
 				history={[
+					{
+						date: "2026-08-31",
+						text: `Conditions A and B run and published beside C — ${exactA} · ${exactB} · ${exact}, read from the runs' own output. The middle number is the finding: this set cannot tell the grammar from the catalogue.`,
+					},
 					{ date: "2026-08-31", text: "Preregistered against hause@b68d451, then run once. Condition C published; A and B unrun." },
 				]}
 				citeHref="#cite"

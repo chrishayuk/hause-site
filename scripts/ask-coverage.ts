@@ -10,9 +10,10 @@
  *   npm test
  */
 
+import { readFileSync } from "node:fs";
 import { askHause } from "../src/data/askHause";
 import { PROBLEMS, PROBLEMS_IN_ORDER } from "../src/data/problems";
-import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
+import { FORM_MANIFEST, formsByMode, type FormMode } from "@chrishayuk/hause/manifest";
 import { FORMS } from "../src/data/forms";
 import { grammarCoverage } from "../src/data/grammar";
 
@@ -99,6 +100,26 @@ for (const p of PROBLEMS) {
 		if (!FORM_MANIFEST.some((f) => f.name === name)) {
 			failed += 1;
 			console.error(`FAIL  ${p.slug} names ${name}, which the library does not hold`);
+		}
+	}
+}
+
+// The README the installed library ships lists its forms between markers
+// that scripts/readme.ts writes from the manifest. For two days the
+// statement list named ten forms while the manifest held twelve, and a
+// reader found it — so the agreement is a gate now, on the copy of the
+// library this build actually compiles.
+const readme = readFileSync("node_modules/@chrishayuk/hause/README.md", "utf8");
+const lists = [...readme.matchAll(/<!-- generated:forms:(\w+) -->\n([\s\S]*?)<!-- \/generated -->/g)];
+if (lists.length === 0) {
+	failed += 1;
+	console.error("FAIL  the library README carries no generated form lists — run scripts/readme.ts in hause");
+}
+for (const [, mode, block] of lists) {
+	for (const f of formsByMode(mode as FormMode)) {
+		if (!new RegExp(`\\b${f.name}\\b`).test(block)) {
+			failed += 1;
+			console.error(`FAIL  the library README's ${mode} list does not name ${f.name} — run scripts/readme.ts in hause`);
 		}
 	}
 }

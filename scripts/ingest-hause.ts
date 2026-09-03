@@ -25,7 +25,8 @@ type Passage = { id: string; source: string; heading: string; text: string };
 const passages: Passage[] = [];
 
 // ── README, by heading ──
-const readme = readFileSync(join(HAUSE, "README.md"), "utf8");
+// The generator's markers are plumbing, not doctrine — stripped before chunking.
+const readme = readFileSync(join(HAUSE, "README.md"), "utf8").replace(/<!--[\s\S]*?-->\n?/g, "");
 let heading = "(preamble)";
 let body: string[] = [];
 let n = 0;

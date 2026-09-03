@@ -6,6 +6,7 @@ import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { Analytics } from "@chrishayuk/hause/components/Analytics";
 import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
+import { HAUSE_LINE, hauseDescription } from "@chrishayuk/hause/manifest";
 import { buildNote } from "@/data/build";
 import { PROBLEMS_IN_ORDER } from "@/data/problems";
 
@@ -31,8 +32,9 @@ export const metadata: Metadata = {
 		default: "HAUSE — A Design System for AI",
 		template: "%s — HAUSE",
 	},
-	description:
-		"HAUSE is a design system for AI: typed visual forms an AI can compose answers from — statements, evidence, terminals, figures — a cinematic language for ideas, systems and explanations.",
+	// One record, every surface: the same sentence the README, package.json,
+	// the footer and the citation abstract carry — see HAUSE_LINE in the manifest.
+	description: hauseDescription(),
 	alternates: { canonical: "/" },
 	icons: { icon: "/favicon.svg" },
 };
@@ -49,8 +51,7 @@ export default function RootLayout({
 					data={webSiteLd({
 						name: "HAUSE",
 						url: "https://hause.design",
-						description:
-							"HAUSE is a design system for AI: typed visual forms an AI can compose answers from — a cinematic language for ideas, systems and explanations.",
+						description: hauseDescription(),
 					})}
 				/>
 				{/* hause-mode must apply before paint — see HAUSE's DESIGN notes. */}
@@ -67,7 +68,7 @@ export default function RootLayout({
 				{children}
 				<SiteFooter
 					brand="HAUSE"
-					tagline="A design system for AI — typed visual forms an AI can compose answers from."
+					tagline={HAUSE_LINE.replace(/^HAUSE is a/, "A")}
 					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
 					groups={[
 						{
