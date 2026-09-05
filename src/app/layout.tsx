@@ -9,7 +9,7 @@ import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { webSiteLd } from "@chrishayuk/hause/seo";
 import { HAUSE_LINE, hauseDescription } from "@chrishayuk/hause/manifest";
 import { buildNote } from "@/data/build";
-import { PROBLEMS_IN_ORDER } from "@/data/problems";
+import { FOOTER_GROUPS } from "@/data/navigation";
 
 const fraunces = Fraunces({
 	variable: "--font-fraunces",
@@ -71,46 +71,7 @@ export default function RootLayout({
 					brand="HAUSE"
 					tagline={HAUSE_LINE.replace(/^HAUSE is a/, "A")}
 					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
-					groups={[
-						{
-							label: "WHY ANY OF THIS EXISTS",
-							links: PROBLEMS_IN_ORDER.map((p) => ({ href: `/problems/${p.slug}`, label: `${p.number} — ${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}` })),
-						},
-						{
-							label: "THE CATEGORY",
-							links: [{ href: "/ai-native-design-systems", label: "AI-native design systems" }],
-						},
-						{
-							label: "THE BOOK",
-							links: [
-								{ href: "/statements", label: "Statements" },
-								{ href: "/instruments", label: "Instruments" },
-								{ href: "/performances", label: "Performances" },
-								{ href: "/publication", label: "Film & publication" },
-							],
-						},
-						{
-							label: "THE INDEX",
-							links: [
-								{ href: "/choosing", label: "Choosing a form" },
-								{ href: "/evals/choosing-1", label: "CHOOSING-1 — the eval" },
-								{ href: "/evals/routing-1", label: "ROUTING-1 — the gate" },
-								{ href: "/evals/routing-2", label: "ROUTING-2 — records vs list" },
-								{ href: "/evals/reading-1", label: "READING-1 — the corpus" },
-								{ href: "/evals/reading-2", label: "READING-2 — the boundary" },
-								{ href: "/forms", label: "The Holdings" },
-								{ href: "/how-hause-grew", label: "How HAUSE grew" },
-								{ href: "/ask", label: "Ask HAUSE" },
-							],
-						},
-						{
-							label: "THE ON-RAMP",
-							links: [
-								{ href: "/use", label: "Use HAUSE" },
-								{ href: "https://github.com/chrishayuk/hause", label: "The library source", external: true },
-							],
-						},
-					]}
+					groups={FOOTER_GROUPS}
 				/>
 				<footer className="hause-grid py-16 mt-20 border-t" style={{ borderColor: "var(--color-mist)" }}>
 					<div className="col-span-12 flex flex-wrap items-baseline justify-between gap-4">

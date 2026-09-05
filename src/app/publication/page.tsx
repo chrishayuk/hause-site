@@ -23,7 +23,7 @@ export default function PublicationPage(){return <main className="publication-ro
  <section className="hause-grid py-12" id="screening"><div className="col-span-12 md:col-start-2 md:col-span-10"><PublicationScreening/></div></section>
  <section className="hause-grid py-12" id="film-citation"><div className="col-span-12 md:col-start-2 md:col-span-10"><CitationExport id={filmCitation.id!} formats={citationFormats(filmCitation)} heading="CITE THE ORIGINAL FILM" context="This citation identifies Chris Hay’s YouTube film. The publication page has its own citation below."/></div></section>
  <Statement text="The source is part of the experience."/>
- {PUBLICATION_CAPABILITIES.map(c=><Observation key={c.name} label={c.name.toUpperCase()} text={c.text}/>)}
+ {PUBLICATION_CAPABILITIES.map((c,i)=><div key={c.name} id={["motion","film","transcript","citation","metadata","environments"][i]}><Observation label={c.name.toUpperCase()} text={c.text}/></div>)}
  <Snippet label="A POSTER-FIRST SCREENING / INSIDE A CLIENT COMPONENT" code={`import { MotionProvider } from "@chrishayuk/hause/components/Motion";
 import { YouTubeFilm } from "@chrishayuk/hause/components/YouTubeFilm";
 
@@ -50,5 +50,5 @@ const exports = citationFormats(filmCitation);`} aside="Render the same factual 
  <Observation label="WHAT THIS DOES NOT ESTABLISH" text="A metadata builder cannot guarantee Google indexing, a video rich result or inclusion in an AI answer. Public pages must be crawlable, sources reachable and summaries meaningful without watching the film. Caption coverage and review status remain explicit. Full YouTube playback resets when suspended."/>
  <Provenance record={record} citeHref="#cite-publication"/>
  <Citation record={record} id="cite-publication"/>
- <Connection text="Take the behaviour. Author the publication." links={[{href:"/use",label:"INSTALL & COMPOSE"},{href:"/performances",label:"THE PERFORMANCES"},{href:"/ask?q=What%20is%20YouTubeFilm%3F",label:"ASK THE SYSTEM"},{href:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",label:"THE SOURCE CONTRACTS"}]}/>
+ <Connection text="Take the behaviour. Author the publication." links={[{href:"/knowledge?kind=capability",label:"EXPLORE THE CONNECTED CAPABILITIES"},{href:"/use",label:"INSTALL & COMPOSE"},{href:"/performances",label:"THE PERFORMANCES"},{href:"/ask?q=What%20is%20YouTubeFilm%3F",label:"ASK THE SYSTEM"},{href:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",label:"THE SOURCE CONTRACTS"}]}/>
  </main>;}

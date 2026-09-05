@@ -24,6 +24,7 @@ const ROWS: { what: string; line: string }[] = [
 	{ what: "3 voices", line: "Editorial for claims, system for explanation, evidence for measurement. Numbers never appear in editorial voice." },
 	{ what: `${STATUSES.length} statuses`, line: `${STATUSES.join(" · ")} — the epistemic state carried on every claim, finding and question.` },
 	{ what: "tokens.css", line: "One palette, one easing curve at three speeds, twelve columns, two authored environments." },
+	{ what: "Film, chapters and transcripts", line: "Poster-first screening, one shared motion owner and source timestamps. Film art direction stays with the publication." },
 	{ what: "seo.ts · cite.ts · JsonLd · Answer", line: "Structured data, citation on four surfaces and the lift-able answer — projected from records the site already holds." },
 	{ what: `React ${peers.react} · Next ${peers.next}`, line: "TSX source with no build step; the consuming app compiles it." },
 ];
@@ -35,7 +36,7 @@ export function WhatYouGet() {
 		<>
 			<section className="hause-grid py-16 sm:py-24" aria-label="What you get">
 				<div className="col-span-12 md:col-start-2 md:col-span-10">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-8 opacity-50">WHAT YOU GET — READ FROM THE LIBRARY, NOT TYPED</p>
+					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-8 opacity-50">THE LIBRARY YOU BUILD WITH</p>
 					<div className="flex flex-col">
 						{ROWS.map((r) => (
 							<div

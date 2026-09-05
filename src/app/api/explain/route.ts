@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { KNOWLEDGE_NODES } from "@/data/knowledge";
 import corpusJson from "@/data/hauseCorpus.json";
 import type { Block } from "@/data/askHause";
 
@@ -25,8 +26,8 @@ const DAILY_BUDGET = Number(process.env.ASK_DAILY_BUDGET ?? 300);
 const RATE_PER_MIN = 10;
 const MAX_QUESTION_CHARS = 300;
 
-type Passage = { id: string; source: string; heading: string; text: string };
-const CORPUS = (corpusJson as { passages: Passage[] }).passages;
+type Passage = { id: string; source: string; heading: string; text: string; url?: string };
+const CORPUS:Passage[] = [...(corpusJson as { passages: Passage[] }).passages,...KNOWLEDGE_NODES.filter(n=>n.kind!=="page").map(n=>({id:n.id,source:n.sourceUrl,heading:n.title,text:n.text,url:n.url}))];
 
 const STOP = new Set(["the", "a", "an", "is", "are", "it", "of", "to", "in", "on", "and", "or", "for", "with", "do", "does", "i", "my", "me", "that", "this", "what", "why", "how", "hause", "form", "forms"]);
 const toks = (q: string) => [...new Set(q.toLowerCase().split(/[^a-z0-9]+/).filter((t) => t.length > 2 && !STOP.has(t)))];
@@ -118,6 +119,7 @@ export async function POST(req: NextRequest) {
 				const cut = trimmed ? h.p.text.slice(0, h.p.text.lastIndexOf(" ", max)).trimEnd() : h.p.text;
 				return { kind: "excerpt" as const, source: h.p.source, heading: h.p.heading, text: cut, trimmed };
 			});
+			blocks.push({kind:"connection",text:"Retrieved sources",links:hits.slice(0,2).map(h=>({href:h.p.url||"/knowledge",label:h.p.heading}))});
 			const out = { blocks, label: "THE DOCTRINE'S OWN WORDS — retrieved verbatim · no model call" };
 			cache.set(key, out);
 			return NextResponse.json(out);
@@ -196,6 +198,7 @@ export async function POST(req: NextRequest) {
 			});
 	}
 	if (blocks.length === 0) return NextResponse.json({ error: "synthesis failed" }, { status: 502 });
+	blocks.push({kind:"connection",text:"Sources supplied to this explanation",links:hits.map(h=>({href:h.p.url||"/knowledge",label:h.p.heading}))});
 	const out = { blocks, label: "SYNTHESIS — narrated from the retrieved doctrine · the model is never the authority" };
 	cache.set(key, out);
 	if (cache.size > 1000) cache.delete(cache.keys().next().value as string);

@@ -1,28 +1,6 @@
-import type { Metadata } from "next";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
-import { AskHause } from "@/components/AskHause";
-
-export const metadata: Metadata = {
-	title: "Ask a Design System: Answers Composed From HAUSE Forms",
-	alternates: { canonical: "/ask" },
-	description: "Ask the system about itself — and it answers in its own forms. Which form does your idea need?",
-};
-
-/**
- * The interrogable design system: /ask is a chapter, not a chat
- * bubble. The page recomposes into a small composition of real HAUSE
- * forms answering the question — the system as both subject and
- * medium.
- */
-export default function AskPage() {
-	return (
-		<main>
-			<Hero
-				kicker="ASK HAUSE · DETERMINISTIC · NO MODEL CALL"
-				title="WHAT ARE YOU TRYING TO SAY?"
-				dek="Ask the system about itself, describe a failure you are hitting, or bring an idea and be told which form it needs. HAUSE answers in its own forms — a refusal arrives as a Refusal — resolving against the manifest and the problem records this site publishes, so a new chapter teaches Ask the question it answers on the day it ships."
-			/>
-			<AskHause />
-		</main>
-	);
-}
+import Link from "next/link";
+import {Hero} from "@chrishayuk/hause/components/forms/Hero";
+import {AskHause} from "@/components/AskHause";
+import {knowledgeGraph} from "@/data/knowledge";
+export const metadata={title:"Ask the connected system",alternates:{canonical:"/ask"},description:"Ask about HAUSE’s forms, film capabilities, source citations and recorded contributions. Follow each answer back to the system record."};
+export default async function AskPage({searchParams}:{searchParams:Promise<{q?:string}>}){const{q=""}=await searchParams;const g=knowledgeGraph();return <main><Hero kicker="ASK HAUSE / FOLLOW THE RECORD" title="WHAT WOULD YOU LIKE TO BUILD?" dek="Choose a form. Understand a capability. Follow a contribution back to the page that needed it. Answers connect the system’s own records."/><div className="ask-map hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">{g.coverage.forms} FORMS · {g.coverage.capabilities} CAPABILITIES · {g.coverage.problems} PROBLEMS · {g.coverage.practices} PUBLICATIONS</p><Link href="/knowledge">EXPLORE THE KNOWLEDGE BASE ↗</Link></div></div><AskHause initialQuery={q.slice(0,300)}/></main>;}

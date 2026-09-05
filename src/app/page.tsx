@@ -1,185 +1,30 @@
 import Link from "next/link";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
-import { Statement } from "@chrishayuk/hause/components/forms/Statement";
-import { Observation } from "@chrishayuk/hause/components/forms/Observation";
-import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
-import { Answer } from "@chrishayuk/hause/components/forms/Answer";
-import { PaceDemo } from "@chrishayuk/hause/components/PaceDemo";
-import { Provenance } from "@chrishayuk/hause/components/forms/Provenance";
-import { Citation } from "@chrishayuk/hause/components/forms/Citation";
-import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
-import { citationLd } from "@chrishayuk/hause/seo";
-import { citationMeta } from "@chrishayuk/hause/cite";
-import { FORM_MANIFEST, formCount } from "@chrishayuk/hause/manifest";
-import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
-import { ContainerVersusAct } from "@/components/ContainerVersusAct";
-import { TheLoop } from "@/components/TheLoop";
-import { WhatYouGet } from "@/components/WhatYouGet";
-import { StartHere } from "@/components/StartHere";
-
-/** The head surface of the book's own record — Zotero, Scholar and every "add to library" button read these. */
-export const metadata = { other: citationMeta(HAUSE_RECORD) };
-
-/**
- * The specimen book's front door: HAUSE exhibited in HAUSE. Every
- * specimen on this site is the real form rendering real copy — the
- * book cannot drift from the library, because it is the library.
- *
- * The order is the argument. The problem (containers), the idea (acts)
- * on the same three sentences, the loop that puts a model upstream of
- * the act, what you actually install and where it stops, and six forms
- * to start with. Only then the modes, the voices, machine legibility,
- * the secondary demonstrations, the deeper rules, and the route through
- * the rest — because a first-time reader should not meet the grammar's
- * sibling relationships before they have a reason to care.
- */
-export default function Home() {
-	return (
-		<main>
-			<Hero
-				kicker="HAUSE · A DESIGN SYSTEM FOR AI"
-				title="AI KEEPS CHOOSING CONTAINERS."
-				dek="A model chooses the act. HAUSE gives it a form. Its primitives are the things a system is trying to say — a claim, the evidence under it, an answer, a refusal — rather than the rectangles they arrive in."
-			/>
-
-			<ContainerVersusAct />
-
-			<TheLoop />
-
-			<WhatYouGet />
-
-			<StartHere />
-
-			<Observation
-				label="WHAT THIS IS, IN CATEGORY TERMS"
-				text="HAUSE is an AI-native semantic design system: a visual language in which intelligent systems choose the communicative act before they choose its form. Where most systems in that category make an existing component library readable by an agent, this one supplies the vocabulary a model selects from when it is deciding what to say."
-			/>
-
-			<Observation
-				label="THE THREE MODES"
-				text="Every form is one of three kinds, and the split was earned, not designed. Statements are prose in the three voices — the reader reads. Instruments are interactive — the reader operates them, and every one carries a plain-text fallback so the point survives with the interaction removed. Performances are cinematic — they play themselves, rest on a designed final state, and never crossfade between two physical forms of one thing."
-			/>
-
-			<Statement text="A mode gets built for a real chapter, never manufactured as a demo." />
-
-			<section className="hause-grid py-16 sm:py-24">
-				<div className="col-span-12 md:col-start-2 md:col-span-9">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-10 opacity-50">THE THREE VOICES</p>
-					<div className="flex flex-col gap-10">
-						<div>
-							<p className="voice-evidence text-[10px] tracking-[0.1em] uppercase opacity-40 mb-2">editorial — fraunces · claims, questions, turns</p>
-							<p className="voice-editorial text-3xl sm:text-4xl">The claim carries the room.</p>
-						</div>
-						<div>
-							<p className="voice-evidence text-[10px] tracking-[0.1em] uppercase opacity-40 mb-2">system — inter · explanation, controls, body</p>
-							<p className="voice-system text-lg opacity-85">The explanation walks beside the reader, never ahead of them.</p>
-						</div>
-						<div>
-							<p className="voice-evidence text-[10px] tracking-[0.1em] uppercase opacity-40 mb-2">evidence — geist mono · measurements, marks, receipts</p>
-							<p className="voice-evidence text-base">EASE cubic-bezier(0.22, 1, 0.36, 1) · 150ms · 450ms · 1200ms</p>
-						</div>
-					</div>
-					<p className="voice-system text-sm opacity-60 max-w-xl mt-10">
-						Numbers never appear in editorial voice. Editorial never explains. Evidence never argues. The
-						discipline is the identity.
-					</p>
-				</div>
-			</section>
-
-			<Statement text="A design system for AI reads in both directions: AIs compose answers from the forms — and machines must be able to read what the forms say." />
-
-			<Answer
-				id="machine-legibility"
-				question="What is machine legibility in a design system?"
-				answer="It is the rule that the same fact a form renders beautifully must survive stripped to text — for crawlers, answer engines, agent browsers, and anyone with the interaction removed. In HAUSE that is carried by the library itself: this very block is the Answer form, a question as a real heading with a lift-able answer and a citable anchor; the seo builders emit structured data from the records a site already holds; every instrument carries ARIA state; and nothing important lives only in an animation. The test: strip the page, and it still answers."
-				cite="the form demonstrating itself — Answer, statement mode, origin vindex3 · the legibility layer"
-			/>
-
-			<Observation
-				label="SEO AND AEO ARE PART OF THE GRAMMAR"
-				text="Not a plugin, not an afterthought: the browser title says what the page answers in the words people search with while the designed heading stays exactly as designed; JSON-LD projects from the same records the forms render, so the crawlable answer can never drift from the visible one; and answer-first blocks give every page a boringly clear semantic skeleton beneath the editorial surface. A page a search engine can quote is a page an answer engine can cite."
-			/>
-
-			<PaceDemo />
-
-			<Refusal
-				kicker="THE STANDING REFUSAL — RENDERED BY THE Refusal FORM ITSELF"
-				title="NO GENERIC CARD KIT"
-				lines={["requested    Card", `available    ${formCount()} semantic forms, each with a name and a job`]}
-				principle="If you're about to add a Card, stop."
-			/>
-
-			<Statement text="Structure is fixed. Atmosphere is variable." />
-
-			<Observation text={`HAUSE is what a design system looks like when it refuses to be generic. One palette of warm neutrals and a single burnt-amber accent. Three type voices — editorial for claims, system for explanation, evidence for measurement. One easing curve, three speeds. Twelve columns nobody sees. And ${formCount()} forms, admitted under one rule: a real page has to need one first. ${FORM_MANIFEST.filter((f) => f.origin).length} of them name that page in the manifest; the rest are older than the record, and the record says so rather than filling itself in.`} />
-
-			<section className="hause-grid py-16 sm:py-24">
-				<div className="col-span-12 md:col-start-2 md:col-span-9">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">THE PATH</p>
-					<p className="voice-editorial text-2xl sm:text-3xl mb-10 max-w-2xl">
-						One path through the whole of it — choose, then read, operate, watch. Then interrogate, then build.
-					</p>
-					<div className="flex flex-col">
-						{[
-							{ n: "01", href: "/choosing", title: "CHOOSING", hook: "Name the act — the grammar a writer or a model selects from, with the test that decides each form." },
-							{ n: "02", href: "/statements", title: "STATEMENTS", hook: "The reader reads — prose in the three voices, and the rules that keep them honest." },
-							{ n: "03", href: "/instruments", title: "INSTRUMENTS", hook: "The reader operates — every point surviving with the interaction removed." },
-							{ n: "04", href: "/performances", title: "PERFORMANCES", hook: "The forms play themselves — and rest on a state that carries the whole idea." },
-							{ n: "05", href: "/forms", title: "THE HOLDINGS", hook: "Every form, one line, with its recorded origin — the count is evidence, not copy." },
-							{ n: "06", href: "/ask", title: "ASK HAUSE", hook: "Interrogate the system — it answers in its own forms, or refuses in one." },
-							{ n: "07", href: "/use", title: "USE HAUSE", hook: "Install, tokens, one minimal chapter — the plumbing, next door to the exhibition." },
-						].map((c, i) => (
-							<Link
-								key={c.href}
-								href={c.href}
-								className="graph-pulse group grid grid-cols-[2.5rem_minmax(0,11rem)_1fr] sm:grid-cols-[3rem_minmax(0,13rem)_1fr] gap-3 sm:gap-6 items-baseline py-4 border-t"
-								style={{ borderColor: "var(--color-mist)", animationDelay: `${i * 90}ms` }}
-							>
-								<span className="voice-evidence text-xs opacity-40">{c.n}</span>
-								<span className="voice-evidence text-xs sm:text-sm tracking-[0.08em]" style={{ color: "var(--color-accent)" }}>
-									{c.title} →
-								</span>
-								<span className="voice-system text-sm opacity-70 group-hover:opacity-95 transition-opacity">{c.hook}</span>
-							</Link>
-						))}
-					</div>
-				</div>
-			</section>
-
-			<section className="hause-grid py-16 sm:py-24">
-				<div className="col-span-12 md:col-start-2 md:col-span-9">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-8 opacity-50">HAUSE IN THE WILD</p>
-					<div className="flex flex-col gap-3">
-						<a
-							href="https://vindex3.org"
-							className="voice-system inline-flex items-center gap-2 text-sm tracking-[0.06em] w-fit border-b pb-0.5"
-							style={{ borderColor: "var(--color-accent)" }}
-						>
-							VINDEX3.ORG — a container format, exhibited →
-						</a>
-						<a
-							href="https://chrishayuk.com"
-							className="voice-system inline-flex items-center gap-2 text-sm tracking-[0.06em] w-fit border-b pb-0.5"
-							style={{ borderColor: "var(--color-accent)" }}
-						>
-							CHRISHAYUK.COM — the codex where HAUSE was born →
-						</a>
-					</div>
-					<p className="voice-system text-sm opacity-60 max-w-xl mt-8">
-						Two external consumers so far, and this book makes three sites on the package. Each grew HAUSE —{" "}
-						{FORM_MANIFEST.filter((f) => f.origin?.startsWith("vindex3")).length} of the forms held here name a vindex3
-						chapter as their origin — and nothing enters the library without a real page that needed it first.
-					</p>
-				</div>
-			</section>
-
-			<JsonLd data={citationLd(HAUSE_RECORD)} />
-			<Statement text="A page that states a claim should be referenceable as a published object, not as a URL someone hopes still resolves." />
-			<Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite" />
-			<Citation
-				record={HAUSE_RECORD}
-				note="The book cites itself with the two forms any consuming site gets. One record makes all four surfaces — this reference, the quiet line above it, the citation_* tags in the head, and the JSON-LD in the graph — so they cannot disagree about who wrote what, or when."
-			/>
-		</main>
-	);
-}
+import {Hero} from "@chrishayuk/hause/components/forms/Hero";
+import {Answer} from "@chrishayuk/hause/components/forms/Answer";
+import {Provenance} from "@chrishayuk/hause/components/forms/Provenance";
+import {Citation} from "@chrishayuk/hause/components/forms/Citation";
+import {JsonLd} from "@chrishayuk/hause/components/JsonLd";
+import {citationLd} from "@chrishayuk/hause/seo";
+import {citationMeta} from "@chrishayuk/hause/cite";
+import {formCount} from "@chrishayuk/hause/manifest";
+import {HAUSE_RECORD,HAUSE_HISTORY} from "@/data/citation";
+import {ContainerVersusAct} from "@/components/ContainerVersusAct";
+import {TheLoop} from "@/components/TheLoop";
+import {WhatYouGet} from "@/components/WhatYouGet";
+import {PRACTICES} from "@/data/practice";
+import film from "@/data/publication-film.json";
+export const metadata={other:citationMeta(HAUSE_RECORD)};
+export default function Home(){return <main className="system-story">
+ <Hero kicker="HAUSE · A DESIGN SYSTEM FOR AI" title="GIVE MEANING A FORM." dek="A claim. The evidence beneath it. A film that makes it visible. HAUSE gives intelligent interfaces a language—and keeps the source attached."/>
+ <div className="story-actions hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><Link href="/knowledge">EXPLORE THE SYSTEM ↗</Link><Link href="/in-practice">SEE IT IN PRACTICE ↗</Link></div></div>
+ <Answer id="what-is-hause" question="What is HAUSE?" answer={`HAUSE is a semantic design system for AI interfaces. It provides ${formCount()} forms for acts such as claims, evidence, comparisons and refusals, alongside shared film and publication capabilities. A site supplies its content and art direction; HAUSE supplies forms, interaction behaviour, citation exports and machine-readable metadata.`}/>
+ <section className="story-intro hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">01 / SAY WHAT YOU MEAN</p><h2 className="voice-editorial">Start with the act.</h2><p className="voice-system">A claim needs a different treatment from evidence. An unresolved question needs a different treatment from a refusal. Choose what the interface is doing before choosing how it looks.</p><Link href="/choosing" className="story-link">CHOOSE A FORM ↗</Link></div></section>
+ <ContainerVersusAct/>
+ <section className="story-film hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">02 / LET PEOPLE EXPERIENCE IT</p><h2 className="voice-editorial">Read. Operate.<br/>Watch.</h2><p className="voice-system">An explanation can be a sentence, an instrument or a performance. And when the material is a real film, its player, chapters and transcript belong to the same publication.</p><Link href="/publication" className="story-film-frame"><img src={film.poster} alt={`Film specimen: ${film.title}`} loading="lazy"/><span className="voice-evidence">ENTER THE FILM & PUBLICATION SPECIMEN ↗</span></Link><p className="voice-evidence story-caption">CHRIS HAY / REAL FILM · SHARED PLAYBACK · SOURCE CITATION</p></div></section>
+ <section className="story-record hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">03 / KEEP THE SOURCE</p><h2 className="voice-editorial">The surface changes.<br/>The facts stay connected.</h2><p className="voice-system">The same record can supply the visible explanation, its citation, its structured data and the source an answer returns to. SEO, AEO and provenance travel with the forms.</p><div className="record-sequence voice-evidence"><span>RECORD</span><span>PAGE</span><span>CITATION</span><span>MACHINE DATA</span></div><Link className="story-link" href="/publication#metadata">FOLLOW THE RECORD ↗</Link></div></section>
+ <section className="story-practice hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">REAL PAGES SHAPED THE LIBRARY</p>{PRACTICES.map(p=><Link href={`/in-practice#${p.id}`} className="practice-row" key={p.id}><span className="voice-evidence">{p.name}</span><div><h2 className="voice-editorial">{p.title}</h2><p className="voice-system">{p.summary}</p></div><span aria-hidden="true">↗</span></Link>)}</div></section>
+ <TheLoop/>
+ <WhatYouGet/>
+ <section className="story-next hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">YOUR WAY IN</p><h2 className="voice-editorial">Bring an idea.<br/>Follow a connection.</h2><div className="story-next-links"><Link href="/choosing">I HAVE SOMETHING TO EXPLAIN ↗</Link><Link href="/publication">I’M BUILDING A PUBLICATION ↗</Link><Link href="/ask?q=How%20do%20film%20and%20citations%20connect%3F">SHOW ME HOW IT CONNECTS ↗</Link><Link href="/use">I’M READY TO BUILD ↗</Link></div></div></section>
+ <JsonLd data={citationLd(HAUSE_RECORD)}/><Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite"/><Citation record={HAUSE_RECORD}/>
+ </main>;}

@@ -165,9 +165,10 @@ function AnswerBlocks({ answer }: { answer: AskAnswer }) {
 	);
 }
 
-export function AskHause() {
-	const [q, setQ] = useState("");
-	const [answer, setAnswer] = useState<{ a: AskAnswer; q: string; label?: string } | null>(null);
+export function AskHause({initialQuery=""}:{initialQuery?:string}) {
+ const generation=useRef(0);
+	const [q, setQ] = useState(initialQuery);
+	const [answer, setAnswer] = useState<{ a: AskAnswer; q: string; label?: string } | null>(()=>initialQuery?{a:askHause(initialQuery),q:initialQuery}:null);
 	const [thinking, setThinking] = useState(false);
 	const [synthesising, setSynthesising] = useState(false);
 	const widgetId = useRef<string | null>(null);
@@ -197,13 +198,17 @@ export function AskHause() {
 	}
 
 	function ask(question: string) {
-		const query = question.trim();
+		const query = question.trim().slice(0,300);
 		if (!query) return;
+ const requestId=++generation.current;
+ const current=()=>generation.current===requestId;
+ window.history.replaceState(null,"",`/ask?q=${encodeURIComponent(query)}`);
 		setQ(query);
 		setThinking(true);
 		setSynthesising(false);
 		setAnswer(null);
 		setTimeout(() => {
+   if(!current())return;
 			setThinking(false);
 			const a = askHause(query);
 			if (a.id === "no-form") refuse();
@@ -224,16 +229,16 @@ export function AskHause() {
 						});
 						if (first.ok) {
 							const up = (await first.json()) as { blocks: Block[]; label: string };
-							if (up.blocks?.length) {
+							if (current() && up.blocks?.length) {
 								tick();
 								setAnswer({ a: { id: "served-" + Date.now(), blocks: up.blocks }, q: query, label: up.label });
 							}
 							return;
 						}
-						if (first.status !== 428) return;
+						if (!current() || first.status !== 428) return;
 						const el = document.getElementById("hause-turnstile") as HTMLDivElement | null;
 						const token = await turnstileToken(el);
-						if (!token) return;
+						if (!current() || !token) return;
 						const res = await fetch("/api/explain", {
 							method: "POST",
 							headers: { "content-type": "application/json" },
@@ -242,14 +247,14 @@ export function AskHause() {
 						});
 						if (!res.ok) return;
 						const up = (await res.json()) as { blocks: Block[]; label: string };
-						if (up.blocks?.length) {
+						if (current() && up.blocks?.length) {
 							tick();
 							setAnswer({ a: { id: "served-" + Date.now(), blocks: up.blocks }, q: query, label: up.label });
 						}
 					} catch {
 						/* the refusal stands */
 					} finally {
-						setSynthesising(false);
+						if(current())setSynthesising(false);
 					}
 				})();
 			}
@@ -258,7 +263,8 @@ export function AskHause() {
 
 	useEffect(() => {
 		const param = new URLSearchParams(window.location.search).get("q");
-		if (param) ask(param);
+		if (param && (!initialQuery || askHause(initialQuery).id==="no-form")) ask(param);
+  return ()=>{generation.current++;};
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -271,12 +277,12 @@ export function AskHause() {
 							e.preventDefault();
 							ask(q);
 						}}
-						className="flex gap-3 max-w-2xl"
+						action="/ask" className="ask-input-row flex gap-3 max-w-2xl"
 					>
 						<input
-							value={q}
+							name="q" maxLength={300} value={q}
 							onChange={(e) => setQ(e.target.value)}
-							placeholder="what are you trying to say?"
+							placeholder="How do films and citations connect?"
 							aria-label="Ask HAUSE"
 							className="voice-evidence text-sm flex-1 border bg-transparent px-4 py-3 outline-none focus-visible:outline-2"
 							style={{ borderColor: "var(--fg)", color: "var(--fg)" }}
@@ -328,7 +334,7 @@ export function AskHause() {
 			{!answer && !thinking && (
 				<Observation
 					label="THE CONTRACT"
-					text="Deterministic, like the system it serves: a question resolves against the manifest and a small decision graph — no model call, and a form HAUSE does not have is never invented. The recursive property is the point: HAUSE is both the subject of the answer and the medium of it. When nothing is established, the answer is a Refusal, which is itself the form for exactly that."
+					text="Ask starts with the connected records and form-selection rules. If they do not resolve the question, it retrieves library documentation. A configured synthesis tier may explain those retrieved sources; its answer is labelled. When nothing is established, the refusal stays visible."
 				/>
 			)}
 

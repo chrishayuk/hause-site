@@ -1,3 +1,4 @@
+import { SITE_PATHS } from "@/data/navigation";
 import type { MetadataRoute } from "next";
 import { FORMS } from "@/data/forms";
 import { PROBLEMS_IN_ORDER } from "@/data/problems";
@@ -10,10 +11,10 @@ const BASE = "https://hause.design";
  * the same commit, because neither list is written by hand.
  */
 export default function sitemap(): MetadataRoute.Sitemap {
-	const pages = ["", "/problems", "/ai-native-design-systems", "/how-hause-grew", "/choosing", "/evals/choosing-1", "/evals/routing-1", "/evals/routing-2", "/evals/reading-1", "/evals/reading-2", "/forms", "/statements", "/instruments", "/performances", "/publication", "/ask", "/use"].map((p) => ({
-		url: `${BASE}${p}`,
+	const pages = SITE_PATHS.map((p) => ({
+		url: `${BASE}${p === "/" ? "" : p}`,
 		changeFrequency: "weekly" as const,
-		priority: p === "" ? 1 : 0.8,
+		priority: p === "/" ? 1 : 0.8,
 	}));
 	const forms = FORMS.map((f) => ({
 		url: `${BASE}/forms/${f.slug}`,

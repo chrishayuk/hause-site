@@ -1,3 +1,5 @@
+import {knowledgeGraph,knowledgeAnswerNodes,relatedKnowledge} from "../src/data/knowledge";
+import {SITE_NAV,SITE_PATHS} from "../src/data/navigation";
 /**
  * ASK COVERAGE — the questions as tests.
  *
@@ -20,6 +22,10 @@ import { grammarCoverage } from "../src/data/grammar";
 type Case = { q: string; expect: string };
 
 const cases: Case[] = [
+ {q:"How do I stop two videos playing at once?",expect:"publication"},
+ {q:"How do films and citations connect?",expect:"publication"},
+ {q:"Tell me about MotionProvider",expect:"publication"},
+ {q:"How can I build a cinematic publication?",expect:"publication"},
  {q:"What is YouTubeFilm?",expect:"publication"},
  {q:"How does MotionProvider stop competing videos?",expect:"publication"},
  {q:"Can I use TimedTranscript?",expect:"publication"},
@@ -129,6 +135,19 @@ for (const [, mode, block] of lists) {
 		}
 	}
 }
+
+const graph=knowledgeGraph();
+const nodeIds=new Set(graph.nodes.map(n=>n.id));
+if(nodeIds.size!==graph.nodes.length)throw Error("Duplicate graph record IDs");
+for(const edge of graph.edges){if(!nodeIds.has(edge.from)||!nodeIds.has(edge.to))throw Error(`Unresolved edge ${edge.from} → ${edge.to}`);if(!edge.basis)throw Error("An edge needs its source basis");}
+for(const node of graph.nodes){if(!node.url||!node.sourceUrl)throw Error(`Unsourced record ${node.id}`);}
+if(graph.coverage.capabilities!==6||graph.coverage.forms!==FORMS.length)throw Error("Graph coverage drift");
+const connected=knowledgeAnswerNodes("How do films and citations connect?").map(n=>n.id);
+if(!connected.includes("capability:film")||!connected.includes("capability:citation"))throw Error("Cross-capability retrieval missed the film/citation relationship");
+if(knowledgeAnswerNodes("Unicorn teleportation reactor").length)throw Error("Unsupported capability must not resolve");
+if(SITE_NAV.filter(n=>!n.panelOnly).length>5)throw Error("Primary navigation exceeds its five-destination budget");
+if(new Set(SITE_PATHS).size!==SITE_PATHS.length)throw Error("Duplicate site destinations");
+console.log(`${graph.nodes.length} knowledge records · ${graph.edges.length} sourced relationships`);
 
 if (failed > 0) {
 	console.error(`\n${failed} failed of ${cases.length} cases`);

@@ -1,0 +1,15 @@
+import Link from "next/link";
+import {Hero} from "@chrishayuk/hause/components/forms/Hero";
+import {publicationMetadata} from "@chrishayuk/hause/seo";
+import {knowledgeGraph,searchKnowledge,relatedKnowledge} from "@/data/knowledge";
+export const metadata=publicationMetadata({title:"The connected system",description:"Explore HAUSE’s forms, capabilities, problems and real-world contributions through the same records Ask uses.",url:"https://hause.design/knowledge",siteName:"HAUSE",indexable:true});
+export default async function Knowledge({searchParams}:{searchParams:Promise<{q?:string;kind?:string}>}){
+ const{q="",kind="all"}=await searchParams;const query=q.slice(0,300);const nodes=searchKnowledge(query,kind).filter(r=>r.node.kind!=="page");const g=knowledgeGraph();
+ return <main><Hero kicker="THE SYSTEM / ONE CONNECTED RECORD" title="FOLLOW THE CONNECTIONS." dek="Forms express an idea. Capabilities carry it through an experience. The records connect them to the problems and publications that needed them."/>
+ <section className="knowledge-world hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence knowledge-count">{g.coverage.forms} FORMS · {g.coverage.capabilities} CAPABILITIES · {g.coverage.problems} PROBLEMS · {g.coverage.practices} PUBLICATIONS</p>
+ <form action="/knowledge" className="knowledge-search"><label htmlFor="knowledge-query">FIND SOMETHING IN THE SYSTEM</label><div><input id="knowledge-query" name="q" type="search" defaultValue={query} placeholder="Film, citations, evidence…" maxLength={300}/><select name="kind" defaultValue={kind} aria-label="Record type">{["all","form","capability","problem","practice"].map(k=><option key={k} value={k}>{k==="all"?"All records":k==="practice"?"In practice":k}</option>)}</select><button>EXPLORE ↗</button></div></form>
+ <p className="voice-system">This is the record behind Ask: named objects, source links and explicit relationships. The semantic form count remains separate from the supporting capabilities.</p>
+ <div className="knowledge-list">{nodes.map(({node:n})=><article key={n.id} id={n.id}><p className="voice-evidence">{n.kind.toUpperCase()}</p><h2 className="voice-editorial"><Link href={n.url}>{n.title} ↗</Link></h2><p className="voice-system">{n.text}</p><div className="knowledge-relations">{relatedKnowledge(n.id).slice(0,6).map(({node,edge})=><Link key={`${edge.from}:${edge.to}`} href={node.url}><span>{edge.from===n.id?edge.kind.replaceAll("-"," "):edge.kind==="contributed"?"contributed by":edge.kind==="originated-in"?"origin for":"connected to"}</span> {node.title} ↗</Link>)}</div><div className="knowledge-actions"><Link href={`/ask?q=${encodeURIComponent(`Tell me about ${n.title}`)}`}>ASK ABOUT THIS ↗</Link><a href={n.sourceUrl}>SOURCE RECORD ↗</a></div></article>)}</div>
+ {!nodes.length&&<p>No matching record. Try a component name or a shorter phrase.</p>}<a href="/api/knowledge" className="story-link">READ THE MACHINE-READABLE GRAPH ↗</a>
+ </div></section></main>;
+}

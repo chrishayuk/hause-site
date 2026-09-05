@@ -1,3 +1,4 @@
+import { knowledgeAnswerNodes, relatedKnowledge } from "./knowledge";
 /**
  * ASK HAUSE — the resolver.
  *
@@ -840,13 +841,20 @@ export function selectionPaths(question: string): { act: string | null; scaffold
 
 export function askHause(question: string): AskAnswer {
 	const ql = question.toLowerCase();
- const capability=publicationCapability(question);
- const contribution=ql.includes("chrishayuk") && /component|contribut|publication/.test(ql);
- if(capability||contribution)return {id:"publication",blocks:[
-  {kind:"statement",text:capability?capability.name:"Film and publication: the CHRISHAYUK contribution"},
-  ...(capability?[capability]:PUBLICATION_CAPABILITIES).map(c=>({kind:"observation" as const,label:c.name,text:c.text})),
-  {kind:"connection",text:`Source: ${PUBLICATION_RECORD.title}, published ${PUBLICATION_RECORD.published}.`,links:[{href:"/publication",label:"THE RECORD & LIVE EXAMPLE"}]},
- ]};
+ const namedCapability=PUBLICATION_CAPABILITIES.some(c=>c.aliases.some(a=>!a.includes(" ")&&ql.includes(a.toLowerCase())));
+ const publicationIntent=/\b(films?|videos?|transcripts?|captions?|chapters?|playback|cinematic|connect)\b/.test(ql);
+ const known=!namedCapability&&!publicationIntent&&problemMatch(question)?[]:knowledgeAnswerNodes(question);
+ if(known.length){
+  const connections=[...known,...known.flatMap(n=>relatedKnowledge(n.id).map(r=>r.node))];
+  const links=[...new Map(connections.map(n=>[n.url,{href:n.url,label:n.title}])).values()].slice(0,8);
+  return {id:"publication",blocks:[
+   {kind:"statement",text:known.length===1?known[0].title:"The connected publication capabilities"},
+   ...known.map(n=>({kind:"observation" as const,label:n.title,text:n.text})),
+   {kind:"connection",text:"From the connected system record. Follow a capability, its dependency or the publication that contributed it.",links},
+   {kind:"connection",text:"Inspect the source records and relationships.",links:[{href:"/knowledge?kind=capability",label:"THE KNOWLEDGE BASE"}]},
+  ]};
+ }
+
 	const kind = classify(question);
 
 	const interrogation = () => {
@@ -954,6 +962,9 @@ export function askHause(question: string): AskAnswer {
 
 
 export const ASK_SUGGESTIONS = [
+ "How do film and citations connect?",
+ "How do I stop two videos playing at once?",
+ "Which components came from CHRISHAYUK?",
 	"I need to compare three strategies",
 	"Why doesn't HAUSE have cards?",
 	"How do I show a claim is proven?",
