@@ -1,3 +1,4 @@
+import {EVALUATIONS} from "./evaluations";
 import {FORMS,formSlug} from "./forms";
 import {PROBLEMS} from "./problems";
 import {PUBLICATION_CAPABILITIES} from "./publication";
@@ -19,9 +20,10 @@ export const KNOWLEDGE_NODES:KnowledgeNode[]=[
  ...PROBLEMS.map(p=>({id:`problem:${p.slug}`,kind:"problem" as const,title:p.title,text:p.answer,url:`/problems/${p.slug}`,sourceUrl:`/problems/${p.slug}`})),
  ...PUBLICATION_CAPABILITIES.map((c,i)=>({id:`capability:${ids[i]}`,kind:"capability" as const,title:c.name,text:c.text,url:`/publication#${ids[i]}`,sourceUrl:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",terms:[...c.aliases,...vocabulary[i]]})),
  ...PRACTICES.map(p=>({id:`practice:${p.id}`,kind:"practice" as const,title:p.name,text:`${p.summary} ${p.contribution}`,url:`/in-practice#${p.id}`,sourceUrl:p.recordUrl})),
- ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
+ ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:EVALUATIONS.find(e=>p.href===`/evals/${e.id}`)?.text||`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
 ];
 export const KNOWLEDGE_EDGES:KnowledgeEdge[]=[
+ ...EVALUATIONS.map(e=>({from:"page:/evidence",to:`page:/evals/${e.id}`,kind:"documents" as const,basis:"published evaluation record"})),
  ...PROBLEMS.flatMap(p=>p.answers.map(f=>({from:`form:${f}`,to:`problem:${p.slug}`,kind:"addresses" as const,basis:"problem record"}))),
  ...FORMS.filter(f=>f.origin?.startsWith("vindex3")).map(f=>({from:`form:${f.name}`,to:"practice:vindex3",kind:"originated-in" as const,basis:"library manifest"})),
  ...PRACTICES.flatMap(p=>p.capabilities.map(c=>({from:`practice:${p.id}`,to:`capability:${c}`,kind:"contributed" as const,basis:"publication contribution record · 2026-09-05"}))),

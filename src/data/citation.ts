@@ -37,7 +37,7 @@ export const HAUSE_RECORD: CitationRecord = {
 
 /** Dated, and taken from the library's own history — not from when this page was last touched. */
 export const HAUSE_HISTORY: ProvenanceEvent[] = [
- {date:"2026-09-06",text:"The specimen book connects forms, capabilities, problems and publications in its navigation and Ask knowledge base."},
+ {date:"2026-09-06",text:"The specimen book connects its records through Ask, introduces a four-choice act demonstration, and gives newcomers direct routes to forms, examples, evidence and implementation."},
  {date:"2026-09-05",text:"CHRISHAYUK contributes shared film and publication capabilities."},
 	{ date: "2026-08-31", text: "The citable surface: cite.ts, Provenance and Citation — publishing becomes part of the grammar." },
 	{ date: "2026-08-30", text: "The legibility layer: the Answer form, the seo builders, machine legibility stated as doctrine." },

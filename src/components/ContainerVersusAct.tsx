@@ -48,7 +48,7 @@ export function ContainerVersusAct() {
 				</div>
 
 				<p className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 mb-6">
-					THE SAME THREE SENTENCES ABOUT ONE PRODUCT, SAID BOTH WAYS
+					ILLUSTRATIVE PRODUCT DATA / THE SAME THREE SENTENCES, SAID BOTH WAYS
 				</p>
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10">

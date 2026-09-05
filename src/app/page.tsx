@@ -9,14 +9,17 @@ import {citationMeta} from "@chrishayuk/hause/cite";
 import {formCount} from "@chrishayuk/hause/manifest";
 import {HAUSE_RECORD,HAUSE_HISTORY} from "@/data/citation";
 import {ContainerVersusAct} from "@/components/ContainerVersusAct";
+import {ActDemo} from "@/components/ActDemo";
 import {TheLoop} from "@/components/TheLoop";
 import {WhatYouGet} from "@/components/WhatYouGet";
 import {PRACTICES} from "@/data/practice";
 import film from "@/data/publication-film.json";
 export const metadata={other:citationMeta(HAUSE_RECORD)};
 export default function Home(){return <main className="system-story">
- <Hero kicker="HAUSE · A DESIGN SYSTEM FOR AI" title="GIVE MEANING A FORM." dek="A claim. The evidence beneath it. A film that makes it visible. HAUSE gives intelligent interfaces a language—and keeps the source attached."/>
- <div className="story-actions hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><Link href="/knowledge">EXPLORE THE SYSTEM ↗</Link><Link href="/in-practice">SEE IT IN PRACTICE ↗</Link></div></div>
+ <Hero kicker="HAUSE · A DESIGN SYSTEM FOR AI" title="GIVE MEANING A FORM." dek="A component vocabulary for AI-generated interfaces. Let the model choose what it is doing: making a claim, presenting evidence, comparing alternatives or refusing to assert something."/>
+ <div className="story-actions hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><Link href="#try">TRY THE IDEA ↓</Link><Link href="/use">INSTALL HAUSE ↗</Link><Link href="/evidence">INSPECT THE EVIDENCE ↗</Link></div></div>
+ <ActDemo/>
+ <section className="audience-paths hause-grid" aria-label="Choose your starting point"><div className="col-span-12 md:col-start-2 md:col-span-10"><Link href="/choosing"><span className="voice-evidence">SEE THE IDEA</span><strong>Try the form chooser ↗</strong><span className="voice-system">Find the right form for what your interface needs to say.</span></Link><Link href="/use"><span className="voice-evidence">USE THE LIBRARY</span><strong>Install HAUSE ↗</strong><span className="voice-system">Add the React source, tokens and your first composition.</span></Link><Link href="/evidence"><span className="voice-evidence">TEST THE PREMISE</span><strong>Read the evaluations ↗</strong><span className="voice-system">Inspect the methods, results and unresolved questions.</span></Link></div></section>
  <Answer id="what-is-hause" question="What is HAUSE?" answer={`HAUSE is a semantic design system for AI interfaces. It provides ${formCount()} forms for acts such as claims, evidence, comparisons and refusals, alongside shared film and publication capabilities. A site supplies its content and art direction; HAUSE supplies forms, interaction behaviour, citation exports and machine-readable metadata.`}/>
  <section className="story-intro hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">01 / SAY WHAT YOU MEAN</p><h2 className="voice-editorial">Start with the act.</h2><p className="voice-system">A claim needs a different treatment from evidence. An unresolved question needs a different treatment from a refusal. Choose what the interface is doing before choosing how it looks.</p><Link href="/choosing" className="story-link">CHOOSE A FORM ↗</Link></div></section>
  <ContainerVersusAct/>
