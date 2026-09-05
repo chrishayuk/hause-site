@@ -20,6 +20,12 @@ import { grammarCoverage } from "../src/data/grammar";
 type Case = { q: string; expect: string };
 
 const cases: Case[] = [
+ {q:"What is YouTubeFilm?",expect:"publication"},
+ {q:"How does MotionProvider stop competing videos?",expect:"publication"},
+ {q:"Can I use TimedTranscript?",expect:"publication"},
+ {q:"How do film citations handle a corporate author?",expect:"publication"},
+ {q:"Which components were contributed from CHRISHAYUK?",expect:"publication"},
+ {q:"What does publicationMetadata generate?",expect:"publication"},
 	// Every problem answers its own question — the record, teaching the resolver.
 	...PROBLEMS.map((p) => ({ q: p.question, expect: `problem-${p.slug}` })),
 

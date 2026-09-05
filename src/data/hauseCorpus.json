@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-03",
+ "generated": "2026-09-05",
  "passages": [
   {
    "id": "readme#1",
@@ -72,6 +72,36 @@
    "source": "the library README",
    "heading": "A capability that matters earns a record",
    "text": "The second rule this library learned by failing rather than by design.\n\nA keyword list tells a system which words to notice. A record tells it\nwhat the thing means. The difference is invisible until something has to\nresolve an input nobody anticipated — and then it is the whole\ndifference.\n\nTwo evaluations found it from opposite directions on the same day.\nCHOOSING-1 gave a model 124 unfamiliar descriptions and asked which form\neach needed: from the manifest's one-line records it answered 122; the\ndeployed keyword resolver, given the same 124, answered 8. ROUTING-1\nthen asked sixty questions of the assistant itself, and the spaces\nbacked by records — what is this form, where did it come from — answered\n24 of 24, while the spaces backed by hand-written keyword lists answered\n16 of 36.\n\nSo: **a capability that matters earns a record; a keyword list is only\nscaffolding until the record exists.** The manifest is a record. The\nselection grammar is a record. The problems are records. Where a surface\nstill holds a list of phrases, that is not an implementation detail — it\nis a capability that has not been given its object yet, and it will fail\non the first sentence nobody thought to add.\n\nThis sits beside the other rule the same programme produced: a recurring\nvisual need earns a form, a one-page visual need earns an\nimplementation. Both are the same instinct — do not promote scaffold"
+  },
+  {
+   "id": "readme#13",
+   "source": "the library README",
+   "heading": "Film and publication capabilities",
+   "text": "The CHRISHAYUK publication contributed shared film infrastructure on 5 September\n2026. These extend existing acts and their publication surfaces; they do not\nincrease the semantic form count. The originating publication is the current\nconsumer. The specimen book demonstrates the contracts, not independent evidence\nof reuse in a second publication.\n\n- `Motion.tsx` provides `MotionProvider` / `useMotion`; `motion.ts` decides which\n  visible media source owns playback. Reduced motion, data saving, global pause,\n  page visibility and modal suspension are coordinated.\n- `YouTubeFilm.tsx` is a poster-first, explicitly activated external screening.\n  `film.css` supplies its neutral baseline; the publication supplies art direction.\n- `FilmChapters.tsx` and `TimedTranscript.tsx` navigate source timestamps and retain\n  caption provenance. Text is readable without activating a player.\n- `CitationExport.tsx` accepts the formats produced by `cite.ts`, with download,\n  copy feedback and a no-JS disclosure. `citation-export.css` supplies reading\n  defaults in an overridable cascade layer.\n- `mode.ts` supplies `modeScript`, paired with `ModeToggle.tsx` for an authored\n  light or dark default and a persisted viewer choice applied before paint.\n- `cite.ts` also covers films, images, literal corporate authors and unknown\n  publication dates; `seo.ts` supplies `publicationMetadata` and `videoObjec"
+  },
+  {
+   "id": "publication#1",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Contributed from the CHRISHAYUK publication. Editorial layouts remain in the consumer; citation and machine-legibility rules belong to HAUSE. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#2",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "- `cite.ts`: film/image kinds, literal corporate authors, optional unknown publication dates, stable record IDs; Plain, APA, BibTeX, CSL-JSON and head metadata share one record. Never use a retrieval date as a publication date. An absent date exports as n.d. and is omitted from machine date fields.\n- `seo.ts`: `publicationMetadata` emits canonical, social, indexing and citation head values. `videoObjectLd` distinguishes the local screening URL, original source, producer and participants. These are discoverability helpers, not promises of indexing or rich-result eligibility. Sites supply summaries, facts, routes, imagery and their publication policy.\n- `components/Motion`: one dominant visible media owner, explicit full-film activation, reduced-motion/save-data, global pause, page visibility and dialog suspension. Wrap the publication once. `useMotion` lets local ambient films and system studies join the same coordinator. Storage key is configurable.\n- `components/YouTubeFilm`: poster-first, click-to-load privacy-enhanced YouTube screening. Optional React preview slot, external chapter requests and configurable exhibition classes. Requires MotionProvider. Full playback resets when suspended; returning requires a new play action. Films do not load an iframe during SSR.\n- `components/FilmChapters` and `components/TimedTranscript`: time-indexed source navigation; consumers supply s Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#3",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The new reading/player CSS is in a low-priority `hause-components` cascade layer, so exhibitions can supply art direction. Existing Film and Citation forms keep their established behaviour; adopting the shared motion coordinator is opt-in. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#4",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Run portable metadata/citation/theme checks with `node --experimental-strip-types --test tests/publication.test.ts`. The public date on a locally published research record is still required by its publication workflow even though a catalogued external work can have an unknown date.\n Read the live example at hause.design/publication."
   },
   {
    "id": "act#Statement",

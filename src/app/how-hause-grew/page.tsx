@@ -57,6 +57,7 @@ export default function HowHauseGrewPage() {
 
 	return (
 		<main>
+			<Connection text="5 September 2026: film and publication capabilities contributed by CHRISHAYUK." links={[{href:"/publication",label:"THE NEXT CONTRIBUTION"}]}/>
 			<JsonLd data={citationLd(RECORD)} />
 			<JsonLd
 				data={breadcrumbLd([

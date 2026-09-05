@@ -20,6 +20,8 @@ export default function PerformancesPage() {
 				dek="Cinematic forms — they play themselves. In-view start, a designed resting state, REPLAY where a piece runs once, a gentle loop where a scrolling reader must never find it finished. Reduced motion always lands on the finished composition."
 			/>
 
+			<Connection text="When the performance is a real film." links={[{href:"/publication",label:"FILM & PUBLICATION — LIVE SCREENING"}]}/>
+
 			<Observation text="One rule governs all of them: never a crossfade between two physical forms of one thing. A crossfade depicts a conversion. These forms stage a swap — exit, a held beat, enter — or they move the same pieces continuously. The distinction is the design language's deepest conviction, borrowed from the exhibition that forced it into existence." />
 
 			<Specimen name="Transformation" mode="performance" note="Comparison's cinematic sibling — identical argument, performed instead of dragged." />

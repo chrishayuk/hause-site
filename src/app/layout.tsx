@@ -1,3 +1,4 @@
+import { modeScript } from "@chrishayuk/hause/mode";
 import type { Metadata } from "next";
 import { Fraunces, Inter, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -45,7 +46,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
+		<html lang="en" data-mode="dark" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
 				<JsonLd
 					data={webSiteLd({
@@ -58,7 +59,7 @@ export default function RootLayout({
 				<script
 					// eslint-disable-next-line react/no-danger
 					dangerouslySetInnerHTML={{
-						__html: `try{var m=localStorage.getItem('hause-mode');if(m==='light')document.documentElement.dataset.mode='light';}catch(e){}`,
+						__html: modeScript("dark"),
 					}}
 				/>
 			</head>
@@ -85,6 +86,7 @@ export default function RootLayout({
 								{ href: "/statements", label: "Statements" },
 								{ href: "/instruments", label: "Instruments" },
 								{ href: "/performances", label: "Performances" },
+								{ href: "/publication", label: "Film & publication" },
 							],
 						},
 						{

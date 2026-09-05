@@ -120,10 +120,21 @@ export const metadata = { other: citationMeta(NOTE) };   // the head
 
 			<Observation
 				label="THE ENVIRONMENTS"
-				text="Dark is the default. A viewer opts into light through the ModeToggle, and the choice persists as hause-mode in localStorage — apply it before paint with a blocking script that sets data-mode on the root element when the stored value is light."
+				text="This specimen book defaults to dark. A publication chooses its own light or dark starting environment. ModeToggle persists the viewer’s choice as hause-mode; modeScript applies it before paint. The choice changes reading surfaces while authored film compositions can keep their cinematic black."
 			/>
 
-			<Statement text="The standing rule travels with the install: nothing enters the library without a real page that needed it first." />
+			<Connection text="A film-led publication, with the source still attached." links={[{href:"/publication",label:"FILM, TRANSCRIPTS & SOURCE CITATIONS"}]}/>
+
+            <Snippet label="THE AUTHORED ENVIRONMENT — BEFORE PAINT" code={`import { modeScript } from "@chrishayuk/hause/mode";
+import { ModeToggle } from "@chrishayuk/hause/components/ModeToggle";
+
+// The HTML default, script and control must agree.
+<html data-mode="light" suppressHydrationWarning>
+  <head><script dangerouslySetInnerHTML={{ __html: modeScript("light") }} /></head>
+  <body><ModeToggle defaultMode="light" />{children}</body>
+</html>`} aside="HAUSE's specimen book defaults to dark; your publication can default to light. Stored choice wins. In a no-emit TypeScript consumer, enable allowImportingTsExtensions for HAUSE's source modules."/>
+
+            <Statement text="The standing rule travels with the install: nothing enters the library without a real page that needed it first." />
 
 			<Connection
 				text="What you just installed, exhibited."

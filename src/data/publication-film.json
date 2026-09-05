@@ -1,0 +1,77 @@
+{
+  "youtubeId": "8Ppw8254nLI",
+  "title": "LLMs Are Databases - So Query Them",
+  "published": "2026-04-13",
+  "duration": 1742,
+  "url": "https://www.youtube.com/watch?v=8Ppw8254nLI",
+  "poster": "https://i.ytimg.com/vi/8Ppw8254nLI/hqdefault.jpg",
+  "chapters": [
+    {
+      "start": 0,
+      "end": 47,
+      "title": "Intro"
+    },
+    {
+      "start": 47,
+      "end": 110,
+      "title": "LARQL"
+    },
+    {
+      "start": 110,
+      "end": 240,
+      "title": "Entities - describing entities in the model"
+    },
+    {
+      "start": 240,
+      "end": 466,
+      "title": "Select - quering entities"
+    },
+    {
+      "start": 466,
+      "end": 751,
+      "title": "Features — How the model represents knowledge"
+    },
+    {
+      "start": 751,
+      "end": 990,
+      "title": "Relations — How entities relate to features"
+    },
+    {
+      "start": 990,
+      "end": 1110,
+      "title": "The Dimensionality Gap — Why features aren't enough"
+    },
+    {
+      "start": 1110,
+      "end": 1290,
+      "title": "INFER — It's a graph walk"
+    },
+    {
+      "start": 1290,
+      "end": 1470,
+      "title": "INSERT — Writing new knowledge"
+    },
+    {
+      "start": 1470,
+      "end": 1742,
+      "title": "COMPILE — From graph to weights"
+    }
+  ],
+  "passages": [
+    {
+      "start": 0.0,
+      "end": 28.12,
+      "text": "What if I said every single large language model was a database? Specifically, a graph database. Not metaphorically, but physically. If we looked underneath the hood at the weights, it was an actual database with real edges, with real entities, with real nodes. That's how it was physically represented. What would that mean? Well, it would mean that we could query it. We"
+    },
+    {
+      "start": 25.56,
+      "end": 52.88,
+      "text": "could insert new knowledge. We could compile down to weights because it's just a database. And if it's just a database, then we could have query languages like SQL over the top of it. We could programmatically work with the model if that were true. But the good news is it is true. So, let's do it. So, we're going to query it with a language called Larql, which allows us to query"
+    },
+    {
+      "start": 51.08,
+      "end": 80.28,
+      "text": "large language models. So, I'm going to connect it up to the weights of the Gemma 34B model. Believe me, I will connect it up to Gemma 4, but that will be a future video. So, I've now connected up here and you can kind of see there that that model has got 34 layers or 348,000 features. And in fact, if I just run stats against the model there, there you see Google Gemma 3, you see the number of features, and then as you can see"
+    }
+  ]
+}

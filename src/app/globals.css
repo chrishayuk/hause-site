@@ -6,3 +6,18 @@
    this. Keep it pointing at the installed package, not ../hause — the
    site must build from what it actually depends on. */
 @source "../../node_modules/@chrishayuk/hause";
+
+/* Publication specimen: the image leads; the source remains readable. */
+.publication-demo-label{display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:11px;margin-bottom:1rem}
+.publication-demo-label button{min-height:44px;padding:.5rem;color:var(--fg);border:1px solid currentColor}
+.publication-demo>h2{font-size:clamp(30px,4vw,60px);line-height:1.12;margin:2rem 0 1rem}
+.publication-demo>p{max-width:750px;line-height:1.8;margin-bottom:2rem}
+.publication-room .film-chapters{margin:3rem 0}.publication-room .film-chapters h2{font-size:12px;letter-spacing:.1em;margin-bottom:1rem}
+.publication-room .film-chapters>button{padding:1rem 0;border-bottom:1px solid color-mix(in srgb,var(--fg) 25%,transparent);font-size:14px}
+.publication-room .film-transcript{margin:3rem 0}.publication-room .film-transcript h2{font-family:var(--font-fraunces);font-size:clamp(35px,5vw,65px)}
+.publication-room .film-transcript p{line-height:1.8;margin:1rem 0}.publication-room .transcript-passage{border-top:1px solid color-mix(in srgb,var(--fg) 25%,transparent);font-size:14px}
+.publication-room .transcript-passage button,.publication-room .transcript-passage a{font-size:11px;min-height:44px}
+.publication-room .reference-section h2{font-size:12px;letter-spacing:.1em;margin-bottom:1.25rem}.publication-room .reference-context{line-height:1.8;max-width:700px}
+.publication-room .reference-output{padding:1.5rem;background:color-mix(in srgb,var(--fg) 6%,var(--bg));font-size:12px}
+.publication-room .reference-tabs,.publication-room .reference-actions{font-family:var(--font-geist-mono);font-size:11px}
+@media(max-width:600px){.publication-demo-label{font-size:9px}.publication-room .film-chapters>button{grid-template-columns:3rem 1fr auto;gap:.75rem}}

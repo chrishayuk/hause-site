@@ -17,6 +17,7 @@
  * the system does not have is never invented.
  */
 
+import { PUBLICATION_CAPABILITIES, PUBLICATION_RECORD, publicationCapability } from "./publication";
 import { FORM_MANIFEST, formCount, formsByMode, HAUSE_LINE, HAUSE_BOUNDARY } from "@chrishayuk/hause/manifest";
 import { formSlug } from "./forms";
 import { PROBLEMS, problemsForForm, type Problem } from "./problems";
@@ -839,6 +840,13 @@ export function selectionPaths(question: string): { act: string | null; scaffold
 
 export function askHause(question: string): AskAnswer {
 	const ql = question.toLowerCase();
+ const capability=publicationCapability(question);
+ const contribution=ql.includes("chrishayuk") && /component|contribut|publication/.test(ql);
+ if(capability||contribution)return {id:"publication",blocks:[
+  {kind:"statement",text:capability?capability.name:"Film and publication: the CHRISHAYUK contribution"},
+  ...(capability?[capability]:PUBLICATION_CAPABILITIES).map(c=>({kind:"observation" as const,label:c.name,text:c.text})),
+  {kind:"connection",text:`Source: ${PUBLICATION_RECORD.title}, published ${PUBLICATION_RECORD.published}.`,links:[{href:"/publication",label:"THE RECORD & LIVE EXAMPLE"}]},
+ ]};
 	const kind = classify(question);
 
 	const interrogation = () => {

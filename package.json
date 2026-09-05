@@ -14,7 +14,7 @@
     "ingest": "tsx scripts/ingest-forms.ts ../hause && tsx scripts/ingest-hause.ts ../hause"
   },
   "dependencies": {
-    "@chrishayuk/hause": "github:chrishayuk/hause",
+    "@chrishayuk/hause": "github:chrishayuk/hause#74cd09234a3d4028edc695353085a0f6f876eccf",
     "@opennextjs/cloudflare": "^1.20.3",
     "next": "16.3.3",
     "react": "^19.1.7",

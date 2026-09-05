@@ -46,6 +46,12 @@ for (const line of readme.split("\n")) {
 }
 flush();
 
+// Publication contracts are canonical library documentation, not inferred capability.
+for(const [i,text] of readFileSync(join(HAUSE,"PUBLICATION.md"),"utf8").split(/\n\n/).entries()) {
+ if(text.trim().length<60)continue;
+ passages.push({id:`publication#${i}`,source:"the library publication contracts",heading:"Film and publication",text:text.slice(0,1400)+" Read the live example at hause.design/publication."});
+}
+
 // ── The selection grammar: the act, the form, and the test that decides ──
 for (const intent of GRAMMAR) {
 	for (const act of intent.acts) {
