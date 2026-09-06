@@ -30,6 +30,7 @@ const C = resultC as Res;
 const n = A.outcomes.length;
 const exact = (r: Res) => r.outcomes.filter((o) => o.exact).length;
 const abstained = (r: Res) => r.outcomes.filter((o) => o.expected === "NONE" && o.abstained).length;
+const percentage = (r: Res) => (exact(r) / r.outcomes.length * 100).toFixed(1);
 const noForm = A.outcomes.filter((o) => o.expected === "NONE").length;
 
 const STAGES: { label: string; line: string; accent?: boolean }[] = [
@@ -103,6 +104,8 @@ export function TheLoop() {
 				<p className="voice-evidence text-[11px] tracking-[0.1em] uppercase opacity-40 mt-12 mb-4">
 					MEASURED — CHOOSING-1 · {n} UNFAMILIAR CASES · PREREGISTERED · FROZEN
 				</p>
+				<p className="voice-evidence text-5xl sm:text-7xl tracking-tight mb-3" style={accent}>{percentage(A)}% <span className="text-lg sm:text-2xl tracking-normal">· {exact(A)} / {n}</span></p>
+				<p className="voice-system text-base max-w-2xl mb-8">In CHOOSING-1, a model given the form names and one-line descriptions selected the intended form in {exact(A)} of {n} unfamiliar cases. The full grammar reached the same result.</p>
 				<div className="flex flex-col">
 					{MEASURED.map((m) => (
 						<div

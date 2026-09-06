@@ -11,8 +11,7 @@ import pkg from "@chrishayuk/hause/package.json";
  * the first place the page says HAUSE is also a thing you install, and
  * every count here is read from the library rather than typed, because
  * a count typed beside a manifest is the drift the manifest exists to
- * end. The boundary follows immediately, so nobody installs it
- * expecting a button.
+ * end. The boundary is a separate act in the homepage sequence.
  */
 
 const peers = (pkg as { peerDependencies: Record<string, string> }).peerDependencies;
@@ -61,10 +60,15 @@ export function WhatYouGet() {
 				</div>
 			</section>
 
+		</>
+	);
+}
+
+export function SystemBoundary() {
+	return (
 			<Observation
 				label="THE BOUNDARY — WHAT THIS IS, AND WHAT IT LEAVES ALONE"
 				text="HAUSE is the semantic layer for what an intelligent interface needs to communicate. It does not replace transactional primitives such as buttons, inputs, tables, navigation or commerce mechanics, and does not try to. And an explanation is not only a dashboard or an instrument: it can be an answer, an argument, a comparison, a refusal, a piece of evidence, or a performance."
 			/>
-		</>
 	);
 }
