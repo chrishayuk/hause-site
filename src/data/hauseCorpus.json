@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-06",
+ "generated": "2026-09-07",
  "passages": [
   {
    "id": "readme#1",
@@ -83,7 +83,7 @@
    "id": "readme#14",
    "source": "the library README",
    "heading": "Recorded evidence in publications",
-   "text": "`EvidenceTable` and `MeasurementTrace` were extracted from the CHRISHAYUK\naddress-depth notebook on 7 September 2026. They are shared publication\ncapabilities under `components/`, not newly promoted forms in the manifest.\nThe table preserves units, precision, baselines, sources and explicit missing\nmeasurements. The trace shows every recorded sample and lets readers move\nthrough ordered stages using the shared MotionProvider. It never interpolates\nunmeasured stages. The consumer supplies data, domains, cautions and interpretation.\n\nThe hause.design publication room demonstrates these contracts. This is a\nspecimen, not evidence of independent reuse in another subject area."
+   "text": "`EvidenceTable` and `MeasurementTrace` were extracted from the CHRISHAYUK\naddress-depth notebook on 7 September 2026. They are shared publication\ncapabilities under `components/`, not newly promoted forms in the manifest.\nThe table preserves units, precision, baselines, sources and explicit missing\nmeasurements. The trace shows every recorded sample and lets readers move\nthrough ordered stages using the shared MotionProvider. It never interpolates\nunmeasured stages. The consumer supplies data, domains, cautions and interpretation.\n\nThe hause.design publication room demonstrates these contracts. This is a\nspecimen, not evidence of independent reuse in another subject area.\n\n`Share` (`components/Share.tsx`) supplies LinkedIn, X and Copy controls using\n`share.ts` and `share.css`. See PUBLICATION.md for its source and privacy contract."
   },
   {
    "id": "publication#1",
@@ -113,13 +113,43 @@
    "id": "publication#6",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "Contributed from ADDRESS-BUILD-1 in the CHRISHAYUK notebook, 7 September 2026.\n`components/EvidenceTable` renders semantic tables with column units/precision,\nexplicit baseline rows, sample-count columns, source references and distinguishable\nnot-measured/not-applicable cells. `components/MeasurementTrace` renders measured\ntracks across discrete stages, with authored domains, baselines, caution bands,\nannotations and pause/play/replay via MotionProvider. Every value and caution is\nserver-rendered; animation only changes emphasis. Data and interpretation remain\nin the publication. These are capabilities, not additions to the form count.\nSee [EVIDENCE.md](EVIDENCE.md) for contracts, examples and extraction status.\n Read the live example at hause.design/publication."
+   "text": "Contributed from ADDRESS-BUILD-1 in the CHRISHAYUK notebook, 7 September 2026.\n`components/EvidenceTable` renders semantic tables with column units/precision,\nexplicit baseline rows, sample-count columns, source references and distinguishable\nnot-measured/not-applicable cells. `components/MeasurementTrace` renders measured\ntracks across discrete stages, with authored domains, baselines, caution bands,\nannotations and pause/play/replay via MotionProvider. Every value and caution is\nserver-rendered; animation only changes emphasis. Data and interpretation remain\nin the publication. These are capabilities, not additions to the form count.\nSee [EVIDENCE.md](EVIDENCE.md) for contracts, examples and extraction status. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#8",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`Share` from `@chrishayuk/hause/components/Share` accepts `url`, `text`, optional `label` and `className`. The publication supplies a canonical public URL and a concise proposition, preserving any uncertainty. `share.ts` exports the same `shareLinks` builder for other renderers; `share.css` supplies overridable reading defaults. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#9",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "LinkedIn receives the canonical link and builds its preview from the destination's metadata; its share URL does not prefill post prose. X receives the supplied text and URL in a composer. Neither link publishes anything automatically. No provider SDK, tracking pixel, account or subscriber store is added. Keep the proposed X text short enough for its composer. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#10",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Copy opens a native disclosure with selectable text, and enhances it with clipboard feedback when JavaScript and clipboard access are available. A blocked clipboard leaves the text available. Use a single MotionProvider around other media as usual; Share itself has no motion. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#11",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "```tsx\n<Share url=\"https://example.org/notebook/a-question\"\n  text=\"The question that makes this record worth reading.\" />\n``` Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#12",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The consumer decides which records may be shared. Do not expose unlisted drafts. Source cards, editorial post drafts and publication status remain consumer-owned. First consumer: CHRISHAYUK, September 2026. This is publication infrastructure, not a newly promoted semantic form.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
    "source": "the library recorded evidence contracts",
    "heading": "EvidenceTable and MeasurementTrace",
-   "text": "First consumer: [The address is built through depth](https://chrishayuk.com/notebook/the-address-is-built-through-depth), CHRISHAYUK, 7 September 2026. This extraction extends publication infrastructure. It does not promote new semantic forms or claim that the specimen book is independent reuse. Experiment numbers, source records, layer names and causal interpretations remain in the consuming site. Read the live example at hause.design/publication#recorded-evidence."
+   "text": "First consumer: [The address is built through depth](https://chrishayuk.com/codex/the-address-is-built-through-depth), CHRISHAYUK, 7 September 2026. This extraction extends publication infrastructure. It does not promote new semantic forms or claim that the specimen book is independent reuse. Experiment numbers, source records, layer names and causal interpretations remain in the consuming site. Read the live example at hause.design/publication#recorded-evidence."
   },
   {
    "id": "evidence#3",

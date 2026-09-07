@@ -23,6 +23,7 @@ import { grammarCoverage } from "../src/data/grammar";
 type Case = { q: string; expect: string };
 
 const cases: Case[] = [
+ {q:"How does social sharing work?",expect:"publication"},
  {q:"What is EvidenceTable?",expect:"publication"},
  {q:"What is MeasurementTrace?",expect:"publication"},
  {q:"How do I show missing measurements?",expect:"publication"},

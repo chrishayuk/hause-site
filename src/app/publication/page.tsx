@@ -1,3 +1,4 @@
+import {Share} from "@chrishayuk/hause/components/Share";
 import {MotionProvider} from "@chrishayuk/hause/components/Motion";
 import {Hero} from "@chrishayuk/hause/components/forms/Hero";
 import {Answer} from "@chrishayuk/hause/components/forms/Answer";
@@ -51,6 +52,7 @@ const filmData = videoObjectLd({
 const exports = citationFormats(filmCitation);`} aside="Render the same factual summary as ordinary text. Indexing is a deliberate site policy; the helpers default to noindex. Omit unknown dates. A participant credit does not make someone the film's producer."/>
  <Observation label="CONTROLS SUPPORT THE ACT" text="These additions extend film and publication behaviour. They keep the form vocabulary at thirty-five; tables and playback are publication capabilities. The original Film, Citation and Provenance forms remain available; the shared playback coordinator is opt-in."/>
  <Observation label="WHAT THIS DOES NOT ESTABLISH" text="A metadata builder cannot guarantee Google indexing, a video rich result or inclusion in an AI answer. Public pages must be crawlable, sources reachable and summaries meaningful without watching the film. Caption coverage and review status remain explicit. Full YouTube playback resets when suspended."/>
+ <section className="hause-grid py-12"><div className="col-span-12 md:col-start-2 md:col-span-10"><Share url={record.url} text="The source is part of the experience."/></div></section>
  <Provenance record={record} citeHref="#cite-publication"/>
  <Citation record={record} id="cite-publication"/>
  <Connection text="Take the behaviour. Author the publication." links={[{href:"/knowledge?kind=capability",label:"EXPLORE THE CONNECTED CAPABILITIES"},{href:"/use",label:"INSTALL & COMPOSE"},{href:"/performances",label:"THE PERFORMANCES"},{href:"/ask?q=What%20is%20YouTubeFilm%3F",label:"ASK THE SYSTEM"},{href:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",label:"THE SOURCE CONTRACTS"}]}/>
