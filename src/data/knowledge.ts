@@ -6,7 +6,7 @@ import {PRACTICES} from "./practice";
 import {SITE_NAV} from "./navigation";
 export type KnowledgeNode={id:string;kind:"form"|"problem"|"capability"|"practice"|"page";title:string;text:string;url:string;sourceUrl:string;terms?:string[]};
 export type KnowledgeEdge={from:string;to:string;kind:"addresses"|"uses"|"contributed"|"originated-in"|"depends-on"|"documents"|"pairs-with";basis:string};
-const ids=["motion","film","transcript","citation","metadata","environments"];
+const ids=PUBLICATION_CAPABILITIES.map(c=>c.id);
 const vocabulary=[
  ["stop two videos playing at once", "autoplay","videos","playback","pause","motion","simultaneous","competing","moving","reduced motion"],
  ["video","film","youtube","poster","cinematic","screening","embed","player"],
@@ -18,7 +18,7 @@ const vocabulary=[
 export const KNOWLEDGE_NODES:KnowledgeNode[]=[
  ...FORMS.map(f=>({id:`form:${f.name}`,kind:"form" as const,title:f.name,text:`${f.line} ${f.because||""}`,url:`/forms/${f.slug}`,sourceUrl:`https://github.com/chrishayuk/hause/blob/main/manifest.ts`,terms:[f.mode]})),
  ...PROBLEMS.map(p=>({id:`problem:${p.slug}`,kind:"problem" as const,title:p.title,text:p.answer,url:`/problems/${p.slug}`,sourceUrl:`/problems/${p.slug}`})),
- ...PUBLICATION_CAPABILITIES.map((c,i)=>({id:`capability:${ids[i]}`,kind:"capability" as const,title:c.name,text:c.text,url:`/publication#${ids[i]}`,sourceUrl:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",terms:[...c.aliases,...vocabulary[i]]})),
+ ...PUBLICATION_CAPABILITIES.map((c,i)=>({id:`capability:${ids[i]}`,kind:"capability" as const,title:c.name,text:c.text,url:`/publication#${ids[i]}`,sourceUrl:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",terms:[...c.aliases,...(vocabulary[i]??[])]})),
  ...PRACTICES.map(p=>({id:`practice:${p.id}`,kind:"practice" as const,title:p.name,text:`${p.summary} ${p.contribution}`,url:`/in-practice#${p.id}`,sourceUrl:p.recordUrl})),
  ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:EVALUATIONS.find(e=>p.href===`/evals/${e.id}`)?.text||`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
 ];
@@ -26,9 +26,10 @@ export const KNOWLEDGE_EDGES:KnowledgeEdge[]=[
  ...EVALUATIONS.map(e=>({from:"page:/evidence",to:`page:/evals/${e.id}`,kind:"documents" as const,basis:"published evaluation record"})),
  ...PROBLEMS.flatMap(p=>p.answers.map(f=>({from:`form:${f}`,to:`problem:${p.slug}`,kind:"addresses" as const,basis:"problem record"}))),
  ...FORMS.filter(f=>f.origin?.startsWith("vindex3")).map(f=>({from:`form:${f.name}`,to:"practice:vindex3",kind:"originated-in" as const,basis:"library manifest"})),
- ...PRACTICES.flatMap(p=>p.capabilities.map(c=>({from:`practice:${p.id}`,to:`capability:${c}`,kind:"contributed" as const,basis:"publication contribution record · 2026-09-05"}))),
+ ...PRACTICES.flatMap(p=>p.capabilities.map(c=>({from:`practice:${p.id}`,to:`capability:${c}`,kind:"contributed" as const,basis:"publication contribution record · September 2026"}))),
  ...ids.map(id=>({from:"page:/publication",to:`capability:${id}`,kind:"documents" as const,basis:"publication record"})),
  {from:"capability:film",to:"capability:citation",kind:"pairs-with",basis:"publication specimen joins screening and its source citation"},
+ {from:"capability:measurement-trace",to:"capability:motion",kind:"depends-on",basis:"MeasurementTrace playback contract"},
  {from:"capability:film",to:"capability:motion",kind:"depends-on",basis:"YouTubeFilm component contract"},
  {from:"capability:transcript",to:"capability:film",kind:"uses",basis:"chapter and transcript seeking contract"},
  {from:"capability:metadata",to:"capability:citation",kind:"uses",basis:"publicationMetadata / videoObjectLd citation input"},

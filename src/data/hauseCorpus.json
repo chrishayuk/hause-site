@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-05",
+ "generated": "2026-09-06",
  "passages": [
   {
    "id": "readme#1",
@@ -11,7 +11,7 @@
    "id": "readme#2",
    "source": "the library README",
    "heading": "What's in here",
-   "text": "```\ntokens.css     palette, three type voices (editorial/system/evidence), 12-col grid,\n               motion tokens, Light/Dark, status marks, reveal/pulse animations\ntypes.ts       Status (\"OPEN\" | \"ONGOING\" | \"SUPPORTED\" | \"REFUTED\" | \"SUPERSEDED\"),\n               and STATUSES — the same vocabulary as a value\nmanifest.ts    the one index: every form with its mode, one-line record, recorded\n               origin and reuse — and HAUSE_LINE, the library's own description\nseo.ts         JSON-LD builders — WebSite, TechArticle, BreadcrumbList, DefinedTerm,\n               SoftwareApplication, QAPage, and citationLd for the graph\ncite.ts        CitationRecord, the formatters (plain, BibTeX, APA, CSL-JSON) and\n               citationMeta() for the head\nsound.ts       the synthesized palette — tick, swap, settle, refuse\nfigure.ts      the figure hand — hatch, reducedMotion, useInView\nscripts/\n  readme.ts           writes this file's lists and package.json's description\n                       from the manifest; --check fails when they drift\ncomponents/\n  Reveal.tsx          scroll-triggered reveal wrapper\n  StatusMark.tsx       word + dot status indicator\n  GridOverlay.tsx      \"SHOW STRUCTURE\" 12-column overlay\n  PaceDemo.tsx         Immediate / Considered / Cinematic motion demo\n  ModeToggle.tsx       LIGHT / DARK control\n  SoundToggle.tsx      the tactile voice's opt-in — off by de"
+   "text": "```\ntokens.css     palette, three type voices (editorial/system/evidence), 12-col grid,\n               motion tokens, Light/Dark, status marks, reveal/pulse animations\ntypes.ts       Status (\"OPEN\" | \"ONGOING\" | \"SUPPORTED\" | \"REFUTED\" | \"SUPERSEDED\"),\n               and STATUSES — the same vocabulary as a value\nmanifest.ts    the one index: every form with its mode, one-line record, recorded\n               origin and reuse — and HAUSE_LINE, the library's own description\nseo.ts         JSON-LD builders — WebSite, TechArticle, BreadcrumbList, DefinedTerm,\n               SoftwareApplication, QAPage, and citationLd for the graph\ncite.ts        CitationRecord, the formatters (plain, BibTeX, APA, CSL-JSON) and\n               citationMeta() for the head\nsound.ts       the synthesized palette — tick, swap, settle, refuse\nfigure.ts      the figure hand — hatch, reducedMotion, useInView\nscripts/\n  readme.ts           writes this file's lists and package.json's description\n                       from the manifest; --check fails when they drift\ncomponents/\n  Reveal.tsx          scroll-triggered reveal wrapper\n  StatusMark.tsx       word + dot status indicator\n  EvidenceTable.tsx    recorded values, units, baselines and explicit missingness\n  MeasurementTrace.tsx measured tracks, stage selection and coordinated replay\n  GridOverlay.tsx      \"SHOW STRUCTURE\" 12-column overlay\n  PaceDemo.tsx"
   },
   {
    "id": "readme#3",
@@ -80,6 +80,12 @@
    "text": "The CHRISHAYUK publication contributed shared film infrastructure on 5 September\n2026. These extend existing acts and their publication surfaces; they do not\nincrease the semantic form count. The originating publication is the current\nconsumer. The specimen book demonstrates the contracts, not independent evidence\nof reuse in a second publication.\n\n- `Motion.tsx` provides `MotionProvider` / `useMotion`; `motion.ts` decides which\n  visible media source owns playback. Reduced motion, data saving, global pause,\n  page visibility and modal suspension are coordinated.\n- `YouTubeFilm.tsx` is a poster-first, explicitly activated external screening.\n  `film.css` supplies its neutral baseline; the publication supplies art direction.\n- `FilmChapters.tsx` and `TimedTranscript.tsx` navigate source timestamps and retain\n  caption provenance. Text is readable without activating a player.\n- `CitationExport.tsx` accepts the formats produced by `cite.ts`, with download,\n  copy feedback and a no-JS disclosure. `citation-export.css` supplies reading\n  defaults in an overridable cascade layer.\n- `mode.ts` supplies `modeScript`, paired with `ModeToggle.tsx` for an authored\n  light or dark default and a persisted viewer choice applied before paint.\n- `cite.ts` also covers films, images, literal corporate authors and unknown\n  publication dates; `seo.ts` supplies `publicationMetadata` and `videoObjec"
   },
   {
+   "id": "readme#14",
+   "source": "the library README",
+   "heading": "Recorded evidence in publications",
+   "text": "`EvidenceTable` and `MeasurementTrace` were extracted from the CHRISHAYUK\naddress-depth notebook on 7 September 2026. They are shared publication\ncapabilities under `components/`, not newly promoted forms in the manifest.\nThe table preserves units, precision, baselines, sources and explicit missing\nmeasurements. The trace shows every recorded sample and lets readers move\nthrough ordered stages using the shared MotionProvider. It never interpolates\nunmeasured stages. The consumer supplies data, domains, cautions and interpretation.\n\nThe hause.design publication room demonstrates these contracts. This is a\nspecimen, not evidence of independent reuse in another subject area."
+  },
+  {
    "id": "publication#1",
    "source": "the library publication contracts",
    "heading": "Film and publication",
@@ -101,7 +107,67 @@
    "id": "publication#4",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "Run portable metadata/citation/theme checks with `node --experimental-strip-types --test tests/publication.test.ts`. The public date on a locally published research record is still required by its publication workflow even though a catalogued external work can have an unknown date.\n Read the live example at hause.design/publication."
+   "text": "Run portable metadata/citation/theme checks with `node --experimental-strip-types --test tests/publication.test.ts`. The public date on a locally published research record is still required by its publication workflow even though a catalogued external work can have an unknown date. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#6",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Contributed from ADDRESS-BUILD-1 in the CHRISHAYUK notebook, 7 September 2026.\n`components/EvidenceTable` renders semantic tables with column units/precision,\nexplicit baseline rows, sample-count columns, source references and distinguishable\nnot-measured/not-applicable cells. `components/MeasurementTrace` renders measured\ntracks across discrete stages, with authored domains, baselines, caution bands,\nannotations and pause/play/replay via MotionProvider. Every value and caution is\nserver-rendered; animation only changes emphasis. Data and interpretation remain\nin the publication. These are capabilities, not additions to the form count.\nSee [EVIDENCE.md](EVIDENCE.md) for contracts, examples and extraction status.\n Read the live example at hause.design/publication."
+  },
+  {
+   "id": "evidence#1",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "First consumer: [The address is built through depth](https://chrishayuk.com/notebook/the-address-is-built-through-depth), CHRISHAYUK, 7 September 2026. This extraction extends publication infrastructure. It does not promote new semantic forms or claim that the specimen book is independent reuse. Experiment numbers, source records, layer names and causal interpretations remain in the consuming site. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#3",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "A server-renderable component imported from `@chrishayuk/hause/components/EvidenceTable`. Pass `caption`, `rowLabel`, `columns` and `rows`. Optional `note`, `source`, `id` and `className` adapt it to a publication. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#4",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "- Columns have stable `id`, `label`, optional `unit`, `precision` (0–12), and `format` (`number` or `percent`). Percent values are proportions: `.125` displays as `12.5%` with precision 1. Formatting changes presentation, not source values. Sample sizes can be ordinary labelled columns.\n- Rows have stable `id`, `label`, and a `values` object containing exactly one value per column. Optional `baseline`, `note`, and `source` preserve comparison and provenance.\n- Values are numbers, strings, or `{ missing: \"not-measured\" | \"not-applicable\", reason?: string }`. Zero is a measurement. A missing cell is an authoring error. Empty row sets render “No observations recorded.”\n- Native column and row headers, keyboard-focusable horizontal overflow and printable text are provided. The component has no sorting that could silently alter authored order. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#5",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "```tsx\n<EvidenceTable caption=\"Recorded response latency\" rowLabel=\"Configuration\"\n  columns={[{ id: \"latency\", label: \"Median\", unit: \"ms\", precision: 1 }]}\n  rows={[\n    { id: \"baseline\", label: \"Baseline\", baseline: true, values: { latency: 12.3 } },\n    { id: \"unrun\", label: \"Unrun configuration\", values: { latency: { missing: \"not-measured\" } } },\n  ]}\n  note=\"Illustrative values for this API example, not a benchmark.\" />\n``` Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#7",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "A client component imported from `@chrishayuk/hause/components/MeasurementTrace`, rendered inside the existing `MotionProvider`. Its props are serializable data; server consumers do not send formatter or render callbacks. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#8",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "- Required: `label`, `summary`, `stages` and `series`. Each stage has `id`, `label`, optional `title`, `description` and `caution`.\n- Each series has `id`, `label`, one numeric value or `null` per stage, and an explicit increasing `domain: [min, max]`. Optional `unit`, `precision`, `baseline`, and `color` control presentation. Values outside the domain, NaN and Infinity are rejected instead of clipped. Bars encode position within the labelled domain, not necessarily distance from zero.\n- `null` is shown as “Not measured”; no interpolation or smoothing occurs. Stage spacing expresses order, not proportional distance or elapsed time.\n- Optional `annotations` and `bands` each use `{ from, to, label, caution? }`, referring to stage IDs. Both endpoints are inclusive. All cautions also appear as ordinary text beneath the figure.\n- `stageLabel`, `kicker`, `source`, `id`, `className`, `initialStage`, `autoPlay` (default false) and `intervalMs` (default 2800; minimum 200) are supported. A single-stage trace is static with playback controls disabled.\n- Play and Replay explicitly request motion ownership. Selecting a stage holds it. Auto playback, if enabled, respects the shared coordinator, reduced motion, save-data, hidden pages and offscreen suspension. The whole recorded table remains visible without playback or JavaScript. Animation is a reading aid, not simulation. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#9",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "```tsx\n<MotionProvider>\n  <MeasurementTrace label=\"Illustrative heating sequence\" stageLabel=\"Step\"\n    stages={[{ id: \"a\", label: \"Before\" }, { id: \"b\", label: \"After\" }]}\n    series={[{ id: \"temperature\", label: \"Temperature\", unit: \"°C\",\n      domain: [0, 100], values: [20, 60], precision: 0 }]}\n    summary=\"Illustrative API values; no physical experiment is claimed.\" />\n</MotionProvider>\n``` Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#11",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "Both components import `evidence.css`, in the low-priority `hause-components` cascade layer. They inherit HAUSE variables and consumer font choices. Use ordinary unlayered CSS on a consumer `className` for editorial treatment. The generic defaults contain no publication-specific palette or routes. Read the live example at hause.design/publication#recorded-evidence."
+  },
+  {
+   "id": "evidence#12",
+   "source": "the library recorded evidence contracts",
+   "heading": "EvidenceTable and MeasurementTrace",
+   "text": "`evidence.ts` exports contracts, `formatEvidence`, `validateEvidenceTable`, `validateMeasurementTrace`, and `tracePosition`. Validation fails explicitly on malformed data before figures are drawn. Run `node --experimental-strip-types --test tests/*.test.ts` and `node scripts/readme.ts --check` in the library, then build real consumers. Browser interaction and accessibility checks are separate from numerical validation.\n Read the live example at hause.design/publication#recorded-evidence."
   },
   {
    "id": "act#Statement",

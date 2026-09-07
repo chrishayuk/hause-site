@@ -52,6 +52,12 @@ for(const [i,text] of readFileSync(join(HAUSE,"PUBLICATION.md"),"utf8").split(/\
  passages.push({id:`publication#${i}`,source:"the library publication contracts",heading:"Film and publication",text:text.slice(0,1400)+" Read the live example at hause.design/publication."});
 }
 
+// Recorded evidence contracts are indexed alongside publication behaviour.
+for(const [i,text] of readFileSync(join(HAUSE,"EVIDENCE.md"),"utf8").split(/\n\n/).entries()) {
+ if(text.trim().length<60)continue;
+ passages.push({id:`evidence#${i}`,source:"the library recorded evidence contracts",heading:"EvidenceTable and MeasurementTrace",text:text.slice(0,1400)+" Read the live example at hause.design/publication#recorded-evidence."});
+}
+
 // ── The selection grammar: the act, the form, and the test that decides ──
 for (const intent of GRAMMAR) {
 	for (const act of intent.acts) {

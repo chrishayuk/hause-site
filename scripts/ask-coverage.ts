@@ -1,3 +1,4 @@
+import {PUBLICATION_CAPABILITIES} from "../src/data/publication";
 import {knowledgeGraph,knowledgeAnswerNodes,relatedKnowledge} from "../src/data/knowledge";
 import {SITE_NAV,SITE_PATHS} from "../src/data/navigation";
 /**
@@ -22,6 +23,9 @@ import { grammarCoverage } from "../src/data/grammar";
 type Case = { q: string; expect: string };
 
 const cases: Case[] = [
+ {q:"What is EvidenceTable?",expect:"publication"},
+ {q:"What is MeasurementTrace?",expect:"publication"},
+ {q:"How do I show missing measurements?",expect:"publication"},
  {q:"How do I stop two videos playing at once?",expect:"publication"},
  {q:"How do films and citations connect?",expect:"publication"},
  {q:"Tell me about MotionProvider",expect:"publication"},
@@ -141,7 +145,7 @@ const nodeIds=new Set(graph.nodes.map(n=>n.id));
 if(nodeIds.size!==graph.nodes.length)throw Error("Duplicate graph record IDs");
 for(const edge of graph.edges){if(!nodeIds.has(edge.from)||!nodeIds.has(edge.to))throw Error(`Unresolved edge ${edge.from} → ${edge.to}`);if(!edge.basis)throw Error("An edge needs its source basis");}
 for(const node of graph.nodes){if(!node.url||!node.sourceUrl)throw Error(`Unsourced record ${node.id}`);}
-if(graph.coverage.capabilities!==6||graph.coverage.forms!==FORMS.length)throw Error("Graph coverage drift");
+if(graph.coverage.capabilities!==PUBLICATION_CAPABILITIES.length||graph.coverage.forms!==FORMS.length)throw Error("Graph coverage drift");
 const connected=knowledgeAnswerNodes("How do films and citations connect?").map(n=>n.id);
 if(!connected.includes("capability:film")||!connected.includes("capability:citation"))throw Error("Cross-capability retrieval missed the film/citation relationship");
 if(knowledgeAnswerNodes("Unicorn teleportation reactor").length)throw Error("Unsupported capability must not resolve");

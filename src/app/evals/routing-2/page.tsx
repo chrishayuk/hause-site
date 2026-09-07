@@ -3,6 +3,7 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
+import { EvidenceTable } from "@chrishayuk/hause/components/EvidenceTable";
 import { Evidence } from "@chrishayuk/hause/components/forms/Evidence";
 import { Question } from "@chrishayuk/hause/components/forms/Question";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
@@ -95,20 +96,12 @@ export default function Routing2Page() {
 
 			<section className="hause-grid py-12 sm:py-16">
 				<div className="col-span-12 md:col-start-2 md:col-span-10">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-6 opacity-50">EVERY SELECTION, RESOLVED TWICE</p>
-					<div className="flex flex-col">
-						{sel.map((o) => (
-							<div key={o.id} className="grid grid-cols-[7rem_1fr] sm:grid-cols-[7rem_9rem_9rem_1fr] gap-3 sm:gap-6 py-3 border-t items-baseline" style={{ borderColor: "var(--color-mist)" }}>
-								<span className="voice-evidence text-[11px] opacity-40">{o.topic}</span>
-								<span className="voice-evidence text-[12px]" style={{ color: o.actPick === o.wants ? "var(--color-accent)" : "var(--fg)", opacity: o.actPick === o.wants ? 1 : 0.5 }}>
-									act · {o.actPick ?? "—"}
-								</span>
-								<span className="voice-evidence text-[12px] opacity-50">list · {o.scaffoldPick ?? "—"}</span>
-								<span className="voice-evidence text-[11px] opacity-45">wanted {o.wants} · {o.verdict}</span>
-							</div>
-						))}
-						<div className="border-t" style={{ borderColor: "var(--color-mist)" }} />
-					</div>
+                    <EvidenceTable caption="Every selection, resolved twice" rowLabel="Case"
+                      columns={[{id:"act",label:"Act records"},{id:"scaffold",label:"Keyword list"},{id:"wanted",label:"Expected"},{id:"verdict",label:"Verdict"}]}
+                      rows={sel.map(o=>({id:o.id,label:o.topic,values:{act:o.actPick??"Refused",scaffold:o.scaffoldPick??"Refused",wanted:o.wants??{missing:"not-applicable" as const},verdict:o.verdict??{missing:"not-measured" as const}}}))}
+                      source={{label:"Frozen ROUTING-2 outcomes",href:"https://github.com/chrishayuk/hause-site/blob/main/src/data/routing2.json"}}
+                      note="Refused is a recorded routing outcome, not a missing observation. These are the original evaluation results."/>
+
 				</div>
 			</section>
 

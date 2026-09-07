@@ -1,11 +1,11 @@
 "use client";
 import {useRef,useState} from "react";
-import {MotionProvider,useMotion} from "@chrishayuk/hause/components/Motion";
+import {useMotion} from "@chrishayuk/hause/components/Motion";
 import {YouTubeFilm} from "@chrishayuk/hause/components/YouTubeFilm";
 import {FilmChapters} from "@chrishayuk/hause/components/FilmChapters";
 import {TimedTranscript} from "@chrishayuk/hause/components/TimedTranscript";
 import film from "@/data/publication-film.json";
-function Screening() {
+export function PublicationScreening() {
  const [start,setStart]=useState(0);const [playRequest,setPlayRequest]=useState(0);const screen=useRef<HTMLDivElement>(null);const{setPaused}=useMotion();
  function seek(time:number){setStart(time);setPlayRequest(n=>n+1);screen.current?.scrollIntoView({behavior:"instant",block:"center"});}
  return <div className="publication-demo">
@@ -18,4 +18,3 @@ function Screening() {
   <a className="voice-evidence" href={film.url}>WATCH THE ORIGINAL ON YOUTUBE ↗</a>
  </div>;
 }
-export function PublicationScreening(){return <MotionProvider storageKey="hause-publication-motion"><Screening/></MotionProvider>;}
