@@ -2,6 +2,8 @@ import { Metadata } from "next";
 import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
+import { ModeIndex } from "@/components/ModeIndex";
+import { formsByMode } from "@chrishayuk/hause/manifest";
 import { AnatomySpecimen, DecompositionSpecimen, ExpertFieldSpecimen, ComparisonSpecimen, VariantsSpecimen, LadderSpecimen, AgreementSpecimen, DerivationSpecimen, ByteMapSpecimen, TerminalSpecimen, GatingSpecimen, LensSpecimen, ProvenanceSpecimen, CitationSpecimen, FollowRevealSpecimen } from "@/specimens/instruments";
 import { doctrine } from "@/data/doctrine";
 
@@ -15,6 +17,7 @@ export const metadata: Metadata = {
 const LEGIBILITY = doctrine("Machine legibility");
 
 export default function InstrumentsPage() {
+	const forms = formsByMode("instrument").filter((form) => form.exhibited).map((form) => form.name);
 	return (
 		<main>
 			<Hero
@@ -22,6 +25,7 @@ export default function InstrumentsPage() {
 				title="INSTRUMENTS"
 				dek="Interactive forms — the reader operates them. Every one carries an always-present text fallback, so the point survives with the interaction removed."
 			/>
+			<ModeIndex mode="instruments" forms={forms} />
 
 			<Specimen name="Anatomy" mode="instrument" note="An annotated cutaway, fully disclosed — nothing behind a click. Here: the anatomy of a HAUSE chapter." />
 

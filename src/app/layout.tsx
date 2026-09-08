@@ -84,8 +84,9 @@ export default function RootLayout({
 			</head>
 			<body className="antialiased">
 				<Analytics id="G-35LSQK48G5" />
+				<a className="skip-link voice-evidence" href="#site-content">SKIP TO CONTENT</a>
 				<Nav />
-				{children}
+				<div id="site-content" tabIndex={-1}>{children}</div>
 				<SiteFooter
 					brand="HAUSE"
 					tagline={HAUSE_LINE.replace(/^HAUSE is a/, "A")}

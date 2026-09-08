@@ -41,7 +41,7 @@ const RECORD: CitationRecord = {
 export const metadata: Metadata = {
 	title: "ROUTING-1: What Kind of Answer Was Asked For?",
 	alternates: { canonical: "/evals/routing-1" },
-	description: RECORD.abstract,
+	description: `A ${n}-question regression test of whether Ask HAUSE identifies the kind of answer requested before retrieving a record.`,
 	other: citationMeta(RECORD),
 };
 

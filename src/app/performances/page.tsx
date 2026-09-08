@@ -3,6 +3,8 @@ import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
+import { ModeIndex } from "@/components/ModeIndex";
+import { formsByMode } from "@chrishayuk/hause/manifest";
 import { TransformationSpecimen, UnfoldingSpecimen, CompilationSpecimen, ProcessionSpecimen, MagnitudeSpecimen, ChannelSpecimen, QuantisationSpecimen } from "@/specimens/performances";
 
 export const metadata: Metadata = {
@@ -12,6 +14,7 @@ export const metadata: Metadata = {
 };
 
 export default function PerformancesPage() {
+	const forms = formsByMode("performance").filter((form) => form.exhibited).map((form) => form.name);
 	return (
 		<main>
 			<Hero
@@ -19,6 +22,7 @@ export default function PerformancesPage() {
 				title="PERFORMANCES"
 				dek="Cinematic forms — they play themselves. In-view start, a designed resting state, REPLAY where a piece runs once, a gentle loop where a scrolling reader must never find it finished. Reduced motion always lands on the finished composition."
 			/>
+			<ModeIndex mode="performances" forms={forms} />
 
 			<Connection text="When the performance is a real film." links={[{href:"/publication",label:"FILM & PUBLICATION — LIVE SCREENING"}]}/>
 

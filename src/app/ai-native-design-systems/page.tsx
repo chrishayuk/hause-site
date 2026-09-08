@@ -33,7 +33,7 @@ const RECORD: CitationRecord = {
 export const metadata: Metadata = {
 	title: "AI-Native Design Systems: The Approaches Compared",
 	alternates: { canonical: "/ai-native-design-systems" },
-	description: RECORD.abstract,
+	description: "Compare five approaches to AI-native design systems and see where HAUSE’s vocabulary of semantic acts differs from each one.",
 	other: citationMeta(RECORD),
 };
 

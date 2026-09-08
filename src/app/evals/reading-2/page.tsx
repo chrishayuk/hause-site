@@ -30,9 +30,9 @@ const RECORD: CitationRecord = {
 };
 
 export const metadata: Metadata = {
-	title: "READING-2: Does Stating the Boundary Change the Conclusion?",
+	title: "READING-2: Does the Boundary Travel?",
 	alternates: { canonical: "/evals/reading-2" },
-	description: RECORD.abstract,
+	description: "After two boundary sentences were added, three fresh readers repeat the same test to see whether the correction changes their conclusions.",
 	other: citationMeta(RECORD),
 };
 

@@ -38,7 +38,7 @@ const RECORD: CitationRecord = {
 export const metadata: Metadata = {
 	title: "READING-1: What a Model Learns From This Site",
 	alternates: { canonical: "/evals/reading-1" },
-	description: RECORD.abstract,
+	description: "Three fresh model contexts read hause.design and answer eight questions, testing what the published site actually teaches and omits.",
 	other: citationMeta(RECORD),
 };
 

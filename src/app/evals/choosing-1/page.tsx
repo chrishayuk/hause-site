@@ -61,7 +61,7 @@ const RECORD: CitationRecord = {
 export const metadata: Metadata = {
 	title: "CHOOSING-1: Can a Model Pick the Right Form?",
 	alternates: { canonical: "/evals/choosing-1" },
-	description: RECORD.abstract,
+	description: `A preregistered ${n}-case test of whether models and the site resolver can choose HAUSE forms from unfamiliar content, with failures published.`,
 	other: citationMeta(RECORD),
 };
 

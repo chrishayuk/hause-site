@@ -38,7 +38,7 @@ const RECORD: CitationRecord = {
 export const metadata: Metadata = {
 	title: "ROUTING-2: Records Against Scaffolding",
 	alternates: { canonical: "/evals/routing-2" },
-	description: RECORD.abstract,
+	description: "A preregistered test of whether record-backed selection improves on keyword scaffolding when Ask HAUSE sees fresh material.",
 	other: citationMeta(RECORD),
 };
 

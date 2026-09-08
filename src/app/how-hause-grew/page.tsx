@@ -58,7 +58,6 @@ export default function HowHauseGrewPage() {
 
 	return (
 		<main>
-			<Connection text="5 September 2026: film and publication capabilities contributed by CHRISHAYUK." links={[{href:"/publication",label:"THE NEXT CONTRIBUTION"}]}/>
 			<JsonLd data={citationLd(RECORD)} />
 			<JsonLd
 				data={breadcrumbLd([
@@ -78,6 +77,8 @@ export default function HowHauseGrewPage() {
 				question="Was HAUSE designed as a taxonomy, or discovered by building?"
 				answer={`Discovered — as far as the record goes, which is the honest length of the claim. Of ${COUNTS.total} forms, ${COUNTS.recorded} name the chapter they came from, and every one of those came from a real exhibition; ${COUNTS.caused} also carry the sentence describing what could not be built without them. The remaining ${COUNTS.unrecorded} predate origin recording: how they were admitted is unresolved, not proven innocent. Absence of evidence is not evidence of absence, and this page does not treat it as one.`}
 			/>
+
+			<Connection text="5 September 2026: film and publication capabilities contributed by CHRISHAYUK." links={[{href:"/publication",label:"THE NEXT CONTRIBUTION"}]}/>
 
 			<Answer
 				id="what-was-hause-before-ai"

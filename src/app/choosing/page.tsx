@@ -12,12 +12,13 @@ import { breadcrumbLd } from "@chrishayuk/hause/seo";
 import { formCount } from "@chrishayuk/hause/manifest";
 import { GRAMMAR, grammarCoverage } from "@/data/grammar";
 import { formSlug } from "@/data/forms";
+import { ActDemo } from "@/components/ActDemo";
 
 export const metadata: Metadata = {
 	title: "Choosing a Form: The HAUSE Selection Grammar",
 	alternates: { canonical: "/choosing" },
 	description:
-		"What are you doing? Asserting, showing what holds it up, declining, taking something apart, showing it happen, moving the reader on — the act you are making, the form it selects, and the test that tells it from its neighbour.",
+		"Choose a HAUSE form from the communicative act: assert, support, compare, explain, perform, move on, or decline to answer.",
 };
 
 /**
@@ -55,6 +56,8 @@ export default function ChoosingPage() {
 			/>
 
 			<Statement text="Name the act. The shape follows from it." />
+
+			<ActDemo />
 
 			{GRAMMAR.map((intent) => (
 				<section key={intent.id} className="hause-grid py-10 sm:py-14" aria-label={intent.label}>

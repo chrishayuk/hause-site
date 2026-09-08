@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 	const form = formBySlug((await params).slug);
 	if (!form) return {};
 	return {
-		title: `The ${form.name} Form: ${formHeadline(form)}`,
+		title: `${form.name} Form`,
 		alternates: { canonical: `/forms/${form.slug}` },
 		description: form.line,
 		other: formCiteMeta(form),

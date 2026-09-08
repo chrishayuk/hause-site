@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import { Hero } from "@chrishayuk/hause/components/forms/Hero";
+import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
+import { ModeIndex } from "@/components/ModeIndex";
+import { formsByMode } from "@chrishayuk/hause/manifest";
 import { StatementSpecimen, ObservationSpecimen, ClaimSpecimen, EvidenceSpecimen, QuestionSpecimen, TimelineSpecimen, ExcerptSpecimen, RefusalSpecimen, ConnectionSpecimen } from "@/specimens/statements";
 
 export const metadata: Metadata = {
@@ -10,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function StatementsPage() {
+	const forms = formsByMode("statement").filter((form) => form.exhibited).map((form) => form.name);
 	return (
 		<main>
 			<Hero
@@ -17,6 +21,7 @@ export default function StatementsPage() {
 				title="STATEMENTS"
 				dek="Prose forms in the three voices. Server-renderable, no interaction — the reader reads. Each specimen below is the real form, and its copy is true."
 			/>
+			<ModeIndex mode="statements" forms={forms} />
 
 			<Specimen name="Hero" mode="statement" note="Self-exhibiting: the wall above is the specimen — every chapter's first form, and this page's own." />
 
@@ -56,6 +61,11 @@ export default function StatementsPage() {
 			<Specimen name="Connection" mode="statement" note="Self-exhibiting: the bridge below is the specimen — one sentence, then the doors." />
 
 			<ConnectionSpecimen />
+
+			<Connection
+				text="The reader has read. The next room asks them to operate."
+				links={[{ href: "/instruments", label: "INSTRUMENTS →" }, { href: "/forms", label: "ALL FORMS →" }]}
+			/>
 
 </main>
 	);

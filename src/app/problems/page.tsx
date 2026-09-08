@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 	title: "What AI Interfaces Get Wrong: The Problems HAUSE Answers",
 	alternates: { canonical: "/problems" },
 	description:
-		"Everything becomes a card. Interfaces that cannot refuse. Pages machines cannot read. Nothing to cite. The book drifts from the code. Tutorial or reference, never both — the failures HAUSE is a consequence of.",
+		"Eight recurring failures in AI interfaces, from card-shaped answers and hidden uncertainty to uncitable pages and documentation drift.",
 };
 
 /**

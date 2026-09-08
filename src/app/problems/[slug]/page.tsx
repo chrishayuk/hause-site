@@ -17,13 +17,19 @@ export function generateStaticParams() {
 	return PROBLEMS.map((p) => ({ slug: p.slug }));
 }
 
+function compactDescription(text: string, limit = 155) {
+	if (text.length <= limit) return text;
+	const clipped = text.slice(0, limit - 1);
+	return `${clipped.slice(0, clipped.lastIndexOf(" "))}…`;
+}
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 	const problem = problemBySlug((await params).slug);
 	if (!problem) return {};
 	return {
 		title: problem.question,
 		alternates: { canonical: `/problems/${problem.slug}` },
-		description: problem.answer.slice(0, 200),
+		description: compactDescription(problem.dek),
 		other: problemCiteMeta(problem),
 	};
 }

@@ -286,7 +286,7 @@ export function ProvenanceSpecimen() {
 
 export function CitationSpecimen() {
 	return (
-		<Citation record={HAUSE_RECORD} kicker="CITE THIS SPECIMEN — AND THIS SITE" />
+		<Citation id="cite-specimen" record={HAUSE_RECORD} kicker="CITE THIS SPECIMEN — AND THIS SITE" />
 	);
 }
 
