@@ -2,7 +2,6 @@ import Link from "next/link";
 import { MODES, formsByMode, formCount } from "@chrishayuk/hause/manifest";
 import { STATUSES } from "@chrishayuk/hause/types";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
-import pkg from "@chrishayuk/hause/package.json";
 
 /**
  * WHAT YOU GET — the software, stated after the idea.
@@ -14,7 +13,6 @@ import pkg from "@chrishayuk/hause/package.json";
  * end. The boundary is a separate act in the homepage sequence.
  */
 
-const peers = (pkg as { peerDependencies: Record<string, string> }).peerDependencies;
 const byMode = MODES.map((m) => `${formsByMode(m).length} ${m}s`).join(" · ");
 
 const ROWS: { what: string; line: string }[] = [
@@ -22,10 +20,8 @@ const ROWS: { what: string; line: string }[] = [
 	{ what: `${MODES.length} modes`, line: "Statement, instrument, performance — the same idea read, operated, or watched." },
 	{ what: "3 voices", line: "Editorial for claims, system for explanation, evidence for measurement. Numbers never appear in editorial voice." },
 	{ what: `${STATUSES.length} statuses`, line: `${STATUSES.join(" · ")} — the epistemic state carried on every claim, finding and question.` },
-	{ what: "tokens.css", line: "One palette, one easing curve at three speeds, twelve columns, two authored environments." },
-	{ what: "Film, chapters and transcripts", line: "Poster-first screening, one shared motion owner and source timestamps. Film art direction stays with the publication." },
-	{ what: "seo.ts · cite.ts · JsonLd · Answer", line: "Structured data, citation on four surfaces and the lift-able answer — projected from records the site already holds." },
-	{ what: `React ${peers.react} · Next ${peers.next}`, line: "TSX source with no build step; the consuming app compiles it." },
+	{ what: "Citations & machine data", line: "Structured data, citation on four surfaces and a lift-able answer — projected from records the site already holds." },
+	{ what: "Film & recorded evidence", line: "Poster-first film, chapters, transcripts, evidence tables and measurement playback. Art direction stays with the publication." },
 ];
 
 const rule = { borderColor: "var(--color-mist)" };
@@ -33,9 +29,10 @@ const rule = { borderColor: "var(--color-mist)" };
 export function WhatYouGet() {
 	return (
 		<>
-			<section className="hause-grid py-16 sm:py-24" aria-label="What you get">
+			<section className="hause-grid py-16 sm:py-24 home-build" aria-label="What you get">
 				<div className="col-span-12 md:col-start-2 md:col-span-10">
-					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-8 opacity-50">THE LIBRARY YOU BUILD WITH</p>
+					<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">THE COMPLETE SYSTEM / WHEN YOU NEED IT</p>
+					<h2 className="voice-editorial">A small on-ramp.<br/>The whole system behind it.</h2>
 					<div className="flex flex-col">
 						{ROWS.map((r) => (
 							<div
@@ -51,10 +48,23 @@ export function WhatYouGet() {
 						))}
 						<div className="border-t" style={rule} />
 					</div>
-					<p className="voice-evidence text-sm mt-8 m-0">npm install github:chrishayuk/hause</p>
-					<p className="voice-system text-sm opacity-60 max-w-2xl mt-3">
+					<div className="home-build-example">
+						<div>
+							<p className="voice-evidence">INSTALL</p>
+							<code>npm install github:chrishayuk/hause</code>
+						</div>
+						<pre aria-label="A minimal HAUSE Claim example"><code>{`import { Claim } from
+  "@chrishayuk/hause/components/forms/Claim";
+
+<Claim
+  status="SUPPORTED"
+  text="Battery life is around forty hours."
+  detail="38.5 hours · 2 units · lab conditions"
+/>`}</code></pre>
+					</div>
+					<p className="voice-system text-sm opacity-60 max-w-2xl mt-6">
 						<Link href="/use" className="border-b pb-0.5" style={{ borderColor: "var(--color-accent)" }}>
-							Use HAUSE — install, tokens, one minimal chapter →
+							Build with HAUSE — install, tokens, one minimal chapter →
 						</Link>
 					</p>
 				</div>

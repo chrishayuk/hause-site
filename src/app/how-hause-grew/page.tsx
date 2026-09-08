@@ -20,12 +20,13 @@ const RECORD: CitationRecord = {
 	title: "How HAUSE grew",
 	authors: ["Chris Hay"],
 	published: "2026-08-31",
-	version: "1.0",
+	revised: "2026-09-08",
+	version: "1.1",
 	url: "https://hause.design/how-hause-grew",
 	publisher: "hause.design",
 	kind: "article",
 	abstract:
-		"Was this library designed by completing a taxonomy, or discovered while building things? The recorded origins, dates and causes of every form in HAUSE — and the fourteen whose history was never written down.",
+		"Before HAUSE was framed as a semantic design system for AI, HOUSE called itself a cinematic visual language for ideas, systems and explanations. This record follows that lineage and the recorded origins, dates and causes of its forms.",
 	independence: "Published independently by Chris Hay.",
 	about: ["design system", "provenance", "library history"],
 	partOf: { title: "HAUSE — a design system for AI", url: "https://hause.design", version: "0.1.0" },
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 	title: "How HAUSE Grew: The Recorded Origin of Every Form",
 	alternates: { canonical: "/how-hause-grew" },
 	description:
-		"Designed by taxonomy, or discovered by building? Every form's recorded origin, date and cause — and the fourteen with no recorded history, left blank rather than reconstructed.",
+		"From a cinematic visual language for exhibitions to semantic forms for AI: HAUSE's origin, every form's recorded cause, and the history still left unknown.",
 	other: citationMeta(RECORD),
 };
 
@@ -76,6 +77,13 @@ export default function HowHauseGrewPage() {
 				id="was-hause-designed-or-discovered"
 				question="Was HAUSE designed as a taxonomy, or discovered by building?"
 				answer={`Discovered — as far as the record goes, which is the honest length of the claim. Of ${COUNTS.total} forms, ${COUNTS.recorded} name the chapter they came from, and every one of those came from a real exhibition; ${COUNTS.caused} also carry the sentence describing what could not be built without them. The remaining ${COUNTS.unrecorded} predate origin recording: how they were admitted is unresolved, not proven innocent. Absence of evidence is not evidence of absence, and this page does not treat it as one.`}
+			/>
+
+			<Answer
+				id="what-was-hause-before-ai"
+				question="What was HAUSE before it was a design system for AI?"
+				answer="The first HOUSE repository described itself as a cinematic visual language for ideas, systems and explanations — explicitly not a component library. It already held three voices, motion, Film, Comparison and FollowReveal, and its first extension rule was no generic card kit. The lineage is exhibition, cinematic composition, forms, semantic forms, then AI composition: the machine-readable act vocabulary made an earlier artistic question precise."
+				cite="the first HOUSE README · repository commit 48070bd · August 2026"
 			/>
 
 			<Statement text="The rule is one sentence. The evidence for it is one-and-twenty forms." />

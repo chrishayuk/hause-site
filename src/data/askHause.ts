@@ -72,6 +72,23 @@ export function formMeta(name: string) {
 
 const INTERROGATIONS: { id: string; patterns: string[]; blocks: Block[] }[] = [
 	{
+		id: "origin-story",
+		patterns: ["where did hause come from", "origin of hause", "before hause was", "website behave like an exhibition", "why exhibition", "cinematic visual language"],
+		blocks: [
+			{ kind: "statement", text: "Before HAUSE was a semantic design system for AI, HOUSE was an attempt to make the web behave more like an exhibition." },
+			{ kind: "timeline", entries: [
+				{ date: "chrishayuk", text: "A cinematic visual language grew around real ideas, systems and explanations: three voices, authored motion, and forms with their own scale and rhythm." },
+				{ date: "August 2026", text: "HOUSE was extracted when a second consumer made copy-pasting the language untenable. Its first README already said ‘no generic card kit’." },
+				{ date: "vindex3", text: "A technical exhibition forced the vocabulary to grow into Statements, Instruments and Performances: read, operate, watch." },
+				{ date: "HAUSE now", text: "The artistic question — how should I stage this idea? — became a systems question: how can a machine know how to stage it? Acts made that decision selectable." },
+			] },
+			{ kind: "connection", text: "The recorded lineage, including what is still unknown.", links: [
+				{ href: "/how-hause-grew#what-was-hause-before-ai", label: "HOW HAUSE GREW →" },
+				{ href: "/performances", label: "THE CINEMATIC FORMS →" },
+			] },
+		],
+	},
+	{
 		id: "instrument-vs-performance",
 		patterns: ["difference between an instrument and a performance", "instrument or a performance", "instrument vs performance", "instrument and a performance", "instrument rather than a performance"],
 		blocks: [
@@ -962,6 +979,7 @@ export function askHause(question: string): AskAnswer {
 
 
 export const ASK_SUGGESTIONS = [
+ "Where did HAUSE come from?",
  "How do film and citations connect?",
  "How do I stop two videos playing at once?",
  "Which components came from CHRISHAYUK?",

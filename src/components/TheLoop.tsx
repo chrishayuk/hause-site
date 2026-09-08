@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { formCount } from "@chrishayuk/hause/manifest";
-import { GRAMMAR, ACTS } from "@/data/grammar";
+import { ACTS } from "@/data/grammar";
 import { formSlug } from "@/data/forms";
 import resultA from "@/data/choosing1-a.json";
 import resultB from "@/data/choosing1-b.json";
@@ -34,12 +34,11 @@ const percentage = (r: Res) => (exact(r) / r.outcomes.length * 100).toFixed(1);
 const noForm = A.outcomes.filter((o) => o.expected === "NONE").length;
 
 const STAGES: { label: string; line: string; accent?: boolean }[] = [
-	{ label: "QUESTION", line: "What the reader asked, in their words." },
-	{ label: "MODEL", line: "Decides what it is doing before it decides what to draw." },
-	{ label: `INTENT · ${GRAMMAR.length}`, line: "Asserting, supporting, declining, taking apart, performing, moving on." },
-	{ label: `ACT · ${ACTS.length}`, line: "The move, named the way a writer would name it." },
-	{ label: `FORM · ${formCount()}`, line: "The rendering the act selects — one each, and the counts say so.", accent: true },
-	{ label: "READER · MACHINE", line: "Either can tell the measurement from the belief from the refusal." },
+	{ label: "USER NEED", line: "What must this interface help someone understand?" },
+	{ label: `ACT · ${ACTS.length}`, line: "What is the system doing: asserting, supporting, declining, comparing?" },
+	{ label: `FORM · ${formCount()}`, line: "The act selects its rendering — one form for each recorded act.", accent: true },
+	{ label: "RECORD", line: "What does it know, where did that come from, and what is still missing?" },
+	{ label: "HUMAN + MACHINE", line: "The same meaning remains legible across the page, citation and graph." },
 ];
 
 const EXAMPLES: { doing: string; form: string | null }[] = [
@@ -61,12 +60,12 @@ const accent = { color: "var(--color-accent)" };
 
 export function TheLoop() {
 	return (
-		<section className="hause-grid py-16 sm:py-24" aria-label="The loop — where the act comes from">
+		<section className="hause-grid py-16 sm:py-24 home-system" aria-label="The loop — where the act comes from">
 			<div className="col-span-12 md:col-start-2 md:col-span-10">
-				<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">THE LOOP — WHERE THE ACT COMES FROM</p>
-				<p className="voice-editorial text-2xl sm:text-3xl leading-snug max-w-2xl mb-10">The act is decided before the interface is.</p>
+				<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3 opacity-50">HOW IT WORKS / THE WHOLE MODEL</p>
+				<p className="voice-editorial text-2xl sm:text-3xl leading-snug max-w-2xl mb-10">Decide the act before drawing the interface.</p>
 
-				<div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-x-6 gap-y-6">
+				<div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-x-6 gap-y-6">
 					{STAGES.map((s, i) => (
 						<div key={s.label} className="border-t pt-3" style={{ borderColor: s.accent ? "var(--color-accent)" : "var(--color-mist)" }}>
 							<p className="voice-evidence text-[11px] tracking-[0.12em] uppercase m-0" style={s.accent ? accent : undefined}>

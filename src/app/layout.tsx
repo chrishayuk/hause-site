@@ -38,6 +38,25 @@ export const metadata: Metadata = {
 	description: hauseDescription(),
 	alternates: { canonical: "/" },
 	icons: { icon: "/favicon.svg" },
+	openGraph: {
+		type: "website",
+		url: "https://hause.design",
+		siteName: "HAUSE",
+		title: "HAUSE — Semantic forms for AI interfaces",
+		description: "AI shouldn’t make every meaning look the same. Give meaning a form.",
+		images: [{
+			url: "https://hause.design/og.png",
+			width: 1735,
+			height: 907,
+			alt: "HAUSE — AI shouldn’t make every meaning look the same. Give meaning a form.",
+		}],
+	},
+	twitter: {
+		card: "summary_large_image",
+		title: "HAUSE — Semantic forms for AI interfaces",
+		description: "AI shouldn’t make every meaning look the same. Give meaning a form.",
+		images: ["https://hause.design/og.png"],
+	},
 };
 
 export default function RootLayout({
@@ -46,7 +65,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" data-mode="dark" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
+		<html lang="en" data-mode="dark" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
 				<JsonLd
 					data={webSiteLd({

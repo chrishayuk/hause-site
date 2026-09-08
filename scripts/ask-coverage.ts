@@ -60,6 +60,7 @@ const cases: Case[] = [
 	{ q: "which form should I use?", expect: "choosing" },
 
 	// The interrogation layer still wins where it should.
+	{ q: "where did HAUSE come from?", expect: "origin-story" },
 	{ q: "why doesn't HAUSE have cards", expect: "no-cards" },
 	{ q: "what are you, HAUSE?", expect: "what-is-hause" },
 	{ q: "what is the difference between an instrument and a performance", expect: "instrument-vs-performance" },

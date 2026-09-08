@@ -15,12 +15,15 @@ const vocabulary=[
  ["seo","aeo","search","engine","engines","structured data","json ld","canonical","metadata","machine readable"],
  ["theme","dark","light","colour","color","mode","environment"],
 ];
+const PAGE_SUMMARIES:Record<string,string>={
+ "/how-hause-grew":"HAUSE began as HOUSE, a cinematic visual language for ideas, systems and explanations. Real exhibitions grew it into Statements, Instruments and Performances before those forms became a selectable semantic vocabulary for AI.",
+};
 export const KNOWLEDGE_NODES:KnowledgeNode[]=[
  ...FORMS.map(f=>({id:`form:${f.name}`,kind:"form" as const,title:f.name,text:`${f.line} ${f.because||""}`,url:`/forms/${f.slug}`,sourceUrl:`https://github.com/chrishayuk/hause/blob/main/manifest.ts`,terms:[f.mode]})),
  ...PROBLEMS.map(p=>({id:`problem:${p.slug}`,kind:"problem" as const,title:p.title,text:p.answer,url:`/problems/${p.slug}`,sourceUrl:`/problems/${p.slug}`})),
  ...PUBLICATION_CAPABILITIES.map((c,i)=>({id:`capability:${ids[i]}`,kind:"capability" as const,title:c.name,text:c.text,url:`/publication#${ids[i]}`,sourceUrl:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",terms:[...c.aliases,...(vocabulary[i]??[])]})),
  ...PRACTICES.map(p=>({id:`practice:${p.id}`,kind:"practice" as const,title:p.name,text:`${p.summary} ${p.contribution}`,url:`/in-practice#${p.id}`,sourceUrl:p.recordUrl})),
- ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:EVALUATIONS.find(e=>p.href===`/evals/${e.id}`)?.text||`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
+ ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:EVALUATIONS.find(e=>p.href===`/evals/${e.id}`)?.text||PAGE_SUMMARIES[p.href]||`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
 ];
 export const KNOWLEDGE_EDGES:KnowledgeEdge[]=[
  ...EVALUATIONS.map(e=>({from:"page:/evidence",to:`page:/evals/${e.id}`,kind:"documents" as const,basis:"published evaluation record"})),
@@ -34,6 +37,8 @@ export const KNOWLEDGE_EDGES:KnowledgeEdge[]=[
  {from:"capability:transcript",to:"capability:film",kind:"uses",basis:"chapter and transcript seeking contract"},
  {from:"capability:metadata",to:"capability:citation",kind:"uses",basis:"publicationMetadata / videoObjectLd citation input"},
  {from:"capability:citation",to:"form:Citation",kind:"uses",basis:"shared cite.ts formatters"},
+ {from:"page:/how-hause-grew",to:"practice:vindex3",kind:"documents",basis:"recorded form origins in the VINDEX3 exhibition"},
+ {from:"page:/how-hause-grew",to:"practice:chrishayuk",kind:"documents",basis:"first HOUSE repository extraction from CHRISHAYUK"},
 ];
 export function knowledgeGraph(){return {version:"1.0",nodes:KNOWLEDGE_NODES,edges:KNOWLEDGE_EDGES,coverage:{forms:FORMS.length,problems:PROBLEMS.length,capabilities:ids.length,practices:PRACTICES.length}};}
 export const relatedKnowledge=(id:string)=>KNOWLEDGE_EDGES.filter(e=>e.from===id||e.to===id).map(e=>({edge:e,node:KNOWLEDGE_NODES.find(n=>n.id===(e.from===id?e.to:e.from))!}));

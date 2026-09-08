@@ -20,12 +20,12 @@ export const HAUSE_RECORD: CitationRecord = {
 	title: "HAUSE — a design system for AI",
 	authors: ["Chris Hay"],
 	published: "2026-08-29",
-	revised: "2026-09-06",
+	revised: "2026-09-08",
 	version: "0.1.0",
 	url: "https://hause.design",
 	publisher: "hause.design",
 	kind: "software",
-	abstract: `${HAUSE_LINE} ${formCount()} typed forms in three modes — statements a reader reads, instruments a reader operates, performances that play themselves — plus shared film playback, transcripts and publication controls, with machine legibility and provenance carried by the library rather than bolted onto each site.`,
+	abstract: `${HAUSE_LINE} It began as a cinematic visual language for staging ideas and grew through real exhibitions into ${formCount()} typed forms in three modes — statements a reader reads, instruments a reader operates, performances that play themselves — with machine legibility and provenance carried by the library rather than bolted onto each site.`,
 	independence: "Published independently by Chris Hay.",
 	identifiers: [
 		{ label: "repository", value: "github.com/chrishayuk/hause", href: "https://github.com/chrishayuk/hause" },
@@ -37,6 +37,7 @@ export const HAUSE_RECORD: CitationRecord = {
 
 /** Dated, and taken from the library's own history — not from when this page was last touched. */
 export const HAUSE_HISTORY: ProvenanceEvent[] = [
+ {date:"2026-09-08",text:"The front door states the practical AI proposition first, demonstrates containers against semantic forms, and restores the recorded lineage from exhibition and cinematic composition to machine-readable acts."},
  {date:"2026-09-06",text:"The specimen book connects its records through Ask, introduces a four-choice act demonstration, and gives newcomers direct routes to forms, examples, evidence and implementation. Its homepage follows the act demonstration with the selection mechanism, measured CHOOSING-1 result and installation, before film and provenance."},
  {date:"2026-09-05",text:"CHRISHAYUK contributes shared film and publication capabilities."},
 	{ date: "2026-08-31", text: "The citable surface: cite.ts, Provenance and Citation — publishing becomes part of the grammar." },

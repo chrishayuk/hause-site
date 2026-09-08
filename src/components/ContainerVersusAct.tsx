@@ -26,40 +26,27 @@ const CARD_ROWS = [
 
 export function ContainerVersusAct() {
 	return (
-		<section className="hause-grid py-16 sm:py-24" aria-label="A container vocabulary and an act vocabulary, on identical content">
-			<div className="col-span-12 md:col-start-2 md:col-span-10">
-				<div className="grid grid-cols-1 sm:grid-cols-2 gap-8 sm:gap-12 mb-12">
-					<div>
-						<p className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 mb-3">MOST DESIGN SYSTEMS START WITH A CONTAINER</p>
-						<p className="voice-editorial text-2xl sm:text-3xl leading-snug m-0">Card. Panel. Accordion. Modal.</p>
-						<p className="voice-system text-sm opacity-60 leading-relaxed mt-3 max-w-sm">
-							A name that describes the shape, and promises nothing about what is inside it.
-						</p>
-					</div>
-					<div>
-						<p className="voice-evidence text-xs tracking-[0.14em] uppercase mb-3" style={{ color: "var(--color-accent)" }}>
-							HAUSE STARTS WITH THE ACT
-						</p>
-						<p className="voice-editorial text-2xl sm:text-3xl leading-snug m-0">Claim. Evidence. Refusal. Comparison.</p>
-						<p className="voice-system text-sm opacity-60 leading-relaxed mt-3 max-w-sm">
-							A name that describes what is being done, and carries a rule about what belongs in it.
-						</p>
-					</div>
-				</div>
+		<section id="difference" className="meaning-demo" aria-labelledby="meaning-demo-title">
+			<div className="meaning-demo-heading">
+				<p className="voice-evidence">03 / THE CONSTRAINT · THE SAME ANSWER / TWO VOCABULARIES</p>
+				<h2 id="meaning-demo-title" className="voice-editorial">We gave the machine rectangles.</h2>
+				<p className="voice-system">Three facts about one fictional product. Nothing changes except the responsibility carried by the interface.</p>
+			</div>
 
-				<p className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 mb-6">
-					ILLUSTRATIVE PRODUCT DATA / THE SAME THREE SENTENCES, SAID BOTH WAYS
-				</p>
+			<div className="meaning-demo-switch" role="group" aria-label="Choose how the answer is rendered">
+				<label className="voice-evidence"><input type="radio" name="meaning-view" id="meaning-containers" defaultChecked/><span>CONTAINERS</span></label>
+				<label className="voice-evidence"><input type="radio" name="meaning-view" id="meaning-forms"/><span>SEMANTIC FORMS</span></label>
+			</div>
 
-				<div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-					<div>
-						<p className="voice-evidence text-[11px] tracking-[0.1em] uppercase opacity-40 mb-4">AS CONTAINERS</p>
-						<div className="flex flex-col gap-3">
-							{CARD_ROWS.map((c) => (
-								<div key={c.title} className="border p-4" style={{ borderColor: "var(--color-mist)" }}>
+			<div className="meaning-demo-stage">
+				<div className="meaning-containers">
+					<p className="voice-evidence meaning-demo-label">WITHOUT HAUSE / EVERYTHING IS INFO</p>
+						<div className="generic-card-wall">
+							{CARD_ROWS.map((c, index) => (
+								<div key={c.title} className="generic-card" data-card={String(index + 1).padStart(2, "0")}>
 									<div className="flex items-baseline justify-between gap-4">
 										<p className="voice-system text-base m-0">{c.title}</p>
-										<span className="voice-evidence text-[10px] tracking-[0.08em] uppercase opacity-40 border px-2 py-0.5" style={{ borderColor: "var(--color-mist)" }}>
+										<span className="voice-evidence">
 											{c.tag}
 										</span>
 									</div>
@@ -67,17 +54,17 @@ export function ContainerVersusAct() {
 								</div>
 							))}
 						</div>
-						<p className="voice-system text-sm opacity-60 leading-relaxed mt-5 max-w-sm">
+						<p className="voice-system meaning-demo-note">
 							Three identical rectangles. A measurement, a belief and a refusal to assert, and nothing in the
 							interface distinguishes them — so the reader supplies the difference, usually wrongly.
 						</p>
 					</div>
 
-					<div>
-						<p className="voice-evidence text-[11px] tracking-[0.1em] uppercase mb-4" style={{ color: "var(--color-accent)" }}>
-							AS ACTS
+					<div className="meaning-forms">
+						<p className="voice-evidence meaning-demo-label">
+							WITH HAUSE / THE ACT IS VISIBLE
 						</p>
-						<div className="border-l pl-5" style={{ borderColor: "var(--color-mist)" }}>
+						<div className="meaning-form-stack">
 							<Claim
 								text="These headphones last around forty hours on a charge."
 								status="ONGOING"
@@ -99,15 +86,16 @@ export function ContainerVersusAct() {
 								principle="A page that cannot stand behind a claim says so, rather than phrasing it carefully."
 							/>
 						</div>
-						<p className="voice-system text-sm opacity-60 leading-relaxed mt-5 max-w-sm">
+						<p className="voice-system meaning-demo-note">
 							The same three sentences, with their acts named. Nothing here is prettier — it is{" "}
 							<em>legible</em>: a reader, a crawler or a model can tell the measurement from the belief from the
 							thing nobody will assert.
 						</p>
 					</div>
-				</div>
+			</div>
 
-				<p className="voice-system text-base opacity-75 leading-relaxed max-w-2xl mt-10">
+			<div className="meaning-demo-foot">
+				<p className="voice-system">
 					That is the whole idea.{" "}
 					<Link href="/problems/everything-becomes-a-card" className="border-b pb-0.5" style={{ borderColor: "var(--color-accent)" }}>
 						Why AI interfaces converge on containers →
