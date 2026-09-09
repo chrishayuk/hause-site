@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Hero } from "@chrishayuk/hause/components/forms/Hero";
-import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
 import { Comparison } from "@chrishayuk/hause/components/forms/Comparison";
@@ -12,7 +11,8 @@ import { breadcrumbLd } from "@chrishayuk/hause/seo";
 import { formCount } from "@chrishayuk/hause/manifest";
 import { GRAMMAR, grammarCoverage } from "@/data/grammar";
 import { formSlug } from "@/data/forms";
-import { ActDemo } from "@/components/ActDemo";
+import { FormJourney } from "@/components/FormJourney";
+import type { SelectionQuery } from "@/data/selection";
 
 export const metadata: Metadata = {
 	title: "Choosing a Form: The HAUSE Selection Grammar",
@@ -31,11 +31,12 @@ export const metadata: Metadata = {
  * telling two nearly-right forms apart. So every act carries the test
  * that decides it, and the neighbour it gets confused with.
  */
-export default function ChoosingPage() {
+export default async function ChoosingPage({ searchParams }: { searchParams: Promise<SelectionQuery> }) {
 	const { missing } = grammarCoverage();
+	const query = await searchParams;
 
 	return (
-		<main>
+		<main className="system-story journey-page">
 			<JsonLd
 				data={breadcrumbLd([
 					{ name: "HAUSE", url: "https://hause.design" },
@@ -46,18 +47,17 @@ export default function ChoosingPage() {
 			<Hero
 				kicker="THE SELECTION GRAMMAR"
 				title="WHAT ARE YOU DOING?"
-				dek="A vocabulary nobody can select from is a vocabulary that loses to a rectangle. Name the act you are making — asserting, showing support, declining, taking apart, performing, moving on — and the form follows from it."
+				dek="Start with what you need to communicate. Find the distinction that matters. Then see the form do its work."
 			/>
 
+			<FormJourney query={query} />
+			<details className="grammar-reference" id="complete-grammar">
+			<summary className="voice-editorial">The complete selection grammar <span className="voice-evidence">{formCount()} ACTS / OPEN THE REFERENCE</span></summary>
 			<Answer
 				id="how-do-i-choose-a-form"
 				question="How do I choose which HAUSE form to use?"
 				answer={`Start from the act, not the shape. Are you asserting something, showing what holds it up, declining to assert, taking an object apart, showing something happen, or moving the reader on? Each act selects a form, and each form carries the test that tells it from its neighbour — a Claim owes evidence where a Statement carries the room; Evidence shows receipts where Agreement shows independent authorities agreeing. All ${formCount()} forms are reachable this way, or the build fails.`}
 			/>
-
-			<Statement text="Name the act. The shape follows from it." />
-
-			<ActDemo />
 
 			{GRAMMAR.map((intent) => (
 				<section key={intent.id} className="hause-grid py-10 sm:py-14" aria-label={intent.label}>
@@ -97,6 +97,7 @@ export default function ChoosingPage() {
 				</section>
 			))}
 
+			</details>
 			<Observation
 				label="THE HARD PART IS NEVER FINDING THE FORM"
 				text="It is telling two nearly-right forms apart, and the two hardest live one rung from each other: Comparison and Transformation take identical props and differ only in who sets the pace. That is not an accident of the catalogue — it is the one distinction the whole three-mode split turns on, so it is worth seeing rather than reading."

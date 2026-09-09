@@ -1,0 +1,16 @@
+{
+  "source": "https://github.com/chrishayuk/hause",
+  "note": "Unreleased exhibition donation, 2026-09-09. Exact source snapshot, not a fork. The site remains on its frozen 35-form package.",
+  "files": {
+    "components/exhibition/VisualPlate.tsx": "fdef684574eeb6165a08684c178aeae1106fbc107d35a79c5136f59f7c3751fd",
+    "components/exhibition/ExhibitionChoices.tsx": "ece22fcd30b8f2a61bec26b042e9b31a0820285b42faba10083b7fd15ff6e7df",
+    "components/exhibition/OutcomeMatrix.tsx": "0dd003a138c4def23753587043fd42b77e5118b8ebf538d9adff41e51ba8ba5c",
+    "components/exhibition/DecisionTrail.tsx": "02c2aca8432db0685eb52c5cafcd8b911f1560a43875c48221780b18517fced8",
+    "components/exhibition/GraphNeighbourhood.tsx": "1bc34cec063a0d4c513ac2351ac22f7e2f7a2ca21bb0cd94e61d0468142c8077",
+    "components/exhibition/SequencePlayer.tsx": "1afda09117e0c419ddb91644690d94cce541aebf84b7c34e3a38799cbb9c776e",
+    "exhibition-graph.ts": "b96c80dd42232ac7f3d80ae2c0b3c8a79bb2d2ad3a6ccd7147787911d01634d0",
+    "exhibition-outcomes.ts": "fc5decc6e64bb9c501f8422ae540c3524dcebb733612621c47dca7d6278d42d3",
+    "record-difference.ts": "8c179bf5ac7dcc86962167b84b76a9ac6bf2c19f7e0dc453ef1a87ea19111e88",
+    "exhibition-media.css": "2b88be2b873a9b796ee874be463b3badc49b9c6d2b76d162dc81ad0770d955bc"
+  }
+}

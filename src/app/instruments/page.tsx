@@ -1,97 +1,27 @@
-import { Metadata } from "next";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
-import { Connection } from "@chrishayuk/hause/components/forms/Connection";
-import { Specimen } from "@/components/Specimen";
-import { ModeIndex } from "@/components/ModeIndex";
-import { formsByMode } from "@chrishayuk/hause/manifest";
-import { AnatomySpecimen, DecompositionSpecimen, ExpertFieldSpecimen, ComparisonSpecimen, VariantsSpecimen, LadderSpecimen, AgreementSpecimen, DerivationSpecimen, ByteMapSpecimen, TerminalSpecimen, GatingSpecimen, LensSpecimen, ProvenanceSpecimen, CitationSpecimen, FollowRevealSpecimen } from "@/specimens/instruments";
-import { doctrine } from "@/data/doctrine";
+import { RoomLabel, RoomProgramme, RoomChapter, RoomStudy, RoomDoors, RoomPause, RoomClose, RoomRecord, roomMetadata } from "@/rooms/RoomParts";
+import { InstrumentInteraction } from "@/studies/InstrumentInteraction";
+import Link from "next/link";
+import { ExhibitionPlate } from "@/components/ExhibitionPlate";
 
-export const metadata: Metadata = {
-	title: "Interactive Design Forms: The HAUSE Instruments",
-	alternates: { canonical: "/instruments" },
-	description: "The interactive forms — understanding through manipulation, always with a text fallback.",
-};
-
-/** The doctrine the SPEC depth quotes — verbatim from the library README, never retyped. */
-const LEGIBILITY = doctrine("Machine legibility");
+export const metadata = roomMetadata("instrument");
 
 export default function InstrumentsPage() {
-	const forms = formsByMode("instrument").filter((form) => form.exhibited).map((form) => form.name);
-	return (
-		<main>
-			<Hero
-				kicker="THE BOOK · MODE TWO"
-				title="INSTRUMENTS"
-				dek="Interactive forms — the reader operates them. Every one carries an always-present text fallback, so the point survives with the interaction removed."
-			/>
-			<ModeIndex mode="instruments" forms={forms} />
-
-			<Specimen name="Anatomy" mode="instrument" note="An annotated cutaway, fully disclosed — nothing behind a click. Here: the anatomy of a HAUSE chapter." />
-
-			<AnatomySpecimen />
-
-			<Specimen name="Decomposition" mode="instrument" note="One object, its parts, the thing that assembles them — stepped by hand. Its cinematic sibling, Unfolding, takes identical props." />
-
-			<DecompositionSpecimen />
-
-			<Specimen name="ExpertField" mode="instrument" note="A field of units, mostly dormant; each scenario lights the subset that answers it." />
-
-			<ExpertFieldSpecimen />
-
-			<Specimen name="Comparison" mode="instrument" note="One object, two interpretations, dragged between. Its cinematic sibling, Transformation, performs the same argument." />
-
-			<ComparisonSpecimen />
-
-			<Specimen name="Variants" mode="instrument" note="One identity, physically present variants, a staged swap — and a designed refusal for the absent one." />
-
-			<VariantsSpecimen />
-
-			<Specimen name="Ladder" mode="instrument" note="A gated progression — rungs climbed in order, each closed only by its own criterion." />
-
-			<LadderSpecimen />
-
-			<Specimen name="Agreement" mode="instrument" note="N independently-derived values that must be identical — with a FAIL row, because an invariant you never see fail is decoration." />
-
-			<AgreementSpecimen />
-
-			<Specimen name="Derivation" mode="instrument" note="A value folded down a graded scale by caps — derived, never asserted." />
-
-			<DerivationSpecimen />
-
-			<Specimen name="ByteMap" mode="instrument" note="A physical layout drawn to scale — each field's width is its width in bytes. The one place a page should feel like an engineering drawing." />
-
-			<ByteMapSpecimen />
-
-			<Specimen name="Terminal" mode="instrument" note="A query surface as an instrument: the form is the chrome, the meaning is one executor function passed in. Promoted from vindex3.org's Explorer, where it fronts a live query endpoint." />
-
-			<TerminalSpecimen />
-
-			<Specimen name="Gating" mode="instrument" note="Expand, judge, compress — performed by widths. Promoted from vindex3.org's Anatomy, where the stages are a model's gate/up/down tensors; here, an editor's day." />
-
-			<GatingSpecimen />
-
-			<Specimen name="Lens" mode="instrument" note="One concept, one URL, three depths — the explanation, the object, and the words that govern it. The chosen depth is remembered across pages and written into the fragment; every panel stays in the DOM, so the normative text is legible whether or not the tab was clicked. Built for vindex3.org's representation chapter, where LEARN, INSPECT and SPEC are prose, a live instrument, and the ABI clause itself." />
-
-			<LensSpecimen />
-
-			<Specimen name="Provenance" mode="instrument" note="The publication record beneath a page: one quiet evidence line at rest — published, revised, version, and a DOI only where one has been registered — expanding to the identifiers and the dated history. The specimen is this site's own record, and there is no DOI in it because none exists." />
-
-			<ProvenanceSpecimen />
-
-			<Specimen name="Citation" mode="instrument" note="The reference itself. Plain is selected by default, so the citation is in the served HTML before a line of JavaScript runs; BibTeX, APA and CSL-JSON sit behind tabs. Three formats, because CSL-JSON becomes the other three hundred." />
-
-			<div id="cite"><CitationSpecimen /></div>
-
-			<Specimen name="FollowReveal" mode="instrument" note="A path through connected ideas, replayed at the hause stagger." />
-
-			<FollowRevealSpecimen />
-
-
-			<Connection
-				text="Two instruments have cinematic siblings that take identical props — see them perform."
-				links={[{ href: "/performances", label: "PERFORMANCES →" }]}
-			/>
-</main>
-	);
+  return <main className="mode-room mode-room--instrument system-story" data-room="instrument">
+    <RoomRecord mode="instrument" />
+    <header className="room-opening">
+      <RoomLabel mode="instrument" />
+      <div className="room-opening-copy"><p className="voice-evidence">THE READER OPERATES</p><h1 className="voice-editorial">Understanding,<br /><em>by hand.</em></h1><p className="voice-system">Move something. Change one condition. Inspect what follows. The explanation becomes an instrument when its pace belongs to you.</p></div>
+      <section id="comparison" className="room-first-screen" aria-label="Comparison opening instrument"><p className="voice-evidence">ON THE BENCH / COMPARISON</p><InstrumentInteraction name="Comparison" /><Link className="room-inspect voice-evidence" href="/forms/comparison">INSPECT THE FORM ↗</Link></section>
+    </header>
+    <RoomProgramme mode="instrument" />
+    <section id="rearrange" className="room-reading"><p className="voice-evidence">01 / MOVE THE PIECES</p><p className="voice-editorial">You changed the arrangement.<br />Not the objects.</p><p className="voice-system">Comparison preserves identity while you move between interpretations. When the same change should happen at an authored pace, its sibling is Transformation.</p><Link className="room-inspect voice-evidence" href="/forms/transformation">SEE THE PERFORMED COUNTERPART ↗</Link></section>
+    <ExhibitionPlate study="structure" />
+    <RoomChapter mode="instrument" chapterId="open"><RoomStudy name="Decomposition" /><RoomDoors names={["Anatomy", "Lens"]} /></RoomChapter>
+    <RoomChapter mode="instrument" chapterId="select"><RoomStudy name="ExpertField" /><RoomDoors names={["Variants", "Gating"]} /></RoomChapter>
+    <RoomPause note="THE CONTROL HAS TO EARN ITS PLACE" first="A different setting." second="A different understanding." />
+    <RoomChapter mode="instrument" chapterId="verify"><RoomStudy name="Agreement" /><RoomDoors names={["Derivation", "Ladder", "ByteMap"]} /></RoomChapter>
+    <RoomChapter mode="instrument" chapterId="trace"><RoomStudy name="Terminal" /><RoomDoors names={["FollowReveal", "Provenance", "Citation"]} /></RoomChapter>
+    <aside className="room-discipline"><p className="voice-evidence">THE INSTRUMENT’S DISCIPLINE</p><p className="voice-system">The field and arithmetic studies are explicitly illustrative. The terminal reads the actual library manifest. Every featured encounter carries a plain reading, and each door leads to the full study, reusable specimen and source contract.</p></aside>
+    <RoomClose mode="instrument" next="performance" />
+  </main>;
 }

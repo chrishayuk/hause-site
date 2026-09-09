@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ExhibitionPlate } from "./ExhibitionPlate";
 
 const firstForms = [
 	"Hero",
@@ -28,23 +29,13 @@ export function OriginScene({ includeArchive = true }: { includeArchive?: boolea
 				<span className="home-origin-orbit" aria-hidden="true">STAGE THE OBJECT · STAGE THE VIEWER ·</span>
 			</header>
 
-			<div className="home-origin-rooms" aria-label="Three exhibition principles behind HAUSE">
-				<article className="home-origin-room home-origin-room--space">
-					<p className="voice-evidence">ROOM I / SPACE</p>
-					<h3 className="voice-editorial">The space around something changes how you read it.</h3>
-					<div className="home-origin-object" aria-hidden="true" />
-				</article>
-				<article className="home-origin-room home-origin-room--time">
-					<p className="voice-evidence">ROOM II / TIME</p>
-					<h3 className="voice-editorial">Cinematic does not mean motion.</h3>
-					<p className="voice-system">It means directing attention through time.</p>
-					<div className="home-origin-beats voice-evidence" aria-hidden="true"><span>EXIT</span><i/><span>HOLD</span><i/><span>ENTER</span></div>
-				</article>
-				<article className="home-origin-room home-origin-room--scale">
-					<p className="voice-evidence">ROOM III / SCALE</p>
-					<h3 className="voice-editorial">Not every idea deserves a card.</h3>
-					<p className="voice-editorial">Some deserve a room.</p>
-				</article>
+			<div className="home-origin-gallery" aria-label="Three original exhibition studies: attention, structure and passage">
+				<ExhibitionPlate study="attention" />
+				<div className="exhibition-diptych">
+					<ExhibitionPlate study="structure" paired />
+					<ExhibitionPlate study="passage" paired />
+				</div>
+				<div className="exhibition-coda"><p className="voice-evidence">THE EXHIBITION PRINCIPLE</p><p className="voice-editorial">Not every idea deserves a card.<br /><em>Some deserve a room.</em></p><p className="voice-system">Cinematic does not mean motion. It means directing attention through time.</p></div>
 			</div>
 
 			{includeArchive && <figure className="home-origin-archive">

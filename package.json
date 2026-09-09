@@ -10,7 +10,9 @@
     "upload": "opennextjs-cloudflare build && opennextjs-cloudflare upload",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv ./cloudflare-env.d.ts",
-    "test": "tsx scripts/ask-coverage.ts && tsx scripts/study-coverage.ts",
+    "test": "tsx scripts/sync-exhibition.ts && tsx scripts/ask-coverage.ts && tsx scripts/study-coverage.ts && tsx scripts/room-coverage.ts && tsx scripts/media-coverage.ts && tsx scripts/section-coverage.ts && tsx scripts/journey-coverage.ts && tsx scripts/problem-coverage.ts",
+    "test:built": "tsx scripts/study-coverage.ts --built && tsx scripts/room-coverage.ts --built && tsx scripts/media-coverage.ts --built && tsx scripts/section-coverage.ts --built && tsx scripts/journey-coverage.ts --built && tsx scripts/problem-coverage.ts --built",
+    "sync:exhibition": "tsx scripts/sync-exhibition.ts --write",
     "ingest": "tsx scripts/ingest-forms.ts ../hause && tsx scripts/ingest-hause.ts ../hause"
   },
   "dependencies": {

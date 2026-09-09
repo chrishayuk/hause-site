@@ -123,7 +123,7 @@ export const PROBLEMS: Problem[] = [
 		dek: "Documentation is a copy of the system, and copies rot. Every count in it was true on the day it was typed.",
 		question: "How do you stop documentation drifting from the code?",
 		answer:
-			"Stop writing the parts a machine can derive. Counts, origins, contracts and specimens should be read out of the library at build time, so a page cannot state something the code no longer supports. In HAUSE the manifest is the one index everything derives from, the form pages are projected from the doc comments in the source, and a form the manifest names but the ingest cannot find fails the build rather than rendering an empty page.",
+			"Derive what the system already knows, and check identities rather than totals alone. HAUSE builds its collection from a pinned library manifest and an ingested documentation snapshot. A manifest entry without documentation fails the build. This chapter compares those two inventories, deliberately removes an entry from a copy, and restores it. That checks a specific release: it does not prove the site follows every later library change or that every prose claim is current.",
 		statement: "A specimen book cannot drift from its library when it is the library.",
 		symptom:
 			"This site had it. A specimen page read twenty-eight of twenty-eight while the library held thirty-five forms, and all seven performances while there were eight. Both sentences were true the day they were typed, both were quietly false a fortnight later — on a site whose entire argument is that the book cannot drift from the library.",
@@ -195,6 +195,17 @@ export const PROBLEMS: Problem[] = [
 /** In number order, always — the array literal is not the sequence. */
 export const PROBLEMS_IN_ORDER: Problem[] = [...PROBLEMS].sort((a, b) => a.number.localeCompare(b.number));
 
+export const PROBLEM_ENCOUNTERS: Record<string, string> = {
+ "everything-becomes-a-card": "Switch an unchanged fictional gallery record between identical containers and actual Claim, Evidence and Refusal forms.",
+ "interfaces-that-cannot-refuse": "Request a present plan or an absent inspection report from an illustrative archive; missing evidence produces a refusal, not a substitute.",
+ "pages-machines-cannot-read": "Switch a fictional listening record between designed, plain-text and structured projections generated from the same facts; this is not a crawler test or an indexing guarantee.",
+ "nothing-to-cite": "Restore the actual chapter's publication record to an attribution-stripped fragment and download citation formats generated from that record.",
+ "the-book-drifts-from-the-code": "Compare the pinned manifest with the ingested documentation by identity. Break a copy, expose the missing form, then restore it; the real files remain unchanged.",
+ "tutorial-or-reference-never-both": "Operate the original Lens at Learn, Inspect and Spec depths, keeping its source contract and remembered depth.",
+ "everything-sounds-equally-certain": "Reveal ten fictional listening responses, refute an overbroad claim, then state the narrower supported claim without changing the data.",
+ "motion-that-means-nothing": "A reader-started CSS paper study stages establish, exit, empty hold, enter and rest. It is an authored substitution, not a physics simulation; static frames and a complete text score remain available.",
+};
+
 /** "eight" — so a page can say the count in prose without anyone typing it. */
 export function spell(n: number): string {
 	return ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve"][n] ?? String(n);
@@ -214,8 +225,8 @@ export function problemRecord(p: Problem): CitationRecord {
 		title: `${p.title.charAt(0)}${p.title.slice(1).toLowerCase()}`,
 		authors: ["Chris Hay"],
 		published: p.published,
-		...(p.revised ? { revised: p.revised } : {}),
-		version: "1.0",
+		revised: p.revised ?? "2026-09-09",
+		version: "1.1",
 		url: `https://hause.design/problems/${p.slug}`,
 		publisher: "hause.design",
 		kind: "article",

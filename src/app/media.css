@@ -1,0 +1,20 @@
+/* Photographic material keeps its own light; its reading surface follows the reader's theme. */
+.exhibition-plate-source { display:contents; }
+:root .exhibition-plate { margin:0; min-width:0; background:var(--bg); color:var(--fg); }
+.exhibition-plate .hause-visual-plate-media { background:#171410; }
+.exhibition-plate figcaption>.voice-evidence,.exhibition-plate figcaption>.voice-system { color:var(--exhibit-muted); }
+.exhibition-diptych { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); }
+.exhibition-diptych .exhibition-plate figcaption { grid-template-columns:1fr; padding-inline:clamp(20px,4vw,64px); }
+.exhibition-diptych .exhibition-plate figcaption>.voice-editorial { font-size:clamp(2rem,3.8vw,4rem); }
+.exhibition-diptych>.exhibition-plate-source:nth-child(2) .exhibition-plate { background:var(--exhibit-surface); }
+.exhibition-coda { padding:clamp(3rem,7vw,8rem) clamp(20px,6vw,96px); background:var(--exhibit-wash); }
+.exhibition-coda>.voice-evidence { font-size:10px; letter-spacing:.12em; color:var(--exhibit-muted); }
+.exhibition-coda>.voice-editorial { font-size:clamp(2.5rem,6vw,7rem); line-height:1.05; letter-spacing:-.04em; margin:2rem 0; max-width:22ch; }
+.exhibition-coda em { color:var(--color-accent); }
+.exhibition-coda>.voice-system { font-size:1rem; line-height:1.7; max-width:32rem; color:var(--exhibit-muted); }
+.room-film-threshold .publication-demo { margin-top:3rem; }
+.room-film-threshold .publication-demo-label { flex-wrap:wrap; }
+.room-film-threshold .hause-film-enter { color:#fff; }
+@media(max-width:760px) {
+  .exhibition-diptych { grid-template-columns:1fr; }
+}

@@ -5,6 +5,8 @@ import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { formCount, formsByMode, MODES, type FormMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "@/data/forms";
+import { ExhibitionPlate } from "@/components/ExhibitionPlate";
+import { CollectionEncounter } from "@/components/CollectionEncounter";
 
 export const metadata: Metadata = {
 	title: "35 Semantic Forms for AI Interfaces",
@@ -53,6 +55,9 @@ export default function FormsPage() {
 					))}
 				</nav>
 			</section>
+
+			<ExhibitionPlate study="collection" />
+			<CollectionEncounter />
 
 			{MODES.map((mode, modeIndex) => (
 				<section key={mode} id={`${mode}s`} className={`forms-room forms-room--${mode}`} aria-labelledby={`${mode}-title`}>

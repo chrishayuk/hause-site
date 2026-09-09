@@ -10,6 +10,8 @@ import { formCount } from "@chrishayuk/hause/manifest";
 import { PROBLEMS, PROBLEMS_IN_ORDER, spell } from "@/data/problems";
 import { FORMS } from "@/data/forms";
 import { ProblemMap } from "@/components/ProblemMap";
+import { ExhibitionPlate } from "@/components/ExhibitionPlate";
+import { MeaningRestoration } from "@/components/MeaningRestoration";
 
 export const metadata: Metadata = {
 	title: "What AI Interfaces Get Wrong: The Problems HAUSE Answers",
@@ -48,23 +50,8 @@ export default function ProblemsPage() {
 				<div className="why-hero-beam" aria-hidden="true"><i /><i /><i /></div>
 			</section>
 
-			<section className="why-prologue" aria-labelledby="why-prologue-title">
-				<div className="why-prologue-copy">
-					<p className="voice-evidence">THE SYMPTOM</p>
-					<h2 id="why-prologue-title" className="voice-editorial">Different meanings.<br /><em>One shape.</em></h2>
-					<p className="voice-system">A comparison, a measurement, a refusal and a question enter the interface. The vocabulary calls every one of them a card.</p>
-				</div>
-				<div className="why-card-installation" aria-label="Four identical cards containing different semantic acts">
-					{["CLAIM", "EVIDENCE", "QUESTION", "REFUSAL"].map((act, index) => (
-						<div className="why-empty-card" key={act}>
-							<span className="voice-evidence">0{index + 1}</span>
-							<strong className="voice-system">{act}</strong>
-							<small className="voice-evidence">CARD</small>
-						</div>
-					))}
-				</div>
-				<p className="why-prologue-verdict voice-editorial">The content changed.<br />The grammar did not.</p>
-			</section>
+			<ExhibitionPlate study="concealment" />
+			<MeaningRestoration />
 
 			<div className="why-answer">
 				<Answer

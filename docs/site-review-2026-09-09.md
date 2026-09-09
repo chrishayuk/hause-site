@@ -1,5 +1,19 @@
 # HAUSE site review — 9 September 2026
 
+### Latest implementation: operable problem experiments
+
+The three journeys are tightened: compact choices beside the form preview, grouped graph branches retaining every relationship, and less repeated prose around original films. Seven problem chapters gain native experiments or a finite paper performance; the approved tutorial/reference Lens remains. The response now precedes the longer explanation. No-JS Reveal visibility and dark/light status labels are fixed at the problem-page scope. Drift uses a real identity comparison between the pinned manifest and ingested documentation, with a deliberately damaged copy, replacing the misleading three-independent-count framing.
+
+The library receives SequencePlayer and recordDifference as composition capabilities, plus the DecisionTrail and graph grouping refinements. The checked snapshot now has ten files; the site's package pin and 35-form vocabulary are unchanged. Provenance and contribution records are updated: 81 graph nodes and 253 relationships. See `problem-experiments-2026-09-09.md` for individual encounters, test scope and remaining browser QA. No commit or deployment is included.
+
+### Latest follow-up: In practice, Choosing and the connected system
+
+These three former text-first routes now have authored journeys. In practice stages an unchanged VINDEX3 archive film and the original Chris Hay YouTube screening around the need → work → contribution story. Choosing navigates the published grammar into real authored studies, with alternative acts and the complete reference retained. The connected system centres one record among its explicit incoming and outgoing relationships, with basis disclosures and searchable records underneath.
+
+DecisionTrail, GraphNeighbourhood and the graph validation helper are donated to the library and consumed via the exact checked snapshot. The site remains on its pinned 35-form package. The shared graph now has 79 records and 231 relationships, with the two new donations attributed to hause.design. See `connected-journeys-2026-09-09.md` for archive hashes, boundaries and contracts.
+
+Production build, source suites, rendered static-page checks, all 35 served form selections and all 79 served graph neighbourhoods pass. Repeated/invalid query parameters, empty search, API parity, one h1, unique IDs and local anchors are checked. Ten portable library tests and README coverage pass. Selected form content has a scoped visible no-JS Reveal fallback and theme-aware OPEN status. Browser discovery remains unavailable; visual, keyboard and playback sign-off is outstanding. No commit or publication has been made.
+
 Scope: the current local worktree, including the restored cinematic homepage and redesigned problem chapters. Reviewed 61 generated HTML pages, plus served HTML for `/ask` and `/knowledge`, and their shared source components/styles. Browser discovery returned no available browser. Layout observations below are source-based; interactive behaviour and screenshots have not been visually verified.
 
 ## Confirmed checks
@@ -79,3 +93,41 @@ Hero's study uses the real Hero and remains the page's single h1. Other reusable
 The graph now includes the collection's 35 form-study relationships: 74 nodes, 126 sourced edges. The ordinary test command includes study coverage and mathematical invariants; `npm test -- --built` also checks all 35 generated routes for authored content, unique IDs, one h1, working fragment targets and truthful specimen availability. All checks pass. A font-metric check of 1,544 headline-word/viewport combinations at 320–1920px found no oversized words using the actual Fraunces font at the default root size.
 
 Browser discovery still reports no available browser. These are build, source, font-metric and rendered-HTML checks, not a visual or interactive browser pass. All work remains local and uncommitted.
+
+### Follow-up: the three mode rooms
+
+The individual-study release above was published as `3ee5339`. This subsequent pass changes only the three mode-room journeys and their shared presentation, records and tests:
+
+- Performances begins with Transformation, then follows reorganisation, passage, scale and the boundary between a storyboard and a real film.
+- Instruments begins with a live Comparison, then offers benches for opening, selecting, verifying and tracing. Five full encounters lead into the remaining forms.
+- Statements follows a single, explicitly fictional listening-room record through observation, claim, evidence, uncertainty, refusal and answer. The page uses actual prose forms and remains readable without JavaScript.
+
+Every original form anchor remains on its mode page, with a route to the complete individual study. The programmes cover all 35 forms exactly once. Room publication dates are grounded in the first page-creation commit (29 August 2026); revised records, citation metadata and JSON-LD now accompany each room. The graph has 74 nodes and 161 sourced relationships.
+
+`npm test` checks all three programmes, study mechanisms and the 43 Ask cases. `npm run test:built` checks the three generated rooms and all 35 form pages for headings, anchors, study availability and opening order. Production build and both commands pass. Served HTML for all three local preview routes was also checked. Font-metric checks found no predicted opening-headline or door-name overflow in 1,134 combinations of 320–2560px viewports and 16/20/32px root sizes.
+
+Browser discovery remains unavailable. This is not a completed screenshot, keyboard or interactive browser pass. The changes use responsive geometry and theme tokens, but the outstanding shared-library QA findings above are not claimed resolved. This mode-room pass is local and not yet published.
+
+### Follow-up: material, light and a real screening
+
+Three original AI-generated still images now stage attention (copper), structure (glass) and passage (silk). The homepage and origins sequence use one full-width plate followed by a diptych; each mode room carries its corresponding plate. They replace abstract typographic/CSS-only moments with material imagery. Every plate visibly identifies the fictional installation; alt text does too. Original generation metadata is retained in the PNG sources. Final prompts and asset paths are in `exhibition-media-2026-09-09.md`.
+
+Performances now embeds the existing real Chris Hay film, with manual play, stop, chapter seeking and the explicitly unreviewed transcript excerpt. The real screening is separate from the generated still and the held Film specimen. Publication and Performances share one film citation record; the latter also emits its own VideoObject surface. Two new graph edges record the screening and transcript capabilities: 74 nodes, 163 sourced relationships.
+
+Images have intrinsic dimensions, native lazy loading and responsive Next Image derivatives. There is no ambient image animation, autoplaying video or third-party player iframe before explicit activation. Captions follow theme tokens; the imagery retains its own photographic palette.
+
+Production build, 43 Ask cases, all 35 study checks, all three mode-room checks and new five-route media coverage pass. Media checks verify image files/dimensions, visible generation disclosures, responsive lazy markup, source-backed graph edges and poster-first screening HTML. Browser discovery still reports no available browser, so no visual, keyboard or playback QA is claimed. This pass remains local and unpublished.
+
+### Follow-up: distinct section stories and a library donation
+
+Why now pairs a new fictional frosted-glass installation with a native before/after. Both treatments contain the same fictional gallery-opening record; the second uses the actual Claim, Evidence and Refusal components. All eight problem routes remain reachable.
+
+Forms adds its own fictional curatorial workbench and a native Read / Operate / Watch selector. A Statement, reader-operated Comparison and finite Transformation precede the complete 35-form catalogue. Existing fitted names, room anchors and individual form doors are preserved.
+
+Evidence uses no generated imagery. Three outcome matrices render all 124 frozen CHOOSING-1 cases in conditions A, B and C, scored 122, 122 and 8. Each has a complete native table. The two condition-A misses are exposed with their original stimuli, expected and accepted labels, actual selections and deciding tests. A verbatim preregistration excerpt links to the exact existing Git commit. Author/model-family limitations, the historical resolver boundary, and absent independent adoption stay visible. All five full evaluation routes remain available.
+
+Portable VisualPlate, ExhibitionChoices / BeforeAfter and OutcomeMatrix components, CSS, scoring helper, tests and contracts are donated to the sibling `hause` repository. Images, records and art direction stay site-owned. The site is pinned to an older 35-form library release; current library HEAD has 37. A five-file SHA-256-checked compatibility snapshot lets this pass consume the exact donated sources without silently changing that dependency's taxonomy. `npm run sync:exhibition` refreshes it; `npm test` checks integrity and source equality when the sibling library is available. Replace the snapshot with package imports in the next explicit library upgrade.
+
+The graph now contains 77 records and 185 relationships, including the three actual hause.design donations. CHRISHAYUK's contribution query is restricted to its recorded contribution edges so these additions are not misattributed.
+
+The library's eight metadata/evidence/sharing/outcome tests and README coverage check pass. Site production build, 43 Ask cases, 35 study pages, three mode rooms, seven image-bearing routes and the three new section checks pass. The new tests compare all result files with frozen originals, verify every mark and source table, both before/after records, native controls, headings and links. Local routes return successfully; 1080px WebP delivery measured approximately 23 KB (Why) and 67 KB (Forms). Browser discovery remains unavailable: no screenshot, keyboard or playback sign-off is claimed. Nothing is committed or published in this pass.

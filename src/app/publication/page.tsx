@@ -10,13 +10,12 @@ import {Provenance} from "@chrishayuk/hause/components/forms/Provenance";
 import {Citation} from "@chrishayuk/hause/components/forms/Citation";
 import {CitationExport} from "@chrishayuk/hause/components/CitationExport";
 import {JsonLd} from "@chrishayuk/hause/components/JsonLd";
-import {citationFormats,type CitationRecord} from "@chrishayuk/hause/cite";
+import {citationFormats} from "@chrishayuk/hause/cite";
 import {publicationMetadata,citationLd,videoObjectLd,breadcrumbLd} from "@chrishayuk/hause/seo";
 import {PublicationEvidence} from "@/components/PublicationEvidence";
 import {PublicationScreening} from "@/components/PublicationScreening";
-import {PUBLICATION_RECORD as record,PUBLICATION_CAPABILITIES} from "@/data/publication";
+import {PUBLICATION_RECORD as record,PUBLICATION_CAPABILITIES,PUBLICATION_FILM_RECORD as filmCitation} from "@/data/publication";
 import film from "@/data/publication-film.json";
-const filmCitation:CitationRecord={id:`YT-${film.youtubeId}`,title:film.title,authors:["Chris Hay"],published:film.published!,url:film.url,publisher:"YouTube",kind:"film",abstract:"Chris Hay introduces LARQL and discusses querying learned models as databases."};
 export const metadata=publicationMetadata({title:record.title,description:"How HAUSE connects poster-first film, chapters, transcripts, evidence and citations while keeping the original source attached.",url:record.url,siteName:"HAUSE",indexable:true,citation:record,image:film.poster});
 export default function PublicationPage(){return <MotionProvider storageKey="hause-publication-motion"><main className="publication-room">
  <JsonLd data={[citationLd(record),breadcrumbLd([{name:"HAUSE",url:"https://hause.design"},{name:record.title,url:record.url}]),videoObjectLd({citation:filmCitation,pageUrl:record.url,thumbnailUrl:film.poster,embedUrl:`https://www.youtube-nocookie.com/embed/${film.youtubeId}`,durationSeconds:film.duration})]}/>

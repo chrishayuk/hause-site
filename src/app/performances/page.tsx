@@ -1,69 +1,49 @@
-import { Metadata } from "next";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
-import { Observation } from "@chrishayuk/hause/components/forms/Observation";
-import { Connection } from "@chrishayuk/hause/components/forms/Connection";
-import { Specimen } from "@/components/Specimen";
-import { ModeIndex } from "@/components/ModeIndex";
-import { formsByMode } from "@chrishayuk/hause/manifest";
-import { TransformationSpecimen, UnfoldingSpecimen, CompilationSpecimen, ProcessionSpecimen, MagnitudeSpecimen, ChannelSpecimen, QuantisationSpecimen } from "@/specimens/performances";
+import { RoomLabel, RoomProgramme, RoomChapter, RoomStudy, RoomDoors, RoomPause, RoomClose, RoomRecord, roomMetadata } from "@/rooms/RoomParts";
+import { PerformanceStudy } from "@/studies/PerformanceStudies";
+import Link from "next/link";
+import { ExhibitionPlate } from "@/components/ExhibitionPlate";
+import { PublicationScreening } from "@/components/PublicationScreening";
+import { MotionProvider } from "@chrishayuk/hause/components/Motion";
+import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
+import { videoObjectLd } from "@chrishayuk/hause/seo";
+import { PUBLICATION_FILM_RECORD } from "@/data/publication";
+import film from "@/data/publication-film.json";
 
-export const metadata: Metadata = {
-	title: "HAUSE in Performance: Real Pages Built From the Forms",
-	alternates: { canonical: "/performances" },
-	description: "The cinematic forms — they play themselves, rest on a designed final state, and never crossfade.",
-};
+export const metadata = roomMetadata("performance");
 
 export default function PerformancesPage() {
-	const forms = formsByMode("performance").filter((form) => form.exhibited).map((form) => form.name);
-	return (
-		<main>
-			<Hero
-				kicker="THE BOOK · MODE THREE"
-				title="PERFORMANCES"
-				dek="Cinematic forms — they play themselves. In-view start, a designed resting state, REPLAY where a piece runs once, a gentle loop where a scrolling reader must never find it finished. Reduced motion always lands on the finished composition."
-			/>
-			<ModeIndex mode="performances" forms={forms} />
-
-			<Connection text="When the performance is a real film." links={[{href:"/publication",label:"FILM & PUBLICATION — LIVE SCREENING"}]}/>
-
-			<Observation text="One rule governs all of them: never a crossfade between two physical forms of one thing. A crossfade depicts a conversion. These forms stage a swap — exit, a held beat, enter — or they move the same pieces continuously. The distinction is the design language's deepest conviction, borrowed from the exhibition that forced it into existence." />
-
-			<Specimen name="Transformation" mode="performance" note="Comparison's cinematic sibling — identical argument, performed instead of dragged." />
-
-			<TransformationSpecimen />
-
-			<Specimen name="Unfolding" mode="performance" note="Decomposition's cinematic sibling — same props, so the two are interchangeable per chapter." />
-
-			<UnfoldingSpecimen />
-
-			<Specimen name="Compilation" mode="performance" note="Inputs compiled through named stages into an artifact that no longer needs them — with the discard beat at the end." />
-
-			<CompilationSpecimen />
-
-			<Specimen name="Procession" mode="performance" note="One thing through every stage, in order — loops while in view, so a scrolling reader never finds it finished." />
-
-			<ProcessionSpecimen />
-
-			<Specimen name="Magnitude" mode="performance" note="A powers-of-ten zoom-out, area-true — each arrival rescales the world." />
-
-			<MagnitudeSpecimen />
-
-			<Specimen name="Channel" mode="performance" note="Throughput through a fixed conduit — when the payload narrows, the same channel delivers more often." />
-
-			<ChannelSpecimen />
-
-			<Specimen name="Quantisation" mode="performance" note="Values snapping to representable levels — on a fine grid the move is invisible; on a coarse one, every value steps, and the ghosts remember." />
-
-			<QuantisationSpecimen />
-
-
-			<Connection
-				text="Back through the book."
-				links={[
-					{ href: "/statements", label: "STATEMENTS →" },
-					{ href: "/instruments", label: "INSTRUMENTS →" },
-				]}
-			/>
-</main>
-	);
+  return <main className="mode-room mode-room--performance system-story" data-room="performance">
+    <RoomRecord mode="performance" />
+    <JsonLd data={videoObjectLd({ citation: PUBLICATION_FILM_RECORD, pageUrl: "https://hause.design/performances", thumbnailUrl: film.poster, embedUrl: `https://www.youtube-nocookie.com/embed/${film.youtubeId}`, durationSeconds: film.duration })} />
+    <header className="room-opening">
+      <RoomLabel mode="performance" />
+      <div className="room-opening-copy"><p className="voice-evidence">THE READER WATCHES</p><h1 className="voice-editorial">Watch an<br /><em>idea change.</em></h1><p className="voice-system">Some explanations are easier to understand when they happen. First, watch the same four pieces become a different reading.</p></div>
+      <section id="transformation" className="room-first-screen" aria-label="Transformation opening performance">
+        <p className="voice-evidence">NOW SHOWING / TRANSFORMATION</p>
+        <PerformanceStudy name="Transformation" />
+        <Link className="room-inspect voice-evidence" href="/forms/transformation">INSPECT THE FORM ↗</Link>
+      </section>
+    </header>
+    <RoomProgramme mode="performance" />
+    <RoomChapter mode="performance" chapterId="rearrange">
+      <RoomStudy name="Unfolding" />
+      <RoomDoors names={["Compilation"]} />
+    </RoomChapter>
+    <RoomPause note="A CHANGE OF PACE" first="Not motion around the explanation." second="Motion as the explanation." />
+    <ExhibitionPlate study="passage" />
+    <RoomChapter mode="performance" chapterId="passage">
+      <RoomStudy name="Procession" />
+      <RoomDoors names={["Channel"]} />
+    </RoomChapter>
+    <RoomChapter mode="performance" chapterId="scale">
+      <RoomStudy name="Magnitude" />
+      <RoomDoors names={["Quantisation"]} />
+    </RoomChapter>
+    <RoomChapter mode="performance" chapterId="screening">
+      <div className="room-film-threshold publication-room"><span className="voice-evidence">FROM VISUAL STUDY TO REAL PUBLICATION</span><p className="voice-editorial">The subject<br />comes first.</p><p className="voice-system">The silk passage above is an imagined space. This is an actual film: Chris Hay explaining a technical idea, with chapters and a transcript you can operate. It demonstrates the separate publication player; the original Film form remains a labelled storyboard, not this video.</p><MotionProvider storageKey="hause-performance-film-motion"><PublicationScreening /></MotionProvider><Link href="/publication#film-citation" className="room-inspect voice-evidence">INSPECT THE PUBLICATION RECORD ↗</Link></div>
+      <RoomDoors names={["Film"]} />
+    </RoomChapter>
+    <aside className="room-discipline"><p className="voice-evidence">THE SCREENING DISCIPLINE</p><p className="voice-system">These authored sequences play finitely, stop when out of view, and have pause and replay controls. Reduced motion starts with the complete resting composition. The text record remains available without playback. The individual form pages separate these studies from the reusable library components.</p></aside>
+    <RoomClose mode="performance" next="statement" />
+  </main>;
 }
