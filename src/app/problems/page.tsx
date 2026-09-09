@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
  */
 export default function ProblemsPage() {
 	return (
-		<main>
+		<main className="why-story system-story">
 			<JsonLd
 				data={breadcrumbLd([
 					{ name: "HAUSE", url: "https://hause.design" },
@@ -34,43 +33,77 @@ export default function ProblemsPage() {
 				])}
 			/>
 
-			<Hero
-				kicker="THE PROBLEMS · WHY ANY OF THIS EXISTS"
-				title="START WITH WHAT IS BROKEN"
-				dek="HAUSE is not a taxonomy that happened to need filling. Every form in it is a consequence — of an interface that could not refuse, a page a machine could not read, an idea nobody could cite. Here are the failures, first."
-			/>
+			<section className="why-hero">
+				<div className="why-hero-ghost" aria-hidden="true">WHY</div>
+				<div className="why-hero-top voice-evidence">
+					<span>THE PROBLEMS · ROOM 01</span>
+					<span>{PROBLEMS.length} FAILURES · {formCount()} CONSEQUENCES</span>
+				</div>
+				<div className="why-hero-copy">
+					<p className="voice-evidence">THE ARGUMENT BEGINS BACKWARDS</p>
+					<h1 className="voice-editorial">Every form begins with a <em>failure.</em></h1>
+					<p className="voice-system">HAUSE was not a taxonomy waiting to be filled. It is what remained after an interface could not refuse, a page could not be read, and an idea could not be cited.</p>
+				</div>
+				<a className="why-hero-enter voice-evidence" href="#the-failures">ENTER THE FAILURES <span aria-hidden="true">↓</span></a>
+				<div className="why-hero-beam" aria-hidden="true"><i /><i /><i /></div>
+			</section>
 
-			<Answer
-				id="what-problems-does-hause-solve"
-				question="What problems does HAUSE actually solve?"
-				answer={`${spell(PROBLEMS.length).charAt(0).toUpperCase()}${spell(PROBLEMS.length).slice(1)}, so far: ${PROBLEMS_IN_ORDER.map((p) => p.title.toLowerCase()).join("; ")}. Each one is a failure with a form behind it — the ${formCount()} forms in the library are what answering them looked like.`}
-			/>
+			<section className="why-prologue" aria-labelledby="why-prologue-title">
+				<div className="why-prologue-copy">
+					<p className="voice-evidence">THE SYMPTOM</p>
+					<h2 id="why-prologue-title" className="voice-editorial">Different meanings.<br /><em>One shape.</em></h2>
+					<p className="voice-system">A comparison, a measurement, a refusal and a question enter the interface. The vocabulary calls every one of them a card.</p>
+				</div>
+				<div className="why-card-installation" aria-label="Four identical cards containing different semantic acts">
+					{["CLAIM", "EVIDENCE", "QUESTION", "REFUSAL"].map((act, index) => (
+						<div className="why-empty-card" key={act}>
+							<span className="voice-evidence">0{index + 1}</span>
+							<strong className="voice-system">{act}</strong>
+							<small className="voice-evidence">CARD</small>
+						</div>
+					))}
+				</div>
+				<p className="why-prologue-verdict voice-editorial">The content changed.<br />The grammar did not.</p>
+			</section>
 
-			<section className="hause-grid py-10 sm:py-16">
-				<div className="col-span-12 md:col-start-2 md:col-span-10">
-					<div className="flex flex-col">
-						{PROBLEMS_IN_ORDER.map((p) => (
-							<Link
-								key={p.slug}
-								href={`/problems/${p.slug}`}
-								className="group grid grid-cols-[2.5rem_1fr] sm:grid-cols-[3.5rem_minmax(0,20rem)_1fr] gap-3 sm:gap-8 items-baseline py-5 border-t"
-								style={{ borderColor: "var(--color-mist)" }}
-							>
-								<span className="voice-evidence text-xs opacity-40">{p.number}</span>
-								<span className="voice-evidence text-xs sm:text-sm tracking-[0.06em]" style={{ color: "var(--color-accent)" }}>
-									{p.title} →
-								</span>
-								<span className="voice-system text-sm opacity-65 group-hover:opacity-95 transition-opacity hidden sm:block">
-									{p.dek}
-								</span>
-							</Link>
-						))}
-						<div className="border-t" style={{ borderColor: "var(--color-mist)" }} />
-					</div>
+			<div className="why-answer">
+				<Answer
+					id="what-problems-does-hause-solve"
+					question="What problems does HAUSE actually solve?"
+					answer={`${spell(PROBLEMS.length).charAt(0).toUpperCase()}${spell(PROBLEMS.length).slice(1)}, so far: ${PROBLEMS_IN_ORDER.map((p) => p.title.toLowerCase()).join("; ")}. Each one is a failure with a form behind it — the ${formCount()} forms in the library are what answering them looked like.`}
+				/>
+			</div>
+
+			<section id="the-failures" className="why-corridor" aria-labelledby="failures-title">
+				<header className="why-corridor-heading">
+					<p className="voice-evidence">THE CORRIDOR · SELECT A FAILURE</p>
+					<h2 id="failures-title" className="voice-editorial">Eight moments where the interface loses the meaning.</h2>
+				</header>
+				<div className="why-failure-sequence">
+					{PROBLEMS_IN_ORDER.map((p) => (
+						<Link key={p.slug} href={`/problems/${p.slug}`} className="why-failure">
+							<span className="why-failure-number voice-editorial">{p.number}</span>
+							<div className="why-failure-copy">
+								<p className="voice-evidence">FAILURE {p.number} · {p.answers.length} FORMS ANSWER</p>
+								<h3 className="voice-editorial">{p.title}</h3>
+								<p className="voice-system">{p.statement}</p>
+							</div>
+							<div className="why-failure-answers voice-evidence" aria-label="Forms that answer this failure">
+								{p.answers.map((answer) => <span key={answer}>{answer}</span>)}
+							</div>
+							<span className="why-failure-open voice-evidence">ENTER →</span>
+						</Link>
+					))}
 				</div>
 			</section>
 
-			<Statement text="A form that arrives without a failure behind it is a Card wearing a costume." />
+			<section className="why-turn" aria-label="The conclusion">
+				<p className="voice-evidence">THE TURN</p>
+				<p className="voice-editorial">A form that arrives without a failure behind it is a Card wearing a costume.</p>
+				<div aria-hidden="true"><span>FAILURE</span><i>→</i><span>ACT</span><i>→</i><span>FORM</span></div>
+			</section>
+
+			<Statement text="The vocabulary is not the beginning of HAUSE. It is the evidence left by problems being solved." />
 
 			<ProblemMap
 				problems={PROBLEMS_IN_ORDER.map((p) => ({ slug: p.slug, number: p.number, title: p.title, answers: p.answers }))}

@@ -9,11 +9,8 @@ import {citationMeta} from "@chrishayuk/hause/cite";
 import {formCount} from "@chrishayuk/hause/manifest";
 import {HAUSE_RECORD,HAUSE_HISTORY} from "@/data/citation";
 import {HomepageHero} from "@/components/HomepageHero";
-import {HomepageAsk} from "@/components/HomepageAsk";
-import {ContainerVersusAct} from "@/components/ContainerVersusAct";
-import {TheLoop} from "@/components/TheLoop";
-import {WhatYouGet} from "@/components/WhatYouGet";
-import {StartHere} from "@/components/StartHere";
+import {ActDemo} from "@/components/ActDemo";
+import {HomepageProof} from "@/components/HomepageProof";
 import {OriginScene} from "@/components/OriginScene";
 import {PRACTICES} from "@/data/practice";
 export const metadata:Metadata={
@@ -23,15 +20,17 @@ export const metadata:Metadata={
 };
 export default function Home(){return <main className="system-story">
  <HomepageHero/>
- <OriginScene/>
- <ContainerVersusAct/>
- <HomepageAsk/>
- <Answer id="what-is-hause" question="What is HAUSE?" answer={`HAUSE is the semantic layer above an existing UI system. It provides ${formCount()} forms for acts such as claims, evidence, comparisons and refusals. A product keeps its own content, components and art direction; HAUSE supplies forms, interaction behaviour, citation exports and machine-readable metadata so a person and a machine can read the same meaning.`}/>
- <TheLoop/>
- <StartHere/>
+ <OriginScene includeArchive={false}/>
+ <section id="difference" className="home-thesis" aria-labelledby="thesis-title">
+  <p className="voice-evidence">THE CHOICE BEFORE THE COMPONENT</p>
+  <h2 id="thesis-title" className="voice-editorial">Start with the act.</h2>
+  <div className="home-thesis-pair"><div><p className="voice-system">Most design systems start with a container.</p><p className="voice-editorial">Card. Panel.<br/>Accordion. Modal.</p></div><div><p className="voice-system">HAUSE starts with what you mean.</p><p className="voice-editorial">Claim. Evidence.<br/>Refusal. Comparison.</p></div></div>
+  <Link href="/problems/everything-becomes-a-card" className="story-link">WHY THE VOCABULARY MATTERS ↗</Link>
+ </section>
+ <HomepageProof/>
+ <ActDemo/>
  <section className="story-practice hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">REAL PAGES SHAPED THE LIBRARY</p><h2 className="voice-editorial">Built in use.<br/><em>Still young.</em></h2><p className="voice-system practice-intro">Two authored sites have put HAUSE under different kinds of pressure. That is evidence of use, not independent adoption. The next meaningful proof is a team and subject that are not Chris Hay’s.</p>{PRACTICES.map(p=><Link href={`/in-practice#${p.id}`} className="practice-row" key={p.id}><span className="voice-evidence">{p.name}</span><div><h3 className="voice-editorial">{p.title}</h3><p className="voice-system">{p.summary}</p></div><span aria-hidden="true">↗</span></Link>)}</div></section>
- <section className="story-record hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">KEEP THE SOURCE</p><h2 className="voice-editorial">The surface changes.<br/>The facts stay connected.</h2><p className="voice-system">The same record can supply the visible explanation, its citation, its structured data and the source an answer returns to. SEO, AEO and provenance travel with the forms.</p><div className="record-sequence voice-evidence"><span>RECORD</span><span>PAGE</span><span>CITATION</span><span>MACHINE DATA</span></div><Link className="story-link" href="/publication#metadata">FOLLOW THE RECORD ↗</Link></div></section>
- <WhatYouGet/>
- <section className="story-next hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">GO DEEPER</p><h2 className="voice-editorial">The useful bit first.<br/>The whole argument remains.</h2><div className="story-next-links"><Link href="/choosing">SELECTION GRAMMAR ↗</Link><Link href="/evidence">EVIDENCE & LIMITATIONS ↗</Link><Link href="/ai-native-design-systems">THE CATEGORY ↗</Link><Link href="/publication">FILM & PUBLICATION ↗</Link><Link href="/knowledge">CONNECTED RECORD ↗</Link></div></div></section>
+ <section className="story-next hause-grid"><div className="col-span-12 md:col-start-2 md:col-span-10"><p className="voice-evidence">PICK YOUR WAY IN</p><h2 className="voice-editorial">Something to say?</h2><div className="story-next-links"><Link href="/choosing">FIND THE FORM ↗</Link><Link href="/forms">EXPLORE THE COLLECTION ↗</Link><Link href="/use">BUILD YOUR FIRST ANSWER ↗</Link><Link href="/ask">ASK HAUSE ↗</Link></div><nav className="home-deep-routes voice-evidence" aria-label="The deeper story"><Link href="/how-hause-grew#origin">THE EXHIBITION ORIGIN</Link><Link href="/publication">FILM, AEO & PROVENANCE</Link><Link href="/knowledge">THE CONNECTED RECORD</Link><Link href="/ai-native-design-systems">THE CATEGORY</Link></nav></div></section>
+ <Answer id="what-is-hause" question="What is HAUSE?" answer={`HAUSE is a semantic design system for AI-generated interfaces. Its ${formCount()} forms name communicative acts such as claims, evidence, comparisons and refusals. It works above your existing UI library, with interaction, provenance and machine-readable records carried by the forms.`}/>
  <JsonLd data={citationLd(HAUSE_RECORD)}/><Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite"/><Citation record={HAUSE_RECORD}/>
  </main>;}

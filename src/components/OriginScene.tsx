@@ -16,7 +16,7 @@ const firstForms = [
 
 const lineage = ["EXHIBITION", "CINEMATIC COMPOSITION", "FORMS", "SEMANTIC FORMS", "AI COMPOSITION"];
 
-export function OriginScene() {
+export function OriginScene({ includeArchive = true }: { includeArchive?: boolean }) {
 	return (
 		<section id="origin" className="home-origin" aria-labelledby="home-origin-title">
 			<header className="home-origin-prologue">
@@ -47,7 +47,7 @@ export function OriginScene() {
 				</article>
 			</div>
 
-			<figure className="home-origin-archive">
+			{includeArchive && <figure className="home-origin-archive">
 				<figcaption className="voice-evidence"><span>ARCHIVE / 28 AUGUST 2026</span><span>THE FIRST HOUSE README</span></figcaption>
 				<blockquote className="voice-editorial">
 					“A cinematic visual language for ideas, systems and explanations.”
@@ -56,7 +56,7 @@ export function OriginScene() {
 					{firstForms.map((form) => <span key={form}>{form}</span>)}
 				</div>
 				<p className="voice-editorial home-origin-rule">NO GENERIC CARD KIT.</p>
-			</figure>
+			</figure>}
 
 			<div className="home-origin-lineage voice-evidence" aria-label="The lineage from exhibition to AI composition">
 				{lineage.map((step, index) => <span key={step}>{index > 0 && <i aria-hidden="true">→</i>}{step}</span>)}
@@ -71,7 +71,7 @@ export function OriginScene() {
 				</div>
 				<div>
 					<p className="voice-system">Read, Operate and Watch are not a wrapper around the semantic system. They are its ancestry. The artistic question became a systems question, and the vocabulary of an exhibition became a vocabulary a machine could choose from.</p>
-				<Link href="/how-hause-grew" className="story-link">FOLLOW THE RECORDED ORIGIN ↗</Link>
+					<Link href={includeArchive ? "/choosing" : "/how-hause-grew#origin"} className="story-link">{includeArchive ? "EXPLORE THE SELECTION GRAMMAR ↗" : "FOLLOW THE RECORDED ORIGIN ↗"}</Link>
 				</div>
 			</div>
 		</section>

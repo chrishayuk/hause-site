@@ -68,6 +68,7 @@ export function formRecord(form: Form): CitationRecord {
 		title: `${form.name} — a HAUSE ${form.mode}`,
 		authors: ["Chris Hay"],
 		published: "2026-08-31",
+		revised: "2026-09-09",
 		version: "0.1.0",
 		url: `https://hause.design/forms/${form.slug}`,
 		publisher: "hause.design",

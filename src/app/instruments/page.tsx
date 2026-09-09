@@ -81,7 +81,7 @@ export default function InstrumentsPage() {
 
 			<Specimen name="Citation" mode="instrument" note="The reference itself. Plain is selected by default, so the citation is in the served HTML before a line of JavaScript runs; BibTeX, APA and CSL-JSON sit behind tabs. Three formats, because CSL-JSON becomes the other three hundred." />
 
-			<CitationSpecimen />
+			<div id="cite"><CitationSpecimen /></div>
 
 			<Specimen name="FollowReveal" mode="instrument" note="A path through connected ideas, replayed at the hause stagger." />
 

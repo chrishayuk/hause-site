@@ -11,7 +11,6 @@ import { Compilation } from "@chrishayuk/hause/components/forms/Compilation";
 import { Procession } from "@chrishayuk/hause/components/forms/Procession";
 import { Magnitude } from "@chrishayuk/hause/components/forms/Magnitude";
 import { Channel } from "@chrishayuk/hause/components/forms/Channel";
-import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Quantisation } from "@chrishayuk/hause/components/forms/Quantisation";
 
 export function TransformationSpecimen() {
@@ -123,11 +122,6 @@ export function QuantisationSpecimen() {
 					{ levels: 9, caption: "a coarse grid — every value moves to the nearest level" },
 				]}
 				note="small moves compound — which is why a coarsened thing must be measured, not assumed"
-			/>
-
-			<Observation
-				label="AND FILM"
-				text="The eighth performance is Film: real video, poster-first, playing once in view, an explicit PLAY under reduced motion — and a designed placeholder frame when no film exists yet, so a slot can be laid out before its piece is produced. It is not shown here because the book ships no placeholders; it appears the day the first film does."
 			/>
 		</>
 	);

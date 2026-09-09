@@ -16,9 +16,12 @@ const vocabulary=[
  ["theme","dark","light","colour","color","mode","environment"],
 ];
 const PAGE_SUMMARIES:Record<string,string>={
+ "/forms":"Explore the complete collection of semantic forms through Statements, Instruments and Performances. Every form opens with an authored exhibition study, followed by its reusable specimen, API and recorded origin. Film has an explicitly labelled storyboard while its film asset remains absent.",
+ "/problems":"Eight interface failures, each demonstrated as an individual chapter with its cause, an implemented response and the forms that address it.",
  "/how-hause-grew":"HAUSE began as HOUSE, a cinematic visual language for ideas, systems and explanations. Real exhibitions grew it into Statements, Instruments and Performances before those forms became a selectable semantic vocabulary for AI.",
 };
 export const KNOWLEDGE_NODES:KnowledgeNode[]=[
+ {id:"page:/",kind:"page",title:"Give meaning a form",text:"A semantic design system for AI-generated interfaces, born from exhibitions. Walk through Space, Time and Scale, follow the shift from containers to acts, inspect the CHOOSING-1 selection result and try four forms. The complete origin archive lives on the origins page.",url:"/",sourceUrl:"/"},
  ...FORMS.map(f=>({id:`form:${f.name}`,kind:"form" as const,title:f.name,text:`${f.line} ${f.because||""}`,url:`/forms/${f.slug}`,sourceUrl:`https://github.com/chrishayuk/hause/blob/main/manifest.ts`,terms:[f.mode]})),
  ...PROBLEMS.map(p=>({id:`problem:${p.slug}`,kind:"problem" as const,title:p.title,text:p.answer,url:`/problems/${p.slug}`,sourceUrl:`/problems/${p.slug}`})),
  ...PUBLICATION_CAPABILITIES.map((c,i)=>({id:`capability:${ids[i]}`,kind:"capability" as const,title:c.name,text:c.text,url:`/publication#${ids[i]}`,sourceUrl:"https://github.com/chrishayuk/hause/blob/main/PUBLICATION.md",terms:[...c.aliases,...(vocabulary[i]??[])]})),
@@ -26,6 +29,10 @@ export const KNOWLEDGE_NODES:KnowledgeNode[]=[
  ...SITE_NAV.map(p=>({id:`page:${p.href}`,kind:"page" as const,title:p.label,text:EVALUATIONS.find(e=>p.href===`/evals/${e.id}`)?.text||PAGE_SUMMARIES[p.href]||`Explore ${p.label} in HAUSE.`,url:p.href,sourceUrl:p.href})),
 ];
 export const KNOWLEDGE_EDGES:KnowledgeEdge[]=[
+ ...FORMS.map(form=>({from:"page:/forms",to:`form:${form.name}`,kind:"documents" as const,basis:"Forms collection links to each authored study, reusable specimen and source contract"})),
+ ...["Claim","Evidence","Refusal","Comparison"].map(name=>({from:"page:/",to:`form:${name}`,kind:"uses" as const,basis:"homepage act demonstration renders four actual HAUSE forms"})),
+ {from:"page:/",to:"page:/evals/choosing-1",kind:"documents",basis:"homepage proof reads exact selections from the frozen CHOOSING-1 outcomes"},
+ {from:"page:/",to:"page:/how-hause-grew",kind:"documents",basis:"homepage links to the full exhibition origin sequence"},
  ...EVALUATIONS.map(e=>({from:"page:/evidence",to:`page:/evals/${e.id}`,kind:"documents" as const,basis:"published evaluation record"})),
  ...PROBLEMS.flatMap(p=>p.answers.map(f=>({from:`form:${f}`,to:`problem:${p.slug}`,kind:"addresses" as const,basis:"problem record"}))),
  ...FORMS.filter(f=>f.origin?.startsWith("vindex3")).map(f=>({from:`form:${f.name}`,to:"practice:vindex3",kind:"originated-in" as const,basis:"library manifest"})),

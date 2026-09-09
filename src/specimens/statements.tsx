@@ -18,6 +18,21 @@ import { Question } from "@chrishayuk/hause/components/forms/Question";
 import { Timeline } from "@chrishayuk/hause/components/forms/Timeline";
 import { Excerpt } from "@chrishayuk/hause/components/forms/Excerpt";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
+import { Hero } from "@chrishayuk/hause/components/forms/Hero";
+import { Answer } from "@chrishayuk/hause/components/forms/Answer";
+import { Snippet } from "@chrishayuk/hause/components/forms/Snippet";
+
+export function HeroSpecimen() {
+	return <Hero kicker="THE ROOM’S FIRST WALL" title="Give one idea the room." dek="An arrival, not a container. The headline establishes the scale; the sentence beside it tells you where you are." />;
+}
+
+export function AnswerSpecimen() {
+	return <Answer question="What makes a form semantic?" answer="Its name describes the act it performs. Claim asserts something that can be tested; Evidence presents the support; Refusal states a limit. The interface makes those distinctions visible before the reader has to infer them from the prose." />;
+}
+
+export function SnippetSpecimen() {
+	return <Snippet label="ONE ACT, GIVEN A FORM" code={'<Statement text="Give meaning a form." />'} />;
+}
 
 export function StatementSpecimen() {
 	return (

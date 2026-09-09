@@ -4,7 +4,7 @@ import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { Specimen } from "@/components/Specimen";
 import { ModeIndex } from "@/components/ModeIndex";
 import { formsByMode } from "@chrishayuk/hause/manifest";
-import { StatementSpecimen, ObservationSpecimen, ClaimSpecimen, EvidenceSpecimen, QuestionSpecimen, TimelineSpecimen, ExcerptSpecimen, RefusalSpecimen, ConnectionSpecimen } from "@/specimens/statements";
+import { StatementSpecimen, ObservationSpecimen, ClaimSpecimen, EvidenceSpecimen, QuestionSpecimen, TimelineSpecimen, ExcerptSpecimen, RefusalSpecimen, ConnectionSpecimen, AnswerSpecimen, SnippetSpecimen } from "@/specimens/statements";
 
 export const metadata: Metadata = {
 	title: "HAUSE Statement Forms: Typography That Argues",
@@ -61,6 +61,10 @@ export default function StatementsPage() {
 			<Specimen name="Connection" mode="statement" note="Self-exhibiting: the bridge below is the specimen — one sentence, then the doors." />
 
 			<ConnectionSpecimen />
+			<Specimen name="Answer" mode="statement" note="A direct answer with an address a reader or machine can cite." />
+			<AnswerSpecimen />
+			<Specimen name="Snippet" mode="statement" note="Code held verbatim, with a label and enough context to use it." />
+			<SnippetSpecimen />
 
 			<Connection
 				text="The reader has read. The next room asks them to operate."

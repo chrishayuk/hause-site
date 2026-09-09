@@ -19,14 +19,15 @@ export function HomepageHero() {
 			<div className="home-hero-copy">
 				<p className="voice-evidence home-hero-chapter">01 / ARRIVAL</p>
 				<h1 id="home-proposition" className="voice-editorial">
-					AI shouldn’t make every <em>meaning</em> look the same.
+					GIVE <em>MEANING</em> A FORM.
 				</h1>
 				<p className="voice-system home-hero-dek">
-					HAUSE began with a desire to stage ideas like an exhibition. It now gives models {formCount()} forms
-					for the acts inside an answer: claim, evidence, comparison, refusal, and more.
+					A semantic design system for AI-generated interfaces. The model chooses the act.
+					HAUSE gives that act a form.
 				</p>
+				<p className="home-hero-examples voice-evidence">CLAIM · EVIDENCE · COMPARISON · REFUSAL</p>
 				<div className="home-hero-actions voice-evidence">
-					<Link href="#origin">ENTER THE STORY <span aria-hidden="true">↓</span></Link>
+					<Link href="#try">TRY THE IDEA <span aria-hidden="true">↓</span></Link>
 					<Link href="/use">BUILD WITH IT <span aria-hidden="true">↗</span></Link>
 				</div>
 			</div>
@@ -39,8 +40,8 @@ export function HomepageHero() {
 				</p>
 			</div>
 
-			<a href="#difference" className="home-hero-scroll voice-evidence">
-				GIVE MEANING A FORM <span aria-hidden="true">↓</span>
+			<a href="#origin" className="home-hero-scroll voice-evidence">
+				ENTER THE EXHIBITION <span aria-hidden="true">↓</span>
 			</a>
 		</section>
 	);

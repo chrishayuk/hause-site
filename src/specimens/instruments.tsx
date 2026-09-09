@@ -2,7 +2,7 @@
  * THE INSTRUMENT SPECIMENS — one source, two homes.
  *
  * The mode room tours them in order; each form's own page shows the
- * same specimen as the INSPECT depth of its lens. One definition, so
+ * same specimen as its opening encounter. One definition, so
  * the tour and the record can never disagree about what a form does.
  */
 

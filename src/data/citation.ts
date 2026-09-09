@@ -20,7 +20,7 @@ export const HAUSE_RECORD: CitationRecord = {
 	title: "HAUSE — a design system for AI",
 	authors: ["Chris Hay"],
 	published: "2026-08-29",
-	revised: "2026-09-08",
+	revised: "2026-09-09",
 	version: "0.1.0",
 	url: "https://hause.design",
 	publisher: "hause.design",
@@ -37,6 +37,8 @@ export const HAUSE_RECORD: CitationRecord = {
 
 /** Dated, and taken from the library's own history — not from when this page was last touched. */
 export const HAUSE_HISTORY: ProvenanceEvent[] = [
+ {date:"2026-09-09",text:"Each of the 35 form pages gains an authored exhibition study: typographic statements, reader-operated mechanisms and finite performances. Studies distinguish illustrative data from the source-backed library specimens and publication records. Film remains held, with an explicitly labelled storyboard rather than a substituted video."},
+ {date:"2026-09-09",text:"The homepage restores Give meaning a form and the cinematic exhibition sequence: Space, Time and Scale. The containers-to-acts thesis leads directly into CHOOSING-1 and the act demonstration; the complete archive remains on the origins page. Why, Forms and individual problem chapters gain authored light and dark treatments."},
  {date:"2026-09-08",text:"The front door states the practical AI proposition first, demonstrates containers against semantic forms, and restores the recorded lineage from exhibition and cinematic composition to machine-readable acts."},
  {date:"2026-09-06",text:"The specimen book connects its records through Ask, introduces a four-choice act demonstration, and gives newcomers direct routes to forms, examples, evidence and implementation. Its homepage follows the act demonstration with the selection mechanism, measured CHOOSING-1 result and installation, before film and provenance."},
  {date:"2026-09-05",text:"CHRISHAYUK contributes shared film and publication capabilities."},

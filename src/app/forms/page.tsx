@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
-import { Hero } from "@chrishayuk/hause/components/forms/Hero";
 import { Observation } from "@chrishayuk/hause/components/forms/Observation";
 import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { formCount, formsByMode, MODES, type FormMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "@/data/forms";
 
 export const metadata: Metadata = {
-	title: "The HAUSE Forms: A Typed Catalogue of Visual Components",
+	title: "35 Semantic Forms for AI Interfaces",
 	alternates: { canonical: "/forms" },
-	description: "Every form in the library, one line each, with mode and recorded origin — derived from the manifest, not written here. Each row opens the form's own page.",
+	description: "Enter the HAUSE collection: 35 communicative forms arranged as Statements, Instruments and Performances, each derived from the library manifest.",
 };
 
 /**
@@ -20,54 +20,64 @@ export const metadata: Metadata = {
  * is lying somewhere visible.
  */
 
-const MODE_META: Record<FormMode, { label: string; href: string }> = {
-	statement: { label: "STATEMENTS — THE READER READS", href: "/statements" },
-	instrument: { label: "INSTRUMENTS — THE READER OPERATES", href: "/instruments" },
-	performance: { label: "PERFORMANCES — THE FORMS PLAY THEMSELVES", href: "/performances" },
+const MODE_META: Record<FormMode, { label: string; action: string; href: string; room: string; description: string }> = {
+	statement: { label: "STATEMENTS", action: "THE READER READS", href: "/statements", room: "ROOM I", description: "Assertions, observations, evidence and questions. The idea holds still; language carries it." },
+	instrument: { label: "INSTRUMENTS", action: "THE READER OPERATES", href: "/instruments", room: "ROOM II", description: "Comparisons, lenses and structures. Meaning appears through a choice the reader makes." },
+	performance: { label: "PERFORMANCES", action: "THE FORMS PLAY THEMSELVES", href: "/performances", room: "ROOM III", description: "Transformation, procession and magnitude. Time and movement become part of the explanation." },
 };
 
 export default function FormsPage() {
 	const counts = MODES.map((m) => formsByMode(m).length);
 	return (
-		<main>
-			<Hero
-				kicker={`THE BOOK · THE HOLDINGS · ${formCount()} FORMS — READ FROM THE MANIFEST`}
-				title="EVERY FORM, ONE LINE"
-				dek={`${counts[0]} statements, ${counts[1]} instruments, ${counts[2]} performances — counted by the library's own manifest, not by this page. Origins are named only where the history records them; an unrecorded origin reads as a dash, never a guess. Every row is a door: each form has its own page, its own specimen, and its own reference.`}
-			/>
+		<main className="forms-story system-story">
+			<section className="forms-hero">
+				<div className="forms-hero-meta voice-evidence">
+					<span>THE HOLDINGS · READ FROM THE MANIFEST</span>
+					<span>{formCount()} FORMS · THREE MODES</span>
+				</div>
+				<div className="forms-hero-copy">
+					<p className="voice-evidence">A COLLECTION OF COMMUNICATIVE ACTS</p>
+					<h1 className="voice-editorial"><span>{formCount()}</span> ways for an idea to <em>arrive.</em></h1>
+				</div>
+				<p className="forms-hero-dek voice-system">Not thirty-five containers. Thirty-five answers to the question that comes before shape: <strong>what is this interface doing?</strong></p>
+				<div className="forms-hero-acts voice-editorial" aria-hidden="true">
+					<span>CLAIM</span><span>EVIDENCE</span><span>REFUSAL</span><span>TRANSFORMATION</span>
+				</div>
+				<nav className="forms-hero-nav" aria-label="Enter a forms room">
+					{MODES.map((mode, index) => (
+						<a key={mode} href={`#${mode}s`} style={{ "--name-characters": MODE_META[mode].label.length } as CSSProperties}>
+							<span className="voice-evidence">0{index + 1}</span>
+							<strong className="voice-editorial">{MODE_META[mode].label}</strong>
+							<small className="voice-evidence">{counts[index]} FORMS · {MODE_META[mode].action} ↓</small>
+						</a>
+					))}
+				</nav>
+			</section>
 
-			{MODES.map((mode) => (
-				<section key={mode} className="hause-grid py-10 sm:py-14">
-					<div className="col-span-12 md:col-start-2 md:col-span-10">
-						<Link
-							href={MODE_META[mode].href}
-							className="voice-evidence text-xs tracking-[0.14em] uppercase opacity-50 hover:opacity-100"
-						>
-							{MODE_META[mode].label} →
-						</Link>
-						<div className="mt-6 flex flex-col">
-							{formsByMode(mode).map((f) => (
-								<Link
-									key={f.name}
-									href={`/forms/${formSlug(f.name)}`}
-									className="grid grid-cols-12 gap-3 py-3 border-t items-baseline group"
-									style={{ borderColor: "var(--color-mist)" }}
-								>
-									<p className="col-span-4 sm:col-span-3 voice-evidence text-sm" style={{ color: "var(--color-accent)" }}>
-										{f.name}
-										{!f.exhibited && (
-											<span className="voice-evidence text-[10px] tracking-[0.1em] uppercase opacity-60 block mt-0.5" style={{ color: "var(--fg)" }}>
-												HELD · NOT YET EXHIBITED
-											</span>
-										)}
-									</p>
-									<p className="col-span-8 sm:col-span-6 voice-system text-sm opacity-85">{f.line}</p>
-									<p className="col-span-12 sm:col-span-3 voice-evidence text-[11px] opacity-40 sm:text-right group-hover:opacity-70 transition-opacity">
-										{f.origin ? `originated in ${f.origin}${f.date ? ` · ${f.date}` : ""}` : "—"}
-									</p>
-								</Link>
-							))}
+			{MODES.map((mode, modeIndex) => (
+				<section key={mode} id={`${mode}s`} className={`forms-room forms-room--${mode}`} aria-labelledby={`${mode}-title`}>
+					<header className="forms-room-header">
+						<p className="voice-evidence">{MODE_META[mode].room} · {counts[modeIndex]} FORMS</p>
+						<div>
+							<h2 id={`${mode}-title`} className="voice-editorial" style={{ "--name-characters": MODE_META[mode].label.length } as CSSProperties}>{MODE_META[mode].label}</h2>
+							<p className="voice-evidence">{MODE_META[mode].action}</p>
 						</div>
+						<p className="voice-system">{MODE_META[mode].description}</p>
+						<Link href={MODE_META[mode].href} className="forms-room-exhibit voice-evidence">ENTER THE FULL EXHIBITION →</Link>
+					</header>
+					<div className="forms-collection">
+						{formsByMode(mode).map((f, index) => (
+							<Link key={f.name} href={`/forms/${formSlug(f.name)}`} className="forms-object">
+								<span className="forms-object-number voice-evidence">{String(index + 1).padStart(2, "0")}</span>
+								<h3 className="voice-editorial" style={{ "--name-characters": f.name.length } as CSSProperties}>{f.name}</h3>
+								<p className="voice-system">{f.line}</p>
+								<div className="forms-object-record voice-evidence">
+									<span>{f.exhibited ? "ON VIEW" : "HELD · NOT YET EXHIBITED"}</span>
+									<span>{f.origin ? `${f.origin}${f.date ? ` · ${f.date}` : ""}` : "ORIGIN UNRECORDED"}</span>
+								</div>
+								<span className="forms-object-open voice-evidence">ENTER STUDY →</span>
+							</Link>
+						))}
 					</div>
 				</section>
 			))}

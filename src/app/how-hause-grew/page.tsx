@@ -12,6 +12,7 @@ import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { breadcrumbLd, citationLd } from "@chrishayuk/hause/seo";
 import { citationMeta, type CitationRecord } from "@chrishayuk/hause/cite";
 import { Genealogy } from "@/components/Genealogy";
+import { OriginScene } from "@/components/OriginScene";
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import { COUNTS, DATES, LANES, UNRECORDED, historyEntries, laneOf, marksAt } from "@/data/genealogy";
 import { buildIdentifiers } from "@/data/build";
@@ -87,7 +88,8 @@ export default function HowHauseGrewPage() {
 				cite="the first HOUSE README · repository commit 48070bd · August 2026"
 			/>
 
-			<Statement text="The rule is one sentence. The evidence for it is one-and-twenty forms." />
+			<OriginScene />
+			<Statement text="The rule is one sentence. The evidence for it is recorded form by form." />
 
 			<Genealogy lanes={LANES} dates={DATES} grid={grid} unrecorded={UNRECORDED} />
 
