@@ -65,7 +65,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" data-mode="dark" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
+		<html lang="en" data-mode="light" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
 				<JsonLd
 					data={webSiteLd({
@@ -78,7 +78,7 @@ export default function RootLayout({
 				<script
 					// eslint-disable-next-line react/no-danger
 					dangerouslySetInnerHTML={{
-						__html: modeScript("dark"),
+						__html: modeScript("light"),
 					}}
 				/>
 			</head>

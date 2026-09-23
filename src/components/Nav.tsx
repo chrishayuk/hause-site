@@ -12,7 +12,7 @@ export function Nav() {
 			controls={
 				<>
 					<SoundToggle />
-					<ModeToggle />
+					<ModeToggle defaultMode="light" />
 				</>
 			}
 		/>
