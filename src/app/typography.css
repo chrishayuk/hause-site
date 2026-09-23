@@ -1,0 +1,30 @@
+/* HAUSE's site uses one sans family for prose and display. The library's
+   original variable names remain aliases so its forms inherit the edition. */
+html {
+  --type-sans: var(--font-archivo);
+  --type-mono: var(--font-geist-mono);
+  --type-title: clamp(36px, 5vw, 64px);
+  --font-inter: var(--type-sans);
+  --font-fraunces: var(--type-sans);
+  --font-system: var(--type-sans);
+  --font-display: var(--type-sans);
+  font-optical-sizing: auto;
+}
+body { font-family: var(--type-sans), Arial, sans-serif; }
+body .voice-editorial { font-weight: 400; letter-spacing: -.02em; line-height: 1.12; }
+body .voice-system { letter-spacing: 0; }
+body :is(h1, h2, h3) em { font-style: normal; color: inherit; }
+/* Site navigation is a reading aid, not specimen metadata. */
+body > header > div > a { font: 500 24px/1.2 var(--type-sans), sans-serif; letter-spacing: .035em; }
+body > header nav a { font-family: var(--type-sans), sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: 0; text-transform: none; }
+body > header nav button { font-family: var(--type-sans), sans-serif; letter-spacing: 0; }
+body > footer :is(a, p) { font-family: var(--type-sans), sans-serif; letter-spacing: 0; }
+body > footer .voice-evidence { font-size: 13px; line-height: 1.7; }
+/* Keep small labels legible within the four opening specimens. Large numbers
+   and working code keep their own size and monospace treatment. */
+.hause-home .act-result .voice-evidence:not(pre):not(code) { font-family: var(--type-sans), sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: .01em; }
+.hause-home .status-mark { font-family: var(--type-sans), sans-serif; font-size: 12px; letter-spacing: .025em; }
+.hause-home .act-result .voice-system { line-height: 1.5; }
+.hause-home .act-result .voice-editorial { letter-spacing: -.02em; line-height: 1.15; }
+body :is(code, pre, kbd, samp) { font-family: var(--type-mono), monospace; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+@media (max-width: 760px) { body > header > div > a { font-size: 21px; } }

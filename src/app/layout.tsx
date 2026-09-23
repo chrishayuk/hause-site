@@ -1,7 +1,8 @@
 import { modeScript } from "@chrishayuk/hause/mode";
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./typography.css";
 import { Nav } from "@/components/Nav";
 import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { Analytics } from "@chrishayuk/hause/components/Analytics";
@@ -11,15 +12,12 @@ import { HAUSE_LINE, hauseDescription } from "@chrishayuk/hause/manifest";
 import { buildNote } from "@/data/build";
 import { FOOTER_GROUPS } from "@/data/navigation";
 
-const fraunces = Fraunces({
-	variable: "--font-fraunces",
-	subsets: ["latin"],
-	weight: ["400", "500", "600"],
-});
-
-const inter = Inter({
-	variable: "--font-inter",
-	subsets: ["latin"],
+const archivo = Archivo({
+ variable: "--font-archivo",
+ subsets: ["latin"],
+ weight: ["400", "500", "600"],
+ style: ["normal", "italic"],
+ display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -65,7 +63,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" data-mode="light" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
+		<html lang="en" data-mode="light" data-scroll-behavior="smooth" className={`${archivo.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
 				<JsonLd
 					data={webSiteLd({
