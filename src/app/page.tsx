@@ -10,7 +10,6 @@ import { formCount } from "@chrishayuk/hause/manifest";
 import { HAUSE_RECORD, HAUSE_HISTORY } from "@/data/citation";
 import { HomepageHero } from "@/components/HomepageHero";
 import { ActDemo } from "@/components/ActDemo";
-import { HomepageProof } from "@/components/HomepageProof";
 import "./home-edition.css";
 
 export const metadata: Metadata = {
@@ -36,11 +35,6 @@ export default function Home() {
         <ul>{family.forms.map(form => <li key={form.slug}><Link href={`/forms/${form.slug}`}>{form.name}</Link></li>)}</ul>
       </article>)}</div>
     </section>
-    <section id="difference" className="hause-home-note" aria-labelledby="difference-title">
-      <h2 id="difference-title">The choice before the component.</h2>
-      <div><p>A claim needs a status. Evidence needs a source. A refusal needs a reason.</p><p>HAUSE names those acts and gives each one a structure. Use the forms alongside your existing UI library.</p><Link href="/problems">Why the distinction matters</Link></div>
-    </section>
-    <HomepageProof/>
     <section className="hause-home-practice" aria-labelledby="practice-title">
       <div className="hause-home-heading"><h2 id="practice-title">In practice</h2><Link href="/in-practice">View the examples</Link></div>
       <div className="hause-home-practice-pair">

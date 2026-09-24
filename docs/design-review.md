@@ -14,9 +14,15 @@ Branch: `design/editorial-homepages`
   minimum height onto every opening section.
 - Catalogue headings use the homepage's Archivo family and scale; small labels
   use readable 13px type with normal tracking.
-- The homepage comparison uses a responsive SVG artboard, readable HTML labels,
-  an accessible range input and a complete text alternative for both perspectives.
-  It is a site-owned compact presentation of the library's Comparison interaction.
+- The homepage now opens with the recorded CHOOSING-1 evaluation through actual
+  library Claim, Evidence and Refusal forms. The fictional headphone example and
+  duplicate evaluation section are removed from the page. Native radio inputs
+  select the forms without client JavaScript.
+- Names/descriptions and full grammar each scored 122/124; the frozen resolver
+  scored 8/124. Scores are derived from the bundled outcomes. Interface quality
+  and independent production value were not measured; the page says so.
+- The opening title is a compact description. Evidence and status retain their
+  monospace voice, distinct from reading text and editorial statements.
 - Homepage provenance and citation remain server-rendered within a native
   disclosure. The closing links share a compact colophon below one site footer.
 - Earlier corrections retained: navigation collapses before its links crowd the

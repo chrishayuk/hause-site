@@ -8,6 +8,7 @@ html {
   --font-fraunces: var(--type-sans);
   --font-system: var(--type-sans);
   --font-display: var(--type-sans);
+  --font-evidence: var(--type-mono);
   font-optical-sizing: auto;
 }
 body { font-family: var(--type-sans), Arial, sans-serif; }
@@ -34,10 +35,9 @@ body > footer { margin-top: 0; padding-top: 48px; padding-bottom: 32px; }
 .site-colophon p { font: 13px/1.7 var(--type-sans), sans-serif; letter-spacing: 0; opacity: .75; }
 .site-colophon p:last-child { display: flex; flex-wrap: wrap; gap: 12px 24px; }
 .site-colophon a { display: inline-flex; align-items: center; min-height: 44px; }
-/* Keep small labels legible within the four opening specimens. Large numbers
-   and working code keep their own size and monospace treatment. */
-.hause-home .act-result .voice-evidence:not(pre):not(code) { font-family: var(--type-sans), sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: .01em; }
-.hause-home .status-mark { font-family: var(--type-sans), sans-serif; font-size: 12px; letter-spacing: .025em; }
+/* Recorded evidence and status retain the library's distinct evidence voice. */
+.hause-home .act-result .voice-evidence:not(pre):not(code) { font-family: var(--font-evidence), monospace; font-size: 13px; line-height: 1.6; letter-spacing: .01em; }
+.hause-home .status-mark { font-family: var(--font-evidence), monospace; font-size: 12px; letter-spacing: .025em; }
 .hause-home .act-result .voice-system { line-height: 1.5; }
 .hause-home .act-result .voice-editorial { letter-spacing: -.02em; line-height: 1.15; }
 body :is(code, pre, kbd, samp) { font-family: var(--type-mono), monospace; font-variant-numeric: tabular-nums; letter-spacing: 0; }
