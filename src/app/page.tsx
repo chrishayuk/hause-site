@@ -50,9 +50,9 @@ export default function Home() {
       <p className="hause-home-caption">Both sites are by Chris Hay. They document use within the practice; independent adoption is still to be established.</p>
     </section>
     <section id="origin" className="hause-home-closing" aria-labelledby="origin-title"><div><h2 id="origin-title">From an exhibition to a design system.</h2><Link href="/how-hause-grew#origin">Read the origin story</Link></div><Link href="/use">Start building</Link></section>
-    <div className="hause-home-record">
+    <details className="hause-home-record"><summary>About this edition & citation</summary>
       <Answer id="what-is-hause" question="What is HAUSE?" answer={`HAUSE is a semantic design system for AI-generated interfaces. Its ${formCount()} forms name communicative acts such as claims, evidence, comparisons and refusals. It works above your existing UI library, with interaction, provenance and machine-readable records carried by the forms.`}/>
       <JsonLd data={citationLd(HAUSE_RECORD)}/><Provenance record={HAUSE_RECORD} history={HAUSE_HISTORY} citeHref="#cite"/><Citation record={HAUSE_RECORD}/>
-    </div>
+    </details>
   </main>;
 }

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import "./typography.css";
+import "./catalogue-edition.css";
 import { Nav } from "@/components/Nav";
 import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { Analytics } from "@chrishayuk/hause/components/Analytics";
@@ -91,7 +92,7 @@ export default function RootLayout({
 					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
 					groups={FOOTER_GROUPS}
 				/>
-				<footer className="hause-grid py-16 mt-20 border-t" style={{ borderColor: "var(--color-mist)" }}>
+				<div className="site-colophon">
 					<div className="col-span-12 flex flex-wrap items-baseline justify-between gap-4">
 						<p className="voice-evidence text-xs opacity-50">HAUSE · THE SPECIMEN BOOK / 2026</p>
 						<p className="voice-evidence text-xs opacity-50 flex gap-6">
@@ -106,7 +107,7 @@ export default function RootLayout({
 							</a>
 						</p>
 					</div>
-				</footer>
+				</div>
 			</body>
 		</html>
 	);

@@ -2,10 +2,10 @@ import Link from "next/link";
 import {Claim} from "@chrishayuk/hause/components/forms/Claim";
 import {Evidence} from "@chrishayuk/hause/components/forms/Evidence";
 import {Refusal} from "@chrishayuk/hause/components/forms/Refusal";
-import {Comparison} from "@chrishayuk/hause/components/forms/Comparison";
+import {HomepageComparison} from "./HomepageComparison";
 
 // Native radio controls keep the four choices usable before hydration and with
-// JavaScript disabled. Each result uses the library's actual semantic form.
+// JavaScript disabled. The comparison has a compact, responsive presentation.
 const choices=[
  {id:"claim",act:"Assert something",form:"Claim",rule:"State a belief and make its current status visible."},
  {id:"evidence",act:"Show what supports it",form:"Evidence",rule:"Show the measurement, its method and its limits."},
@@ -19,7 +19,7 @@ export function ActDemo(){return <section id="try" className="act-demo hause-gri
  {c.id==="claim"&&<Claim text="These headphones last around forty hours on a charge." status="ONGOING" detail="A fictional product claim. The status tells a reader it still needs support."/>}
  {c.id==="evidence"&&<Evidence items={[{label:"Battery test",status:"SUPPORTED",detail:"Example data: 38.5 hours across two units under lab conditions. A measurement with a scope, not a promise for every listener."}]}/>}
  {c.id==="refusal"&&<Refusal kicker="THE LIMIT" title="NOT SUBSTANTIATED" lines={["requested    recyclable materials","available    an unverified supplier statement"]} principle="There is not enough evidence to make this claim."/>}
- {c.id==="comparison"&&<Comparison kicker="ONE PRODUCT / TWO PRIORITIES" objectLabel="THE SAME HEADPHONES" blockLabels={["BATTERY","COMFORT","REPAIR"]} left={{label:"For travel",properties:["Battery life first","Comfort over long journeys"]}} right={{label:"For long-term ownership",properties:["Repairability first","Replaceable parts"]}}/>}
+ {c.id==="comparison"&&<HomepageComparison/>}
  <Link className="story-link" href={`/forms/${c.id}`}>View {c.form}</Link></div>)}</div></div>
- <p className="voice-system act-takeaway">These examples describe fictional headphones. Each uses a form from the library.</p>
+ <p className="voice-system act-takeaway">These examples describe fictional headphones. Each demonstrates a form from the library.</p>
  </div></section>;}

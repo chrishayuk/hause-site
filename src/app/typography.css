@@ -28,6 +28,12 @@ body > footer .voice-evidence { font-size: 13px; line-height: 1.7; }
 body > footer nav p, body > footer > div > p { opacity: .7; }
 body > footer nav a { display: inline-flex; align-items: center; min-height: 32px; }
 body > footer > div > p.flex { flex-wrap: wrap; }
+body > footer { margin-top: 0; padding-top: 48px; padding-bottom: 32px; }
+.site-colophon { padding: 24px clamp(22px, 5vw, 80px); border-top: 1px solid var(--color-mist); }
+.site-colophon > div { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; }
+.site-colophon p { font: 13px/1.7 var(--type-sans), sans-serif; letter-spacing: 0; opacity: .75; }
+.site-colophon p:last-child { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.site-colophon a { display: inline-flex; align-items: center; min-height: 44px; }
 /* Keep small labels legible within the four opening specimens. Large numbers
    and working code keep their own size and monospace treatment. */
 .hause-home .act-result .voice-evidence:not(pre):not(code) { font-family: var(--type-sans), sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: .01em; }

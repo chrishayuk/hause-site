@@ -1,101 +1,36 @@
 import type { Metadata } from "next";
-import type { CSSProperties } from "react";
 import Link from "next/link";
-import { Observation } from "@chrishayuk/hause/components/forms/Observation";
-import { Connection } from "@chrishayuk/hause/components/forms/Connection";
 import { formCount, formsByMode, MODES, type FormMode } from "@chrishayuk/hause/manifest";
 import { formSlug } from "@/data/forms";
-import { ExhibitionPlate } from "@/components/ExhibitionPlate";
 import { CollectionEncounter } from "@/components/CollectionEncounter";
 
 export const metadata: Metadata = {
-	title: "35 Semantic Forms for AI Interfaces",
-	alternates: { canonical: "/forms" },
-	description: "Enter the HAUSE collection: 35 communicative forms arranged as Statements, Instruments and Performances, each derived from the library manifest.",
+  title: `${formCount()} Semantic Forms for AI Interfaces`,
+  alternates: { canonical: "/forms" },
+  description: `${formCount()} forms for AI interfaces, arranged as Statements, Instruments and Performances.`,
 };
-
-/**
- * The catalogue, derived. Nothing on this page is hand-counted: the
- * rows, the counts, and the origins all come from the library's own
- * manifest.ts, so the page cannot drift from the code — if the library
- * gains a form, this page gains a row in the same commit or the build
- * is lying somewhere visible.
- */
-
-const MODE_META: Record<FormMode, { label: string; action: string; href: string; room: string; description: string }> = {
-	statement: { label: "STATEMENTS", action: "THE READER READS", href: "/statements", room: "ROOM I", description: "Assertions, observations, evidence and questions. The idea holds still; language carries it." },
-	instrument: { label: "INSTRUMENTS", action: "THE READER OPERATES", href: "/instruments", room: "ROOM II", description: "Comparisons, lenses and structures. Meaning appears through a choice the reader makes." },
-	performance: { label: "PERFORMANCES", action: "THE FORMS PLAY THEMSELVES", href: "/performances", room: "ROOM III", description: "Transformation, procession and magnitude. Time and movement become part of the explanation." },
+const modes: Record<FormMode, { title: string; href: string; description: string }> = {
+  statement: { title: "Statements", href: "/statements", description: "Claims, observations, evidence and questions. Forms for the reader to read." },
+  instrument: { title: "Instruments", href: "/instruments", description: "Comparisons, lenses and structures. Forms the reader can operate." },
+  performance: { title: "Performances", href: "/performances", description: "Transformation, procession and magnitude. Forms that use sequence and movement." },
 };
-
 export default function FormsPage() {
-	const counts = MODES.map((m) => formsByMode(m).length);
-	return (
-		<main className="forms-story system-story">
-			<section className="forms-hero">
-				<div className="forms-hero-meta voice-evidence">
-					<span>THE HOLDINGS · READ FROM THE MANIFEST</span>
-					<span>{formCount()} FORMS · THREE MODES</span>
-				</div>
-				<div className="forms-hero-copy">
-					<p className="voice-evidence">A COLLECTION OF COMMUNICATIVE ACTS</p>
-					<h1 className="voice-editorial"><span>{formCount()}</span> ways for an idea to <em>arrive.</em></h1>
-				</div>
-				<p className="forms-hero-dek voice-system">Not thirty-five containers. Thirty-five answers to the question that comes before shape: <strong>what is this interface doing?</strong></p>
-				<div className="forms-hero-acts voice-editorial" aria-hidden="true">
-					<span>CLAIM</span><span>EVIDENCE</span><span>REFUSAL</span><span>TRANSFORMATION</span>
-				</div>
-				<nav className="forms-hero-nav" aria-label="Enter a forms room">
-					{MODES.map((mode, index) => (
-						<a key={mode} href={`#${mode}s`} style={{ "--name-characters": MODE_META[mode].label.length } as CSSProperties}>
-							<span className="voice-evidence">0{index + 1}</span>
-							<strong className="voice-editorial">{MODE_META[mode].label}</strong>
-							<small className="voice-evidence">{counts[index]} FORMS · {MODE_META[mode].action} ↓</small>
-						</a>
-					))}
-				</nav>
-			</section>
-
-			<ExhibitionPlate study="collection" />
-			<CollectionEncounter />
-
-			{MODES.map((mode, modeIndex) => (
-				<section key={mode} id={`${mode}s`} className={`forms-room forms-room--${mode}`} aria-labelledby={`${mode}-title`}>
-					<header className="forms-room-header">
-						<p className="voice-evidence">{MODE_META[mode].room} · {counts[modeIndex]} FORMS</p>
-						<div>
-							<h2 id={`${mode}-title`} className="voice-editorial" style={{ "--name-characters": MODE_META[mode].label.length } as CSSProperties}>{MODE_META[mode].label}</h2>
-							<p className="voice-evidence">{MODE_META[mode].action}</p>
-						</div>
-						<p className="voice-system">{MODE_META[mode].description}</p>
-						<Link href={MODE_META[mode].href} className="forms-room-exhibit voice-evidence">ENTER THE FULL EXHIBITION →</Link>
-					</header>
-					<div className="forms-collection">
-						{formsByMode(mode).map((f, index) => (
-							<Link key={f.name} href={`/forms/${formSlug(f.name)}`} className="forms-object">
-								<span className="forms-object-number voice-evidence">{String(index + 1).padStart(2, "0")}</span>
-								<h3 className="voice-editorial" style={{ "--name-characters": f.name.length } as CSSProperties}>{f.name}</h3>
-								<p className="voice-system">{f.line}</p>
-								<div className="forms-object-record voice-evidence">
-									<span>{f.exhibited ? "ON VIEW" : "HELD · NOT YET EXHIBITED"}</span>
-									<span>{f.origin ? `${f.origin}${f.date ? ` · ${f.date}` : ""}` : "ORIGIN UNRECORDED"}</span>
-								</div>
-								<span className="forms-object-open voice-evidence">ENTER STUDY →</span>
-							</Link>
-						))}
-					</div>
-				</section>
-			))}
-
-			<Observation
-				label="THE AUDIT"
-				text="Every row above is read from manifest.ts in the library itself — the same file the homepage's count, the Terminal specimen's SHOW FORMS, and the README answer to. A form marked held-not-yet-exhibited is in the library without a specimen, and the book says so rather than faking one: a Film specimen waits for a real film."
-			/>
-
-			<Connection
-				text="The on-ramp is deliberately separate from the exhibition."
-				links={[{ href: "/use", label: "USE HAUSE →" }]}
-			/>
-		</main>
-	);
+  return <main className="system-story catalogue-edition">
+    <header className="catalogue-intro">
+      <p className="catalogue-caption">The collection · {formCount()} forms</p>
+      <h1>Forms for what you need to say.</h1>
+      <p>Start with the job of the interface: state a claim, examine an alternative, or show a change.</p>
+      <nav aria-label="Form collections">{MODES.map(mode => <a href={`#${mode}s`} key={mode}>{modes[mode].title} <span>{formsByMode(mode).length}</span></a>)}</nav>
+    </header>
+    <details className="catalogue-demonstration"><summary>Try the three modes</summary><CollectionEncounter/></details>
+    {MODES.map(mode => <section id={`${mode}s`} key={mode} className="catalogue-group" aria-labelledby={`${mode}-title`}>
+      <header><div><h2 id={`${mode}-title`}>{modes[mode].title}</h2><p>{modes[mode].description}</p></div><Link href={modes[mode].href}>Explore {modes[mode].title.toLowerCase()}</Link></header>
+      <div className="catalogue-forms">{formsByMode(mode).map(form => <article key={form.name}>
+        <h3><Link href={`/forms/${formSlug(form.name)}`}>{form.name}</Link></h3>
+        <p>{form.line}</p>
+        <p className="catalogue-caption">{form.exhibited ? "Example available" : "In the library · example pending"}<br/>{form.origin ? `${form.origin}${form.date ? ` · ${form.date}` : ""}` : "Origin unrecorded"}</p>
+      </article>)}</div>
+    </section>)}
+    <section className="catalogue-closing"><p>The collection is derived from the library manifest. Availability and recorded origins are shown for each form.</p><Link href="/use">Build with HAUSE</Link></section>
+  </main>;
 }

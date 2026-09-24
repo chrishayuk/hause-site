@@ -15,9 +15,10 @@ for (const capability of ["film", "transcript"]) {
   assert(KNOWLEDGE_EDGES.some(edge => edge.from === "page:/performances" && edge.to === `capability:${capability}` && edge.kind === "uses"));
 }
 if (process.argv.includes("--built")) {
-  for (const [route, studies] of Object.entries({ index: ["attention", "structure", "passage"], "how-hause-grew": ["attention", "structure", "passage"], statements: ["attention"], instruments: ["structure"], performances: ["passage"], problems: ["concealment"], forms: ["collection"] })) {
+  for (const [route, studies] of Object.entries({ index: [], "how-hause-grew": ["attention", "structure", "passage"], statements: ["attention"], instruments: ["structure"], performances: ["passage"], problems: [], forms: [] })) {
     const source = readFileSync(`.next/server/app/${route}.html`, "utf8");
     const html = source.replace(/<script\b[^>]*>[\s\S]*?<\/script>/g, "");
+    if (!studies.length) assert(!html.includes("data-visual-study"), `${route}: editorial entrance uses actual work`);
     for (const study of studies) {
       assert(html.includes(`data-visual-study="${study}"`), `${route}: ${study} visible`);
       assert(html.includes(`${study}.png`), `${route}: source image rendered`);
