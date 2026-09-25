@@ -1,3 +1,4 @@
+import { PublicationCodex } from "@/components/PublicationCodex";
 import { FigureMotion } from "@chrishayuk/hause/components/FigureMotion";
 import { AnchoredDisclosure } from "@chrishayuk/hause/components/AnchoredDisclosure";
 import {Share} from "@chrishayuk/hause/components/Share";
@@ -32,6 +33,7 @@ export default function PublicationPage(){return <MotionProvider storageKey="hau
   <FigureMotion><figure><p className="voice-editorial" data-figure-reveal>The record remains readable.</p><figcaption className="voice-system">A typography specimen for the shared reveal. Its wording is present before playback; this is not a measured result.</figcaption></figure></FigureMotion>
   <AnchoredDisclosure label="Read the still-edition contract"><p id="still-edition-contract" className="voice-system">Figures keep their complete text and geometry when motion is unavailable. This section also opens when a link names this paragraph.</p></AnchoredDisclosure>
  </div></section>
+ <section id="codex-specimen"><PublicationCodex/></section>
  {PUBLICATION_CAPABILITIES.map(c=><div key={c.name} id={c.id==="transcript"?undefined:c.id}><Observation label={c.name.toUpperCase()} text={c.text}/></div>)}
  <Snippet label="A POSTER-FIRST SCREENING / INSIDE A CLIENT COMPONENT" code={`import { MotionProvider } from "@chrishayuk/hause/components/Motion";
 import { YouTubeFilm } from "@chrishayuk/hause/components/YouTubeFilm";

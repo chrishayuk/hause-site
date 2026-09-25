@@ -104,6 +104,12 @@
    "text": "`scripts/consumer-sync.mjs` pins a consumer to one exact HAUSE Git revision and\nchecks every shipped source file against `hause.lock.json`. It supports an\ninstalled Git dependency or a complete source mirror. See [SYNC.md](SYNC.md)\nfor the update and CI workflow."
   },
   {
+   "id": "readme#18",
+   "source": "the library README",
+   "heading": "Bound notebook entries",
+   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form."
+  },
+  {
    "id": "publication#1",
    "source": "the library publication contracts",
    "heading": "Film and publication",
@@ -191,7 +197,19 @@
    "id": "publication#18",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`provenance.ts` supplies `auditContinuity`, `realDate` and `compareVersions`.\nRevision checks retain the first-publication date and require a later version,\nrevision date and named predecessor. Hosts store and verify their own artifacts.\n Read the live example at hause.design/publication."
+   "text": "`provenance.ts` supplies `auditContinuity`, `realDate` and `compareVersions`.\nRevision checks retain the first-publication date and require a later version,\nrevision date and named predecessor. Hosts store and verify their own artifacts. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#20",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "A major entry can opt into `NotebookEdition` and `Codex`, with `ReadingFigure`,\n`FolioObject` and `Marginalia` as its working objects. Supply ordered `folios`\nwith stable IDs, labels and optional `kind: \"operate\" | \"evidence\"`, plus the\n`manuscript` and `history` React slots. Mode and index links use real fragments;\nlinks to an object inside a hidden folio reveal it before scrolling. Existing\ninstruments stay mounted when pages change. Do not invent historical numbering,\nrevisions or measurements for the cover, marginalia or history view. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#21",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
