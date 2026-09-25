@@ -107,7 +107,7 @@
    "id": "readme#18",
    "source": "the library README",
    "heading": "Bound notebook entries",
-   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form."
+   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form.\n\n`components/Manuscript.tsx` provides continuous prose, a contents disclosure and\nchapter rhythm for the full reading view. `codex-page-turn.ts` handles temporary,\ninert visual copies for directional page turns while live folios remain mounted."
   },
   {
    "id": "publication#1",
@@ -209,7 +209,13 @@
    "id": "publication#21",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome.\n Read the live example at hause.design/publication."
+   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#22",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns keep the desk in place and use inert visual copies for a directional leaf\nanimation; live instruments stay mounted. Reduced motion and pause skip the turn.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
