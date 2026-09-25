@@ -5,8 +5,8 @@ import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";
 import { Answer } from "@chrishayuk/hause/components/forms/Answer";
 import { citationFormats } from "@chrishayuk/hause/cite";
 import { qaLd } from "@chrishayuk/hause/seo";
-import { ExhibitionChoices, BeforeAfter } from "@/vendor/hause/components/exhibition/ExhibitionChoices";
-import { SequencePlayer } from "@/vendor/hause/components/exhibition/SequencePlayer";
+import { ExhibitionChoices, BeforeAfter } from "@chrishayuk/hause/components/exhibition/ExhibitionChoices";
+import { SequencePlayer } from "@chrishayuk/hause/components/exhibition/SequencePlayer";
 import { problemBySlug, problemRecord } from "@/data/problems";
 import { documentCheck, damagedCheck, damagedNames, documentedNames, documentationDate, manifestNames, LISTENING_RECORD as listening, GALLERY_RECORD as gallery } from "./records";
 
@@ -76,7 +76,7 @@ export function DriftEncounter() {
       { label: "02 / Remove one entry from a copy", content: <Inventory damaged /> },
       { label: "03 / Restore the real record", content: <Inventory damaged={false} /> },
     ]} />
-    <p className="experiment-reading voice-system">Matching totals alone are not enough: the check compares identities and detects missing or unexpected names. This site remains on its pinned 35-form release; it does not claim to mirror the newer library HEAD.</p>
+    <p className="experiment-reading voice-system">Matching totals alone are not enough: the check compares identities and detects missing or unexpected names. This site uses a pinned library revision. Automated source checks verify every shared file against that revision.</p>
     <div className="journey-links"><a href="https://github.com/chrishayuk/hause/blob/b785b0508b251b5a57eaf163b19c44164cd0feec/manifest.ts">PINNED MANIFEST ↗</a><Link href="/forms">THE DOCUMENTED COLLECTION ↗</Link></div>
   </div>;
 }

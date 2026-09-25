@@ -50,3 +50,6 @@ next-env.d.ts
 
 
 !.dev.vars.example
+
+# Temporary authoritative checkout used by the parity workflow.
+/.hause-upstream/

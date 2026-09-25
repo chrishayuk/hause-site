@@ -5,9 +5,9 @@ import { FORMS } from "../src/data/forms";
 import { GRAMMAR, grammarCoverage } from "../src/data/grammar";
 import { INTENT_DOORS, selectionHref, selectionState } from "../src/data/selection";
 import { KNOWLEDGE_EDGES, KNOWLEDGE_NODES, knowledgeAnswerNodes } from "../src/data/knowledge";
-import { graphNeighbourhood } from "../src/vendor/hause/exhibition-graph";
+import { graphNeighbourhood } from "@chrishayuk/hause/exhibition-graph";
 
-assert.equal(FORMS.length, 35, "The frozen package has not been silently upgraded");
+assert.equal(FORMS.length, 37, "The synchronized release holds 37 forms");
 assert(readFileSync("src/app/journeys.css", "utf8").includes(".journey-page .reveal { opacity:1; transform:none; }"), "Form previews have a visible no-JS fallback");
 assert.deepEqual(grammarCoverage().missing, []);
 assert.deepEqual(grammarCoverage().duplicated, []);

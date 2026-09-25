@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-08",
+ "generated": "2026-09-25",
  "forms": [
   {
    "name": "Hero",
@@ -24,7 +24,7 @@
     "Numbers never appear here. A measurement in editorial voice is a claim wearing a costume; it belongs in evidence voice, dated and attributed, beneath.",
     "A statement: the reader reads."
    ],
-   "api": "export function Statement({ text }: { text: string })",
+   "api": "export type StatementProps = {\n\ttext: string;\n\t/** A second authored beat; never inferred by splitting the text. */\n\tcontinuation?: string;\n\t/** The room presentation needs exhibition.css and remains visible without JS. */\n\tpresentation?: \"default\" | \"room\";\n};\n\nexport function Statement({ text, continuation, presentation = \"default\" }: StatementProps)",
    "mentions": []
   },
   {
@@ -121,7 +121,7 @@
     "Fail-closed rendered as design language, not as an error state. Built for systems whose personality is that they refuse rather than guess: the refusal is an instrument readout — structured fields under a refuted-red rule, closed by the governing principle in editorial voice. The lines stagger in at the hause cadence on mount; re-key to replay (the PaceDemo idiom).",
     "RefusalReadout is the bare readout for embedding inside another form (Variants renders one when an absent variant is selected); Refusal is the standalone chapter form."
    ],
-   "api": "export type RefusalProps = {\n\tkicker?: string;\n\ttitle: string;\n\tlines: string[];\n\tprinciple: string;\n};\n\nexport function Refusal({ kicker, title, lines, principle }: RefusalProps)",
+   "api": "export type RefusalProps = {\n\tpresentation?: \"animated\" | \"still\";\n\tkicker?: string;\n\ttitle: string;\n\tlines: string[];\n\tprinciple: string;\n};\n\nexport function Refusal({ kicker, title, lines, principle, presentation = \"animated\" }: RefusalProps)",
    "mentions": [
     "Variants"
    ]
@@ -205,7 +205,7 @@
     "HAUSE's first Comparison-mode primitive: one object, two interpretations, the same underlying pieces reorganising as the visitor drags between them. Deliberately tests different ground than ExpertField (Simulation) — object continuity across states, a user-driven continuous control rather than discrete buttons, and an argument rather than a mechanism.",
     "No transition is applied to block position: it's a direct 1:1 mapping to the range input's value, so there's nothing for prefers-reduced-motion to suppress — dragging is exactly as responsive either way."
    ],
-   "api": "type Side = { label: string; properties: string[] };\n\nexport type ComparisonProps = {\n\tkicker: string;\n\tobjectLabel: string;\n\tblockLabels: string[];\n\tleft: Side;\n\tright: Side;\n};\n\nexport function Comparison({\n\tkicker,\n\tobjectLabel,\n\tblockLabels,\n\tleft,\n\tright,\n}: ComparisonProps)",
+   "api": "type Side = { label: string; properties: string[] };\n\nexport type ComparisonProps = {\n\tkicker: string;\n\tobjectLabel: string;\n\tblockLabels: string[];\n\tleft: Side;\n\tright: Side;\n\t/** Authored readings of the same object. Native selection, no block motion.\n\t * Import exhibition.css. Both panels remain in the server-rendered record. */\n\tpanels?: { left: ReactNode; right: ReactNode };\n};\n\nexport function Comparison({\n\tkicker,\n\tobjectLabel,\n\tblockLabels,\n\tleft,\n\tright,\n\tpanels,\n}: ComparisonProps)",
    "mentions": [
     "ExpertField"
    ]
@@ -340,6 +340,26 @@
     "Every string here is produced by cite.ts from one record, so the reference on the page, the tags in the head and the JSON-LD in the graph cannot disagree about who wrote what, or when."
    ],
    "api": "export type CitationProps = {\n\trecord: CitationRecord;\n\t/** Anchor — Provenance's CITE link points here. Defaults to \"cite\". */\n\tid?: string;\n\tkicker?: string;\n\t/** One sentence of context: what exactly is being cited. */\n\tnote?: string;\n};\n\nexport function Citation({ record, id = \"cite\", kicker = \"CITE THIS\", note }: CitationProps)",
+   "mentions": []
+  },
+  {
+   "name": "StagedTransition",
+   "slug": "staged-transition",
+   "file": "components/forms/StagedTransition.tsx",
+   "doc": [
+    "Exit, held absence, enter. Uses MotionProvider for visibility and pause ownership. The final state and the complete score are the still edition. Import @chrishayuk/hause/exhibition.css alongside HAUSE tokens."
+   ],
+   "api": "export type StagedTransitionProps = {\n  from: string;\n  to: string;\n  kicker: string;\n  caption: string;\n  score: [{ label: string; description: string }, { label: string; description: string }, { label: string; description: string }];\n};\n\nexport function StagedTransition({ from, to, kicker, caption, score }: StagedTransitionProps)",
+   "mentions": []
+  },
+  {
+   "name": "TextCorrection",
+   "slug": "text-correction",
+   "file": "components/forms/TextCorrection.tsx",
+   "doc": [
+    "A rejected line remains legible while the consequence arrives. Shared motion owns playback; paused, reduced-motion and no-JS editions show the resolution. The consumer must name the actual consequence, not imply an automatic edit."
+   ],
+   "api": "export function TextCorrection({ before, after, caption, compact = false }: {\n  before: string; after: string; caption: string; compact?: boolean;\n})",
    "mentions": []
   },
   {

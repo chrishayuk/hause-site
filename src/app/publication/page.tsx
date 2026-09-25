@@ -1,3 +1,5 @@
+import { FigureMotion } from "@chrishayuk/hause/components/FigureMotion";
+import { AnchoredDisclosure } from "@chrishayuk/hause/components/AnchoredDisclosure";
 import {Share} from "@chrishayuk/hause/components/Share";
 import {MotionProvider} from "@chrishayuk/hause/components/Motion";
 import {Hero} from "@chrishayuk/hause/components/forms/Hero";
@@ -26,6 +28,10 @@ export default function PublicationPage(){return <MotionProvider storageKey="hau
  <section className="hause-grid py-12" id="film-citation"><div className="col-span-12 md:col-start-2 md:col-span-10"><CitationExport id={filmCitation.id!} formats={citationFormats(filmCitation)} heading="CITE THE ORIGINAL FILM" context="This citation identifies Chris Hay’s YouTube film. The publication page has its own citation below."/></div></section>
  <Statement text="The source is part of the experience."/>
  <section className="hause-grid py-12" id="recorded-evidence"><div className="col-span-12 md:col-start-2 md:col-span-10"><PublicationEvidence/></div></section>
+ <section className="hause-grid py-12" id="reading-helpers"><div className="col-span-12 md:col-start-2 md:col-span-10">
+  <FigureMotion><figure><p className="voice-editorial" data-figure-reveal>The record remains readable.</p><figcaption className="voice-system">A typography specimen for the shared reveal. Its wording is present before playback; this is not a measured result.</figcaption></figure></FigureMotion>
+  <AnchoredDisclosure label="Read the still-edition contract"><p id="still-edition-contract" className="voice-system">Figures keep their complete text and geometry when motion is unavailable. This section also opens when a link names this paragraph.</p></AnchoredDisclosure>
+ </div></section>
  {PUBLICATION_CAPABILITIES.map(c=><div key={c.name} id={c.id==="transcript"?undefined:c.id}><Observation label={c.name.toUpperCase()} text={c.text}/></div>)}
  <Snippet label="A POSTER-FIRST SCREENING / INSIDE A CLIENT COMPONENT" code={`import { MotionProvider } from "@chrishayuk/hause/components/Motion";
 import { YouTubeFilm } from "@chrishayuk/hause/components/YouTubeFilm";
@@ -49,7 +55,7 @@ const filmData = videoObjectLd({
   thumbnailUrl: film.poster, embedUrl: film.embedUrl,
 });
 const exports = citationFormats(filmCitation);`} aside="Render the same factual summary as ordinary text. Indexing is a deliberate site policy; the helpers default to noindex. Omit unknown dates. A participant credit does not make someone the film's producer."/>
- <Observation label="CONTROLS SUPPORT THE ACT" text="These additions extend film and publication behaviour. They keep the form vocabulary at thirty-five; tables and playback are publication capabilities. The original Film, Citation and Provenance forms remain available; the shared playback coordinator is opt-in."/>
+ <Observation label="CONTROLS SUPPORT THE ACT" text="These additions extend film and publication behaviour. They do not add semantic forms; tables and playback are publication capabilities. The original Film, Citation and Provenance forms remain available; the shared playback coordinator is opt-in."/>
  <Observation label="WHAT THIS DOES NOT ESTABLISH" text="A metadata builder cannot guarantee Google indexing, a video rich result or inclusion in an AI answer. Public pages must be crawlable, sources reachable and summaries meaningful without watching the film. Caption coverage and review status remain explicit. Full YouTube playback resets when suspended."/>
  <section className="hause-grid py-12"><div className="col-span-12 md:col-start-2 md:col-span-10"><Share url={record.url} text="The source is part of the experience."/></div></section>
  <Provenance record={record} citeHref="#cite-publication"/>

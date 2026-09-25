@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ExhibitionChoices } from "@/vendor/hause/components/exhibition/ExhibitionChoices";
+import { ExhibitionChoices } from "@chrishayuk/hause/components/exhibition/ExhibitionChoices";
 import { Statement } from "@chrishayuk/hause/components/forms/Statement";
 import { InstrumentInteraction } from "@/studies/InstrumentInteraction";
 import { PerformanceStudy } from "@/studies/PerformanceStudies";

@@ -249,6 +249,18 @@ export const GRAMMAR: Intent[] = [
 				form: "Quantisation",
 				test: "Is the loss the subject — what rounding actually does, rather than a claim about it?",
 			},
+            {
+                doing: "Separating an assertion from the record that changes it",
+                form: "StagedTransition",
+                test: "Does a held absence between exit and arrival explain the change in reading?",
+                insteadOf: [{ form: "TextCorrection", when: "the original wording should remain legible beside its correction" }],
+            },
+            {
+                doing: "Showing a correction without erasing the original words",
+                form: "TextCorrection",
+                test: "Must the reader see both the withdrawn wording and its replacement?",
+                insteadOf: [{ form: "StagedTransition", when: "the first state should leave before the new record arrives" }],
+            },
 			{
 				doing: "Playing an actual film",
 				form: "Film",

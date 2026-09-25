@@ -1,3 +1,4 @@
+import { StagedTransitionSpecimen, TextCorrectionSpecimen } from "@/specimens/performances";
 import type { Form } from "@/data/forms";
 import { STUDIES, type StudyName } from "./catalog";
 import { StudyFrame } from "./StudyFrame";
@@ -11,6 +12,6 @@ export function FormStudy({ form }: { form: Form }) {
   const name = form.name as StudyName;
   if (name === "Quantisation") return <div data-study="Quantisation"><QuantisationStudy /></div>;
   return <StudyFrame name={name}>
-    {form.mode === "statement" ? <StatementStudy name={name} /> : form.mode === "instrument" ? <InstrumentStudy name={name} /> : <PerformanceStudy key={name} name={name as Parameters<typeof PerformanceStudy>[0]["name"]} />}
+    {name === "StagedTransition" ? <StagedTransitionSpecimen /> : name === "TextCorrection" ? <TextCorrectionSpecimen /> : form.mode === "statement" ? <StatementStudy name={name} /> : form.mode === "instrument" ? <InstrumentStudy name={name} /> : <PerformanceStudy key={name} name={name as Parameters<typeof PerformanceStudy>[0]["name"]} />}
   </StudyFrame>;
 }

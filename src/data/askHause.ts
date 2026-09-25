@@ -894,7 +894,7 @@ export function askHause(question: string): AskAnswer {
 	};
 	/**
 	 * The old keyword list, kept as scaffolding and labelled as such. The
-	 * acts are the authority and reach all thirty-five forms; this list
+	 * acts are the authority and reach every form in the current manifest; this list
 	 * reaches twelve, and covers phrasings the records do not yet carry
 	 * ("six irreversible stages" is a Ladder, and no record here says so).
 	 * Removing a working path to make an architectural point would be

@@ -23,6 +23,10 @@ import { grammarCoverage } from "../src/data/grammar";
 type Case = { q: string; expect: string };
 
 const cases: Case[] = [
+ {q:"What is FigureMotion?",expect:"publication"},
+ {q:"What is AnchoredDisclosure?",expect:"publication"},
+ {q:"How does auditContinuity work?",expect:"publication"},
+ {q:"What is auditLegibility?",expect:"publication"},
  {q:"How does social sharing work?",expect:"publication"},
  {q:"What is EvidenceTable?",expect:"publication"},
  {q:"What is MeasurementTrace?",expect:"publication"},

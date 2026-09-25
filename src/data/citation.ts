@@ -20,7 +20,7 @@ export const HAUSE_RECORD: CitationRecord = {
 	title: "HAUSE — a design system for AI",
 	authors: ["Chris Hay"],
 	published: "2026-08-29",
-	revised: "2026-09-09",
+	revised: "2026-09-25",
 	version: "0.1.0",
 	url: "https://hause.design",
 	publisher: "hause.design",
@@ -37,6 +37,7 @@ export const HAUSE_RECORD: CitationRecord = {
 
 /** Dated, and taken from the library's own history — not from when this page was last touched. */
 export const HAUSE_HISTORY: ProvenanceEvent[] = [
+ {date:"2026-09-25",text:"The component library and both publications align on one source revision. The book replaces its exhibition compatibility snapshot with package imports and exhibits all 37 forms. FigureMotion, AnchoredDisclosure, publication legibility and revision continuity join the shared library. Consumer checks verify every shared source file against the pinned upstream commit; historical evaluation records retain their original scope."},
  {date:"2026-09-09",text:"Seven problem chapters gain operable, explicitly scoped experiments; the original three-depth Lens is preserved. Their content remains visible without JavaScript and status labels follow both themes. Drift compares manifest and documentation identities, not three purported independent counts. DecisionTrail puts choices beside previews, graph branches group complete relationships, and In practice loses repeated prose. SequencePlayer and recordDifference are donated as composition helpers, without changing the pinned 35-form vocabulary."},
  {date:"2026-09-09",text:"In practice stages original VINDEX3 archive media and Chris Hay's film beside their recorded contributions. Choosing becomes a URL-driven journey with real form studies; the connected system becomes a navigable directed neighbourhood of its actual graph. DecisionTrail and GraphNeighbourhood are donated to the library through the checked source snapshot. Both consumer publications remain one author's work, not independent adoption."},
  {date:"2026-09-09",text:"Why stages meaning flattened and restored; Forms opens a material collection and three selectable encounters; Evidence exhibits frozen selection outcomes and their misses. VisualPlate, ExhibitionChoices / BeforeAfter and OutcomeMatrix are donated to the library. Artwork, interpretation and evaluation data remain with the site; a checked source snapshot bridges its older pinned package without changing the 35-form count."},

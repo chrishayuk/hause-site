@@ -3,7 +3,7 @@ import {Hero} from "@chrishayuk/hause/components/forms/Hero";
 import {publicationMetadata} from "@chrishayuk/hause/seo";
 import {knowledgeGraph,searchKnowledge,relatedKnowledge} from "@/data/knowledge";
 import { firstParam } from "@/data/selection";
-import { GraphNeighbourhood } from "@/vendor/hause/components/exhibition/GraphNeighbourhood";
+import { GraphNeighbourhood } from "@chrishayuk/hause/components/exhibition/GraphNeighbourhood";
 export const metadata=publicationMetadata({title:"The connected system",description:"Explore HAUSE’s forms, capabilities, problems and real-world contributions through the same records Ask uses.",url:"https://hause.design/knowledge",siteName:"HAUSE",indexable:true});
 export default async function Knowledge({searchParams}:{searchParams:Promise<{q?:string|string[];kind?:string|string[];node?:string|string[]}>}){
  const params=await searchParams;const query=firstParam(params.q).slice(0,300);const types=["all","form","capability","problem","practice","page"];const requestedKind=firstParam(params.kind);const kind=types.includes(requestedKind)?requestedKind:"all";const nodes=searchKnowledge(query,kind);const g=knowledgeGraph();

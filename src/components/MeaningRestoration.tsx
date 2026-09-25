@@ -1,4 +1,4 @@
-import { BeforeAfter } from "@/vendor/hause/components/exhibition/ExhibitionChoices";
+import { BeforeAfter } from "@chrishayuk/hause/components/exhibition/ExhibitionChoices";
 import { Claim } from "@chrishayuk/hause/components/forms/Claim";
 import { Evidence } from "@chrishayuk/hause/components/forms/Evidence";
 import { Refusal } from "@chrishayuk/hause/components/forms/Refusal";

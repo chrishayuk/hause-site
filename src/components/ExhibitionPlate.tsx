@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { VisualPlate } from "@/vendor/hause/components/exhibition/VisualPlate";
+import { VisualPlate } from "@chrishayuk/hause/components/exhibition/VisualPlate";
 import { EXHIBITION_STUDIES, type ExhibitionStudy } from "@/data/exhibition";
 
 export function ExhibitionPlate({ study, paired = false }: { study: ExhibitionStudy; paired?: boolean }) {
