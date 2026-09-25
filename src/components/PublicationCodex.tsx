@@ -1,3 +1,6 @@
+import Image from 'next/image';
+import { EditorialPlate } from '@chrishayuk/hause/components/EditorialPlate';
+import { EXHIBITION_STUDIES } from '@/data/exhibition';
 import { Codex, FolioObject, Marginalia } from '@chrishayuk/hause/components/Codex';
 import { Manuscript } from '@chrishayuk/hause/components/Manuscript';
 import { NotebookEdition } from '@chrishayuk/hause/components/NotebookEdition';
@@ -6,6 +9,7 @@ import { NotebookEdition } from '@chrishayuk/hause/components/NotebookEdition';
 export function PublicationCodex() {
  return <NotebookEdition as="article"><Codex id="publication-codex" title="An entry you can handle." collection="HAUSE / Codex specimen" byline={<span>Composition study · no experiment results</span>}
   folios={[
+   {id:'codex-image-surface',label:'An image',children:<><FolioObject place="full"><EditorialPlate caption={<><span>Copper / attention</span><span>AI-generated visual study · fictional installation</span></>}><Image src={EXHIBITION_STUDIES.attention.src} alt={EXHIBITION_STUDIES.attention.alt} width={1536} height={1024} sizes="(max-width: 900px) 100vw, 1100px"/></EditorialPlate></FolioObject><FolioObject place="left"><h2>An image can occupy a spread.</h2></FolioObject><FolioObject place="right"><p>Let its scale establish a pause, then return to the account. The caption keeps the image’s origin visible.</p></FolioObject></>},
    {id:'codex-reading-surface',label:'A spread',children:<><FolioObject place="left"><h2>The page is a working surface.</h2><p>Keep an observation beside its object, with the qualification attached.</p></FolioObject><FolioObject place="right"><p>This specimen uses native text and layout. Your instruments, photographs and measurements occupy the same surface.</p></FolioObject><FolioObject place="margin"><Marginalia label="Source"><p>This is a typography and interaction specimen. It contains no measured result.</p></Marginalia></FolioObject></>},
    {id:'codex-evidence-surface',label:'An attached record',kind:'evidence',children:<><FolioObject place="main"><h2>Every object can lead back to its record.</h2><p>Evidence navigation is an ordinary fragment link. The view opens its destination; text remains selectable.</p><a href="/publication#recorded-evidence">Inspect the actual ADDRESS-BUILD-1 measurements ↗</a></FolioObject><FolioObject place="margin"><Marginalia label="Reading order"><p>Spread numbers describe this composition. They are not historical manuscript identifiers.</p></Marginalia></FolioObject></>},
   ]}

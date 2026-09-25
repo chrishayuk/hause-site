@@ -107,7 +107,7 @@
    "id": "readme#18",
    "source": "the library README",
    "heading": "Bound notebook entries",
-   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form.\n\n`components/Manuscript.tsx` provides continuous prose, a contents disclosure and\nchapter rhythm for the full reading view. `codex-page-turn.ts` handles temporary,\ninert visual copies for directional page turns while live folios remain mounted."
+   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form.\n\n`components/Manuscript.tsx` provides continuous prose, a contents disclosure and\nchapter rhythm for the full reading view. `codex-page-turn.ts` handles temporary,\ninert visual copies for directional page turns while live folios remain mounted.\n\n`components/EditorialPlate.tsx` gives selected images wide, inset or port"
   },
   {
    "id": "publication#1",
@@ -215,7 +215,13 @@
    "id": "publication#22",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns keep the desk in place and use inert visual copies for a directional leaf\nanimation; live instruments stay mounted. Reduced motion and pause skip the turn.\n Read the live example at hause.design/publication."
+   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns keep the desk in place and use inert visual copies for a directional leaf\nanimation; live instruments stay mounted. Reduced motion and pause skip the turn. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#23",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
