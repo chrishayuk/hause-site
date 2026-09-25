@@ -221,7 +221,13 @@
    "id": "publication#23",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance.\n Read the live example at hause.design/publication."
+   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#24",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Codex folios share a fixed responsive binding height (`--codex-spread-height`).\nLong content scrolls natively inside a folio, with a reserved scrollbar gutter.\nTurning a leaf changes neither book dimensions nor pagination position. Read\nremains a continuous document, and print/no-JavaScript views expose full content.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
