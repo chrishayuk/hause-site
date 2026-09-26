@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-25",
+ "generated": "2026-09-26",
  "passages": [
   {
    "id": "readme#1",
@@ -107,7 +107,7 @@
    "id": "readme#18",
    "source": "the library README",
    "heading": "Bound notebook entries",
-   "text": "`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic form.\n\n`components/Manuscript.tsx` provides continuous prose, a contents disclosure and\nchapter rhythm for the full reading view. `codex-page-turn.ts` handles temporary,\ninert visual copies for directional page turns while live folios remain mounted.\n\n`components/EditorialPlate.tsx` gives selected images wide, inset or port"
+   "text": "`components/NotebookTemplate.tsx` and `notebook-template.css` provide the reusable\nnotebook composition: `NotebookTemplate` for authored folios, `NotebookNote` for\ntext beside a margin sketch, and `NotebookFilm` for mounted clips with source and\ntimestamp captions. The host owns drawings, chapter boundaries and playback.\n\n`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic f"
   },
   {
    "id": "publication#1",
@@ -203,31 +203,67 @@
    "id": "publication#20",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "A major entry can opt into `NotebookEdition` and `Codex`, with `ReadingFigure`,\n`FolioObject` and `Marginalia` as its working objects. Supply ordered `folios`\nwith stable IDs, labels and optional `kind: \"operate\" | \"evidence\"`, plus the\n`manuscript` and `history` React slots. Mode and index links use real fragments;\nlinks to an object inside a hidden folio reveal it before scrolling. Existing\ninstruments stay mounted when pages change. Do not invent historical numbering,\nrevisions or measurements for the cover, marginalia or history view. Read the live example at hause.design/publication."
+   "text": "Use `NotebookTemplate` for the complete notebook treatment. It accepts Codex's\nauthored `folios`, `manuscript`, `history` and cover metadata, and gives study\nrooms a paper-scale composition. A short proposition can use two spreads; an\nexperiment can keep a complete operable study together on one spread. Choose\nboundaries by meaning, never by an automatic character or height cutoff. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#21",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome. Read the live example at hause.design/publication."
+   "text": "`NotebookNote` takes `title`, text `children`, `sketch` and `caption`. Its drawing\nsits in the margin when space permits and follows the text on narrow paper.\nDrawings belong to their publication; do not turn a schematic into invented\nmeasurements. Supply an SVG accessible name or an equivalent nearby description. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#22",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns keep the desk in place and use inert visual copies for a directional leaf\nanimation; live instruments stay mounted. Reduced motion and pause skip the turn. Read the live example at hause.design/publication."
+   "text": "`NotebookFilm` takes the existing player as `children`, a `caption`, and optional\n`source`, `marker` and `timestamp`. It supplies a mounted frame and apparatus;\nthe player still owns loading, sound, controls and motion coordination. Keep\nsource URLs and start times exact. A decorated mount is not a new playback owner. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#23",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance. Read the live example at hause.design/publication."
+   "text": "Folio paper uses a fine square grid, a quiet outer margin rule and a shaded\ncentre fold. The paper treatment also follows the cloned leaves during page\nturns. Tune `--codex-grid-size`, `--codex-grid-ink`, `--codex-margin-ink` and\n`--codex-paper` on `.hause-codex`. The centre fold disappears on narrow screens;\ncontinuous Read and History views stay unruled, and print omits the decoration. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#24",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "Codex folios share a fixed responsive binding height (`--codex-spread-height`).\nLong content scrolls natively inside a folio, with a reserved scrollbar gutter.\nTurning a leaf changes neither book dimensions nor pagination position. Read\nremains a continuous document, and print/no-JavaScript views expose full content.\n Read the live example at hause.design/publication."
+   "text": "A major entry can opt into `NotebookEdition` and `Codex`, with `ReadingFigure`,\n`FolioObject` and `Marginalia` as its working objects. Supply ordered `folios`\nwith stable IDs, labels and optional `kind: \"operate\" | \"evidence\"`, plus the\n`manuscript` and `history` React slots. Mode and index links use real fragments;\nlinks to an object inside a hidden folio reveal it before scrolling. Existing\ninstruments stay mounted when pages change. Do not invent historical numbering,\nrevisions or measurements for the cover, marginalia or history view. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#25",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#26",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns use inert visual copies for a directional leaf animation; live instruments stay mounted. Reduced motion and pause skip the turn. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#27",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#28",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Codex folios use `--codex-spread-height` as a minimum and grow to fit their\nfigures. The document scrolls normally, so images, tables and captions remain\nfully visible. `sizing=\"fixed\"` explicitly opts into a fixed-height binding with\ninternal scrolling and a reserved scrollbar gutter. Read remains continuous;\nprint and no-JavaScript views expose full content. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#29",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Previous/Next and the current spread label sit on the paper’s top edge. This\nstrip stays visible below the view selector while a long folio scrolls. The\nselector height is measured so wrapped mobile controls do not overlap it.\nTurning from within a long page brings the new spread back to its beginning. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#30",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`NotebookPreview` renders a still open spread for a homepage or index. The host\nsupplies a real title, destination, summary, metadata, excerpt and optional margin\nannotation. It uses the same squared stock and binding as Codex, stacks into one\ncolumn on small screens, and has one H2 rather than introducing another page H1.\nPublication selection and chronology belong to the host's record or graph layer.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
