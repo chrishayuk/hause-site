@@ -263,7 +263,13 @@
    "id": "publication#30",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "`NotebookPreview` renders a still open spread for a homepage or index. The host\nsupplies a real title, destination, summary, metadata, excerpt and optional margin\nannotation. It uses the same squared stock and binding as Codex, stacks into one\ncolumn on small screens, and has one H2 rather than introducing another page H1.\nPublication selection and chronology belong to the host's record or graph layer.\n Read the live example at hause.design/publication."
+   "text": "`NotebookPreview` renders a still open spread for a homepage or index. The host\nsupplies a real title, destination, summary, metadata, excerpt and optional margin\nannotation. It uses the same squared stock and binding as Codex, stacks into one\ncolumn on small screens, and has one H2 rather than introducing another page H1.\nPublication selection and chronology belong to the host's record or graph layer. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#31",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Room-style Statement forms become left-aligned ink passages at notebook scale\ninside NotebookTemplate. Consumer chapter wrappers should inherit the paper\npalette rather than bring a full-page dark exhibition background into the folio.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",

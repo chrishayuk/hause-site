@@ -16,7 +16,7 @@
     "check:hause": "node node_modules/@chrishayuk/hause/scripts/consumer-sync.mjs"
   },
   "dependencies": {
-    "@chrishayuk/hause": "github:chrishayuk/hause#ee2095e01f937158be790d0c4458b629d5846866",
+    "@chrishayuk/hause": "github:chrishayuk/hause#60b0dcf3b0bb2f7e3fa9b1b93e720b8706c951a9",
     "@opennextjs/cloudflare": "^1.20.3",
     "next": "16.3.3",
     "react": "^19.1.7",
