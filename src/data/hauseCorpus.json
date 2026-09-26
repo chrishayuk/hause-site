@@ -1,5 +1,5 @@
 {
- "generated": "2026-09-08",
+ "generated": "2026-09-26",
  "passages": [
   {
    "id": "readme#1",
@@ -11,13 +11,13 @@
    "id": "readme#2",
    "source": "the library README",
    "heading": "What's in here",
-   "text": "```\ntokens.css     palette, three type voices (editorial/system/evidence), 12-col grid,\n               motion tokens, Light/Dark, status marks, reveal/pulse animations\ntypes.ts       Status (\"OPEN\" | \"ONGOING\" | \"SUPPORTED\" | \"REFUTED\" | \"SUPERSEDED\"),\n               and STATUSES — the same vocabulary as a value\nmanifest.ts    the one index: every form with its mode, one-line record, recorded\n               origin and reuse — and HAUSE_LINE, the library's own description\nseo.ts         JSON-LD builders — WebSite, TechArticle, BreadcrumbList, DefinedTerm,\n               SoftwareApplication, QAPage, and citationLd for the graph\ncite.ts        CitationRecord, the formatters (plain, BibTeX, APA, CSL-JSON) and\n               citationMeta() for the head\nsound.ts       the synthesized palette — tick, swap, settle, refuse\nfigure.ts      the figure hand — hatch, reducedMotion, useInView\nscripts/\n  readme.ts           writes this file's lists and package.json's description\n                       from the manifest; --check fails when they drift\ncomponents/\n  Reveal.tsx          scroll-triggered reveal wrapper\n  StatusMark.tsx       word + dot status indicator\n  EvidenceTable.tsx    recorded values, units, baselines and explicit missingness\n  MeasurementTrace.tsx measured tracks, stage selection and coordinated replay\n  GridOverlay.tsx      \"SHOW STRUCTURE\" 12-column overlay\n  PaceDemo.tsx"
+   "text": "```\ntokens.css     palette, three type voices (editorial/system/evidence), 12-col grid,\n               motion tokens, Light/Dark, status marks, reveal/pulse animations\ntypes.ts       Status (\"OPEN\" | \"ONGOING\" | \"SUPPORTED\" | \"REFUTED\" | \"SUPERSEDED\"),\n               and STATUSES — the same vocabulary as a value\nmanifest.ts    the one index: every form with its mode, one-line record, recorded\n               origin and reuse — and HAUSE_LINE, the library's own description\nseo.ts         JSON-LD builders — WebSite, TechArticle, BreadcrumbList, DefinedTerm,\n               SoftwareApplication, QAPage, and citationLd for the graph\ncite.ts        CitationRecord, the formatters (plain, BibTeX, APA, CSL-JSON) and\n               citationMeta() for the head\nsound.ts       the synthesized palette — tick, swap, settle, refuse\nfigure.ts      the figure hand — hatch, reducedMotion, useInView\nscripts/\n  readme.ts           writes this file's lists and package.json's description\n                       from the manifest; --check fails when they drift\ncomponents/\n  Reveal.tsx          scroll-triggered reveal wrapper\n  StatusMark.tsx       word + dot status indicator\n  EvidenceTable.tsx    recorded values, units, baselines and explicit missingness\n  MeasurementTrace.tsx measured tracks, stage selection and coordinated replay\n  FieldNotes.tsx       native disclosure and CitationScope for fragment "
   },
   {
    "id": "readme#3",
    "source": "the library README",
    "heading": "The three modes",
-   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, and so do the lists below: `scripts/readme.ts`\nwrites them, and the specimen book's test suite fails when they and the\nmanifest disagree.\n\n35 forms: 12 statements · 15 instruments · 8 performances.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n\n`Hero · Statement · Observation · Claim · Evidence · Question ·\nTimeline · Connection · Refusal · Excerpt · Answer · Snippet`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n\n`Anatomy · Decomposition · ExpertField · Comparison · Variants ·\nLadder · Agreement · Derivation · ByteMap · FollowReveal · Terminal ·\nGating · Provenance · Lens · Citation`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop w"
+   "text": "Every form under `forms/` is one of three kinds. The split was not designed\nup front — it emerged from real chapters (the vindex3.org build), which is\nthe only way HAUSE accepts structure. The canonical index is\n[`manifest.ts`](manifest.ts) — every consumer that counts or lists the\nforms derives from it, and so do the lists below: `scripts/readme.ts`\nwrites them, and the specimen book's test suite fails when they and the\nmanifest disagree.\n\n37 forms: 12 statements · 15 instruments · 10 performances.\n\n**Statements** — prose forms in the three voices; server-renderable, no\ninteraction. The reader reads.\n\n`Hero · Statement · Observation · Claim · Evidence · Question ·\nTimeline · Connection · Refusal · Excerpt · Answer · Snippet`\n\n**Instruments** — interactive forms; understanding through manipulation.\nThe reader operates them, and every one carries a text fallback so the\npoint survives with the interaction removed.\n\n`Anatomy · Decomposition · ExpertField · Comparison · Variants ·\nLadder · Agreement · Derivation · ByteMap · FollowReveal · Terminal ·\nGating · Provenance · Lens · Citation`\n\n(`Inquiry` lives outside `forms/` — a routing primitive over the real\nforms, not a form itself.)\n\n**Performances** — cinematic forms; they play themselves. In-view start, a\ndesigned resting state (which is what reduced-motion and no-JS get), REPLAY\nwhere the piece runs once, a gentle in-view loop "
   },
   {
    "id": "readme#4",
@@ -86,6 +86,30 @@
    "text": "`EvidenceTable` and `MeasurementTrace` were extracted from the CHRISHAYUK\naddress-depth notebook on 7 September 2026. They are shared publication\ncapabilities under `components/`, not newly promoted forms in the manifest.\nThe table preserves units, precision, baselines, sources and explicit missing\nmeasurements. The trace shows every recorded sample and lets readers move\nthrough ordered stages using the shared MotionProvider. It never interpolates\nunmeasured stages. The consumer supplies data, domains, cautions and interpretation.\n\nThe hause.design publication room demonstrates these contracts. This is a\nspecimen, not evidence of independent reuse in another subject area.\n\n`Share` (`components/Share.tsx`) supplies LinkedIn, X and Copy controls using\n`share.ts` and `share.css`. See PUBLICATION.md for its source and privacy contract."
   },
   {
+   "id": "readme#15",
+   "source": "the library README",
+   "heading": "Exhibition composition",
+   "text": "`exhibition.css` supplies the portable exhibition frames and the room presentation\nof `Statement`. `components/exhibition/Exhibition.tsx` exports `ExhibitionEntrance`,\n`ReferenceStudies`, `UniformGrid`, `ReleasedActs`, `ArchiveExhibit`, `ReadingRooms`\nand `GrammarComparison`. These compose existing acts and authored material; they\nare layout helpers, not additional semantic forms. Reference imagery is a consumer\nslot, so sources, rights and domain-specific diagrams stay with the exhibition.\n\n`Statement` accepts optional `continuation` and `presentation=\"room\"`: two explicit\nbeats on a centred measure. `StagedTransition` is a performance with `from`, `to`,\n`kicker`, a three-beat `score` and a `caption`. It requires `MotionProvider`,\nrespects reduced motion, and leaves the final state and all three explanations\nreadable when paused or without JavaScript. See `EXHIBITION.md` for adoption."
+  },
+  {
+   "id": "readme#16",
+   "source": "the library README",
+   "heading": "Publication reading helpers",
+   "text": "`FigureMotion.tsx` reveals recorded geometry once and supports replay through\n`MotionProvider`. It never interpolates measurements. Mark descendants with\n`data-figure-trace` or `data-figure-reveal`; the complete figure remains the\nno-JavaScript and reduced-motion edition. The consumer styles `.figure-motion`\nand `.figure-motion-replay`; `reading.css` supplies overridable control defaults.\n\n`AnchoredDisclosure.tsx` keeps native details/summary reading and opens a section\nwhen its content is linked by fragment. It accepts `label`, `children` and an\noptional `className`; the consumer supplies the editorial treatment.\n\n`legibility.ts` validates publication meaning and builds search/structured-data\nprojections without replacing an authored title. `provenance.ts` checks revision\ncontinuity; persistence, source hashes and preserved artifacts remain with the\npublication. These helpers originated in chrishayuk.com, and are capabilities,\nnot additional semantic forms."
+  },
+  {
+   "id": "readme#17",
+   "source": "the library README",
+   "heading": "Consumer synchronization",
+   "text": "`scripts/consumer-sync.mjs` pins a consumer to one exact HAUSE Git revision and\nchecks every shipped source file against `hause.lock.json`. It supports an\ninstalled Git dependency or a complete source mirror. See [SYNC.md](SYNC.md)\nfor the update and CI workflow."
+  },
+  {
+   "id": "readme#18",
+   "source": "the library README",
+   "heading": "Bound notebook entries",
+   "text": "`components/NotebookTemplate.tsx` and `notebook-template.css` provide the reusable\nnotebook composition: `NotebookTemplate` for authored folios, `NotebookNote` for\ntext beside a margin sketch, and `NotebookFilm` for mounted clips with source and\ntimestamp captions. The host owns drawings, chapter boundaries and playback.\n\n`NotebookEdition.tsx` and `notebook.css` define an opt-in reading surface and\nfragment-aware supporting material. `ReadingFigure.tsx` keeps native figure\nsemantics and forwarded refs; instruments with existing playback use\n`motion={false}`. Outside a NotebookEdition it renders the original figure.\n`FigureMotion` also accepts `as=\"figure\"` and `reveal=\"surface\"` for one restrained\nentrance without nesting figures or interpolating data.\n\n`Codex.tsx`, `codex.ts` and `codex.css` compose an individual entry as a bound object with\nHTML folios, a persistent index, keyboard and pointer page navigation, a reading\nview and an authored history. `FolioObject` supplies relative grid placement;\n`Marginalia` attaches qualifications and sources. Ordinals identify reading order,\nnot historical folio numbers. Content is selectable and server-rendered, with a\nlinear no-JavaScript and print fallback. Motion obeys MotionProvider and reduced\nmotion. The publication supplies actual data, instruments and revision history.\nThis is a composition capability, not an additional semantic f"
+  },
+  {
    "id": "publication#1",
    "source": "the library publication contracts",
    "heading": "Film and publication",
@@ -95,55 +119,157 @@
    "id": "publication#2",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "- `cite.ts`: film/image kinds, literal corporate authors, optional unknown publication dates, stable record IDs; Plain, APA, BibTeX, CSL-JSON and head metadata share one record. Never use a retrieval date as a publication date. An absent date exports as n.d. and is omitted from machine date fields.\n- `seo.ts`: `publicationMetadata` emits canonical, social, indexing and citation head values. `videoObjectLd` distinguishes the local screening URL, original source, producer and participants. These are discoverability helpers, not promises of indexing or rich-result eligibility. Sites supply summaries, facts, routes, imagery and their publication policy.\n- `components/Motion`: one dominant visible media owner, explicit full-film activation, reduced-motion/save-data, global pause, page visibility and dialog suspension. Wrap the publication once. `useMotion` lets local ambient films and system studies join the same coordinator. Storage key is configurable.\n- `components/YouTubeFilm`: poster-first, click-to-load privacy-enhanced YouTube screening. Optional React preview slot, external chapter requests and configurable exhibition classes. Requires MotionProvider. Full playback resets when suspended; returning requires a new play action. Films do not load an iframe during SSR.\n- `components/FilmChapters` and `components/TimedTranscript`: time-indexed source navigation; consumers supply s Read the live example at hause.design/publication."
+   "text": "The subsequent hause.design exhibition donation adds `VisualPlate`, native\n`ExhibitionChoices` / `BeforeAfter`, and `OutcomeMatrix`. They keep media credits,\nreadable treatment choices and per-case evaluation records with the experience.\nSee [EXHIBITION-MEDIA.md](EXHIBITION-MEDIA.md) for contracts and compatibility notes.\nThe publication supplies its imagery, text, outcomes and scope; none are generated\nby these components. These capabilities do not add semantic forms. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#3",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "The new reading/player CSS is in a low-priority `hause-components` cascade layer, so exhibitions can supply art direction. Existing Film and Citation forms keep their established behaviour; adopting the shared motion coordinator is opt-in. Read the live example at hause.design/publication."
+   "text": "- `cite.ts`: film/image kinds, literal corporate authors, optional unknown publication dates, stable record IDs; Plain, APA, BibTeX, CSL-JSON and head metadata share one record. Never use a retrieval date as a publication date. An absent date exports as n.d. and is omitted from machine date fields.\n- `seo.ts`: `publicationMetadata` emits canonical, social, indexing and citation head values. `videoObjectLd` distinguishes the local screening URL, original source, producer and participants. These are discoverability helpers, not promises of indexing or rich-result eligibility. Sites supply summaries, facts, routes, imagery and their publication policy.\n- `components/Motion`: one dominant visible media owner, explicit full-film activation, reduced-motion/save-data, global pause, page visibility and dialog suspension. Wrap the publication once. `useMotion` lets local ambient films and system studies join the same coordinator. Storage key is configurable.\n- `components/YouTubeFilm`: poster-first, click-to-load privacy-enhanced YouTube screening. Optional React preview slot, external chapter requests and configurable exhibition classes. Requires MotionProvider. Full playback resets when suspended; returning requires a new play action. Films do not load an iframe during SSR.\n- `components/FilmChapters` and `components/TimedTranscript`: time-indexed source navigation; consumers supply s Read the live example at hause.design/publication."
   },
   {
    "id": "publication#4",
    "source": "the library publication contracts",
    "heading": "Film and publication",
+   "text": "The new reading/player CSS is in a low-priority `hause-components` cascade layer, so exhibitions can supply art direction. Existing Film and Citation forms keep their established behaviour; adopting the shared motion coordinator is opt-in. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#5",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
    "text": "Run portable metadata/citation/theme checks with `node --experimental-strip-types --test tests/publication.test.ts`. The public date on a locally published research record is still required by its publication workflow even though a catalogued external work can have an unknown date. Read the live example at hause.design/publication."
   },
   {
-   "id": "publication#6",
+   "id": "publication#7",
    "source": "the library publication contracts",
    "heading": "Film and publication",
    "text": "Contributed from ADDRESS-BUILD-1 in the CHRISHAYUK notebook, 7 September 2026.\n`components/EvidenceTable` renders semantic tables with column units/precision,\nexplicit baseline rows, sample-count columns, source references and distinguishable\nnot-measured/not-applicable cells. `components/MeasurementTrace` renders measured\ntracks across discrete stages, with authored domains, baselines, caution bands,\nannotations and pause/play/replay via MotionProvider. Every value and caution is\nserver-rendered; animation only changes emphasis. Data and interpretation remain\nin the publication. These are capabilities, not additions to the form count.\nSee [EVIDENCE.md](EVIDENCE.md) for contracts, examples and extraction status. Read the live example at hause.design/publication."
   },
   {
-   "id": "publication#8",
-   "source": "the library publication contracts",
-   "heading": "Film and publication",
-   "text": "`Share` from `@chrishayuk/hause/components/Share` accepts `url`, `text`, optional `label` and `className`. The publication supplies a canonical public URL and a concise proposition, preserving any uncertainty. `share.ts` exports the same `shareLinks` builder for other renderers; `share.css` supplies overridable reading defaults. Read the live example at hause.design/publication."
-  },
-  {
    "id": "publication#9",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "LinkedIn receives the canonical link and builds its preview from the destination's metadata; its share URL does not prefill post prose. X receives the supplied text and URL in a composer. Neither link publishes anything automatically. No provider SDK, tracking pixel, account or subscriber store is added. Keep the proposed X text short enough for its composer. Read the live example at hause.design/publication."
+   "text": "For the later hause.design donations—VisualPlate, ExhibitionChoices / BeforeAfter, OutcomeMatrix, DecisionTrail, GraphNeighbourhood, SequencePlayer and recordDifference—see [EXHIBITION-MEDIA.md](EXHIBITION-MEDIA.md). They supply reusable exhibition composition and record checks, not additional semantic forms or CHRISHAYUK contribution claims. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#10",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "Copy opens a native disclosure with selectable text, and enhances it with clipboard feedback when JavaScript and clipboard access are available. A blocked clipboard leaves the text available. Use a single MotionProvider around other media as usual; Share itself has no motion. Read the live example at hause.design/publication."
+   "text": "`Share` from `@chrishayuk/hause/components/Share` accepts `url`, `text`, optional `label` and `className`. The publication supplies a canonical public URL and a concise proposition, preserving any uncertainty. `share.ts` exports the same `shareLinks` builder for other renderers; `share.css` supplies overridable reading defaults. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#11",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "```tsx\n<Share url=\"https://example.org/notebook/a-question\"\n  text=\"The question that makes this record worth reading.\" />\n``` Read the live example at hause.design/publication."
+   "text": "LinkedIn receives the canonical link and builds its preview from the destination's metadata; its share URL does not prefill post prose. X receives the supplied text and URL in a composer. Neither link publishes anything automatically. No provider SDK, tracking pixel, account or subscriber store is added. Keep the proposed X text short enough for its composer. Read the live example at hause.design/publication."
   },
   {
    "id": "publication#12",
    "source": "the library publication contracts",
    "heading": "Film and publication",
-   "text": "The consumer decides which records may be shared. Do not expose unlisted drafts. Source cards, editorial post drafts and publication status remain consumer-owned. First consumer: CHRISHAYUK, September 2026. This is publication infrastructure, not a newly promoted semantic form.\n Read the live example at hause.design/publication."
+   "text": "Copy opens a native disclosure with selectable text, and enhances it with clipboard feedback when JavaScript and clipboard access are available. A blocked clipboard leaves the text available. Use a single MotionProvider around other media as usual; Share itself has no motion. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#13",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "```tsx\n<Share url=\"https://example.org/notebook/a-question\"\n  text=\"The question that makes this record worth reading.\" />\n``` Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#14",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The consumer decides which records may be shared. Do not expose unlisted drafts. Source cards, editorial post drafts and publication status remain consumer-owned. First consumer: CHRISHAYUK, September 2026. This is publication infrastructure, not a newly promoted semantic form. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#16",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`FigureMotion` and `AnchoredDisclosure` are shared reading helpers extracted\nfrom chrishayuk.com. A figure's numbers remain recorded values throughout its\nreveal. Motion belongs to `MotionProvider`; paused and reduced-motion readers\nreceive the complete still figure. Styling, content and experimental claims\nbelong to the publication. An anchored disclosure opens for a fragment inside\nit and remains an ordinary native details element without JavaScript. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#17",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`legibility.ts` supplies `searchProjection`, `legibilityLd` and `auditLegibility`.\nAn editorial search opt-out needs an authored reason and preserves meaning,\nauthorship and provenance obligations. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#18",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`provenance.ts` supplies `auditContinuity`, `realDate` and `compareVersions`.\nRevision checks retain the first-publication date and require a later version,\nrevision date and named predecessor. Hosts store and verify their own artifacts. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#20",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Use `NotebookTemplate` for the complete notebook treatment. It accepts Codex's\nauthored `folios`, `manuscript`, `history` and cover metadata, and gives study\nrooms a paper-scale composition. A short proposition can use two spreads; an\nexperiment can keep a complete operable study together on one spread. Choose\nboundaries by meaning, never by an automatic character or height cutoff. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#21",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`NotebookNote` takes `title`, text `children`, `sketch` and `caption`. Its drawing\nsits in the margin when space permits and follows the text on narrow paper.\nDrawings belong to their publication; do not turn a schematic into invented\nmeasurements. Supply an SVG accessible name or an equivalent nearby description. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#22",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`NotebookFilm` takes the existing player as `children`, a `caption`, and optional\n`source`, `marker` and `timestamp`. It supplies a mounted frame and apparatus;\nthe player still owns loading, sound, controls and motion coordination. Keep\nsource URLs and start times exact. A decorated mount is not a new playback owner. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#23",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Folio paper uses a fine square grid, a quiet outer margin rule and a shaded\ncentre fold. The paper treatment also follows the cloned leaves during page\nturns. Tune `--codex-grid-size`, `--codex-grid-ink`, `--codex-margin-ink` and\n`--codex-paper` on `.hause-codex`. The centre fold disappears on narrow screens;\ncontinuous Read and History views stay unruled, and print omits the decoration. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#24",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "A major entry can opt into `NotebookEdition` and `Codex`, with `ReadingFigure`,\n`FolioObject` and `Marginalia` as its working objects. Supply ordered `folios`\nwith stable IDs, labels and optional `kind: \"operate\" | \"evidence\"`, plus the\n`manuscript` and `history` React slots. Mode and index links use real fragments;\nlinks to an object inside a hidden folio reveal it before scrolling. Existing\ninstruments stay mounted when pages change. Do not invent historical numbering,\nrevisions or measurements for the cover, marginalia or history view. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#25",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "The cover is skippable through Read, Operate, Evidence, History and the folio\nindex. The drag strip is separate from text and instruments. Narrow screens\ncollapse authored columns into source order; no canvas, page-curl asset, imposed\nscrolling or GPU renderer is required. No-JavaScript and print readers receive\nall folios and manuscript sections. Existing playback instruments keep their own\nmotion coordinator; this shell changes presentation, never a recorded outcome. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#26",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`Manuscript` presents the full authored account as continuous prose, with optional\ncontents and chapter anchors. It is distinct from concise `Codex` folios. Codex\nturns use inert visual copies for a directional leaf animation; live instruments stay mounted. Reduced motion and pause skip the turn. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#27",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`EditorialPlate` accepts publication-owned media and a required caption. Its\nwide, inset and portrait compositions establish a sequence of views and details\nwithout inventing media, credentials or evidence. Images remain still inside\nturning folios. The caption should carry the actual credit and provenance. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#28",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Codex folios use `--codex-spread-height` as a minimum and grow to fit their\nfigures. The document scrolls normally, so images, tables and captions remain\nfully visible. `sizing=\"fixed\"` explicitly opts into a fixed-height binding with\ninternal scrolling and a reserved scrollbar gutter. Read remains continuous;\nprint and no-JavaScript views expose full content. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#29",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Previous/Next and the current spread label sit on the paper’s top edge. This\nstrip stays visible below the view selector while a long folio scrolls. The\nselector height is measured so wrapped mobile controls do not overlap it.\nTurning from within a long page brings the new spread back to its beginning. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#30",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "`NotebookPreview` renders a still open spread for a homepage or index. The host\nsupplies a real title, destination, summary, metadata, excerpt and optional margin\nannotation. It uses the same squared stock and binding as Codex, stacks into one\ncolumn on small screens, and has one H2 rather than introducing another page H1.\nPublication selection and chronology belong to the host's record or graph layer. Read the live example at hause.design/publication."
+  },
+  {
+   "id": "publication#31",
+   "source": "the library publication contracts",
+   "heading": "Film and publication",
+   "text": "Room-style Statement forms become left-aligned ink passages at notebook scale\ninside NotebookTemplate. Consumer chapter wrappers should inherit the paper\npalette rather than bring a full-page dark exhibition background into the folio.\n Read the live example at hause.design/publication."
   },
   {
    "id": "evidence#1",
@@ -392,6 +518,18 @@
    "text": "Showing values snapped onto a lattice → Quantisation. The test that decides it: Is the loss the subject — what rounding actually does, rather than a claim about it? This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
   },
   {
+   "id": "act#StagedTransition",
+   "source": "the selection grammar",
+   "heading": "Which form for: separating an assertion from the record that changes it?",
+   "text": "Separating an assertion from the record that changes it → StagedTransition. The test that decides it: Does a held absence between exit and arrival explain the change in reading? Use TextCorrection instead the original wording should remain legible beside its correction. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
+   "id": "act#TextCorrection",
+   "source": "the selection grammar",
+   "heading": "Which form for: showing a correction without erasing the original words?",
+   "text": "Showing a correction without erasing the original words → TextCorrection. The test that decides it: Must the reader see both the withdrawn wording and its replacement? Use StagedTransition instead the first state should leave before the new record arrives. This is the you are showing something happening group: These play themselves, and rest on a designed final state — which is what a reader with reduced motion, or no JavaScript, actually receives. Read the whole grammar at hause.design/choosing."
+  },
+  {
    "id": "act#Film",
    "source": "the selection grammar",
    "heading": "Which form for: playing an actual film?",
@@ -437,7 +575,7 @@
    "id": "problem#the-book-drifts-from-the-code",
    "source": "the problems",
    "heading": "How do you stop documentation drifting from the code?",
-   "text": "Stop writing the parts a machine can derive. Counts, origins, contracts and specimens should be read out of the library at build time, so a page cannot state something the code no longer supports. In HAUSE the manifest is the one index everything derives from, the form pages are projected from the doc comments in the source, and a form the manifest names but the ingest cannot find fails the build rather than rendering an empty page. How you meet it: This site had it. A specimen page read twenty-eight of twenty-eight while the library held thirty-five forms, and all seven performances while there were eight. Both sentences were true the day they were typed, both were quietly false a fortnight later — on a site whose entire argument is that the book cannot drift from the library. Why it happens: Prose is faster to write than a projection, and a number inside a sentence has no owner. Nothing fails when it goes stale: the page still builds, still renders, still reads well. Drift is the only kind of bug that gets more convincing with age, because the sentence around it keeps sounding authoritative long after the number stopped being true. The forms that answer it: Agreement, Evidence, Claim, Derivation. Read it at hause.design/problems/the-book-drifts-from-the-code."
+   "text": "Derive what the system already knows, and check identities rather than totals alone. HAUSE builds its collection from a pinned library manifest and an ingested documentation snapshot. A manifest entry without documentation fails the build. This chapter compares those two inventories, deliberately removes an entry from a copy, and restores it. That checks a specific release: it does not prove the site follows every later library change or that every prose claim is current. How you meet it: This site had it. A specimen page read twenty-eight of twenty-eight while the library held thirty-five forms, and all seven performances while there were eight. Both sentences were true the day they were typed, both were quietly false a fortnight later — on a site whose entire argument is that the book cannot drift from the library. Why it happens: Prose is faster to write than a projection, and a number inside a sentence has no owner. Nothing fails when it goes stale: the page still builds, still renders, still reads well. Drift is the only kind of bug that gets more convincing with age, because the sentence around it keeps sounding authoritative long after the number stopped being true. The forms that answer it: Agreement, Evidence, Claim, Derivation. Read it at hause.design/problems/the-book-drifts-from-the-code."
   },
   {
    "id": "problem#everything-sounds-equally-certain",
@@ -618,6 +756,18 @@
    "source": "the Citation form",
    "heading": "Citation — the form's own account",
    "text": "CITATION — cite this, in the formats people actually paste. An instrument with the plainest possible resting state: the reference itself, rendered as text, selected by default and therefore present in the served HTML. The tabs switch it to BibTeX, APA or CSL-JSON — three formats rather than six, because CSL-JSON is what every reference manager turns into the other three hundred. Every string here is produced by cite.ts from one record, so the reference on the page, the tags in the head and the JSON-LD in the graph cannot disagree about who wrote what, or when. Read it in full at hause.design/forms/citation."
+  },
+  {
+   "id": "form#staged-transition",
+   "source": "the StagedTransition form",
+   "heading": "StagedTransition — the form's own account",
+   "text": "Exit, held absence, enter. Uses MotionProvider for visibility and pause ownership. The final state and the complete score are the still edition. Import @chrishayuk/hause/exhibition.css alongside HAUSE tokens. Read it in full at hause.design/forms/staged-transition."
+  },
+  {
+   "id": "form#text-correction",
+   "source": "the TextCorrection form",
+   "heading": "TextCorrection — the form's own account",
+   "text": "A rejected line remains legible while the consequence arrives. Shared motion owns playback; paused, reduced-motion and no-JS editions show the resolution. The consumer must name the actual consequence, not imply an automatic edit. Read it in full at hause.design/forms/text-correction."
   },
   {
    "id": "form#transformation",
@@ -828,6 +978,18 @@
    "source": "the manifest",
    "heading": "Citation — instrument",
    "text": "Citation is a instrument. The reference itself, in the formats people paste — plain, BibTeX, APA, CSL-JSON, all from one record. Originated in vindex3 · citing the specification (2026-08-31). It exists because: The specification had to be citable: the reference itself, in the formats people paste."
+  },
+  {
+   "id": "manifest#StagedTransition",
+   "source": "the manifest",
+   "heading": "StagedTransition — performance",
+   "text": "StagedTransition is a performance. One state exits, a held absence, then another enters. Originated in chrishayuk.com · exhibition notebook (2026-09-08). It exists because: The exhibition notebook needed the interval between a claim and evidence to communicate that the states do not coexist. Held, not yet exhibited."
+  },
+  {
+   "id": "manifest#TextCorrection",
+   "source": "the manifest",
+   "heading": "TextCorrection — performance",
+   "text": "TextCorrection is a performance. A rejected line stays legible while its consequence arrives. Originated in chrishayuk.com · attribution notebook (2026-09-09). It exists because: The attribution note needed to stage a rejected metadata line under shared motion ownership without implying CI edits immutable commits. Held, not yet exhibited."
   },
   {
    "id": "manifest#Transformation",

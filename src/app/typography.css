@@ -1,0 +1,48 @@
+/* HAUSE's site uses one sans family for prose and display. The library's
+   original variable names remain aliases so its forms inherit the edition. */
+html {
+  --type-sans: var(--font-archivo);
+  --type-mono: var(--font-geist-mono);
+  --type-title: clamp(36px, 5vw, 64px);
+  --font-inter: var(--type-sans);
+  --font-fraunces: var(--type-sans);
+  --font-system: var(--type-sans);
+  --font-display: var(--type-sans);
+  --font-evidence: var(--type-mono);
+  font-optical-sizing: auto;
+}
+body { font-family: var(--type-sans), Arial, sans-serif; }
+body .voice-editorial { font-weight: 400; letter-spacing: -.02em; line-height: 1.12; }
+body .voice-system { letter-spacing: 0; }
+body :is(h1, h2, h3) em { font-style: normal; color: inherit; }
+/* Site navigation is a reading aid, not specimen metadata. */
+.site-navigation header { grid-template-columns: minmax(0, 1fr) auto; }
+.site-navigation header > div:first-child, .site-navigation header > nav { grid-column: auto; }
+.site-navigation header > div:not(:first-child) { grid-column: 1 / -1; }
+.site-navigation header > div:first-child > a { font: 500 24px/1.2 var(--type-sans), sans-serif; letter-spacing: .035em; }
+.site-navigation nav a { font-family: var(--type-sans), sans-serif; font-size: 13px; line-height: 1.6; letter-spacing: 0; text-transform: none; }
+.site-navigation nav button { font-family: var(--type-sans), sans-serif; letter-spacing: 0; min-height: 44px; }
+.site-navigation header > div:not(:first-child) a { display: flex; align-items: center; min-height: 44px; font: 400 16px/1.5 var(--type-sans), sans-serif; letter-spacing: 0; text-transform: none; }
+.site-navigation header > div:not(:first-child) p { font: 13px/1.6 var(--type-sans), sans-serif; letter-spacing: .025em; opacity: .7; }
+body > footer :is(a, p) { font-family: var(--type-sans), sans-serif; letter-spacing: 0; }
+body > footer .voice-evidence { font-size: 13px; line-height: 1.7; }
+body > footer nav p, body > footer > div > p { opacity: .7; }
+body > footer nav a { display: inline-flex; align-items: center; min-height: 32px; }
+body > footer > div > p.flex { flex-wrap: wrap; }
+body > footer { margin-top: 0; padding-top: 48px; padding-bottom: 32px; }
+.site-colophon { padding: 24px clamp(22px, 5vw, 80px); border-top: 1px solid var(--color-mist); }
+.site-colophon > div { display: flex; flex-wrap: wrap; gap: 16px 32px; justify-content: space-between; }
+.site-colophon p { font: 13px/1.7 var(--type-sans), sans-serif; letter-spacing: 0; opacity: .75; }
+.site-colophon p:last-child { display: flex; flex-wrap: wrap; gap: 12px 24px; }
+.site-colophon a { display: inline-flex; align-items: center; min-height: 44px; }
+/* Recorded evidence and status retain the library's distinct evidence voice. */
+.hause-home .act-result .voice-evidence:not(pre):not(code) { font-family: var(--font-evidence), monospace; font-size: 13px; line-height: 1.6; letter-spacing: .01em; }
+.hause-home .status-mark { font-family: var(--font-evidence), monospace; font-size: 12px; letter-spacing: .025em; }
+.hause-home .act-result .voice-system { line-height: 1.5; }
+.hause-home .act-result .voice-editorial { letter-spacing: -.02em; line-height: 1.15; }
+body :is(code, pre, kbd, samp) { font-family: var(--type-mono), monospace; font-variant-numeric: tabular-nums; letter-spacing: 0; }
+@media (max-width: 1050px) { .site-navigation nav > span { display: none; } }
+@media (max-width: 760px) {
+  .site-navigation header > div:first-child > a { font-size: 21px; }
+  body > footer nav a { min-height: 44px; }
+}

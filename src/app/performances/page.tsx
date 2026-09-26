@@ -27,7 +27,7 @@ export default function PerformancesPage() {
     <RoomProgramme mode="performance" />
     <RoomChapter mode="performance" chapterId="rearrange">
       <RoomStudy name="Unfolding" />
-      <RoomDoors names={["Compilation"]} />
+      <RoomDoors names={["Compilation", "StagedTransition", "TextCorrection"]} />
     </RoomChapter>
     <RoomPause note="A CHANGE OF PACE" first="Not motion around the explanation." second="Motion as the explanation." />
     <ExhibitionPlate study="passage" />

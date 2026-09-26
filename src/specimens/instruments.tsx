@@ -125,7 +125,7 @@ export function LadderSpecimen() {
 					question: "A real page exposes an explanatory need.",
 					gate: "a chapter that cannot be built with what exists — not a gap in a taxonomy",
 					status: "PASSED",
-					detail: "Recorded as the form's origin where the history knows it. Twenty-one of the thirty-five name the page that raised them; the rest predate the record and are left unresolved rather than reconstructed.",
+					detail: `Recorded as the form's origin where the history knows it. ${FORM_MANIFEST.filter(form => form.origin).length} of ${FORM_MANIFEST.length} forms name their origin; the rest are left unresolved rather than reconstructed.`,
 				},
 				{
 					id: "built",

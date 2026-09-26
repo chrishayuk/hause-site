@@ -29,4 +29,4 @@ for (const [mode, chapters] of Object.entries(ROOM_PROGRAMMES)) {
     if (mode === "performance") assert(html.includes("STORYBOARD / FILM ASSET HELD"));
   }
 }
-console.log("3/3 mode-room programmes cover all 35 forms and sourced relationships" + (process.argv.includes("--built") ? " · built routes, anchors and opening encounters pass" : ""));
+console.log("3/3 mode-room programmes cover all 37 forms and sourced relationships" + (process.argv.includes("--built") ? " · built routes, anchors and opening encounters pass" : ""));

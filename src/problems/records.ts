@@ -1,6 +1,6 @@
 import { FORM_MANIFEST } from "@chrishayuk/hause/manifest";
 import docs from "@/data/formDocs.json";
-import { recordDifference } from "@/vendor/hause/record-difference";
+import { recordDifference } from "@chrishayuk/hause/record-difference";
 
 export const manifestNames = FORM_MANIFEST.map(form => form.name);
 export const documentedNames = docs.forms.map(form => form.name);

@@ -3,7 +3,7 @@ import { GRAMMAR } from "@/data/grammar";
 import { formBySlug, formSlug } from "@/data/forms";
 import { INTENT_DOORS, selectionHref, selectionState, type SelectionQuery } from "@/data/selection";
 import { FormStudy } from "@/studies";
-import { DecisionTrail } from "@/vendor/hause/components/exhibition/DecisionTrail";
+import { DecisionTrail } from "@chrishayuk/hause/components/exhibition/DecisionTrail";
 
 export function FormJourney({ query }: { query: SelectionQuery }) {
   const { intent, act } = selectionState(query);

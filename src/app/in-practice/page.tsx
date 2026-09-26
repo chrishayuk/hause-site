@@ -6,7 +6,7 @@ import { publicationMetadata } from "@chrishayuk/hause/seo";
 import { PRACTICES } from "@/data/practice";
 import { relatedKnowledge } from "@/data/knowledge";
 import { PracticeFilm } from "@/components/PracticeFilm";
-import { VisualPlate } from "@/vendor/hause/components/exhibition/VisualPlate";
+import { VisualPlate } from "@chrishayuk/hause/components/exhibition/VisualPlate";
 import film from "@/data/publication-film.json";
 
 export const metadata = publicationMetadata({ title: "HAUSE in practice", description: "Two real publications, two different demands: watch the VINDEX3 archive and Chris Hay’s film, then follow their recorded contributions into HAUSE.", url: "https://hause.design/in-practice", siteName: "HAUSE", indexable: true, image: film.poster });

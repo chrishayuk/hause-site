@@ -5,7 +5,7 @@ import { EVALUATIONS } from "../src/data/evaluations";
 import { FORMS } from "../src/data/forms";
 import { PROBLEMS } from "../src/data/problems";
 import { CASES } from "../evals/choosing-1/cases";
-import { outcomeSummary } from "../src/vendor/hause/exhibition-outcomes";
+import { outcomeSummary } from "@chrishayuk/hause/exhibition-outcomes";
 import { knowledgeAnswerNodes, KNOWLEDGE_EDGES } from "../src/data/knowledge";
 
 for (const condition of SELECTION_CONDITIONS) {

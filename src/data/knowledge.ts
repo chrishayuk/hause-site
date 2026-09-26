@@ -17,7 +17,7 @@ const vocabulary=[
  ["theme","dark","light","colour","color","mode","environment"],
 ];
 const PAGE_SUMMARIES:Record<string,string>={
- "/choosing":"Compact intent and act disclosures sit beside an actual authored form preview. Alternative acts remain one click away. The complete 35-form grammar stays server-rendered in a native reference disclosure. Choices are explicit grammar navigation, not an AI judgement about unsupplied evidence.",
+ "/choosing":"Compact intent and act disclosures sit beside an actual authored form preview. Alternative acts remain one click away. The complete 37-form grammar stays server-rendered in a native reference disclosure. Choices are explicit grammar navigation, not an AI judgement about unsupplied evidence.",
  "/knowledge":"A navigable one-hop graph centres a record between incoming and outgoing relationships grouped by relation and record kind. Larger branches begin collapsed, with all edges retained in the HTML and every direction and basis intact. The same graph serves Ask, the API and searchable reference; no relationships are inferred.",
  "/in-practice":"Two source-led publication chapters pair an original VINDEX3 repository film and Chris Hay's original YouTube screening with the publishing need and recorded library contributions. The archive asset is unchanged. Both publications have one author; this is real use, not independent adoption.",
  "/statements":ROOM_DESCRIPTIONS.statement,

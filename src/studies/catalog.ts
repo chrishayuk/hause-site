@@ -2,6 +2,8 @@ export type Study = { title: string; introduction: string; reading: string };
 
 /** Editorial studies are demonstrations, not additional library API or evaluation evidence. */
 export const STUDIES = {
+  StagedTransition: { title: "Leave a space between the readings.", introduction: "An assertion leaves before its supporting record arrives. The interval makes the change in status visible.", reading: "A fictional gallery opening demonstrates exit, held absence and arrival. The complete score remains readable without playback." },
+  TextCorrection: { title: "Keep the words that changed.", introduction: "A correction has two parts: the wording that was withdrawn and the more precise account that replaces it.", reading: "In this fictional opening notice, a planned date becomes an explicit uncertainty. The crossed-out statement remains legible beside its correction." },
   Hero: { title: "The first wall changes everything.", introduction: "Before a visitor reads the argument, they need to know which room they have entered.", reading: "A room label, one dominant headline, then a way into the subject. Arrival has a hierarchy." },
   Statement: { title: "One sentence. All the space it needs.", introduction: "Remove the surrounding noise. Notice what happens to the same words when they no longer have to compete.", reading: "The sentence is unchanged. Space and scale make it the turn in the argument." },
   Observation: { title: "Notice before you conclude.", introduction: "Look at the arrangement. Describe what is there before deciding what it means.", reading: "An observation names the visible fact. It does not smuggle a causal claim into the description." },

@@ -168,7 +168,7 @@ export default function AiNativeDesignSystemsPage() {
 					{
 						label: "Adoption is broad",
 						status: "REFUTED",
-						detail: "Two consumer sites, one author, version 0.1.0. 18 of the 35 forms name a single consumer as their origin, which the provenance record calls the honest weakness of a young design system.",
+						detail: "The published evaluation concerned a 35-form edition, with 18 forms naming one consumer as their origin. Two consumer sites by the same author do not establish broad, independent adoption.",
 					},
 				]}
 			/>

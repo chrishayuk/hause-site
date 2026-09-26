@@ -11,6 +11,10 @@ import { Compilation } from "@chrishayuk/hause/components/forms/Compilation";
 import { Procession } from "@chrishayuk/hause/components/forms/Procession";
 import { Magnitude } from "@chrishayuk/hause/components/forms/Magnitude";
 import { Channel } from "@chrishayuk/hause/components/forms/Channel";
+import { MotionProvider } from "@chrishayuk/hause/components/Motion";
+import { StagedTransition } from "@chrishayuk/hause/components/forms/StagedTransition";
+import { TextCorrection } from "@chrishayuk/hause/components/forms/TextCorrection";
+import "@chrishayuk/hause/exhibition.css";
 import { Quantisation } from "@chrishayuk/hause/components/forms/Quantisation";
 
 export function TransformationSpecimen() {
@@ -125,4 +129,16 @@ export function QuantisationSpecimen() {
 			/>
 		</>
 	);
+}
+
+
+export function StagedTransitionSpecimen() {
+ return <MotionProvider storageKey="hause-staged-transition"><StagedTransition
+  from="The gallery opens on Friday." to="The inspection has not taken place."
+  kicker="ILLUSTRATIVE OPENING NOTICE" caption="A planned opening date has no completed inspection behind it. The arrival of the record changes how the announcement should be read."
+  score={[{label:"Announcement",description:"The opening is presented as settled."},{label:"Interval",description:"The assertion leaves; its status is still unresolved."},{label:"Record",description:"No completed inspection is on record. The opening remains provisional."}]} />
+ </MotionProvider>;
+}
+export function TextCorrectionSpecimen() {
+ return <MotionProvider storageKey="hause-text-correction"><TextCorrection before="The gallery will open on Friday." after="Friday is planned. Opening is not confirmed." caption="Illustrative correction: inspection is still pending. No real opening or inspection is being reported." /></MotionProvider>;
 }

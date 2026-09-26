@@ -1,7 +1,9 @@
 import { modeScript } from "@chrishayuk/hause/mode";
 import type { Metadata } from "next";
-import { Fraunces, Inter, Geist_Mono } from "next/font/google";
+import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import "./typography.css";
+import "./catalogue-edition.css";
 import { Nav } from "@/components/Nav";
 import { SiteFooter } from "@chrishayuk/hause/components/SiteFooter";
 import { Analytics } from "@chrishayuk/hause/components/Analytics";
@@ -11,15 +13,12 @@ import { HAUSE_LINE, hauseDescription } from "@chrishayuk/hause/manifest";
 import { buildNote } from "@/data/build";
 import { FOOTER_GROUPS } from "@/data/navigation";
 
-const fraunces = Fraunces({
-	variable: "--font-fraunces",
-	subsets: ["latin"],
-	weight: ["400", "500", "600"],
-});
-
-const inter = Inter({
-	variable: "--font-inter",
-	subsets: ["latin"],
+const archivo = Archivo({
+ variable: "--font-archivo",
+ subsets: ["latin"],
+ weight: ["400", "500", "600"],
+ style: ["normal", "italic"],
+ display: "swap",
 });
 
 const geistMono = Geist_Mono({
@@ -65,7 +64,7 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en" data-mode="dark" data-scroll-behavior="smooth" className={`${fraunces.variable} ${inter.variable} ${geistMono.variable}`} suppressHydrationWarning>
+		<html lang="en" data-mode="light" data-scroll-behavior="smooth" className={`${archivo.variable} ${geistMono.variable}`} suppressHydrationWarning>
 			<head>
 				<JsonLd
 					data={webSiteLd({
@@ -78,7 +77,7 @@ export default function RootLayout({
 				<script
 					// eslint-disable-next-line react/no-danger
 					dangerouslySetInnerHTML={{
-						__html: modeScript("dark"),
+						__html: modeScript("light"),
 					}}
 				/>
 			</head>
@@ -93,7 +92,7 @@ export default function RootLayout({
 					note={`Nothing enters the library without a real page that needed it first.${buildNote()}`}
 					groups={FOOTER_GROUPS}
 				/>
-				<footer className="hause-grid py-16 mt-20 border-t" style={{ borderColor: "var(--color-mist)" }}>
+				<div className="site-colophon">
 					<div className="col-span-12 flex flex-wrap items-baseline justify-between gap-4">
 						<p className="voice-evidence text-xs opacity-50">HAUSE · THE SPECIMEN BOOK / 2026</p>
 						<p className="voice-evidence text-xs opacity-50 flex gap-6">
@@ -108,7 +107,7 @@ export default function RootLayout({
 							</a>
 						</p>
 					</div>
-				</footer>
+				</div>
 			</body>
 		</html>
 	);

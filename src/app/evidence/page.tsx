@@ -6,7 +6,7 @@ import { JsonLd } from "@chrishayuk/hause/components/JsonLd";
 import { publicationMetadata, citationLd } from "@chrishayuk/hause/seo";
 import { EVALUATIONS } from "@/data/evaluations";
 import { EVIDENCE_RECORD as record, EVIDENCE_SOURCE, SELECTION_CONDITIONS } from "@/data/evidence-archive";
-import { OutcomeMatrix } from "@/vendor/hause/components/exhibition/OutcomeMatrix";
+import { OutcomeMatrix } from "@chrishayuk/hause/components/exhibition/OutcomeMatrix";
 import { CASES } from "../../../evals/choosing-1/cases";
 
 export const metadata = publicationMetadata({ title: record.title, description: record.abstract!, url: record.url, siteName: "HAUSE", indexable: true, citation: record });
